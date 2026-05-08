@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/citas", "dest": "/pages/citas.html" },
+    { "src": "/guia", "dest": "/pages/guia.html" },
+    { "src": "/glosario", "dest": "/pages/glosario.html" }
+  ]
+}
