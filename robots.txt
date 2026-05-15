@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemaps
-Sitemap: https://clinica-monte-sinai.vercel.app/sitemap.xml
-
-# Bloquear archivos innecesarios
-Disallow: /*.bak
-Disallow: /assets/*.bak
