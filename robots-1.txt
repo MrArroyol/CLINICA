@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://montesinai.space/sitemap.xml
+
+Disallow: /*.bak
+Disallow: /assets/*.bak
