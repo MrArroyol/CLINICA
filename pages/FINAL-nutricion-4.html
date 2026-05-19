@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+<meta name="theme-color" content="#071E35">
+<title>Consulta Nutricional Renal · Monte Sinaí</title>
+<meta name="description" content="Guía completa de nutrición para pacientes en hemodiálisis. Semáforo de alimentos, qué sí y qué no comer. Monte Sinaí Tlalnepantla.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#071E35;--primary:#0D3B66;--secondary:#1B5EBC;
+  --teal:#2A9D8F;--teal-l:#3BBFB0;--teal-p:#E3F4F2;
+  --purple:#6B3FA0;--purple-l:#9B6ED4;--purple-p:#F0E8FF;
+  --green:#28B673;--green-p:#E6F7EF;
+  --warn:#FFB703;--warn-p:#FFF8E1;
+  --red:#E63946;--red-p:#FDECEA;
+  --bg:#F0F5FB;--base:#FFFFFF;
+  --text:#0A1520;--text-mid:#1A2E40;--text-s:#4A6070;--border:#C8DCE8;
+  --safe-top:env(safe-area-inset-top,0px);--safe-bot:env(safe-area-inset-bottom,0px);
+  --nav-h:62px;--px:16px;
+  --out:cubic-bezier(.16,1,.3,1);--spring:cubic-bezier(.34,1.56,.64,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:calc(68px + var(--safe-bot));}
+*{-webkit-tap-highlight-color:transparent;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--green);border-radius:4px;}
+#glowCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;background:linear-gradient(90deg,var(--green),var(--teal),var(--purple));transform:scaleX(0);transform-origin:left;}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;padding-top:var(--safe-top);background:rgba(7,30,53,.97);backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid rgba(40,182,115,.25);}
+.nav__i{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--px);}
+.nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav__logo img{height:40px;width:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(40,182,115,.4);}
+.nav__brand strong{display:block;color:white;font-size:.8rem;font-weight:800;}
+.nav__brand em{display:block;color:var(--teal-l);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;font-style:normal;}
+.nav__r{display:flex;align-items:center;gap:8px;}
+.nav__tel{width:40px;height:40px;border-radius:50%;background:rgba(40,182,115,.18);border:1px solid rgba(40,182,115,.3);display:flex;align-items:center;justify-content:center;text-decoration:none;}
+.nav__tel svg{width:17px;height:17px;stroke:var(--teal-l);fill:none;stroke-width:2.5;}
+.nav__cta{height:36px;padding:0 16px;border-radius:100px;background:linear-gradient(135deg,var(--green),var(--teal));color:white;font-size:.77rem;font-weight:700;border:none;font-family:'Poppins',sans-serif;text-decoration:none;display:flex;align-items:center;}
+
+.nav-bar{background:white;border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;position:relative;z-index:3;}
+.nav-bar::-webkit-scrollbar{display:none;}
+.nav-bar-i{display:inline-flex;gap:0;padding:0 12px;min-width:100%;}
+.nb-link{display:inline-flex;align-items:center;gap:7px;padding:13px 14px;font-family:'Poppins',sans-serif;font-size:.79rem;font-weight:600;color:var(--text-s);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;}
+.nb-link.on{color:var(--primary);border-bottom-color:var(--green);font-weight:700;}
+
+/* HERO */
+.hero{min-height:260px;position:relative;overflow:hidden;background:linear-gradient(155deg,var(--navy) 0%,#0A2818 40%,#0D4020 100%);padding:calc(var(--nav-h) + var(--safe-top) + 48px + 24px) var(--px) 36px;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(40,182,115,.3),transparent 60%),radial-gradient(ellipse 45% 45% at 10% 80%,rgba(42,157,143,.22),transparent 55%);pointer-events:none;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;}
+.hero__in{position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(40,182,115,.2);border:1px solid rgba(40,182,115,.35);border-radius:100px;padding:5px 14px;margin-bottom:14px;}
+.hb-text{color:#7EE8B0;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.hero__title{color:white;font-size:clamp(1.7rem,7vw,2.3rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px;}
+.hero__title em{background:linear-gradient(135deg,#7EE8B0,var(--teal-l),var(--purple-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal;}
+.hero__sub{color:rgba(255,255,255,.62);font-size:.9rem;line-height:1.75;margin-bottom:20px;}
+
+/* SEMÁFORO de alimentos */
+.sec-hdr{padding:28px var(--px) 8px;position:relative;z-index:1;}
+.sec-chip-g{display:inline-flex;align-items:center;gap:6px;font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:var(--green-p);border:1px solid rgba(40,182,115,.2);padding:4px 12px;border-radius:100px;margin-bottom:12px;}
+.sec-chip-g::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);}
+.sec-h2{font-size:clamp(1.25rem,5vw,1.75rem);font-weight:700;color:var(--primary);margin-bottom:6px;}
+.sec-p{font-size:.84rem;color:var(--text-s);line-height:1.7;}
+
+/* SEMÁFORO */
+.semaforo-tabs{display:flex;padding:0 var(--px);gap:8px;margin-bottom:16px;}
+.sem-tab{flex:1;height:48px;border-radius:12px;border:2px solid var(--border);background:white;font-family:'Poppins',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px;}
+.sem-tab.on-g{border-color:var(--green);background:var(--green-p);color:var(--green);}
+.sem-tab.on-y{border-color:var(--warn);background:var(--warn-p);color:#8A5A00;}
+.sem-tab.on-r{border-color:var(--red);background:var(--red-p);color:var(--red);}
+.sem-tab:active{transform:scale(.97);}
+
+.sem-panel{display:none;padding:0 var(--px);}
+.sem-panel.on{display:block;animation:fade-in .3s ease both;}
+@keyframes fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.sem-intro{border-radius:16px;padding:16px;margin-bottom:14px;}
+.sem-intro-g{background:var(--green-p);border:1.5px solid rgba(40,182,115,.3);}
+.sem-intro-y{background:var(--warn-p);border:1.5px solid rgba(255,183,3,.35);}
+.sem-intro-r{background:var(--red-p);border:1.5px solid rgba(230,57,70,.3);}
+.sem-intro strong{display:block;font-size:.88rem;margin-bottom:4px;}
+.si-g strong{color:var(--green);}
+.si-y strong{color:#8A5A00;}
+.si-r strong{color:var(--red);}
+.sem-intro p{font-size:.8rem;color:var(--text-mid);line-height:1.6;}
+
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.food-card{background:white;border-radius:16px;padding:14px 12px;border:1.5px solid var(--border);text-align:center;box-shadow:0 2px 8px rgba(13,59,102,.06);cursor:pointer;transition:all .2s;}
+.food-card:active{transform:scale(.96);}
+.food-card.open{box-shadow:0 6px 20px rgba(13,59,102,.12);}
+.food-ico{font-size:2.2rem;margin-bottom:8px;display:block;}
+.food-name{font-size:.82rem;font-weight:700;color:var(--primary);margin-bottom:3px;}
+.food-hint{font-size:.68rem;color:var(--text-s);}
+.food-detail{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.food-card.open .food-detail{max-height:200px;}
+.food-detail-inner{padding:10px 0 0;border-top:1px solid var(--border);margin-top:8px;}
+.food-detail-inner p{font-size:.76rem;color:var(--text-mid);line-height:1.65;}
+.food-badge-g{display:inline-block;background:var(--green-p);color:var(--green);font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:5px;}
+.food-badge-y{display:inline-block;background:var(--warn-p);color:#8A5A00;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:5px;}
+.food-badge-r{display:inline-block;background:var(--red-p);color:var(--red);font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:5px;}
+
+/* TABLA NUTRICIONAL */
+.tabla-sec{background:white;padding:0;position:relative;}
+.tabla-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table{width:100%;border-collapse:collapse;font-size:.78rem;}
+thead{background:linear-gradient(135deg,var(--primary),var(--secondary));}
+thead th{color:white;font-weight:700;padding:12px 10px;text-align:left;white-space:nowrap;}
+tbody tr:nth-child(odd){background:var(--bg);}
+tbody tr:nth-child(even){background:white;}
+tbody td{padding:10px;color:var(--text-mid);vertical-align:middle;}
+td:first-child{font-weight:600;color:var(--primary);}
+.badge-g{background:var(--green-p);color:var(--green);padding:2px 8px;border-radius:100px;font-size:.68rem;font-weight:700;white-space:nowrap;}
+.badge-y{background:var(--warn-p);color:#8A5A00;padding:2px 8px;border-radius:100px;font-size:.68rem;font-weight:700;white-space:nowrap;}
+.badge-r{background:var(--red-p);color:var(--red);padding:2px 8px;border-radius:100px;font-size:.68rem;font-weight:700;white-space:nowrap;}
+
+/* TIPS CARDS */
+.tip-card{background:white;border-radius:18px;padding:18px;border-left:4px solid;margin:10px var(--px) 0;box-shadow:0 2px 10px rgba(13,59,102,.08);}
+.tip-card-g{border-left-color:var(--green);}
+.tip-card-p{border-left-color:var(--purple);}
+.tip-card-t{border-left-color:var(--teal);}
+.tip-card-y{border-left-color:var(--warn);}
+.tip-card-r{border-left-color:var(--red);}
+.tip-title{font-size:.85rem;font-weight:700;color:var(--primary);margin-bottom:6px;display:flex;align-items:center;gap:7px;}
+.tip-text{font-size:.8rem;color:var(--text-mid);line-height:1.75;}
+
+/* CALCULADORA */
+.calc-sec{background:var(--bg);padding:32px var(--px);}
+.calc-card{background:white;border-radius:20px;padding:20px;border:1px solid var(--border);box-shadow:0 4px 16px rgba(13,59,102,.08);}
+.calc-row{display:flex;gap:10px;margin-bottom:12px;}
+.calc-label{font-size:.8rem;font-weight:600;color:var(--primary);margin-bottom:6px;display:block;}
+.calc-input{width:100%;height:48px;padding:0 14px;border:2px solid var(--border);border-radius:12px;font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--text);background:var(--bg);transition:all .2s;outline:none;}
+.calc-input:focus{border-color:var(--green);background:white;box-shadow:0 0 0 3px rgba(40,182,115,.1);}
+.calc-btn{width:100%;height:50px;border-radius:14px;background:linear-gradient(135deg,var(--green),var(--teal));color:white;font-family:'Poppins',sans-serif;font-weight:700;font-size:.92rem;border:none;cursor:pointer;margin-bottom:14px;transition:all .18s;}
+.calc-btn:active{transform:scale(.98);}
+.calc-results{display:none;}
+.calc-results.on{display:block;animation:fade-in .4s ease both;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.calc-stat{background:var(--bg);border-radius:12px;padding:12px;border:1px solid var(--border);text-align:center;}
+.calc-stat-n{font-size:1.2rem;font-weight:800;color:var(--primary);}
+.calc-stat-u{font-size:.75rem;font-weight:600;color:var(--text-s);}
+.calc-stat-l{font-size:.68rem;color:var(--text-s);margin-top:2px;text-transform:uppercase;letter-spacing:.05em;}
+
+/* RECETAS */
+.recipe-card{background:white;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 16px rgba(13,59,102,.08);margin:10px var(--px) 0;cursor:pointer;}
+.recipe-card:active{transform:scale(.99);}
+.recipe-img{width:100%;height:150px;object-fit:cover;display:block;filter:brightness(.85);}
+.recipe-img-placeholder{width:100%;height:150px;display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.recipe-body{padding:14px;}
+.recipe-name{font-size:.9rem;font-weight:700;color:var(--primary);margin-bottom:4px;}
+.recipe-desc{font-size:.78rem;color:var(--text-s);margin-bottom:10px;line-height:1.6;}
+.recipe-badges{display:flex;gap:6px;flex-wrap:wrap;}
+.rb-g{background:var(--green-p);color:var(--green);font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:100px;}
+.rb-y{background:var(--warn-p);color:#8A5A00;font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:100px;}
+.recipe-panel{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.recipe-card.open .recipe-panel{max-height:600px;}
+.recipe-detail{padding:0 14px 14px;border-top:1px solid var(--border);margin-top:10px;}
+.recipe-detail h4{font-size:.82rem;font-weight:700;color:var(--primary);margin:10px 0 6px;}
+.recipe-detail ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.recipe-detail li{font-size:.78rem;color:var(--text-mid);display:flex;gap:6px;line-height:1.6;}
+.recipe-detail li::before{content:'•';color:var(--green);flex-shrink:0;}
+
+/* CTA nutricional */
+.nutr-cta{margin:16px var(--px);background:linear-gradient(135deg,var(--green),var(--teal));border-radius:20px;padding:22px 18px;text-align:center;}
+.nutr-cta h3{color:white;font-size:1rem;font-weight:700;margin-bottom:8px;}
+.nutr-cta p{color:rgba(255,255,255,.75);font-size:.82rem;margin-bottom:16px;line-height:1.7;}
+.nutr-cta a{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 24px;border-radius:12px;background:white;color:var(--green);font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;text-decoration:none;}
+
+footer{background:#040E18;padding:28px 0 18px;}
+.ft-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.ft-logo{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(40,182,115,.3);}
+.ft-brand strong{display:block;color:white;font-size:.8rem;font-weight:800;}
+.ft-brand span{color:var(--teal-l);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;}
+.ft-links{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0;}
+.ft-link{color:#1A2D3D;font-size:.76rem;text-decoration:none;padding:5px 11px;border-radius:7px;background:rgba(255,255,255,.04);}
+.ft-bottom p{color:#0E1E28;font-size:.67rem;text-align:center;}
+
+.bnav{position:fixed;bottom:0;left:0;right:0;z-index:900;padding-bottom:var(--safe-bot);background:rgba(255,255,255,.97);backdrop-filter:blur(20px) saturate(180%);border-top:2px solid var(--border);box-shadow:0 -4px 24px rgba(13,59,102,.1);}
+.bnav-i{display:flex;height:68px;align-items:stretch;}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--text-s);font-size:.57rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;transition:color .18s;position:relative;padding:8px 4px;}
+.bn:active{background:rgba(40,182,115,.04);}
+.bn.on{color:var(--green);}
+.bn.on::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:22px;height:3px;border-radius:3px;background:var(--green);}
+.bn-ic{width:22px;height:22px;}
+.bn-cta{background:linear-gradient(135deg,var(--green),var(--teal));color:white!important;border-radius:12px;margin:8px 5px;flex:1.4;padding:0 8px;box-shadow:0 4px 16px rgba(40,182,115,.42);}
+.bn-cta::before{display:none!important;}
+
+[data-r]{opacity:0;transform:translateY(18px);transition:opacity .55s var(--out),transform .55s var(--out);}
+[data-r].vis{opacity:1;transform:translateY(0);}
+
+@media(min-width:768px){.bnav{display:none;}body{padding-bottom:0;}.food-grid{grid-template-columns:repeat(4,1fr);}.calc-grid{grid-template-columns:repeat(4,1fr);}}
+
+/* ══ REPORTE NUTRICIONAL — Imprimible y captura ══ */
+.report-sec{background:var(--bg);padding:28px 0 0;}
+.report-card{
+  background:white;border-radius:18px;padding:16px;
+  border:1px solid var(--border);box-shadow:0 4px 16px rgba(13,59,102,.08);
+  margin:0 var(--px);
+  /* Mobile-safe: prevent overflow */
+  max-width:100%;overflow:hidden;box-sizing:border-box;
+}
+.report-intro{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;}
+.report-intro-ico{
+  width:40px;height:40px;border-radius:11px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--green),var(--teal));
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.report-intro-text{flex:1;min-width:0;}
+.report-intro-text strong{display:block;font-size:.87rem;font-weight:700;color:var(--primary);margin-bottom:3px;line-height:1.3;}
+.report-intro-text span{font-size:.75rem;color:var(--text-s);line-height:1.55;display:block;}
+
+/* Formulario — Mobile-first */
+.report-form{display:flex;flex-direction:column;gap:12px;margin-bottom:14px;}
+.rf-row{display:flex;gap:8px;flex-wrap:wrap;}
+.rf-field{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;}
+/* En pantallas muy pequeñas, las dos columnas se apilan */
+@media (max-width:360px){
+  .rf-row{flex-direction:column;gap:12px;}
+}
+.rf-label{font-size:.74rem;font-weight:600;color:var(--primary);line-height:1.3;}
+.rf-input{
+  width:100%;height:46px;padding:0 13px;border:1.5px solid var(--border);
+  border-radius:11px;font-family:'Poppins',sans-serif;font-size:.88rem;
+  color:var(--text);background:var(--bg);outline:none;transition:all .2s;
+  box-sizing:border-box;
+  /* iOS specific: prevent zoom on focus */
+  -webkit-appearance:none;appearance:none;
+}
+.rf-input:focus{border-color:var(--green);background:white;box-shadow:0 0 0 3px rgba(40,182,115,.08);}
+
+/* Select específico — espacio extra para arrow */
+select.rf-input{
+  padding-right:32px;
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A6070' stroke-width='2.5'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+  background-repeat:no-repeat;background-position:right 10px center;background-size:14px;
+}
+
+.rf-textarea{
+  width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:11px;
+  font-family:'Poppins',sans-serif;font-size:.85rem;color:var(--text);
+  background:var(--bg);outline:none;resize:none;transition:all .2s;
+  min-height:80px;line-height:1.6;box-sizing:border-box;
+  -webkit-appearance:none;appearance:none;
+}
+.rf-textarea:focus{border-color:var(--green);background:white;box-shadow:0 0 0 3px rgba(40,182,115,.08);}
+
+/* Checkboxes — mobile optimized */
+.rf-checks{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+}
+/* En pantallas ultra pequeñas, una sola columna */
+@media (max-width:340px){
+  .rf-checks{grid-template-columns:1fr;}
+}
+.rf-check{
+  display:flex;align-items:center;gap:7px;
+  padding:10px 11px;background:var(--bg);border-radius:11px;
+  border:1.5px solid var(--border);cursor:pointer;transition:all .18s;
+  font-size:.76rem;color:var(--text-mid);font-weight:500;
+  line-height:1.25;
+  min-height:42px;
+  /* Texto no se corta */
+  word-wrap:break-word;hyphens:auto;
+}
+.rf-check input{
+  accent-color:var(--green);
+  width:16px;height:16px;flex-shrink:0;
+  margin:0;cursor:pointer;
+}
+.rf-check:has(input:checked){border-color:var(--green);background:var(--green-p);color:var(--primary);font-weight:600;}
+.rf-check:active{transform:scale(.97);}
+
+.report-btn{
+  width:100%;min-height:52px;padding:0 18px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--green),var(--teal));
+  color:white;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all .18s;box-shadow:0 4px 16px rgba(40,182,115,.35);
+  box-sizing:border-box;
+}
+.report-btn:active{transform:scale(.98);}
+
+/* ─── REPORTE GENERADO — Diseño para captura de pantalla ─── */
+#reporteGenerado{display:none;}
+#reporteGenerado.visible{display:block;animation:fade-in .4s ease both;}
+
+.reporte-wrap{
+  background:white;border-radius:16px;
+  border:2px solid rgba(40,182,115,.25);
+  overflow:hidden;margin-top:14px;
+  box-sizing:border-box;max-width:100%;
+}
+/* Header del reporte */
+.reporte-hdr{
+  background:linear-gradient(135deg,#071E35,#0D3B66);
+  padding:14px 14px 12px;display:flex;align-items:center;gap:10px;
+  flex-wrap:wrap;
+}
+.reporte-hdr img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2);}
+.reporte-hdr-text strong{display:block;color:white;font-size:.88rem;font-weight:800;}
+.reporte-hdr-text span{color:rgba(255,255,255,.6);font-size:.68rem;}
+.reporte-fecha{
+  margin-left:auto;text-align:right;flex-shrink:0;
+}
+.reporte-fecha strong{display:block;color:var(--teal-l);font-size:.75rem;font-weight:700;}
+.reporte-fecha span{color:rgba(255,255,255,.5);font-size:.65rem;}
+
+/* Datos del paciente */
+.reporte-paciente{
+  padding:13px 14px;background:var(--bg);
+  border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;
+}
+@media (max-width:340px){.reporte-paciente{grid-template-columns:1fr;}}
+.rp-item label{display:block;font-size:.63rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--text-s);margin-bottom:2px;}
+.rp-item span{font-size:.82rem;font-weight:600;color:var(--primary);}
+
+/* Semáforo resumen */
+.reporte-semaforo{padding:14px 16px;border-bottom:1px solid var(--border);}
+.rs-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--text-s);margin-bottom:10px;}
+.rs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+@media (max-width:360px){.rs-grid{gap:5px;}.rs-items{font-size:.6rem;}.rs-label{font-size:.64rem;}}
+.rs-item{border-radius:11px;padding:10px 8px;text-align:center;}
+.rs-g{background:var(--green-p);border:1px solid rgba(40,182,115,.2);}
+.rs-y{background:var(--warn-p);border:1px solid rgba(255,183,3,.25);}
+.rs-r{background:var(--red-p);border:1px solid rgba(230,57,70,.2);}
+.rs-ico{font-size:1.4rem;display:block;margin-bottom:4px;}
+.rs-label{font-size:.68rem;font-weight:700;}
+.rs-g .rs-label{color:var(--green);}
+.rs-y .rs-label{color:#8A5A00;}
+.rs-r .rs-label{color:var(--red);}
+.rs-items{font-size:.64rem;color:var(--text-s);margin-top:3px;line-height:1.5;}
+
+/* Síntomas y notas */
+.reporte-body{padding:14px 16px;border-bottom:1px solid var(--border);}
+.rb-section{margin-bottom:12px;}
+.rb-section:last-child{margin-bottom:0;}
+.rb-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--text-s);margin-bottom:7px;display:flex;align-items:center;gap:5px;}
+.rb-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.rb-chip{
+  font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:100px;
+  background:var(--red-p);color:var(--red);border:1px solid rgba(230,57,70,.2);
+}
+.rb-notes{font-size:.8rem;color:var(--text-mid);line-height:1.7;
+  background:var(--bg);border-radius:10px;padding:10px 12px;}
+
+/* Footer del reporte */
+.reporte-footer{
+  padding:12px 16px;
+  background:linear-gradient(135deg,var(--green-p),var(--teal-p));
+  border-top:1px solid rgba(40,182,115,.15);
+}
+.rf-disclaimer{font-size:.68rem;color:var(--text-s);line-height:1.6;margin-bottom:8px;}
+.rf-contact{display:flex;gap:8px;}
+.rf-tel{
+  flex:1;min-height:40px;padding:0 8px;border-radius:10px;
+  background:linear-gradient(135deg,var(--green),var(--teal));
+  color:white;font-family:'Poppins',sans-serif;font-weight:700;font-size:.76rem;
+  text-decoration:none;display:flex;align-items:center;justify-content:center;gap:5px;
+  white-space:nowrap;
+}
+.rf-wa{
+  flex:1;min-height:40px;padding:0 8px;border-radius:10px;background:#25D366;
+  color:white;font-family:'Poppins',sans-serif;font-weight:700;font-size:.76rem;
+  text-decoration:none;display:flex;align-items:center;justify-content:center;gap:5px;
+  white-space:nowrap;
+}
+
+/* Instrucciones de captura */
+.capture-hint{
+  margin:12px var(--px) 0;
+  background:rgba(13,59,102,.06);border-radius:14px;
+  padding:13px 12px;border:1px dashed var(--border);
+  display:flex;gap:10px;align-items:flex-start;
+  box-sizing:border-box;
+}
+.ch-ico{font-size:1.3rem;flex-shrink:0;}
+.ch-text strong{display:block;font-size:.8rem;font-weight:700;color:var(--primary);margin-bottom:3px;}
+.ch-text p{font-size:.74rem;color:var(--text-s);line-height:1.65;}
+.ch-steps{list-style:none;display:flex;flex-direction:column;gap:3px;margin-top:5px;}
+.ch-steps li{font-size:.72rem;color:var(--text-s);display:flex;gap:6px;line-height:1.5;}
+.ch-steps li::before{content:'→';color:var(--green);flex-shrink:0;font-weight:700;}
+
+/* Botón de compartir por WA */
+.share-btn{
+  margin:10px var(--px) 0;width:calc(100% - 32px);min-height:50px;padding:0 14px;
+  border-radius:13px;background:#25D366;color:white;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:.87rem;
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 14px rgba(37,211,102,.35);transition:all .18s;
+}
+.share-btn:active{transform:scale(.98);}
+
+
+/* ══════════════════════════════════════════════════════════
+   PLAN NUTRICIONAL PRO — Sistema de registro aislado
+═══════════════════════════════════════════════════════════ */
+.plan-pro-sec{
+  background:linear-gradient(160deg,#071E35 0%,#0C2A48 50%,#0A3830 100%);
+  padding:48px 0;position:relative;overflow:hidden;
+  margin-top:28px;
+}
+.plan-pro-sec::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 55% 50% at 100% 0%,rgba(40,182,115,.18),transparent 60%),
+             radial-gradient(ellipse 45% 45% at 0% 100%,rgba(42,157,143,.15),transparent 55%);
+}
+.plan-pro-inner{position:relative;z-index:1;padding:0 var(--px);}
+
+/* Header del plan pro */
+.ppro-header{margin-bottom:22px;}
+.ppro-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,rgba(40,182,115,.25),rgba(42,157,143,.18));
+  border:1px solid rgba(40,182,115,.4);
+  border-radius:100px;padding:5px 14px;margin-bottom:14px;
+}
+.ppro-badge-dot{width:7px;height:7px;border-radius:50%;background:#7EE8B0;
+  animation:pulse-green 1.8s ease-in-out infinite;}
+@keyframes pulse-green{0%,100%{box-shadow:0 0 0 0 rgba(126,232,176,.5)}50%{box-shadow:0 0 0 6px rgba(126,232,176,0)}}
+.ppro-badge span{color:#7EE8B0;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.ppro-title{color:white;font-size:clamp(1.4rem,5vw,1.85rem);font-weight:800;line-height:1.15;letter-spacing:-.015em;margin-bottom:8px;}
+.ppro-title span{background:linear-gradient(135deg,#7EE8B0,#3BBFB0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ppro-subtitle{color:rgba(255,255,255,.62);font-size:.85rem;line-height:1.75;margin-bottom:6px;}
+
+/* Lo que incluye — checklist */
+.ppro-incluye{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:14px 16px;margin-bottom:22px;
+}
+.ppro-incluye-title{color:white;font-size:.78rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.ppro-incluye-list{display:flex;flex-direction:column;gap:6px;}
+.ppro-incluye-item{display:flex;align-items:flex-start;gap:8px;color:rgba(255,255,255,.78);font-size:.78rem;line-height:1.55;}
+.ppro-incluye-check{
+  width:18px;height:18px;border-radius:50%;
+  background:linear-gradient(135deg,#28B673,#2A9D8F);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:.6rem;font-weight:800;flex-shrink:0;margin-top:1px;
+}
+
+/* WIZARD — formulario por pasos */
+.plan-form{
+  background:white;border-radius:20px;padding:0;
+  box-shadow:0 12px 40px rgba(0,0,0,.3);
+  overflow:hidden;
+}
+
+/* Progress bar de pasos */
+.plan-progress{
+  display:flex;background:var(--bg);padding:14px 16px 0;gap:8px;
+}
+.plan-prog-step{
+  flex:1;height:6px;border-radius:3px;background:var(--border);
+  position:relative;overflow:hidden;
+  transition:all .3s;
+}
+.plan-prog-step.done{background:linear-gradient(90deg,#28B673,#2A9D8F);}
+.plan-prog-step.active{background:linear-gradient(90deg,#28B673,#2A9D8F);}
+.plan-prog-step.active::after{
+  content:'';position:absolute;inset:0;background:rgba(255,255,255,.3);
+  animation:slide-shine 1.5s ease-in-out infinite;
+}
+@keyframes slide-shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+.plan-step-info{
+  padding:14px 18px 8px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.psi-label{font-size:.66rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.08em;}
+.psi-counter{font-size:.7rem;color:var(--text-s);font-weight:600;}
+
+/* Paso individual */
+.plan-step{display:none;padding:8px 18px 18px;animation:step-in .3s ease both;}
+.plan-step.active{display:block;}
+@keyframes step-in{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+
+.plan-step h3{color:var(--primary);font-size:1.05rem;font-weight:700;margin-bottom:5px;line-height:1.3;}
+.plan-step-sub{color:var(--text-s);font-size:.8rem;line-height:1.65;margin-bottom:16px;}
+
+/* Inputs del wizard */
+.pwf{display:flex;flex-direction:column;gap:12px;}
+.pwf-row{display:flex;gap:10px;}
+.pwf-field{flex:1;display:flex;flex-direction:column;gap:5px;}
+.pwf-label{font-size:.74rem;font-weight:600;color:var(--primary);}
+.pwf-label .req{color:var(--red);margin-left:3px;}
+.pwf-input,.pwf-select{
+  height:46px;padding:0 14px;border:1.5px solid var(--border);
+  border-radius:12px;font-family:'Poppins',sans-serif;font-size:.86rem;
+  color:var(--text);background:var(--bg);outline:none;
+  transition:all .2s;width:100%;
+}
+.pwf-input:focus,.pwf-select:focus{border-color:var(--green);background:white;
+  box-shadow:0 0 0 3px rgba(40,182,115,.1);}
+.pwf-textarea{
+  padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;
+  font-family:'Poppins',sans-serif;font-size:.84rem;color:var(--text);
+  background:var(--bg);outline:none;resize:none;transition:all .2s;
+  min-height:80px;line-height:1.6;width:100%;
+}
+.pwf-textarea:focus{border-color:var(--green);background:white;
+  box-shadow:0 0 0 3px rgba(40,182,115,.1);}
+
+/* Opciones tipo card */
+.pwf-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.pwf-card{
+  padding:14px 12px;border:2px solid var(--border);border-radius:14px;
+  background:var(--bg);cursor:pointer;text-align:center;transition:all .2s;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+}
+.pwf-card:hover{border-color:var(--green);}
+.pwf-card.selected{border-color:var(--green);background:var(--green-p);}
+.pwf-card-ico{font-size:1.4rem;}
+.pwf-card-text{font-size:.78rem;font-weight:600;color:var(--primary);line-height:1.3;}
+.pwf-card-sub{font-size:.66rem;color:var(--text-s);}
+
+/* Multi-select chips */
+.pwf-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.pwf-chip{
+  padding:7px 12px;border:1.5px solid var(--border);border-radius:100px;
+  background:var(--bg);cursor:pointer;font-family:'Poppins',sans-serif;
+  font-size:.75rem;font-weight:600;color:var(--text-mid);
+  transition:all .18s;display:flex;align-items:center;gap:4px;
+}
+.pwf-chip:hover{border-color:var(--green);}
+.pwf-chip.selected{border-color:var(--green);background:var(--green-p);color:var(--green);}
+.pwf-chip.selected::before{content:'✓';font-weight:800;}
+
+/* Slider de valor */
+.pwf-slider-wrap{display:flex;flex-direction:column;gap:6px;}
+.pwf-slider-val{font-size:1.4rem;font-weight:800;color:var(--green);text-align:center;}
+.pwf-slider{
+  -webkit-appearance:none;appearance:none;height:8px;border-radius:4px;
+  background:linear-gradient(90deg,#28B673,#2A9D8F,#5BC0DE);outline:none;width:100%;
+}
+.pwf-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:24px;height:24px;border-radius:50%;
+  background:white;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);border:3px solid var(--green);
+}
+.pwf-slider::-moz-range-thumb{
+  width:24px;height:24px;border-radius:50%;background:white;cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);border:3px solid var(--green);
+}
+
+/* Navegación de pasos */
+.plan-nav{
+  padding:14px 18px;background:var(--bg);
+  border-top:1px solid var(--border);
+  display:flex;gap:10px;
+}
+.pn-btn{
+  flex:1;height:46px;border-radius:12px;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;
+  border:none;cursor:pointer;transition:all .18s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.pn-back{
+  background:white;color:var(--text-s);border:1.5px solid var(--border);
+}
+.pn-back:active{background:var(--bg);}
+.pn-next{
+  background:linear-gradient(135deg,#28B673,#2A9D8F);color:white;
+  box-shadow:0 3px 12px rgba(40,182,115,.35);
+}
+.pn-next:active{transform:scale(.97);}
+.pn-final{
+  background:linear-gradient(135deg,#6B3FA0,#2A9D8F);color:white;
+  box-shadow:0 4px 16px rgba(107,63,160,.4);
+}
+
+/* PANTALLA DE ÉXITO */
+.plan-success{display:none;text-align:center;padding:30px 20px;}
+.plan-success.visible{display:block;animation:success-in .5s ease both;}
+@keyframes success-in{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.ps-checkmark{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,#28B673,#2A9D8F);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+  box-shadow:0 8px 28px rgba(40,182,115,.4);
+  animation:check-bounce .6s cubic-bezier(.34,1.56,.64,1) .2s both;
+}
+.ps-checkmark svg{width:42px;height:42px;stroke:white;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+@keyframes check-bounce{from{transform:scale(0)}to{transform:scale(1)}}
+.ps-title{font-size:1.25rem;font-weight:800;color:var(--primary);margin-bottom:8px;}
+.ps-sub{font-size:.86rem;color:var(--text-mid);line-height:1.7;margin-bottom:22px;}
+
+.ps-summary{
+  background:var(--bg);border-radius:14px;padding:14px;
+  border:1px solid var(--border);text-align:left;margin-bottom:18px;
+}
+.ps-summary-title{font-size:.7rem;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+.ps-summary-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:.78rem;}
+.ps-summary-row:last-child{border-bottom:none;}
+.ps-summary-row b{color:var(--primary);font-weight:700;}
+.ps-summary-row span{color:var(--text-s);}
+
+.ps-wa-btn{
+  width:100%;height:54px;border-radius:14px;background:#25D366;color:white;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:.92rem;
+  border:none;cursor:pointer;text-decoration:none;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 6px 22px rgba(37,211,102,.4);
+  transition:all .2s;
+}
+.ps-wa-btn:active{transform:scale(.98);}
+.ps-restart-btn{
+  width:100%;margin-top:10px;height:44px;border-radius:12px;
+  background:transparent;border:1.5px solid var(--border);color:var(--text-s);
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;
+}
+.ps-note{
+  margin-top:14px;font-size:.72rem;color:var(--text-s);line-height:1.65;
+  padding:10px 12px;background:rgba(40,182,115,.06);border-radius:10px;
+  border-left:3px solid var(--green);text-align:left;
+}
+
+/* Privacidad info */
+.ppro-privacy{
+  margin-top:16px;display:flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,.5);font-size:.7rem;line-height:1.5;
+}
+.ppro-privacy svg{flex-shrink:0;width:14px;height:14px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:2;}
+
+@media(min-width:768px){
+  .pwf-cards{grid-template-columns:repeat(4,1fr);}
+}
+
+
+
+/* ══ MOBILE-FIRST SAFETY — pantallas muy pequeñas ══ */
+@media (max-width:360px){
+  :root{--px:12px;}
+  .report-card{padding:14px;}
+  .report-intro-text strong{font-size:.84rem;}
+  .report-intro-text span{font-size:.72rem;}
+  .rf-input{font-size:.86rem;height:44px;}
+  .rf-check{font-size:.72rem;padding:9px 10px;}
+  .report-btn{font-size:.85rem;}
+}
+
+/* iOS — prevent input zoom (font-size >= 16px en focus) */
+@supports (-webkit-touch-callout:none){
+  .rf-input,.rf-textarea,.pwf-input,.pwf-select,.pwf-textarea,.calc-input{
+    font-size:16px !important;
+  }
+}
+
+</style>
+
+  <!-- ══════════════════════════════════════════════
+    GOOGLE ANALYTICS 4 — Monte Sinaí
+    INSTRUCCIÓN: Reemplaza G-RHZJ6NCE54 con tu código real
+    Ejemplo: G-RHZJ6NCE54 → G-AB12CD34EF
+  ══════════════════════════════════════════════ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZJ6NCE54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Configuración principal
+    gtag('config', 'G-RHZJ6NCE54', {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
+
+    // ══ FUNCIÓN GLOBAL — registrar eventos ══
+    function msTrack(eventName, params) {
+      gtag('event', eventName, params || {});
+    }
+
+    // ══ EVENTO: Clic en WhatsApp (cualquier página) ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href*="wa.me"]');
+      if (el) {
+        msTrack('whatsapp_click', {
+          event_category: 'contacto',
+          event_label: 'WhatsApp abierto',
+          page: window.location.pathname
+        });
+      }
+    });
+
+    // ══ EVENTO: Clic en llamar (tel:) ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href^="tel:"]');
+      if (el) {
+        msTrack('llamada_click', {
+          event_category: 'contacto',
+          event_label: 'Llamada iniciada',
+          page: window.location.pathname
+        });
+      }
+    });
+
+    // ══ EVENTO: Clic en Google Maps ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href*="maps.google"]');
+      if (el) {
+        msTrack('maps_click', {
+          event_category: 'ubicacion',
+          event_label: 'Google Maps abierto'
+        });
+      }
+    });
+
+    // ══ EVENTO: Tiempo en página (30 segundos = usuario interesado) ══
+    setTimeout(function() {
+      msTrack('engaged_user', {
+        event_category: 'engagement',
+        event_label: '30 segundos en página',
+        page: window.location.pathname
+      });
+    }, 30000);
+
+    // ══ EVENTO: Scroll profundo (70% de la página) ══
+    (function() {
+      var fired70 = false;
+      window.addEventListener('scroll', function() {
+        if (fired70) return;
+        var scrolled = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrolled >= 0.70) {
+          fired70 = true;
+          msTrack('deep_scroll', {
+            event_category: 'engagement',
+            event_label: '70% página leída',
+            page: window.location.pathname
+          });
+        }
+      }, {passive: true});
+    })();
+  </script>
+
+</head>
+<body>
+<div id="prog"></div>
+<canvas id="glowCanvas"></canvas>
+
+<nav class="nav">
+  <div class="nav__i">
+    <a href="../index.html" class="nav__logo">
+      <img src="../assets/logo-hemodialisis.jpg" alt="Monte Sinaí" onerror="this.style.display='none'">
+      <div class="nav__brand"><strong>MONTE SINAÍ</strong><em>Nutrición Renal</em></div>
+    </a>
+    <div class="nav__r">
+      <a href="tel:5596808859" class="nav__tel"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.46 12.85 19.79 19.79 0 01.38 4.26 2 2 0 012.36 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.73a16 16 0 006.36 6.36l1.09-1.7a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+      <a href="citas.html" class="nav__cta">Consulta →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-bar" style="margin-top:calc(var(--nav-h) + var(--safe-top));">
+  <div class="nav-bar-i">
+    <a href="../index.html" class="nb-link">🏠 Inicio</a>
+    <a href="citas.html"    class="nb-link">🗓️ Citas</a>
+    <a href="guia.html"     class="nb-link">📚 Guía</a>
+    <a href="glosario.html" class="nb-link">📖 Glosario</a>
+    <a href="nutricion.html"class="nb-link on">🥗 Nutrición</a>
+    <a href="tel:5596808859" class="nb-link">📞 Llamar</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero__in">
+    <div class="hero-badge"><span>🥗</span><span class="hb-text">Guía nutricional completa</span></div>
+    <h1 class="hero__title">Consulta<br><em>lo que puedes comer</em></h1>
+    <p class="hero__sub">Semáforo de alimentos, calculadora de proteínas, recetas aptas para diálisis y consejos de nuestros especialistas.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <span>🟢</span><div><div style="color:white;font-size:.9rem;font-weight:700;">Sí puedes</div><div style="color:rgba(255,255,255,.45);font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;">Sin restricción</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <span>🟡</span><div><div style="color:white;font-size:.9rem;font-weight:700;">Con moderación</div><div style="color:rgba(255,255,255,.45);font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;">Porciones pequeñas</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;">
+        <span>🔴</span><div><div style="color:white;font-size:.9rem;font-weight:700;">Evitar</div><div style="color:rgba(255,255,255,.45);font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;">Elevado riesgo</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMÁFORO -->
+<div class="sec-hdr" data-r>
+  <div class="sec-chip-g">🚦 Semáforo de alimentos</div>
+  <h2 class="sec-h2">¿Qué puedo comer en diálisis?</h2>
+  <p class="sec-p">Toca cada categoría para ver los alimentos y sus indicaciones.</p>
+</div>
+
+<div class="semaforo-tabs" data-r data-rd="1">
+  <button class="sem-tab on-g" onclick="showSem('g',this)">🟢 Sí puedo</button>
+  <button class="sem-tab" onclick="showSem('y',this)">🟡 Con cuidado</button>
+  <button class="sem-tab" onclick="showSem('r',this)">🔴 Evitar</button>
+</div>
+
+<!-- VERDE -->
+<div class="sem-panel on" id="sem-g">
+  <div class="sem-intro sem-intro-g si-g">
+    <strong>✅ Estos alimentos son seguros para ti</strong>
+    <p>Puedes consumirlos regularmente sin preocupación. Son bajos en potasio, fósforo y sodio.</p>
+  </div>
+  <div class="food-grid">
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍎</span>
+      <div class="food-name">Manzana</div>
+      <div class="food-hint">Baja en potasio</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Segura</span>
+        <p>Potasio bajo (107 mg por manzana mediana). Rica en fibra y vitamina C. Cómela con cáscara si quieres más fibra.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍐</span>
+      <div class="food-name">Pera</div>
+      <div class="food-hint">Excelente opción de fruta</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Segura</span>
+        <p>Muy baja en potasio y fósforo. Rica en agua y fibra. Ideal para calmar la sed entre sesiones.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🫐</span>
+      <div class="food-name">Arándanos</div>
+      <div class="food-hint">Antioxidantes sin riesgo</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Segura</span>
+        <p>Bajos en potasio y fósforo, altos en antioxidantes. Ayudan a reducir la inflamación. Media taza al día es ideal.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍓</span>
+      <div class="food-name">Fresas</div>
+      <div class="food-hint">Ricas en vitamina C</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Segura</span>
+        <p>Bajas en potasio. Excelente fuente de vitamina C. Puedes comer media taza al día sin preocupación.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍚</span>
+      <div class="food-name">Arroz blanco</div>
+      <div class="food-hint">Base segura de carbohidratos</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Seguro</span>
+        <p>Bajo en potasio, fósforo y sodio. Excelente fuente de energía. Prefiere arroz blanco sobre el integral (el integral tiene más fósforo).</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍝</span>
+      <div class="food-name">Pasta</div>
+      <div class="food-hint">Carbohidrato de bajo riesgo</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Segura</span>
+        <p>Baja en potasio y fósforo. Cocínala en abundante agua sin sal para reducir aún más el sodio. Evita pastas integrales.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🥚</span>
+      <div class="food-name">Huevo (clara)</div>
+      <div class="food-hint">Proteína de alta calidad</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Segura</span>
+        <p>La clara de huevo es proteína de altísima calidad con mínimo fósforo. Puedes comer 2–3 claras al día. La yema tiene más fósforo — limita a 1 al día.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍗</span>
+      <div class="food-name">Pollo sin marinado</div>
+      <div class="food-hint">Proteína principal recomendada</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Seguro</span>
+        <p>Proteína de alta calidad con fósforo moderado. Evita pollo marinado, empanado o con salsas comerciales (tienen mucho sodio y aditivos de fósforo).</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🥬</span>
+      <div class="food-name">Col/Repollo</div>
+      <div class="food-hint">Verdura baja en potasio</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Segura</span>
+        <p>Una de las pocas verduras con potasio bajo que puedes comer libremente. Rica en vitamina K y fibra. Cocínala en agua para reducir aún más el potasio.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🫛</span>
+      <div class="food-name">Ejotes/Judías verdes</div>
+      <div class="food-hint">Verdura permitida con cocción</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-g">✅ Segura (cocida)</span>
+        <p>Con doble cocción (hervir, cambiar el agua y hervir de nuevo), el potasio se reduce significativamente. Porciones de media taza.</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- AMARILLO -->
+<div class="sem-panel" id="sem-y">
+  <div class="sem-intro sem-intro-y si-y">
+    <strong>⚠️ Con moderación y porciones controladas</strong>
+    <p>Estos alimentos pueden consumirse en pequeñas cantidades. Consulta las porciones exactas con tu nutricionista.</p>
+  </div>
+  <div class="food-grid">
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍇</span>
+      <div class="food-name">Uvas</div>
+      <div class="food-hint">Potasio moderado</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-y">⚠️ Máx. 15 uvas</span>
+        <p>Potasio moderado. Puedes comer 15 uvas pequeñas (una porción). Más de eso puede elevar tu potasio.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍑</span>
+      <div class="food-name">Durazno / Melocotón</div>
+      <div class="food-hint">Potasio moderado-alto</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-y">⚠️ Solo ½ unidad</span>
+        <p>Potasio moderado. Limítate a medio durazno pequeño al día. La versión en almíbar escurrida tiene menos potasio.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🥕</span>
+      <div class="food-name">Zanahoria cocida</div>
+      <div class="food-hint">Mejor cocida que cruda</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-y">⚠️ Solo cocida</span>
+        <p>La zanahoria cruda tiene más potasio. Al cocerla en agua abundante, se reduce significativamente. Máximo media taza.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🧅</span>
+      <div class="food-name">Cebolla y ajo</div>
+      <div class="food-hint">Buenos como condimento</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-y">⚠️ Como condimento</span>
+        <p>En cantidades pequeñas (condimento) son seguros y añaden sabor sin sal. No comer en cantidades grandes.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍞</span>
+      <div class="food-name">Pan blanco</div>
+      <div class="food-hint">Con moderación</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-y">⚠️ Máx. 2 rebanadas/día</span>
+        <p>El pan blanco tiene fósforo moderado y algo de sodio. Limita a 2 rebanadas al día. Evita pan integral, de semillas o enriquecido.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🌽</span>
+      <div class="food-name">Elote / Maíz</div>
+      <div class="food-hint">Fósforo moderado</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-y">⚠️ Media mazorca máximo</span>
+        <p>Fósforo moderado. Media mazorca al día está bien. Evita palomitas con sal, tortillas en exceso y cereales de maíz.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🐟</span>
+      <div class="food-name">Pescado blanco</div>
+      <div class="food-hint">Buena proteína con precaución</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-y">⚠️ 2–3 veces por semana</span>
+        <p>El pescado blanco (tilapia, merluza, robalo) es buena proteína con fósforo moderado. Evita mariscos, atún enlatado y pescados ahumados.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🥜</span>
+      <div class="food-name">Cacahuates</div>
+      <div class="food-hint">Alto en fósforo y potasio</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-y">⚠️ Máx. 10–12 cacahuates</span>
+        <p>Altos en fósforo y potasio, pero también en proteína de buena calidad. Máximo un puñado pequeño al día.</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ROJO -->
+<div class="sem-panel" id="sem-r">
+  <div class="sem-intro sem-intro-r si-r">
+    <strong>🚫 Estos alimentos debes evitar</strong>
+    <p>Son muy altos en potasio, fósforo o sodio y pueden elevar tus niveles peligrosamente entre sesiones.</p>
+  </div>
+  <div class="food-grid">
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍌</span>
+      <div class="food-name">Plátano</div>
+      <div class="food-hint">🚨 Muy alto en potasio</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-r">🚫 Evitar</span>
+        <p>Un plátano mediano tiene 422 mg de potasio — casi toda tu ración diaria. Puede desencadenar arritmias cardíacas. Sustitúyelo por manzana o pera.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍊</span>
+      <div class="food-name">Naranja y toronja</div>
+      <div class="food-hint">🚨 Alto en potasio</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-r">🚫 Evitar</span>
+        <p>Una naranja tiene 237 mg de potasio. El jugo concentra aún más. La toronja además interactúa con muchos medicamentos. Evita ambas.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🥑</span>
+      <div class="food-name">Aguacate</div>
+      <div class="food-hint">🚨 Muy alto en potasio</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-r">🚫 Evitar</span>
+        <p>Medio aguacate tiene 487 mg de potasio. A pesar de sus grasas buenas, es demasiado riesgoso para pacientes en diálisis.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🥤</span>
+      <div class="food-name">Refrescos de cola</div>
+      <div class="food-hint">🚨 Alto fósforo y fosfatos</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-r">🚫 Evitar</span>
+        <p>Un refresco de cola tiene hasta 500 mg de fósforo en forma de fosfatos — que se absorben casi al 100%. Daña huesos y arterias. Cámbialo por agua o limonada natural.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🧂</span>
+      <div class="food-name">Sal de potasio (light)</div>
+      <div class="food-hint">🚨 PELIGRO MORTAL</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-r">🚫 NUNCA usar</span>
+        <p>Los sustitutos de sal contienen cloruro de potasio (KCl). Para pacientes en diálisis puede ser mortal. NUNCA uses sal light sin consultar a tu médico.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🥛</span>
+      <div class="food-name">Leche y queso</div>
+      <div class="food-hint">🚨 Alto en fósforo</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-r">🚫 Evitar o limitar mucho</span>
+        <p>Un vaso de leche tiene 222 mg de fósforo de alta absorción. El queso añejo tiene más aún. Máximo medio vaso de leche al día si tu fósforo está controlado.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🍟</span>
+      <div class="food-name">Papas fritas y snacks</div>
+      <div class="food-hint">🚨 Potasio + sodio + fósforo</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-r">🚫 Evitar</span>
+        <p>Las papas fritas concentran potasio, son muy saladas (sodio) y tienen aditivos de fósforo. Una bolsa pequeña puede contener tu ración de potasio de todo el día.</p>
+      </div></div>
+    </div>
+    <div class="food-card" onclick="this.classList.toggle('open')">
+      <span class="food-ico">🥜</span>
+      <div class="food-name">Frijoles y lentejas</div>
+      <div class="food-hint">🚨 Muy alto en potasio y fósforo</div>
+      <div class="food-detail"><div class="food-detail-inner">
+        <span class="food-badge-r">🚫 Evitar</span>
+        <p>Media taza de frijoles cocidos tiene más de 400 mg de potasio y 160 mg de fósforo. Son una de las fuentes más concentradas de ambos minerales.</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CALCULADORA DE PROTEÍNAS -->
+<div style="background:white;padding:28px 0 0;" data-r>
+  <div class="sec-hdr" style="padding-top:8px;">
+    <div class="sec-chip-g" style="color:var(--purple);background:var(--purple-p);border-color:rgba(107,63,160,.2);">🧮 Calculadora</div>
+    <h2 class="sec-h2">¿Cuánta proteína necesitas?</h2>
+    <p class="sec-p">En hemodiálisis necesitas más proteína de lo que crees. Calcula tu requerimiento diario.</p>
+  </div>
+  <div class="calc-sec">
+    <div class="calc-card">
+      <div class="calc-row">
+        <div style="flex:1;"><label class="calc-label" for="peso">Peso actual (kg) <span style="color:var(--red)">*</span></label><input class="calc-input" type="number" id="peso" placeholder="Ej: 65" min="30" max="150" inputmode="numeric"></div>
+        <div style="flex:1;"><label class="calc-label" for="talla">Talla (cm)</label><input class="calc-input" type="number" id="talla" placeholder="Ej: 165" min="100" max="220" inputmode="numeric"></div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <label class="calc-label">Tipo de diálisis</label>
+        <div style="display:flex;gap:8px;">
+          <label style="flex:1;display:flex;align-items:center;gap:8px;padding:12px;border:2px solid var(--border);border-radius:12px;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--text-mid);">
+            <input type="radio" name="tipo" value="hemo" checked style="accent-color:var(--purple);width:16px;height:16px;"> 💉 Hemodiálisis
+          </label>
+          <label style="flex:1;display:flex;align-items:center;gap:8px;padding:12px;border:2px solid var(--border);border-radius:12px;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--text-mid);">
+            <input type="radio" name="tipo" value="perito" style="accent-color:var(--purple);width:16px;height:16px;"> 🏠 D. Peritoneal
+          </label>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcProtein()">🧮 Calcular mi requerimiento</button>
+      <div class="calc-results" id="calcResults">
+        <div class="calc-grid" id="calcGrid"></div>
+        <div id="calcAdvice"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABLA NUTRICIONAL -->
+<div class="sec-hdr" data-r>
+  <div class="sec-chip-g" style="color:var(--secondary);background:#EEF4FF;border-color:rgba(27,94,188,.2);">📊 Tabla de referencia</div>
+  <h2 class="sec-h2">Contenido de potasio y fósforo</h2>
+  <p class="sec-p">Consulta los valores exactos de los alimentos más comunes en tu dieta.</p>
+</div>
+<div style="padding:0 var(--px);" data-r data-rd="1">
+  <div class="tabla-scroll" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(13,59,102,.1);">
+    <table>
+      <thead>
+        <tr>
+          <th>🍽️ Alimento</th>
+          <th>Porción</th>
+          <th>K (mg)</th>
+          <th>P (mg)</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>🍎 Manzana</td><td>1 mediana</td><td>107</td><td>10</td><td><span class="badge-g">✅ Segura</span></td></tr>
+        <tr><td>🍐 Pera</td><td>1 mediana</td><td>116</td><td>12</td><td><span class="badge-g">✅ Segura</span></td></tr>
+        <tr><td>🍓 Fresas</td><td>½ taza</td><td>138</td><td>18</td><td><span class="badge-g">✅ Segura</span></td></tr>
+        <tr><td>🍌 Plátano</td><td>1 mediano</td><td>422</td><td>26</td><td><span class="badge-r">🚫 Evitar</span></td></tr>
+        <tr><td>🍊 Naranja</td><td>1 mediana</td><td>237</td><td>18</td><td><span class="badge-r">🚫 Evitar</span></td></tr>
+        <tr><td>🥑 Aguacate</td><td>½ pieza</td><td>487</td><td>52</td><td><span class="badge-r">🚫 Evitar</span></td></tr>
+        <tr><td>🥚 Clara huevo</td><td>1 unidad</td><td>54</td><td>5</td><td><span class="badge-g">✅ Segura</span></td></tr>
+        <tr><td>🍗 Pollo sin piel</td><td>90g</td><td>220</td><td>180</td><td><span class="badge-y">⚠️ Moderado</span></td></tr>
+        <tr><td>🐟 Tilapia</td><td>90g</td><td>368</td><td>175</td><td><span class="badge-y">⚠️ Moderado</span></td></tr>
+        <tr><td>🍚 Arroz blanco</td><td>½ taza cocido</td><td>27</td><td>34</td><td><span class="badge-g">✅ Seguro</span></td></tr>
+        <tr><td>🥛 Leche entera</td><td>240 mL</td><td>322</td><td>222</td><td><span class="badge-r">🚫 Evitar</span></td></tr>
+        <tr><td>🥔 Papa cocida</td><td>1 mediana</td><td>421</td><td>57</td><td><span class="badge-r">🚫 Evitar</span></td></tr>
+        <tr><td>🧀 Queso</td><td>30g</td><td>26</td><td>145</td><td><span class="badge-r">🚫 Evitar</span></td></tr>
+        <tr><td>🥦 Brócoli cocido</td><td>½ taza</td><td>166</td><td>51</td><td><span class="badge-y">⚠️ Moderado</span></td></tr>
+        <tr><td>🥬 Col cocida</td><td>½ taza</td><td>73</td><td>18</td><td><span class="badge-g">✅ Segura</span></td></tr>
+        <tr><td>🫘 Frijoles negros</td><td>½ taza</td><td>401</td><td>160</td><td><span class="badge-r">🚫 Evitar</span></td></tr>
+        <tr><td>🍫 Chocolate</td><td>30g</td><td>190</td><td>120</td><td><span class="badge-r">🚫 Evitar</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TIPS IMPORTANTES -->
+<div class="sec-hdr" data-r>
+  <div class="sec-chip-g">💡 Consejos clave</div>
+  <h2 class="sec-h2">Trucos para comer mejor</h2>
+</div>
+<div data-r data-rd="1">
+  <div class="tip-card tip-card-g">
+    <div class="tip-title">🥦 Técnica del remojo para reducir potasio</div>
+    <p class="tip-text">Pela y corta la verdura en trozos pequeños. Remoja en agua fría 2 horas (cambia el agua a la mitad). Luego hierve en abundante agua y desecha el agua de cocción. Este proceso reduce el potasio hasta un 30–50%.</p>
+  </div>
+  <div class="tip-card tip-card-p">
+    <div class="tip-title">💊 Cómo tomar el quelante de fósforo</div>
+    <p class="tip-text">El quelante debe tomarse AL INICIO de cada comida, no después. Si comes algo entre comidas que tenga fósforo (pan, queso, etc.), también toma el quelante. Si olvidas tomarlo antes, no tiene efecto.</p>
+  </div>
+  <div class="tip-card tip-card-t">
+    <div class="tip-title">💧 Cómo manejar la sed sin tomar mucho líquido</div>
+    <p class="tip-text">Trucos probados: chupa cubitos de hielo (satisfacen más con menos volumen), enjuágate la boca con agua fría sin tragar, usa chicle sin azúcar, evita alimentos muy salados o picantes, y come frutas frías permitidas en pequeñas porciones.</p>
+  </div>
+  <div class="tip-card tip-card-y">
+    <div class="tip-title">🧂 Cómo dar sabor sin sal</div>
+    <p class="tip-text">Usa hierbas frescas: cilantro, perejil, albahaca, orégano. Limón exprimido sobre carnes y verduras. Ajo y cebolla en pequeñas cantidades. Vinagre de manzana. Chile fresco. NUNCA uses sal de potasio (sustitutos de sal light) — son peligrosos para ti.</p>
+  </div>
+  <div class="tip-card tip-card-r">
+    <div class="tip-title">🚨 Lee siempre las etiquetas nutricionales</div>
+    <p class="tip-text">Busca: "fosfato", "polifosfato", "ácido fosfórico", "fosfato de sodio" en los ingredientes — esos son fósforos ocultos de alta absorción. Presentes en: refrescos, embutidos, quesos procesados, polvos para bebidas y alimentos "enriquecidos".</p>
+  </div>
+</div>
+
+<!-- RECETAS -->
+<div class="sec-hdr" data-r>
+  <div class="sec-chip-g" style="color:var(--teal);background:var(--teal-p);border-color:rgba(42,157,143,.22);">👨‍🍳 Recetas aptas</div>
+  <h2 class="sec-h2">Recetas para pacientes en diálisis</h2>
+  <p class="sec-p">Ideas para comer rico y seguro. Toca cada receta para ver los ingredientes.</p>
+</div>
+
+<div data-r data-rd="1">
+  <div class="recipe-card" onclick="this.classList.toggle('open')" style="margin:0 var(--px);">
+    <div class="recipe-img-placeholder" style="background:linear-gradient(135deg,#1A5E1A,#2A9D8F);">🍗</div>
+    <div class="recipe-body">
+      <div class="recipe-name">Pollo al limón con arroz y ejotes</div>
+      <div class="recipe-desc">Proteína completa, bajo en potasio y fósforo. Fácil y sabroso.</div>
+      <div class="recipe-badges"><span class="rb-g">✅ Apto diálisis</span><span class="rb-g">💪 Alto en proteína</span><span class="rb-y">⚠️ Porciones controladas</span></div>
+    </div>
+    <div class="recipe-panel"><div class="recipe-detail">
+      <h4>🛒 Ingredientes (2 porciones)</h4>
+      <ul>
+        <li>200g pechuga de pollo sin piel</li>
+        <li>1 taza arroz blanco</li>
+        <li>½ taza ejotes cocidos (doble cocción)</li>
+        <li>Jugo de 1 limón</li>
+        <li>Ajo y cebolla al gusto</li>
+        <li>Aceite de oliva 1 cdita</li>
+        <li>Cilantro fresco (sin sal)</li>
+      </ul>
+      <h4>👨‍🍳 Preparación</h4>
+      <ul>
+        <li>Marina el pollo en limón, ajo y pimienta (sin sal) por 30 min</li>
+        <li>Cocina el arroz en agua sin sal</li>
+        <li>Cuece los ejotes con doble cocción y desecha el agua</li>
+        <li>Asa el pollo con aceite de oliva hasta dorar</li>
+        <li>Sirve y agrega cilantro fresco</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="recipe-card" onclick="this.classList.toggle('open')" style="margin:10px var(--px) 0;">
+    <div class="recipe-img-placeholder" style="background:linear-gradient(135deg,#0D3B66,#1B5EBC);">🥚</div>
+    <div class="recipe-body">
+      <div class="recipe-name">Omelette de claras con pimientos</div>
+      <div class="recipe-desc">Desayuno alto en proteína, casi sin fósforo ni potasio.</div>
+      <div class="recipe-badges"><span class="rb-g">✅ Apto diálisis</span><span class="rb-g">💪 Bajo fósforo</span></div>
+    </div>
+    <div class="recipe-panel"><div class="recipe-detail">
+      <h4>🛒 Ingredientes (1 porción)</h4>
+      <ul>
+        <li>3 claras de huevo (descartar yemas)</li>
+        <li>½ pimiento rojo o verde picado</li>
+        <li>¼ cebolla pequeña picada</li>
+        <li>Aceite de oliva ½ cdita</li>
+        <li>Pimienta negra al gusto</li>
+        <li>Cilantro o perejil fresco</li>
+      </ul>
+      <h4>👨‍🍳 Preparación</h4>
+      <ul>
+        <li>Bate las claras hasta que estén ligeramente espumosas</li>
+        <li>Saltea el pimiento y la cebolla en el aceite</li>
+        <li>Agrega las claras, cocina a fuego medio</li>
+        <li>Dobla y sirve con hierbas frescas</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="recipe-card" onclick="this.classList.toggle('open')" style="margin:10px var(--px) 0;">
+    <div class="recipe-img-placeholder" style="background:linear-gradient(135deg,#6B3FA0,#2A9D8F);">🍝</div>
+    <div class="recipe-body">
+      <div class="recipe-name">Pasta con aceite de oliva y ajo</div>
+      <div class="recipe-desc">Carbohidrato seguro, energético y delicioso. Sin sal, con hierbas.</div>
+      <div class="recipe-badges"><span class="rb-g">✅ Apto diálisis</span><span class="rb-g">⚡ Energético</span></div>
+    </div>
+    <div class="recipe-panel"><div class="recipe-detail">
+      <h4>🛒 Ingredientes (2 porciones)</h4>
+      <ul>
+        <li>150g pasta de sémola (no integral)</li>
+        <li>2 dientes de ajo</li>
+        <li>2 cdas aceite de oliva extra virgen</li>
+        <li>Perejil o albahaca fresca al gusto</li>
+        <li>Pimienta negra al gusto</li>
+        <li>Jugo de limón opcional</li>
+      </ul>
+      <h4>👨‍🍳 Preparación</h4>
+      <ul>
+        <li>Hierve la pasta en abundante agua (sin sal)</li>
+        <li>Cuela y reserva</li>
+        <li>En sartén, dora el ajo picado en aceite de oliva</li>
+        <li>Agrega la pasta, pimienta y hierbas</li>
+        <li>Mezcla y sirve caliente</li>
+      </ul>
+    </div></div>
+  </div>
+</div>
+
+<!-- CTA NUTRICIONAL -->
+
+<!-- ══ REPORTE NUTRICIONAL ══ -->
+<div class="report-sec" data-r>
+  <div style="padding:0 var(--px) 8px;">
+    <div class="sec-chip-g" style="color:var(--primary);background:#EEF4FF;border-color:rgba(13,59,102,.15);">📋 Consulta rápida</div>
+    <h2 class="sec-h2">Genera tu reporte nutricional</h2>
+    <p class="sec-p">Llena los datos, genera tu resumen y muéstraselo o envíaselo a tu médico o nutricionista. Es rápido y fácil de capturar.</p>
+  </div>
+
+  <div class="report-card">
+    <div class="report-intro">
+      <div class="report-intro-ico">📋</div>
+      <div class="report-intro-text">
+        <strong>Tu resumen personal para el médico</strong>
+        <span>Completa la información y obtendrás una hoja clara con tu dieta, síntomas y datos para compartir en tu próxima consulta.</span>
+      </div>
+    </div>
+
+    <div class="report-form">
+      <div class="rf-row">
+        <div class="rf-field">
+          <label class="rf-label">Tu nombre</label>
+          <input class="rf-input" id="rNombre" type="text" placeholder="Ej: María García">
+        </div>
+        <div class="rf-field">
+          <label class="rf-label">Edad</label>
+          <input class="rf-input" id="rEdad" type="number" placeholder="Ej: 62" inputmode="numeric">
+        </div>
+      </div>
+      <div class="rf-row">
+        <div class="rf-field">
+          <label class="rf-label">Peso actual (kg)</label>
+          <input class="rf-input" id="rPeso" type="number" placeholder="Ej: 68" inputmode="numeric">
+        </div>
+        <div class="rf-field">
+          <label class="rf-label">Tipo de diálisis</label>
+          <select class="rf-input" id="rTipo">
+            <option value="hemo">Hemodiálisis</option>
+            <option value="perito">D. Peritoneal</option>
+            <option value="pre">Pre-diálisis</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="rf-field">
+        <label class="rf-label">¿Qué síntomas has tenido esta semana? (elige los que apliquen)</label>
+        <div class="rf-checks">
+          <label class="rf-check"><input type="checkbox" value="Mucho cansancio"> 😮‍💨 Cansancio</label>
+          <label class="rf-check"><input type="checkbox" value="Piernas hinchadas"> 🦵 Piernas hinchadas</label>
+          <label class="rf-check"><input type="checkbox" value="Falta de apetito"> 🍽️ Sin apetito</label>
+          <label class="rf-check"><input type="checkbox" value="Náuseas"> 🤢 Náuseas</label>
+          <label class="rf-check"><input type="checkbox" value="Mucha sed"> 💧 Mucha sed</label>
+          <label class="rf-check"><input type="checkbox" value="Calambres"> ⚡ Calambres</label>
+          <label class="rf-check"><input type="checkbox" value="Dolor de cabeza"> 🤯 Dolor de cabeza</label>
+          <label class="rf-check"><input type="checkbox" value="Picazón en la piel"> 🤚 Picazón</label>
+        </div>
+      </div>
+
+      <div class="rf-field">
+        <label class="rf-label">¿Qué comiste los últimos 2 días? (escribe lo que recuerdes)</label>
+        <textarea class="rf-textarea" id="rComida" placeholder="Ej: desayuno arroz con huevo, comida pollo con verduras, cena pan con refresco..."></textarea>
+      </div>
+
+      <div class="rf-field">
+        <label class="rf-label">¿Algo más que quieras decirle al médico?</label>
+        <textarea class="rf-textarea" id="rNotas" placeholder="Ej: tomé mis quelantes solo 2 días, me olvidé del medicamento el martes..."></textarea>
+      </div>
+    </div>
+
+    <button class="report-btn" onclick="generarReporte()">
+      📋 Generar mi reporte
+    </button>
+  </div>
+
+  <!-- REPORTE GENERADO -->
+  <div id="reporteGenerado">
+
+    <!-- Instrucciones de captura -->
+    <div class="capture-hint">
+      <span class="ch-ico">📸</span>
+      <div class="ch-text">
+        <strong>Captura de pantalla fácil</strong>
+        <p>Muestra este reporte a tu médico o toma una foto para llevarla a tu consulta.</p>
+        <ul class="ch-steps">
+          <li>iPhone: Botón lateral + Volumen arriba al mismo tiempo</li>
+          <li>Android: Botón de apagar + Bajar volumen</li>
+          <li>O comparte directo por WhatsApp con el botón de abajo</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EL REPORTE -->
+    <div class="reporte-wrap" id="reporteContenido" style="margin:10px var(--px) 0;">
+      <!-- Header -->
+      <div class="reporte-hdr">
+        <img src="../assets/logo-hemodialisis.jpg" alt="" onerror="this.style.display='none'">
+        <div class="reporte-hdr-text">
+          <strong>Clínica de Hemodiálisis Monte Sinaí</strong>
+          <span>Reporte Nutricional del Paciente</span>
+        </div>
+        <div class="reporte-fecha">
+          <strong id="rFecha"></strong>
+          <span>55 9680-8859</span>
+        </div>
+      </div>
+
+      <!-- Datos del paciente -->
+      <div class="reporte-paciente">
+        <div class="rp-item"><label>Paciente</label><span id="rNombreOut">—</span></div>
+        <div class="rp-item"><label>Edad</label><span id="rEdadOut">—</span></div>
+        <div class="rp-item"><label>Peso actual</label><span id="rPesoOut">—</span></div>
+        <div class="rp-item"><label>Tipo de diálisis</label><span id="rTipoOut">—</span></div>
+        <div class="rp-item"><label>Proteína recomendada</label><span id="rProtOut">—</span></div>
+        <div class="rp-item"><label>Calorías estimadas</label><span id="rCalOut">—</span></div>
+      </div>
+
+      <!-- Semáforo resumen -->
+      <div class="reporte-semaforo">
+        <div class="rs-title">🚦 Recordatorio de alimentos</div>
+        <div class="rs-grid">
+          <div class="rs-item rs-g">
+            <span class="rs-ico">🟢</span>
+            <div class="rs-label">Sí puedes</div>
+            <div class="rs-items">Manzana · Pera · Arroz · Huevo · Pollo · Col</div>
+          </div>
+          <div class="rs-item rs-y">
+            <span class="rs-ico">🟡</span>
+            <div class="rs-label">Con cuidado</div>
+            <div class="rs-items">Uvas · Durazno · Pan · Pescado · Zanahoria</div>
+          </div>
+          <div class="rs-item rs-r">
+            <span class="rs-ico">🔴</span>
+            <div class="rs-label">Evitar</div>
+            <div class="rs-items">Plátano · Refresco · Frijoles · Leche · Aguacate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Síntomas y notas -->
+      <div class="reporte-body">
+        <div class="rb-section">
+          <div class="rb-label">⚠️ Síntomas reportados esta semana</div>
+          <div class="rb-chips" id="rSintomasOut">
+            <span style="font-size:.78rem;color:var(--text-s);">Sin síntomas reportados</span>
+          </div>
+        </div>
+        <div class="rb-section">
+          <div class="rb-label">🍽️ Alimentación reciente</div>
+          <div class="rb-notes" id="rComidaOut">—</div>
+        </div>
+        <div class="rb-section" id="rNotasSection" style="display:none;">
+          <div class="rb-label">📝 Notas para el médico</div>
+          <div class="rb-notes" id="rNotasOut"></div>
+        </div>
+      </div>
+
+      <!-- Footer del reporte -->
+      <div class="reporte-footer">
+        <p class="rf-disclaimer">⚠️ Este reporte es solo de referencia. Tu médico o nutricionista de Monte Sinaí es quien indica el plan exacto para tu caso.</p>
+        <div class="rf-contact">
+          <a href="tel:5596808859" class="rf-tel">📞 55 9680-8859</a>
+          <a href="https://wa.me/5215645192997" class="rf-wa" target="_blank">💬 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón compartir WA -->
+    <button class="share-btn" style="margin:10px var(--px) 0;width:calc(100% - 32px);" onclick="compartirWA()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar reporte por WhatsApp
+    </button>
+
+    <!-- Botón hacer otra consulta -->
+    <button onclick="nuevoReporte()" style="margin:8px var(--px) 0;width:calc(100% - 32px);height:44px;border-radius:12px;background:var(--bg);border:1.5px solid var(--border);color:var(--text-s);font-family:'Poppins',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;">
+      ↩ Modificar datos
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PLAN NUTRICIONAL PRO — Registro personalizado
+══════════════════════════════════════════ -->
+<section class="plan-pro-sec" id="plan-pro">
+  <div class="plan-pro-inner">
+
+    <div class="ppro-header" data-r>
+      <div class="ppro-badge">
+        <div class="ppro-badge-dot"></div>
+        <span>Plan personalizado · Exclusivo</span>
+      </div>
+      <h2 class="ppro-title">Tu plan nutricional<br><span>diseñado a tu medida</span></h2>
+      <p class="ppro-subtitle">Completa el registro y nuestro equipo de nutrición renal preparará un plan específico para tu caso. Te lo enviamos por WhatsApp en menos de 24 horas.</p>
+
+      <div class="ppro-incluye">
+        <div class="ppro-incluye-title">📋 Tu plan personalizado incluye:</div>
+        <div class="ppro-incluye-list">
+          <div class="ppro-incluye-item"><span class="ppro-incluye-check">✓</span>Cálculo exacto de proteínas, calorías y líquidos según tu peso y diálisis</div>
+          <div class="ppro-incluye-item"><span class="ppro-incluye-check">✓</span>Menú semanal completo: desayuno, comida y cena por 7 días</div>
+          <div class="ppro-incluye-item"><span class="ppro-incluye-check">✓</span>Lista de compras imprimible adaptada a tus preferencias</div>
+          <div class="ppro-incluye-item"><span class="ppro-incluye-check">✓</span>Recomendaciones específicas según tus laboratorios (potasio, fósforo)</div>
+          <div class="ppro-incluye-item"><span class="ppro-incluye-check">✓</span>Guía de quelantes y suplementos vinculada a tus comidas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WIZARD -->
+    <div class="plan-form" data-r data-rd="1">
+
+      <!-- Progress bar -->
+      <div class="plan-progress">
+        <div class="plan-prog-step active" data-step="1"></div>
+        <div class="plan-prog-step" data-step="2"></div>
+        <div class="plan-prog-step" data-step="3"></div>
+        <div class="plan-prog-step" data-step="4"></div>
+        <div class="plan-prog-step" data-step="5"></div>
+      </div>
+      <div class="plan-step-info">
+        <span class="psi-label" id="psiLabel">Paso 1 de 5</span>
+        <span class="psi-counter" id="psiCounter">Datos básicos</span>
+      </div>
+
+      <!-- PASO 1: DATOS PERSONALES -->
+      <div class="plan-step active" data-step="1">
+        <h3>👤 Cuéntanos sobre ti</h3>
+        <p class="plan-step-sub">Necesitamos saber tu nombre y datos básicos para personalizar tu plan.</p>
+        <div class="pwf">
+          <div class="pwf-field">
+            <label class="pwf-label">Nombre completo<span class="req">*</span></label>
+            <input class="pwf-input" id="pp_nombre" type="text" placeholder="Ej: María González Pérez">
+          </div>
+          <div class="pwf-row">
+            <div class="pwf-field">
+              <label class="pwf-label">Edad<span class="req">*</span></label>
+              <input class="pwf-input" id="pp_edad" type="number" placeholder="Ej: 58" inputmode="numeric">
+            </div>
+            <div class="pwf-field">
+              <label class="pwf-label">Sexo</label>
+              <select class="pwf-select" id="pp_sexo">
+                <option value="">Selecciona</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Prefiero no decir">Prefiero no decir</option>
+              </select>
+            </div>
+          </div>
+          <div class="pwf-row">
+            <div class="pwf-field">
+              <label class="pwf-label">Peso actual (kg)<span class="req">*</span></label>
+              <input class="pwf-input" id="pp_peso" type="number" placeholder="Ej: 65" inputmode="decimal" step="0.1">
+            </div>
+            <div class="pwf-field">
+              <label class="pwf-label">Talla (cm)</label>
+              <input class="pwf-input" id="pp_talla" type="number" placeholder="Ej: 165" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 2: TIPO DE DIÁLISIS -->
+      <div class="plan-step" data-step="2">
+        <h3>💉 ¿Qué tratamiento renal recibes?</h3>
+        <p class="plan-step-sub">Cada tipo de diálisis requiere un plan diferente de proteínas y líquidos.</p>
+        <div class="pwf">
+          <div class="pwf-cards" id="pp_tipoCards">
+            <div class="pwf-card" data-value="hemo">
+              <span class="pwf-card-ico">💉</span>
+              <span class="pwf-card-text">Hemodiálisis</span>
+              <span class="pwf-card-sub">3×/semana</span>
+            </div>
+            <div class="pwf-card" data-value="perito">
+              <span class="pwf-card-ico">🏠</span>
+              <span class="pwf-card-text">D. Peritoneal</span>
+              <span class="pwf-card-sub">En casa</span>
+            </div>
+            <div class="pwf-card" data-value="pre">
+              <span class="pwf-card-ico">🩺</span>
+              <span class="pwf-card-text">Pre-diálisis</span>
+              <span class="pwf-card-sub">ERC en seguimiento</span>
+            </div>
+            <div class="pwf-card" data-value="trasplante">
+              <span class="pwf-card-ico">💚</span>
+              <span class="pwf-card-text">Trasplantado</span>
+              <span class="pwf-card-sub">Pos-trasplante</span>
+            </div>
+          </div>
+          <div class="pwf-field">
+            <label class="pwf-label">¿Cuánto tiempo llevas en tratamiento?</label>
+            <select class="pwf-select" id="pp_tiempo">
+              <option value="">Selecciona</option>
+              <option value="Recién iniciado">Recién iniciado (menos de 3 meses)</option>
+              <option value="3-12 meses">Entre 3 y 12 meses</option>
+              <option value="1-3 años">Entre 1 y 3 años</option>
+              <option value="Más de 3 años">Más de 3 años</option>
+              <option value="Aún no inicio">Aún no inicio diálisis</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 3: LABORATORIOS RECIENTES -->
+      <div class="plan-step" data-step="3">
+        <h3>🔬 Tus laboratorios recientes</h3>
+        <p class="plan-step-sub">Si tienes resultados a la mano, ingrésalos. Si no, deja en blanco — los pediremos en la consulta.</p>
+        <div class="pwf">
+          <div class="pwf-row">
+            <div class="pwf-field">
+              <label class="pwf-label">Potasio (K) mEq/L</label>
+              <input class="pwf-input" id="pp_potasio" type="number" placeholder="Normal: 3.5–5.5" inputmode="decimal" step="0.1">
+            </div>
+            <div class="pwf-field">
+              <label class="pwf-label">Fósforo (P) mg/dL</label>
+              <input class="pwf-input" id="pp_fosforo" type="number" placeholder="Meta: 3.5–5.5" inputmode="decimal" step="0.1">
+            </div>
+          </div>
+          <div class="pwf-row">
+            <div class="pwf-field">
+              <label class="pwf-label">Albúmina g/dL</label>
+              <input class="pwf-input" id="pp_albumina" type="number" placeholder="Meta: >4.0" inputmode="decimal" step="0.1">
+            </div>
+            <div class="pwf-field">
+              <label class="pwf-label">Hemoglobina g/dL</label>
+              <input class="pwf-input" id="pp_hb" type="number" placeholder="Meta: 10–12" inputmode="decimal" step="0.1">
+            </div>
+          </div>
+          <div class="pwf-field">
+            <label class="pwf-label">Otras condiciones (selecciona las que apliquen)</label>
+            <div class="pwf-chips" id="pp_condiciones">
+              <div class="pwf-chip" data-value="Diabetes">🍬 Diabetes</div>
+              <div class="pwf-chip" data-value="Hipertensión">❤️ Hipertensión</div>
+              <div class="pwf-chip" data-value="Anemia">🩸 Anemia</div>
+              <div class="pwf-chip" data-value="Sobrepeso">⚖️ Sobrepeso</div>
+              <div class="pwf-chip" data-value="Bajo peso">📉 Bajo peso</div>
+              <div class="pwf-chip" data-value="Cardiopatía">💔 Problema cardíaco</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 4: PREFERENCIAS ALIMENTARIAS -->
+      <div class="plan-step" data-step="4">
+        <h3>🍽️ Tus preferencias alimentarias</h3>
+        <p class="plan-step-sub">Para que tu plan tenga comidas que realmente disfrutes.</p>
+        <div class="pwf">
+          <div class="pwf-field">
+            <label class="pwf-label">¿Cuántas comidas haces al día?</label>
+            <div class="pwf-slider-wrap">
+              <div class="pwf-slider-val" id="pp_comidasVal">4 comidas</div>
+              <input class="pwf-slider" type="range" id="pp_comidas" min="2" max="6" value="4" oninput="document.getElementById('pp_comidasVal').textContent = this.value + ' comidas';">
+            </div>
+          </div>
+          <div class="pwf-field">
+            <label class="pwf-label">Alimentos que NO te gustan (chips)</label>
+            <div class="pwf-chips" id="pp_noGustan">
+              <div class="pwf-chip" data-value="Pescado">🐟 Pescado</div>
+              <div class="pwf-chip" data-value="Huevo">🥚 Huevo</div>
+              <div class="pwf-chip" data-value="Pollo">🍗 Pollo</div>
+              <div class="pwf-chip" data-value="Verduras verdes">🥬 Verduras verdes</div>
+              <div class="pwf-chip" data-value="Carne roja">🥩 Carne roja</div>
+              <div class="pwf-chip" data-value="Lácteos">🥛 Lácteos</div>
+            </div>
+          </div>
+          <div class="pwf-field">
+            <label class="pwf-label">¿Alguna alergia o restricción especial?</label>
+            <textarea class="pwf-textarea" id="pp_alergias" placeholder="Ej: alergia al huevo, intolerancia a la lactosa, dieta vegetariana..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 5: CONTACTO -->
+      <div class="plan-step" data-step="5">
+        <h3>📱 ¿Cómo te enviamos tu plan?</h3>
+        <p class="plan-step-sub">Tu plan personalizado te llegará por WhatsApp en menos de 24 horas. Sin costo.</p>
+        <div class="pwf">
+          <div class="pwf-field">
+            <label class="pwf-label">WhatsApp de contacto<span class="req">*</span></label>
+            <input class="pwf-input" id="pp_whatsapp" type="tel" placeholder="Ej: 55 1234 5678" inputmode="tel">
+          </div>
+          <div class="pwf-field">
+            <label class="pwf-label">¿Quién recibirá el plan?</label>
+            <select class="pwf-select" id="pp_quien">
+              <option value="El paciente">Yo, el paciente</option>
+              <option value="Familiar">Un familiar del paciente</option>
+              <option value="Cuidador">Cuidador o enfermera</option>
+              <option value="Médico tratante">Médico tratante</option>
+            </select>
+          </div>
+          <div class="pwf-field">
+            <label class="pwf-label">¿Algo más que quieras decirle al nutriólogo?</label>
+            <textarea class="pwf-textarea" id="pp_comentarios" placeholder="Ej: vivo con mi hija, cocino sola, tengo presupuesto limitado..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANTALLA DE ÉXITO -->
+      <div class="plan-success" id="planSuccess">
+        <div class="ps-checkmark">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 class="ps-title">¡Listo! Tu solicitud fue registrada</h3>
+        <p class="ps-sub">Hemos preparado un resumen de tu información. <strong>Envíalo por WhatsApp ahora</strong> para que nuestro nutriólogo comience a diseñar tu plan personalizado.</p>
+
+        <div class="ps-summary" id="psSummary"></div>
+
+        <a href="#" id="psWaBtn" target="_blank" class="ps-wa-btn" onclick="enviarPorWA(event)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Enviar mi solicitud por WhatsApp
+        </a>
+        <button class="ps-restart-btn" onclick="reiniciarPlanPro()">↩ Hacer otro registro</button>
+
+        <div class="ps-note">
+          ⏱️ <strong>Tiempo de respuesta:</strong> Nuestro nutriólogo te enviará tu plan personalizado en menos de 24 horas hábiles directamente a tu WhatsApp.
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <div class="plan-nav" id="planNav">
+        <button class="pn-btn pn-back" id="pnBack" onclick="ppStep(-1)" style="display:none;">← Atrás</button>
+        <button class="pn-btn pn-next" id="pnNext" onclick="ppStep(1)">Siguiente →</button>
+      </div>
+
+    </div>
+
+    <div class="ppro-privacy">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Tu información se envía únicamente a Monte Sinaí. No se comparte con terceros.</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="nutr-cta" data-r>
+  <img src="../assets/logo-hemodialisis.jpg" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.25);margin:0 auto 12px;display:block;" onerror="this.style.display='none'" alt="">
+  <h3>¿Necesitas un plan nutricional personalizado?</h3>
+  <p>Cada paciente es diferente. Tu nutricionista en Monte Sinaí te diseña un plan específico según tus estudios, tu peso y tus preferencias.</p>
+  <a href="citas.html">🗓️ Agendar consulta nutricional</a>
+</div>
+
+<footer>
+  <div style="padding:0 var(--px);">
+    <div class="ft-top">
+      <img src="../assets/logo-hemodialisis.jpg" class="ft-logo" alt="" onerror="this.style.display='none'">
+      <div class="ft-brand"><strong>MONTE SINAÍ</strong><span>Nutrición Renal</span></div>
+    </div>
+    <div class="ft-links">
+      <a href="../index.html" class="ft-link">🏠 Inicio</a>
+      <a href="citas.html" class="ft-link">🗓️ Citas</a>
+      <a href="guia.html" class="ft-link">📚 Guía</a>
+      <a href="glosario.html" class="ft-link">📖 Glosario</a>
+      <a href="tel:5596808859" class="ft-link">📞 55 9680-8859</a>
+    </div>
+    <div class="ft-bottom"><p>© 2025 Monte Sinaí · Información educativa — no reemplaza la consulta con tu nutricionista.</p></div>
+  </div>
+</footer>
+
+<nav class="bnav">
+  <div class="bnav-i">
+    <a href="../index.html" class="bn"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio</a>
+    <a href="guia.html" class="bn"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>Guía</a>
+    <a href="citas.html" class="bn bn-cta"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Cita</a>
+    <a href="glosario.html" class="bn"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Glosario</a>
+    <a href="nutricion.html" class="bn on"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v4l3 3"/></svg>Nutrición</a>
+  </div>
+</nav>
+
+<script>
+// Canvas
+(function(){const cv=document.getElementById('glowCanvas');if(!cv)return;const ctx=cv.getContext('2d');let W,H;const P=[{r:40,g:182,b:115},{r:42,g:157,b:143},{r:107,g:63,b:160},{r:59,g:191,b:176}];const c=(col,a)=>`rgba(${col.r},${col.g},${col.b},${a})`;const rc=()=>P[Math.floor(Math.random()*P.length)];const resize=()=>{W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;};resize();window.addEventListener('resize',resize,{passive:true});class Particle{constructor(){this.init();}init(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=.7+Math.random()*2;this.vx=(Math.random()-.5)*.28;this.vy=(Math.random()-.5)*.28;this.col=rc();this.maxA=.06+Math.random()*.13;this.ph=Math.random()*Math.PI*2;this.life=0;this.max=180+Math.random()*200;}draw(){this.life++;if(this.life>this.max)this.init();this.ph+=.033;const p=Math.min(this.life/38,1)*Math.min(1,(this.max-this.life)/38);const r=this.r*(1+Math.sin(this.ph)*.22)*3.2;const g=ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,r);g.addColorStop(0,c(this.col,this.maxA*p*1.4));g.addColorStop(1,c(this.col,0));ctx.fillStyle=g;ctx.beginPath();ctx.arc(this.x,this.y,r,0,Math.PI*2);ctx.fill();this.x+=this.vx;this.y+=this.vy;if(this.x<-10)this.x=W+10;if(this.x>W+10)this.x=-10;if(this.y<-10)this.y=H+10;if(this.y>H+10)this.y=-10;}}
+const parts=[];for(let i=0;i<45;i++)parts.push(new Particle());function animate(){ctx.clearRect(0,0,W,H);parts.forEach(p=>p.draw());requestAnimationFrame(animate);}animate();})();
+
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{const h=document.documentElement;prog.style.transform=`scaleX(${h.scrollTop/(h.scrollHeight-h.clientHeight)})`;},{passive:true});
+
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('[data-r]').forEach(el=>ro.observe(el));
+
+function showSem(color, btn) {
+  document.querySelectorAll('.sem-panel').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.sem-tab').forEach(b => b.className = 'sem-tab');
+  document.getElementById('sem-'+color).classList.add('on');
+  btn.classList.add('on-'+color);
+}
+
+function calcProtein() {
+  const peso = parseFloat(document.getElementById('peso').value);
+  const talla = parseFloat(document.getElementById('talla').value);
+  const tipo = document.querySelector('input[name="tipo"]:checked').value;
+  
+  if (!peso || peso < 30 || peso > 200) {
+    alert('Por favor ingresa un peso válido (30–200 kg)');
+    return;
+  }
+  
+  const factor = tipo === 'hemo' ? 1.3 : 1.4;
+  const protMin = (peso * 1.2).toFixed(0);
+  const protMax = (peso * factor).toFixed(0);
+  const cals = (peso * 35).toFixed(0);
+  const liquid = Math.min(1500, 800 + 100).toFixed(0);
+  
+  let imc = '', imcLabel = '';
+  if (talla) {
+    const imcVal = (peso / ((talla/100)**2)).toFixed(1);
+    imc = imcVal;
+    imcLabel = imcVal < 18.5 ? '⚠️ Bajo peso' : imcVal < 25 ? '✅ Normal' : imcVal < 30 ? '⚠️ Sobrepeso' : '⚠️ Obesidad';
+  }
+  
+  const grid = document.getElementById('calcGrid');
+  grid.innerHTML = `
+    <div class="calc-stat"><div class="calc-stat-n">${protMin}–${protMax}</div><div class="calc-stat-u">gramos/día</div><div class="calc-stat-l">Proteína recomendada</div></div>
+    <div class="calc-stat"><div class="calc-stat-n">${cals}</div><div class="calc-stat-u">kcal/día</div><div class="calc-stat-l">Calorías estimadas</div></div>
+    ${imc ? `<div class="calc-stat"><div class="calc-stat-n">${imc}</div><div class="calc-stat-u">kg/m²</div><div class="calc-stat-l">IMC · ${imcLabel}</div></div>` : ''}
+    <div class="calc-stat"><div class="calc-stat-n">~1,000</div><div class="calc-stat-u">mL/día</div><div class="calc-stat-l">Líquidos estimados</div></div>
+  `;
+  
+  document.getElementById('calcAdvice').innerHTML = `
+    <div class="tip-card tip-card-g" style="margin:0;">
+      <div class="tip-title">📋 Tu plan estimado</div>
+      <p class="tip-text">
+        Para tu peso de <strong>${peso} kg</strong> en ${tipo === 'hemo' ? 'hemodiálisis' : 'diálisis peritoneal'}, necesitas entre <strong>${protMin} y ${protMax} gramos de proteína al día</strong>.<br><br>
+        Ejemplos de fuentes de proteína seguras: 1 pechuga de pollo (26g), 3 claras de huevo (10g), 90g de tilapia (21g).<br><br>
+        ⚠️ Este es un cálculo estimado. Tu nutricionista de Monte Sinaí ajustará el plan exacto según tus estudios de albúmina y tu situación específica.
+      </p>
+    </div>
+  `;
+  
+  document.getElementById('calcResults').classList.add('on');
+}
+
+if(window.innerWidth>=768){const w=document.createElement('a');w.href='https://wa.me/5215645192997';w.target='_blank';w.rel='noopener';w.style.cssText='position:fixed;bottom:28px;right:28px;z-index:999;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(37,211,102,.5);text-decoration:none;';w.innerHTML='<svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';document.body.appendChild(w);}
+
+// ══════════════════════════════════════
+// REPORTE NUTRICIONAL
+// ══════════════════════════════════════
+function generarReporte() {
+  msTrack('reporte_generado',{event_category:'nutricion',event_label:'Reporte nutricional generado'});
+  const nombre = document.getElementById('rNombre').value.trim() || 'No especificado';
+  const edad   = document.getElementById('rEdad').value   || '—';
+  const peso   = parseFloat(document.getElementById('rPeso').value) || null;
+  const tipo   = document.getElementById('rTipo').value;
+  const comida = document.getElementById('rComida').value.trim();
+  const notas  = document.getElementById('rNotas').value.trim();
+
+  // Fecha
+  const now = new Date();
+  const dias = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  document.getElementById('rFecha').textContent =
+    `${dias[now.getDay()]} ${now.getDate()} ${meses[now.getMonth()]} ${now.getFullYear()}`;
+
+  // Datos básicos
+  document.getElementById('rNombreOut').textContent = nombre;
+  document.getElementById('rEdadOut').textContent   = edad ? `${edad} años` : '—';
+  document.getElementById('rPesoOut').textContent   = peso  ? `${peso} kg`  : '—';
+
+  const tipoLabels = {hemo:'Hemodiálisis', perito:'D. Peritoneal', pre:'Pre-diálisis'};
+  document.getElementById('rTipoOut').textContent   = tipoLabels[tipo];
+
+  // Proteína y calorías
+  if (peso) {
+    const factores = {hemo:1.3, perito:1.4, pre:0.8};
+    const prot = (peso * (factores[tipo] || 1.2)).toFixed(0);
+    const cals = (peso * 35).toFixed(0);
+    document.getElementById('rProtOut').textContent = `${prot} g/día`;
+    document.getElementById('rCalOut').textContent  = `${cals} kcal/día`;
+  } else {
+    document.getElementById('rProtOut').textContent = 'Indica tu peso';
+    document.getElementById('rCalOut').textContent  = 'Indica tu peso';
+  }
+
+  // Síntomas seleccionados
+  const checks = document.querySelectorAll('.rf-check input:checked');
+  const sintomasDiv = document.getElementById('rSintomasOut');
+  sintomasDiv.innerHTML = '';
+  if (checks.length > 0) {
+    checks.forEach(c => {
+      const chip = document.createElement('span');
+      chip.className = 'rb-chip';
+      chip.textContent = c.value;
+      sintomasDiv.appendChild(chip);
+    });
+  } else {
+    sintomasDiv.innerHTML = '<span style="font-size:.78rem;color:var(--text-s);">Sin síntomas reportados esta semana ✅</span>';
+  }
+
+  // Comida
+  document.getElementById('rComidaOut').textContent = comida || 'No especificado';
+
+  // Notas
+  const notasSection = document.getElementById('rNotasSection');
+  if (notas) {
+    document.getElementById('rNotasOut').textContent = notas;
+    notasSection.style.display = 'block';
+  } else {
+    notasSection.style.display = 'none';
+  }
+
+  // Mostrar reporte
+  document.getElementById('reporteGenerado').classList.add('visible');
+  document.getElementById('reporteGenerado').style.display = 'block';
+
+  // Scroll suave al reporte
+  setTimeout(() => {
+    document.getElementById('reporteGenerado').scrollIntoView({behavior:'smooth', block:'start'});
+  }, 100);
+}
+
+function compartirWA() {
+  const nombre   = document.getElementById('rNombreOut').textContent;
+  const edad     = document.getElementById('rEdadOut').textContent;
+  const peso     = document.getElementById('rPesoOut').textContent;
+  const tipo     = document.getElementById('rTipoOut').textContent;
+  const prot     = document.getElementById('rProtOut').textContent;
+  const comida   = document.getElementById('rComidaOut').textContent;
+  const notas    = document.getElementById('rNotasOut').textContent;
+  const sintomas = Array.from(document.querySelectorAll('.rb-chip')).map(c => c.textContent).join(', ') || 'Ninguno';
+  const fecha    = document.getElementById('rFecha').textContent;
+
+  const msg = `*Reporte Nutricional — Monte Sinaí*
+📅 ${fecha}
+
+*Datos del paciente:*
+👤 Nombre: ${nombre}
+🎂 Edad: ${edad}
+⚖️ Peso: ${peso}
+💉 Diálisis: ${tipo}
+💪 Proteína sugerida: ${prot}
+
+*⚠️ Síntomas esta semana:*
+${sintomas}
+
+*🍽️ Alimentación reciente:*
+${comida}
+
+${notas ? `*📝 Notas para el médico:*
+${notas}
+
+` : ''}Generado desde: montesinaí.com/nutricion`;
+
+  const url = 'https://wa.me/5215645192997?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+}
+
+function nuevoReporte() {
+  document.getElementById('reporteGenerado').style.display = 'none';
+  document.getElementById('reporteGenerado').classList.remove('visible');
+  document.querySelector('.report-card').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+
+// ══════════════════════════════════════════════════════════
+// PLAN NUTRICIONAL PRO — Wizard + WhatsApp
+// ══════════════════════════════════════════════════════════
+const PP_STEPS = 5;
+let pp_currentStep = 1;
+const pp_data = {
+  tipoDialisis: '',
+  condiciones: new Set(),
+  noGustan: new Set()
+};
+
+// Click en cards de tipo de diálisis
+document.querySelectorAll('#pp_tipoCards .pwf-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('#pp_tipoCards .pwf-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    pp_data.tipoDialisis = card.dataset.value;
+  });
+});
+
+// Click en chips multi-select
+function setupChips(containerId, dataSet) {
+  document.querySelectorAll(`#${containerId} .pwf-chip`).forEach(chip => {
+    chip.addEventListener('click', () => {
+      const val = chip.dataset.value;
+      if (dataSet.has(val)) {
+        dataSet.delete(val);
+        chip.classList.remove('selected');
+      } else {
+        dataSet.add(val);
+        chip.classList.add('selected');
+      }
+    });
+  });
+}
+setupChips('pp_condiciones', pp_data.condiciones);
+setupChips('pp_noGustan', pp_data.noGustan);
+
+function ppStep(direction) {
+  // Validación del paso actual
+  if (direction > 0) {
+    if (!validarPaso(pp_currentStep)) return;
+  }
+
+  pp_currentStep += direction;
+  if (pp_currentStep < 1) pp_currentStep = 1;
+  if (pp_currentStep > PP_STEPS) return;
+
+  // Actualizar UI
+  document.querySelectorAll('.plan-step').forEach(s => s.classList.remove('active'));
+  document.querySelector(`.plan-step[data-step="${pp_currentStep}"]`).classList.add('active');
+
+  // Progress
+  document.querySelectorAll('.plan-prog-step').forEach((p, i) => {
+    p.classList.remove('active','done');
+    if (i + 1 < pp_currentStep) p.classList.add('done');
+    if (i + 1 === pp_currentStep) p.classList.add('active');
+  });
+
+  // Labels
+  const labels = ['Datos básicos','Tratamiento','Laboratorios','Preferencias','Contacto'];
+  document.getElementById('psiLabel').textContent = `Paso ${pp_currentStep} de ${PP_STEPS}`;
+  document.getElementById('psiCounter').textContent = labels[pp_currentStep - 1];
+
+  // Botón atrás
+  document.getElementById('pnBack').style.display = pp_currentStep > 1 ? 'flex' : 'none';
+
+  // Último paso — cambiar texto del botón
+  const btnNext = document.getElementById('pnNext');
+  if (pp_currentStep === PP_STEPS) {
+    btnNext.textContent = '✓ Registrar mi plan';
+    btnNext.classList.add('pn-final');
+    btnNext.onclick = enviarPlan;
+  } else {
+    btnNext.textContent = 'Siguiente →';
+    btnNext.classList.remove('pn-final');
+    btnNext.onclick = () => ppStep(1);
+  }
+
+  // Scroll suave al inicio del wizard
+  document.querySelector('.plan-form').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function validarPaso(step) {
+  if (step === 1) {
+    const nombre = document.getElementById('pp_nombre').value.trim();
+    const edad = document.getElementById('pp_edad').value;
+    const peso = document.getElementById('pp_peso').value;
+    if (!nombre) { alert('Por favor ingresa tu nombre'); return false; }
+    if (!edad || edad < 1 || edad > 120) { alert('Por favor ingresa una edad válida'); return false; }
+    if (!peso || peso < 20 || peso > 250) { alert('Por favor ingresa un peso válido'); return false; }
+  }
+  if (step === 2) {
+    if (!pp_data.tipoDialisis) { alert('Por favor selecciona tu tipo de tratamiento'); return false; }
+  }
+  return true;
+}
+
+function enviarPlan() {
+  msTrack('plan_pro_enviado',{event_category:'nutricion',event_label:'Plan Pro completado'});
+  // Validar paso 5
+  const whatsapp = document.getElementById('pp_whatsapp').value.trim();
+  if (!whatsapp || whatsapp.length < 8) {
+    alert('Por favor ingresa un número de WhatsApp válido');
+    return;
+  }
+
+  // Recopilar todos los datos
+  const datos = {
+    nombre: document.getElementById('pp_nombre').value.trim(),
+    edad: document.getElementById('pp_edad').value,
+    sexo: document.getElementById('pp_sexo').value || 'No especificado',
+    peso: document.getElementById('pp_peso').value,
+    talla: document.getElementById('pp_talla').value || '—',
+    tipoDialisis: {hemo:'Hemodiálisis', perito:'D. Peritoneal', pre:'Pre-diálisis', trasplante:'Trasplantado'}[pp_data.tipoDialisis],
+    tiempo: document.getElementById('pp_tiempo').value || 'No especificado',
+    potasio: document.getElementById('pp_potasio').value || '—',
+    fosforo: document.getElementById('pp_fosforo').value || '—',
+    albumina: document.getElementById('pp_albumina').value || '—',
+    hb: document.getElementById('pp_hb').value || '—',
+    condiciones: Array.from(pp_data.condiciones).join(', ') || 'Ninguna reportada',
+    comidas: document.getElementById('pp_comidas').value,
+    noGustan: Array.from(pp_data.noGustan).join(', ') || 'Ninguno',
+    alergias: document.getElementById('pp_alergias').value.trim() || 'Ninguna',
+    whatsapp: whatsapp,
+    quien: document.getElementById('pp_quien').value,
+    comentarios: document.getElementById('pp_comentarios').value.trim() || 'Sin comentarios adicionales',
+    fecha: new Date().toLocaleDateString('es-MX', {weekday:'long', year:'numeric', month:'long', day:'numeric'})
+  };
+
+  // Ocultar formulario y mostrar éxito
+  document.querySelectorAll('.plan-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('planNav').style.display = 'none';
+  document.querySelector('.plan-progress').style.display = 'none';
+  document.querySelector('.plan-step-info').style.display = 'none';
+  document.getElementById('planSuccess').classList.add('visible');
+
+  // Llenar resumen visible
+  document.getElementById('psSummary').innerHTML = `
+    <div class="ps-summary-title">📋 Resumen de tu solicitud</div>
+    <div class="ps-summary-row"><span>Nombre</span><b>${datos.nombre}</b></div>
+    <div class="ps-summary-row"><span>Edad / Peso</span><b>${datos.edad} años · ${datos.peso} kg</b></div>
+    <div class="ps-summary-row"><span>Tratamiento</span><b>${datos.tipoDialisis}</b></div>
+    <div class="ps-summary-row"><span>Tiempo</span><b>${datos.tiempo}</b></div>
+    <div class="ps-summary-row"><span>Condiciones</span><b>${datos.condiciones}</b></div>
+    <div class="ps-summary-row"><span>WhatsApp</span><b>${datos.whatsapp}</b></div>
+  `;
+
+  // Construir mensaje de WhatsApp
+  const msg = `*📋 SOLICITUD DE PLAN NUTRICIONAL PRO*
+_Clínica Monte Sinaí — Tlalnepantla_
+📅 ${datos.fecha}
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+*👤 DATOS DEL PACIENTE*
+• Nombre: ${datos.nombre}
+• Edad: ${datos.edad} años · Sexo: ${datos.sexo}
+• Peso: ${datos.peso} kg
+• Talla: ${datos.talla === '—' ? 'No especificada' : datos.talla + ' cm'}
+
+*💉 TRATAMIENTO*
+• Tipo: ${datos.tipoDialisis}
+• Tiempo: ${datos.tiempo}
+
+*🔬 LABORATORIOS RECIENTES*
+• Potasio: ${datos.potasio === '—' ? 'No proporcionado' : datos.potasio + ' mEq/L'}
+• Fósforo: ${datos.fosforo === '—' ? 'No proporcionado' : datos.fosforo + ' mg/dL'}
+• Albúmina: ${datos.albumina === '—' ? 'No proporcionada' : datos.albumina + ' g/dL'}
+• Hemoglobina: ${datos.hb === '—' ? 'No proporcionada' : datos.hb + ' g/dL'}
+
+*⚕️ CONDICIONES MÉDICAS*
+${datos.condiciones}
+
+*🍽️ PREFERENCIAS ALIMENTARIAS*
+• Comidas al día: ${datos.comidas}
+• Alimentos que evita: ${datos.noGustan}
+• Alergias/restricciones: ${datos.alergias}
+
+*📱 CONTACTO*
+• WhatsApp: ${datos.whatsapp}
+• Recibe el plan: ${datos.quien}
+
+*💬 COMENTARIOS*
+${datos.comentarios}
+
+━━━━━━━━━━━━━━━━━━━━━━
+_Solicito plan nutricional personalizado completo._`;
+
+  // Preparar link de WA
+  const url = 'https://wa.me/5215645192997?text=' + encodeURIComponent(msg);
+  document.getElementById('psWaBtn').href = url;
+
+  // Scroll al success
+  setTimeout(() => {
+    document.getElementById('planSuccess').scrollIntoView({behavior:'smooth', block:'start'});
+  }, 200);
+}
+
+function enviarPorWA(e) {
+  // El href ya está armado, solo permite el click natural
+  // El target=_blank abre WhatsApp
+}
+
+function reiniciarPlanPro() {
+  // Reset todo
+  pp_currentStep = 1;
+  pp_data.tipoDialisis = '';
+  pp_data.condiciones.clear();
+  pp_data.noGustan.clear();
+
+  document.querySelectorAll('.plan-form input, .plan-form select, .plan-form textarea').forEach(el => {
+    if (el.type === 'range') el.value = el.defaultValue;
+    else el.value = '';
+  });
+  document.getElementById('pp_comidasVal').textContent = '4 comidas';
+
+  document.querySelectorAll('.pwf-card.selected, .pwf-chip.selected').forEach(el => el.classList.remove('selected'));
+
+  document.getElementById('planSuccess').classList.remove('visible');
+  document.getElementById('planNav').style.display = 'flex';
+  document.querySelector('.plan-progress').style.display = 'flex';
+  document.querySelector('.plan-step-info').style.display = 'flex';
+
+  document.querySelectorAll('.plan-step').forEach(s => s.classList.remove('active'));
+  document.querySelector('.plan-step[data-step="1"]').classList.add('active');
+
+  document.querySelectorAll('.plan-prog-step').forEach((p, i) => {
+    p.classList.remove('done');
+    p.classList.toggle('active', i === 0);
+  });
+
+  document.getElementById('psiLabel').textContent = 'Paso 1 de 5';
+  document.getElementById('psiCounter').textContent = 'Datos básicos';
+  document.getElementById('pnBack').style.display = 'none';
+  document.getElementById('pnNext').textContent = 'Siguiente →';
+  document.getElementById('pnNext').classList.remove('pn-final');
+  document.getElementById('pnNext').onclick = () => ppStep(1);
+
+  document.querySelector('.plan-pro-sec').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+</script>
+</body>
+</html>
