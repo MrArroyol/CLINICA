@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+<meta name="theme-color" content="#071E35">
+<title>Tu Experiencia · Monte Sinaí</title>
+<meta name="description" content="Comparte tu experiencia en Clínica de Hemodiálisis Monte Sinaí, Tlalnepantla. Tu opinión ayuda a otros pacientes.">
+<link rel="canonical" href="https://montesinai.space/opinion">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- ══════════════════════════════════════════════
+  VARIABLES DE CONFIGURACIÓN — Edita aquí
+══════════════════════════════════════════════ -->
+<script>
+  const CONFIG = {
+    // ⚠️ REEMPLAZA con tu link real de Google Reviews
+    GOOGLE_REVIEWS_URL: "https://g.page/r/TU_CODIGO_GOOGLE/review",
+    
+    // WhatsApp para comentarios negativos (número con código de país)
+    WHATSAPP_NUMBER: "5215645192997",
+    
+    // Email alternativo para recibir comentarios (opcional)
+    EMAIL_CONTACTO: "contacto@montesinai.space",
+    
+    // Nombre de la clínica
+    CLINICA: "Clínica de Hemodiálisis Monte Sinaí",
+    
+    // Ciudad
+    CIUDAD: "Tlalnepantla, Estado de México"
+  };
+</script>
+
+<style>
+/* ══════════════════════════════════════════════════════
+   VARIABLES — Paleta Monte Sinaí
+══════════════════════════════════════════════════════ */
+:root {
+  --navy:     #071E35;
+  --primary:  #0D3B66;
+  --teal:     #2A9D8F;
+  --teal-l:   #3BBFB0;
+  --teal-p:   #E3F4F2;
+  --purple:   #6B3FA0;
+  --purple-l: #9B6ED4;
+  --purple-p: #F0E8FF;
+  --sky:      #5BC0DE;
+  --sky-p:    #E8F6FC;
+  --green:    #28B673;
+  --green-p:  #E6F7EF;
+  --gold:     #FFB703;
+  --red:      #E63946;
+  --bg:       #F4F7FB;
+  --base:     #FFFFFF;
+  --text:     #0A1520;
+  --text-m:   #1A2E40;
+  --text-s:   #4A6070;
+  --border:   #D0DCE8;
+  --out:      cubic-bezier(.16,1,.3,1);
+  --spring:   cubic-bezier(.34,1.56,.64,1);
+  --bounce:   cubic-bezier(.68,-.55,.27,1.55);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bot: env(safe-area-inset-bottom, 0px);
+  --px:       20px;
+}
+
+/* ══ RESET ══ */
+*,*::before,*::after { box-sizing:border-box;margin:0;padding:0; }
+html { font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%; }
+body {
+  font-family:'Poppins',sans-serif;color:var(--text);
+  background:var(--bg);overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+* { -webkit-tap-highlight-color:transparent; }
+
+/* ══ CANVAS FONDO ══ */
+#bg-canvas {
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+}
+
+/* ══ WRAPPER ══ */
+.wrapper {
+  position:relative;z-index:1;
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;
+  padding:calc(var(--safe-top) + 24px) var(--px) calc(var(--safe-bot) + 40px);
+}
+
+/* ══ LOGO HEADER ══ */
+.site-header {
+  width:100%;max-width:480px;
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:32px;
+}
+.site-header img {
+  width:44px;height:44px;border-radius:50%;object-fit:cover;
+  border:2px solid rgba(42,157,143,.35);
+  box-shadow:0 4px 14px rgba(42,157,143,.2);
+}
+.site-header-text strong {
+  display:block;font-size:.82rem;font-weight:800;color:var(--primary);
+}
+.site-header-text span {
+  display:block;font-size:.66rem;color:var(--text-s);text-transform:uppercase;
+  letter-spacing:.08em;font-weight:600;
+}
+.site-header-badge {
+  margin-left:auto;display:flex;align-items:center;gap:6px;
+  background:var(--green-p);border:1px solid rgba(40,182,115,.25);
+  padding:5px 11px;border-radius:100px;
+}
+.shb-dot {
+  width:7px;height:7px;border-radius:50%;background:var(--green);
+  animation:pulse-g 2s ease-in-out infinite;
+}
+@keyframes pulse-g {
+  0%,100%{box-shadow:0 0 0 0 rgba(40,182,115,.4)}
+  50%{box-shadow:0 0 0 6px rgba(40,182,115,0)}
+}
+.shb-text { font-size:.65rem;font-weight:700;color:var(--green); }
+
+/* ══ CARD PRINCIPAL ══ */
+.card {
+  width:100%;max-width:480px;
+  background:white;border-radius:28px;
+  box-shadow:0 8px 48px rgba(13,59,102,.1), 0 2px 12px rgba(13,59,102,.06);
+  overflow:hidden;
+  position:relative;
+}
+.card::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--purple),var(--teal),var(--sky));
+}
+
+/* ══ PANTALLAS (steps) ══ */
+.screen {
+  display:none;padding:28px 24px 24px;
+  animation:screen-in .45s var(--out) both;
+}
+.screen.active { display:block; }
+@keyframes screen-in {
+  from { opacity:0;transform:translateY(14px); }
+  to   { opacity:1;transform:translateY(0); }
+}
+
+/* ══ PANTALLA 1 — Bienvenida ══ */
+.welcome-visual {
+  text-align:center;padding:8px 0 22px;
+}
+.welcome-rings {
+  width:90px;height:90px;margin:0 auto 18px;position:relative;
+}
+.wr-ring {
+  position:absolute;border-radius:50%;
+  border:2.5px solid;animation:spin-r 8s linear infinite;
+}
+.wr-ring:nth-child(1){
+  inset:0;border-color:rgba(42,157,143,.3);
+}
+.wr-ring:nth-child(2){
+  inset:10px;border-color:rgba(107,63,160,.25);
+  animation-duration:6s;animation-direction:reverse;
+}
+.wr-ring:nth-child(3){
+  inset:20px;border-color:rgba(91,192,222,.3);
+  animation-duration:10s;
+}
+@keyframes spin-r { to{transform:rotate(360deg)} }
+.wr-logo {
+  position:absolute;inset:25px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;
+  box-shadow:0 4px 16px rgba(42,157,143,.35);
+}
+.welcome-visual h1 {
+  font-size:1.35rem;font-weight:800;color:var(--primary);
+  margin-bottom:10px;line-height:1.25;
+  letter-spacing:-.015em;
+}
+.welcome-visual h1 em {
+  background:linear-gradient(135deg,var(--teal),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;font-style:normal;
+}
+.welcome-visual p {
+  font-size:.86rem;color:var(--text-s);line-height:1.75;margin-bottom:22px;
+}
+
+/* Trust pills */
+.trust-row {
+  display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;
+}
+.trust-pill {
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:100px;padding:5px 12px;
+  font-size:.68rem;font-weight:600;color:var(--text-s);
+}
+
+/* ══ BOTÓN PRINCIPAL ══ */
+.btn-primary {
+  width:100%;height:54px;border-radius:16px;
+  background:linear-gradient(135deg,var(--primary),var(--purple));
+  color:white;font-family:'Poppins',sans-serif;
+  font-weight:700;font-size:.95rem;
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all .2s;
+  box-shadow:0 4px 20px rgba(13,59,102,.25);
+}
+.btn-primary:active { transform:scale(.98); }
+.btn-primary svg { width:18px;height:18px;fill:none;stroke:white;stroke-width:2.5; }
+
+.btn-teal {
+  background:linear-gradient(135deg,var(--teal),var(--teal-l));
+  box-shadow:0 4px 20px rgba(42,157,143,.3);
+}
+.btn-green {
+  background:linear-gradient(135deg,var(--green),var(--teal));
+  box-shadow:0 4px 20px rgba(40,182,115,.3);
+}
+.btn-secondary {
+  width:100%;height:46px;border-radius:14px;
+  background:transparent;border:1.5px solid var(--border);
+  color:var(--text-s);font-family:'Poppins',sans-serif;
+  font-weight:600;font-size:.85rem;cursor:pointer;
+  transition:all .18s;
+}
+.btn-secondary:active { background:var(--bg); }
+
+/* ══ PANTALLA 2 — Rating ══ */
+.screen-title {
+  font-size:1.15rem;font-weight:800;color:var(--primary);
+  margin-bottom:6px;line-height:1.3;
+  letter-spacing:-.01em;
+}
+.screen-sub {
+  font-size:.84rem;color:var(--text-s);line-height:1.65;margin-bottom:20px;
+}
+
+.rating-grid { display:flex;flex-direction:column;gap:10px;margin-bottom:20px; }
+
+.rating-card {
+  display:flex;align-items:center;gap:14px;
+  padding:16px;border-radius:16px;
+  border:2px solid var(--border);background:white;
+  cursor:pointer;transition:all .22s var(--out);
+  position:relative;overflow:hidden;
+}
+.rating-card::before {
+  content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+  border-radius:4px 0 0 4px;
+  transition:width .22s var(--out);
+}
+.rating-card.rc-excellent::before { background:linear-gradient(180deg,var(--teal),var(--green)); }
+.rating-card.rc-good::before      { background:linear-gradient(180deg,var(--sky),var(--teal)); }
+.rating-card.rc-regular::before   { background:linear-gradient(180deg,var(--gold),#F59E0B); }
+.rating-card.rc-bad::before       { background:linear-gradient(180deg,var(--red),#C0392B); }
+
+.rating-card:active { transform:scale(.98); }
+.rating-card:hover  { border-color:transparent;box-shadow:0 4px 22px rgba(13,59,102,.1); }
+.rating-card:hover::before { width:100%;opacity:.06; }
+
+.rc-emoji {
+  width:48px;height:48px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+}
+.rc-excellent .rc-emoji { background:linear-gradient(135deg,rgba(40,182,115,.12),rgba(42,157,143,.1)); }
+.rc-good .rc-emoji      { background:linear-gradient(135deg,rgba(91,192,222,.12),rgba(42,157,143,.1)); }
+.rc-regular .rc-emoji   { background:rgba(255,183,3,.12); }
+.rc-bad .rc-emoji       { background:rgba(230,57,70,.1); }
+
+.rc-content { flex:1; }
+.rc-title {
+  font-size:.92rem;font-weight:700;color:var(--primary);
+  margin-bottom:2px;line-height:1.25;
+}
+.rc-stars { color:var(--gold);font-size:.8rem;letter-spacing:1px; }
+.rc-sub { font-size:.74rem;color:var(--text-s); }
+.rc-arrow {
+  width:28px;height:28px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.rc-arrow svg { width:13px;height:13px;stroke:var(--text-s);fill:none;stroke-width:2.5; }
+
+/* ══ PANTALLA 3 — Positivo ══ */
+.positive-header {
+  background:linear-gradient(135deg,var(--green-p),var(--teal-p));
+  border-radius:18px;padding:18px;margin-bottom:18px;
+  border:1px solid rgba(40,182,115,.2);
+  display:flex;gap:12px;align-items:flex-start;
+}
+.ph-ico {
+  width:42px;height:42px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--green),var(--teal));
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.ph-text strong { display:block;color:var(--primary);font-size:.9rem;font-weight:700;margin-bottom:3px; }
+.ph-text p { color:var(--text-s);font-size:.78rem;line-height:1.65; }
+
+/* Sugerencias de texto */
+.suggestions {
+  display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;
+}
+.suggestion-chip {
+  padding:5px 11px;border-radius:100px;
+  background:var(--bg);border:1.5px solid var(--border);
+  font-family:'Poppins',sans-serif;font-size:.7rem;font-weight:600;
+  color:var(--text-s);cursor:pointer;transition:all .18s;
+}
+.suggestion-chip:active {
+  border-color:var(--teal);background:var(--teal-p);color:var(--teal);
+}
+
+/* Textarea review */
+.review-wrap { position:relative;margin-bottom:6px; }
+.review-textarea {
+  width:100%;min-height:130px;padding:14px;
+  border:2px solid var(--border);border-radius:14px;
+  font-family:'Poppins',sans-serif;font-size:.86rem;
+  color:var(--text);background:var(--bg);
+  outline:none;resize:none;line-height:1.65;
+  transition:all .2s;box-sizing:border-box;
+}
+.review-textarea:focus {
+  border-color:var(--teal);background:white;
+  box-shadow:0 0 0 4px rgba(42,157,143,.1);
+}
+.char-count {
+  text-align:right;font-size:.68rem;color:var(--text-s);
+  font-weight:600;margin-bottom:14px;
+}
+.char-count.warn { color:var(--gold); }
+.char-count.good { color:var(--green); }
+
+.copy-btn {
+  width:100%;height:46px;border-radius:13px;
+  background:var(--bg);border:1.5px solid var(--border);
+  color:var(--text-m);font-family:'Poppins',sans-serif;
+  font-weight:600;font-size:.85rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all .2s;margin-bottom:10px;
+}
+.copy-btn:active { background:var(--green-p);border-color:var(--green);color:var(--green); }
+.copy-btn svg { width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2; }
+
+/* Toast de copiado */
+.copy-toast {
+  position:fixed;bottom:calc(24px + var(--safe-bot));left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(135deg,var(--green),var(--teal));
+  color:white;padding:12px 22px;border-radius:100px;
+  font-size:.82rem;font-weight:700;
+  box-shadow:0 8px 28px rgba(40,182,115,.4);
+  pointer-events:none;opacity:0;z-index:999;
+  transition:all .35s var(--out);
+  white-space:nowrap;
+}
+.copy-toast.show {
+  opacity:1;transform:translateX(-50%) translateY(0);
+}
+
+/* Botón Google */
+.google-btn {
+  width:100%;height:54px;border-radius:16px;
+  background:white;border:2px solid #E0E0E0;
+  color:var(--text-m);font-family:'Poppins',sans-serif;
+  font-weight:700;font-size:.9rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all .2s;text-decoration:none;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+.google-btn:active { border-color:var(--teal);box-shadow:0 4px 20px rgba(0,0,0,.12); }
+.google-icon {
+  width:22px;height:22px;flex-shrink:0;
+}
+
+/* Nota de privacidad */
+.privacy-note {
+  text-align:center;font-size:.68rem;color:var(--text-s);
+  line-height:1.6;margin-top:12px;
+  display:flex;align-items:flex-start;gap:5px;justify-content:center;
+}
+.privacy-note svg { width:13px;height:13px;stroke:var(--text-s);fill:none;stroke-width:2;flex-shrink:0;margin-top:1px; }
+
+/* ══ PANTALLA 4 — Negativo ══ */
+.empathy-header {
+  background:linear-gradient(135deg,#FFF8E6,#FFF3F3);
+  border-radius:18px;padding:18px;margin-bottom:20px;
+  border:1px solid rgba(255,183,3,.2);
+  display:flex;gap:12px;align-items:center;
+}
+.eh-ico {
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,#FFB703,#F59E0B);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.eh-text strong { display:block;color:var(--primary);font-size:.88rem;font-weight:700;margin-bottom:2px; }
+.eh-text p { color:var(--text-s);font-size:.76rem;line-height:1.6; }
+
+/* Form negativo */
+.neg-form { display:flex;flex-direction:column;gap:12px;margin-bottom:14px; }
+.nf-field { display:flex;flex-direction:column;gap:5px; }
+.nf-label { font-size:.74rem;font-weight:600;color:var(--primary); }
+.nf-input, .nf-select, .nf-textarea {
+  width:100%;padding:0 14px;height:46px;
+  border:1.5px solid var(--border);border-radius:12px;
+  font-family:'Poppins',sans-serif;font-size:.86rem;
+  color:var(--text);background:var(--bg);outline:none;
+  transition:all .2s;-webkit-appearance:none;appearance:none;
+  box-sizing:border-box;
+}
+.nf-input:focus,.nf-select:focus {
+  border-color:var(--teal);background:white;
+  box-shadow:0 0 0 3px rgba(42,157,143,.1);
+}
+.nf-select {
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A6070' stroke-width='2.5'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+  background-repeat:no-repeat;background-position:right 12px center;background-size:14px;
+  padding-right:36px;cursor:pointer;
+}
+.nf-textarea {
+  height:auto;min-height:100px;padding:12px 14px;resize:none;line-height:1.65;
+}
+.nf-textarea:focus { border-color:var(--teal);background:white;box-shadow:0 0 0 3px rgba(42,157,143,.1); }
+.nf-row { display:flex;gap:10px; }
+.nf-row .nf-field { flex:1; }
+
+/* ══ PANTALLA 5 — Éxito ══ */
+.success-screen { text-align:center;padding:32px 24px 28px; }
+.success-checkmark {
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+  box-shadow:0 8px 28px rgba(40,182,115,.4);
+  animation:check-pop .6s var(--spring) both;
+}
+@keyframes check-pop { from{transform:scale(0)}to{transform:scale(1)} }
+.success-checkmark svg {
+  width:42px;height:42px;stroke:white;fill:none;stroke-width:3;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.success-screen h2 { font-size:1.2rem;font-weight:800;color:var(--primary);margin-bottom:8px; }
+.success-screen p { font-size:.86rem;color:var(--text-s);line-height:1.75;margin-bottom:22px; }
+
+/* ══ SECCIÓN QR ══ */
+.qr-section {
+  width:100%;max-width:480px;
+  background:linear-gradient(135deg,var(--navy),#0C2A48);
+  border-radius:24px;margin-top:16px;
+  padding:22px 24px;
+  display:flex;align-items:center;gap:16px;
+  box-shadow:0 8px 32px rgba(7,30,53,.2);
+}
+.qr-box {
+  width:80px;height:80px;background:white;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;padding:6px;
+}
+.qr-box svg { width:100%;height:100%; }
+.qr-content {}
+.qr-label {
+  color:var(--teal-l);font-size:.64rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;
+}
+.qr-title { color:white;font-size:.88rem;font-weight:700;margin-bottom:4px;line-height:1.3; }
+.qr-sub { color:rgba(255,255,255,.5);font-size:.72rem;line-height:1.55; }
+
+/* ══ SECCIÓN SOCIAL PROOF ══ */
+.social-section {
+  width:100%;max-width:480px;margin-top:14px;
+}
+.social-card {
+  background:white;border-radius:18px;padding:18px;
+  border:1px solid var(--border);
+  box-shadow:0 2px 12px rgba(13,59,102,.06);
+  margin-bottom:10px;
+}
+.sc-header { display:flex;align-items:center;gap:10px;margin-bottom:10px; }
+.sc-ava {
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:.8rem;font-weight:800;
+}
+.sc-name { font-size:.84rem;font-weight:700;color:var(--primary); }
+.sc-date { font-size:.68rem;color:var(--text-s); }
+.sc-stars { color:var(--gold);font-size:.78rem;letter-spacing:1px; }
+.sc-text { font-size:.8rem;color:var(--text-m);line-height:1.7;font-style:italic; }
+.sc-badge {
+  display:inline-flex;align-items:center;gap:4px;margin-top:8px;
+  background:var(--green-p);border-radius:100px;padding:3px 9px;
+  font-size:.63rem;font-weight:700;color:var(--green);
+}
+
+/* ══ FOOTER MINI ══ */
+.footer-mini {
+  width:100%;max-width:480px;margin-top:20px;
+  text-align:center;
+  padding-bottom:calc(var(--safe-bot) + 10px);
+}
+.footer-mini p { font-size:.7rem;color:var(--text-s);line-height:1.6; }
+.footer-mini a { color:var(--teal);text-decoration:none;font-weight:600; }
+
+/* ══ STEP INDICATOR ══ */
+.step-indicator {
+  display:flex;justify-content:center;gap:6px;margin-bottom:20px;
+}
+.step-dot {
+  width:7px;height:7px;border-radius:50%;
+  background:var(--border);transition:all .3s;
+}
+.step-dot.active { background:var(--teal);transform:scale(1.3); }
+.step-dot.done { background:var(--green); }
+
+/* ══ BACK LINK ══ */
+.back-link {
+  display:inline-flex;align-items:center;gap:5px;
+  color:var(--text-s);font-size:.76rem;font-weight:600;
+  cursor:pointer;margin-bottom:18px;
+  background:none;border:none;font-family:'Poppins',sans-serif;
+}
+.back-link svg { width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5; }
+.back-link:hover { color:var(--primary); }
+
+/* ══ SEPARADOR ══ */
+.sep {
+  display:flex;align-items:center;gap:10px;margin:14px 0;
+}
+.sep-line { flex:1;height:1px;background:var(--border); }
+.sep-text { font-size:.7rem;color:var(--text-s);font-weight:600; }
+
+/* ══ ANIMACIÓN iOS fix ══ */
+@supports (-webkit-touch-callout:none){
+  .review-textarea,.nf-input,.nf-select,.nf-textarea { font-size:16px!important; }
+}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:360px){
+  :root{--px:14px;}
+  .nf-row{flex-direction:column;}
+  .card{border-radius:22px;}
+  .screen{padding:22px 18px 20px;}
+  .rating-card{padding:13px;}
+}
+@media(min-width:768px){
+  .wrapper{padding-top:48px;}
+  .card{border-radius:32px;}
+}
+</style>
+
+  <!-- ══════════════════════════════════════════════
+    GOOGLE ANALYTICS 4 — Monte Sinaí
+    INSTRUCCIÓN: Reemplaza G-RHZJ6NCE54 con tu código real
+    Ejemplo: G-RHZJ6NCE54 → G-AB12CD34EF
+  ══════════════════════════════════════════════ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZJ6NCE54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Configuración principal
+    gtag('config', 'G-RHZJ6NCE54', {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
+
+    // ══ FUNCIÓN GLOBAL — registrar eventos ══
+    function msTrack(eventName, params) {
+      gtag('event', eventName, params || {});
+    }
+
+    // ══ EVENTO: Clic en WhatsApp (cualquier página) ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href*="wa.me"]');
+      if (el) {
+        msTrack('whatsapp_click', {
+          event_category: 'contacto',
+          event_label: 'WhatsApp abierto',
+          page: window.location.pathname
+        });
+      }
+    });
+
+    // ══ EVENTO: Clic en llamar (tel:) ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href^="tel:"]');
+      if (el) {
+        msTrack('llamada_click', {
+          event_category: 'contacto',
+          event_label: 'Llamada iniciada',
+          page: window.location.pathname
+        });
+      }
+    });
+
+    // ══ EVENTO: Clic en Google Maps ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href*="maps.google"]');
+      if (el) {
+        msTrack('maps_click', {
+          event_category: 'ubicacion',
+          event_label: 'Google Maps abierto'
+        });
+      }
+    });
+
+    // ══ EVENTO: Tiempo en página (30 segundos = usuario interesado) ══
+    setTimeout(function() {
+      msTrack('engaged_user', {
+        event_category: 'engagement',
+        event_label: '30 segundos en página',
+        page: window.location.pathname
+      });
+    }, 30000);
+
+    // ══ EVENTO: Scroll profundo (70% de la página) ══
+    (function() {
+      var fired70 = false;
+      window.addEventListener('scroll', function() {
+        if (fired70) return;
+        var scrolled = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrolled >= 0.70) {
+          fired70 = true;
+          msTrack('deep_scroll', {
+            event_category: 'engagement',
+            event_label: '70% página leída',
+            page: window.location.pathname
+          });
+        }
+      }, {passive: true});
+    })();
+  </script>
+
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div class="copy-toast" id="copyToast">✅ Texto copiado — pégalo en Google</div>
+
+<div class="wrapper">
+
+  <!-- LOGO HEADER -->
+  <div class="site-header">
+    <img src="assets/logo-hemodialisis.jpg" alt="Monte Sinaí" onerror="this.style.display='none'">
+    <div class="site-header-text">
+      <strong>MONTE SINAÍ</strong>
+      <span>Hemodiálisis · Tlalnepantla</span>
+    </div>
+    <div class="site-header-badge">
+      <div class="shb-dot"></div>
+      <span class="shb-text">Verificado</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       CARD PRINCIPAL — Wizard de pasos
+  ═══════════════════════════════════════ -->
+  <div class="card">
+
+    <!-- Step indicator -->
+    <div style="padding:16px 24px 0;">
+      <div class="step-indicator">
+        <div class="step-dot active" id="dot1"></div>
+        <div class="step-dot" id="dot2"></div>
+        <div class="step-dot" id="dot3"></div>
+      </div>
+    </div>
+
+    <!-- ══ PANTALLA 1 — Bienvenida ══ -->
+    <div class="screen active" id="screen1">
+      <div class="welcome-visual">
+        <div class="welcome-rings">
+          <div class="wr-ring"></div>
+          <div class="wr-ring"></div>
+          <div class="wr-ring"></div>
+          <div class="wr-logo">🫘</div>
+        </div>
+        <h1>Tu experiencia<br>es <em>importante</em></h1>
+        <p>Gracias por confiar en Monte Sinaí. Tu opinión nos ayuda a mejorar y orienta a otros pacientes que buscan atención renal de calidad.</p>
+        <div class="trust-row">
+          <div class="trust-pill">🔒 Completamente privado</div>
+          <div class="trust-pill">⏱️ Solo 1 minuto</div>
+          <div class="trust-pill">❤️ Sin compromiso</div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="goScreen(2)">
+        Compartir mi experiencia
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- ══ PANTALLA 2 — Rating ══ -->
+    <div class="screen" id="screen2">
+      <button class="back-link" onclick="goScreen(1)">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver
+      </button>
+      <p class="screen-title">¿Cómo fue tu experiencia en Monte Sinaí?</p>
+      <p class="screen-sub">Tu respuesta es confidencial y nos ayuda a seguir mejorando.</p>
+
+      <div class="rating-grid">
+        <div class="rating-card rc-excellent" onclick="selectRating('excellent')">
+          <div class="rc-emoji">😊</div>
+          <div class="rc-content">
+            <div class="rc-title">Excelente</div>
+            <div class="rc-stars">★★★★★</div>
+            <div class="rc-sub">Superó mis expectativas</div>
+          </div>
+          <div class="rc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="rating-card rc-good" onclick="selectRating('good')">
+          <div class="rc-emoji">🙂</div>
+          <div class="rc-content">
+            <div class="rc-title">Muy buena</div>
+            <div class="rc-stars">★★★★</div>
+            <div class="rc-sub">Estoy satisfecho con la atención</div>
+          </div>
+          <div class="rc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="rating-card rc-regular" onclick="selectRating('regular')">
+          <div class="rc-emoji">😐</div>
+          <div class="rc-content">
+            <div class="rc-title">Regular</div>
+            <div class="rc-stars" style="color:#FFB703;">★★★</div>
+            <div class="rc-sub">Podría mejorar en algunos aspectos</div>
+          </div>
+          <div class="rc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="rating-card rc-bad" onclick="selectRating('bad')">
+          <div class="rc-emoji">😞</div>
+          <div class="rc-content">
+            <div class="rc-title">Mala</div>
+            <div class="rc-stars" style="color:#E63946;">★★</div>
+            <div class="rc-sub">Tuve problemas con el servicio</div>
+          </div>
+          <div class="rc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PANTALLA 3 — Positivo ══ -->
+    <div class="screen" id="screen3">
+      <button class="back-link" onclick="goScreen(2)">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver
+      </button>
+
+      <div class="positive-header">
+        <div class="ph-ico">🎉</div>
+        <div class="ph-text">
+          <strong>¡Nos alegra mucho saberlo!</strong>
+          <p>Si deseas apoyarnos, comparte tu experiencia en Google. Ayuda a otros pacientes que buscan atención renal confiable.</p>
+        </div>
+      </div>
+
+      <p style="font-size:.78rem;font-weight:600;color:var(--primary);margin-bottom:8px;">💡 Sugerencias para tu reseña:</p>
+      <div class="suggestions" id="suggestionsBox">
+        <div class="suggestion-chip" onclick="useSuggestion(this)">🔄 Otra versión</div>
+        <div class="suggestion-chip" onclick="addPhrase('el personal de enfermería siempre está al pendiente')">💉 Enfermería pendiente</div>
+        <div class="suggestion-chip" onclick="addPhrase('la Dra. Díaz Villar explica todo con claridad')">🩺 Dra. Díaz Villar</div>
+        <div class="suggestion-chip" onclick="addPhrase('las instalaciones están limpias y bien equipadas')">🏥 Instalaciones</div>
+        <div class="suggestion-chip" onclick="addPhrase('me tratan como persona, no como un número')">❤️ Trato humano</div>
+        <div class="suggestion-chip" onclick="addPhrase('las sesiones son puntuales')">⏱️ Puntualidad</div>
+        <div class="suggestion-chip" onclick="addPhrase('me explicaron todo desde el principio')">📋 Comunicación clara</div>
+        <div class="suggestion-chip" onclick="addPhrase('el horario es muy flexible')">🗓️ Horario flexible</div>
+        <div class="suggestion-chip" onclick="addPhrase('queda bien ubicada y es fácil llegar')">📍 Fácil acceso</div>
+      </div>
+
+      <div class="review-wrap">
+        <textarea
+          class="review-textarea"
+          id="reviewText"
+          placeholder="Escribe aquí tu experiencia... (puedes usar las sugerencias de arriba para empezar)"
+          oninput="updateCharCount()"
+          maxlength="500"
+        ></textarea>
+      </div>
+      <div class="char-count" id="charCount">0 / 500 caracteres</div>
+
+      <button class="copy-btn" onclick="copyReview()">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copiar mi reseña
+      </button>
+
+      <div class="sep">
+        <div class="sep-line"></div>
+        <span class="sep-text">luego pégala en Google</span>
+        <div class="sep-line"></div>
+      </div>
+
+      <a id="googleBtn" href="#" target="_blank" class="google-btn" onclick="openGoogle(event)">
+        <svg class="google-icon" viewBox="0 0 48 48">
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.16C6.51 42.62 14.62 48 24 48z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.16C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.75l7.97-6.16z"/>
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.16C12.43 13.72 17.74 9.5 24 9.5z"/>
+        </svg>
+        Publicar en Google Reviews
+      </a>
+
+      <p class="privacy-note">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Tú decides si publicar o no. Nadie publicará por ti automáticamente.
+      </p>
+    </div>
+
+    <!-- ══ PANTALLA 4 — Negativo ══ -->
+    <div class="screen" id="screen4">
+      <button class="back-link" onclick="goScreen(2)">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver
+      </button>
+
+      <div class="empathy-header">
+        <div class="eh-ico">💛</div>
+        <div class="eh-text">
+          <strong>Queremos escucharte</strong>
+          <p>Lamentamos que tu experiencia no haya sido la esperada. Tu caso llegará directamente al equipo directivo para seguimiento personal.</p>
+        </div>
+      </div>
+
+      <div class="neg-form" id="negForm">
+        <div class="nf-row">
+          <div class="nf-field">
+            <label class="nf-label">Tu nombre</label>
+            <input class="nf-input" id="nf_nombre" type="text" placeholder="Nombre completo">
+          </div>
+          <div class="nf-field">
+            <label class="nf-label">Teléfono</label>
+            <input class="nf-input" id="nf_tel" type="tel" placeholder="55 1234 5678" inputmode="tel">
+          </div>
+        </div>
+        <div class="nf-field">
+          <label class="nf-label">Servicio recibido</label>
+          <select class="nf-select" id="nf_servicio">
+            <option value="">Selecciona el servicio</option>
+            <option>Hemodiálisis</option>
+            <option>Consulta de Nefrología</option>
+            <option>Angiología / Acceso Vascular</option>
+            <option>Colocación de Catéter</option>
+            <option>Recepción / Administración</option>
+            <option>Otro servicio</option>
+          </select>
+        </div>
+        <div class="nf-field">
+          <label class="nf-label">Fecha aproximada de visita</label>
+          <input class="nf-input" id="nf_fecha" type="date">
+        </div>
+        <div class="nf-field">
+          <label class="nf-label">¿Qué ocurrió? Cuéntanos tu experiencia</label>
+          <textarea class="nf-textarea" id="nf_comentario" placeholder="Describe lo que pasó con el mayor detalle posible. Toda la información es estrictamente confidencial."></textarea>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="margin-bottom:10px;" onclick="sendNegative()">
+        <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        Enviar comentario privado
+      </button>
+
+      <button class="btn-secondary" onclick="sendWhatsApp()">
+        💬 Hablar directo por WhatsApp
+      </button>
+
+      <p class="privacy-note" style="margin-top:12px;">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Tu comentario es estrictamente privado. Nunca se publicará sin tu autorización.
+      </p>
+    </div>
+
+    <!-- ══ PANTALLA 5 — Éxito positivo ══ -->
+    <div class="screen" id="screen5">
+      <div class="success-screen">
+        <div class="success-checkmark">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>¡Gracias por tu reseña!</h2>
+        <p>Tu experiencia ayuda a otros pacientes a tomar una decisión informada sobre su tratamiento renal. Significa mucho para nosotros.</p>
+        <a href="https://montesinai.space" class="btn-primary btn-teal" style="text-decoration:none;display:flex;">
+          🏠 Volver a Monte Sinaí
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ PANTALLA 6 — Éxito negativo ══ -->
+    <div class="screen" id="screen6">
+      <div class="success-screen">
+        <div class="success-checkmark" style="background:linear-gradient(135deg,#FFB703,#F59E0B);box-shadow:0 8px 28px rgba(255,183,3,.4);">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>Recibimos tu mensaje</h2>
+        <p>Gracias por tomarte el tiempo de compartir tu experiencia. Un miembro del equipo directivo revisará tu caso personalmente y te contactará a la brevedad.</p>
+        <div style="background:var(--bg);border-radius:14px;padding:14px;margin-bottom:20px;border:1px solid var(--border);text-align:left;">
+          <p style="font-size:.75rem;color:var(--text-s);line-height:1.7;margin:0;">📞 Si prefieres hablar directamente: <strong style="color:var(--primary);">55 9680-8859</strong></p>
+        </div>
+        <a href="https://montesinai.space" class="btn-primary" style="text-decoration:none;display:flex;">
+          🏠 Volver a Monte Sinaí
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /card -->
+
+  <!-- ═══════════════════════════════════════
+       SECCIÓN QR — Para imprimir en clínica
+  ═══════════════════════════════════════ -->
+  <div class="qr-section">
+    <div class="qr-box">
+      <!-- QR generado dinámicamente con JS -->
+      <svg id="qrSvg" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- QR placeholder pattern -->
+        <rect width="21" height="21" fill="white"/>
+        <!-- Esquinas QR -->
+        <rect x="1" y="1" width="7" height="7" rx="1" fill="#071E35"/>
+        <rect x="2" y="2" width="5" height="5" rx=".5" fill="white"/>
+        <rect x="3" y="3" width="3" height="3" fill="#071E35"/>
+        <rect x="13" y="1" width="7" height="7" rx="1" fill="#071E35"/>
+        <rect x="14" y="2" width="5" height="5" rx=".5" fill="white"/>
+        <rect x="15" y="3" width="3" height="3" fill="#071E35"/>
+        <rect x="1" y="13" width="7" height="7" rx="1" fill="#071E35"/>
+        <rect x="2" y="14" width="5" height="5" rx=".5" fill="white"/>
+        <rect x="3" y="15" width="3" height="3" fill="#071E35"/>
+        <!-- Datos centrales simulados -->
+        <rect x="9" y="1" width="2" height="2" fill="#071E35"/>
+        <rect x="9" y="4" width="1" height="1" fill="#071E35"/>
+        <rect x="11" y="3" width="1" height="2" fill="#071E35"/>
+        <rect x="9" y="9" width="2" height="2" fill="#071E35"/>
+        <rect x="12" y="9" width="2" height="1" fill="#071E35"/>
+        <rect x="9" y="12" width="1" height="3" fill="#071E35"/>
+        <rect x="11" y="13" width="2" height="1" fill="#071E35"/>
+        <rect x="13" y="9" width="1" height="3" fill="#071E35"/>
+        <rect x="15" y="11" width="3" height="1" fill="#071E35"/>
+        <rect x="17" y="13" width="2" height="2" fill="#071E35"/>
+        <rect x="13" y="15" width="2" height="3" fill="#071E35"/>
+        <rect x="16" y="17" width="2" height="1" fill="#071E35"/>
+        <rect x="11" y="17" width="1" height="2" fill="#071E35"/>
+      </svg>
+    </div>
+    <div class="qr-content">
+      <div class="qr-label">📱 Escanea y opina</div>
+      <div class="qr-title">Comparte tu experiencia</div>
+      <div class="qr-sub">Apunta con la cámara de tu teléfono para dejar tu reseña en segundos. <br>montesinai.space/opinion</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SOCIAL PROOF — Reseñas existentes
+  ═══════════════════════════════════════ -->
+  <div class="social-section">
+    <p style="font-size:.75rem;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;text-align:center;">Lo que dicen nuestros pacientes</p>
+
+    <div class="social-card">
+      <div class="sc-header">
+        <div class="sc-ava">MR</div>
+        <div>
+          <div class="sc-name">Marco R.</div>
+          <div class="sc-date">Familiar de paciente · CDMX</div>
+        </div>
+        <div class="sc-stars" style="margin-left:auto;">★★★★★</div>
+      </div>
+      <p class="sc-text">"Mi mamá llegó en silla de ruedas y desorientada. En tres semanas de tratamiento ya camina sola. La Dra. Díaz Villar nos explicó todo con una paciencia y humanidad que nunca olvidaremos."</p>
+      <span class="sc-badge">✓ Reseña verificada en Google</span>
+    </div>
+
+    <div class="social-card">
+      <div class="sc-header">
+        <div class="sc-ava" style="background:linear-gradient(135deg,#2A9D8F,#5BC0DE);">LP</div>
+        <div>
+          <div class="sc-name">Laura P.</div>
+          <div class="sc-date">Paciente · Tlalnepantla</div>
+        </div>
+        <div class="sc-stars" style="margin-left:auto;">★★★★★</div>
+      </div>
+      <p class="sc-text">"Llevo 2 años en diálisis en Monte Sinaí y siempre me han tratado con respeto y profesionalismo. El equipo de enfermería es excepcional."</p>
+      <span class="sc-badge">✓ Reseña verificada en Google</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-mini">
+    <p>© 2025 <a href="https://montesinai.space">Monte Sinaí</a> · Calle Puerto 1, El Olivo 2, Tlalnepantla · <a href="tel:5596808859">55 9680-8859</a></p>
+    <p style="margin-top:4px;">Esta página facilita reseñas reales. No generamos ni manipulamos calificaciones.</p>
+  </div>
+
+</div><!-- /wrapper -->
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// MOTOR DEL WIZARD
+// ══════════════════════════════════════════════════════════════
+
+let currentRating = null;
+
+// Navegar entre pantallas
+function goScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen' + n).classList.add('active');
+  updateDots(n);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Actualizar indicadores de paso
+function updateDots(screen) {
+  const map = {1: 1, 2: 2, 3: 3, 4: 3, 5: 3, 6: 3};
+  const active = map[screen] || 1;
+  ['dot1','dot2','dot3'].forEach((id, i) => {
+    const dot = document.getElementById(id);
+    dot.classList.remove('active','done');
+    if (i + 1 < active) dot.classList.add('done');
+    if (i + 1 === active) dot.classList.add('active');
+  });
+}
+
+// Seleccionar calificación
+function selectRating(rating) {
+  msTrack('rating_selected',{event_category:'opinion',event_label:'Calificación: '+rating});
+  currentRating = rating;
+
+  // Animar la card seleccionada
+  const cards = document.querySelectorAll('.rating-card');
+  cards.forEach(c => c.style.opacity = '.4');
+  event.currentTarget.style.opacity = '1';
+  event.currentTarget.style.transform = 'scale(0.98)';
+
+  setTimeout(() => {
+    cards.forEach(c => { c.style.opacity = '1'; c.style.transform = ''; });
+    if (rating === 'excellent' || rating === 'good') {
+
+      // ── BANCO DE RESEÑAS — 6 por calificación, se elige una al azar ──
+      const REVIEWS = {
+        excellent: [
+          // 1 — Familiar de paciente, enfoque emocional
+          "Mi papá inició hemodiálisis en Monte Sinaí hace unos meses y el cambio ha sido increíble. La Dra. Díaz Villar nos explicó todo desde el principio con mucha paciencia. El personal de enfermería está al pendiente en todo momento durante las sesiones. Las instalaciones son limpias y modernas. Totalmente recomendada para quien busque atención renal de calidad en Tlalnepantla.",
+
+          // 2 — Paciente directo, enfoque clínico
+          "Llevo más de un año en tratamiento de hemodiálisis en Monte Sinaí y no cambiaría a ningún otro centro. Los médicos ajustan mi tratamiento según mis laboratorios cada mes, la máquina nunca ha fallado y el equipo siempre está disponible si surge algo durante la sesión. Lo que más valoro es que me tratan como persona, no como un número.",
+
+          // 3 — Urgencia resuelta, enfoque rápido
+          "Llegué de urgencia con potasio muy alto y el equipo de Monte Sinaí me atendió el mismo día sin hacerme esperar. Me colocaron catéter e iniciaron diálisis en pocas horas. Hoy estoy estable y continúo mi tratamiento aquí. No me imagino haber llegado a otro lado. Gracias totales al equipo médico.",
+
+          // 4 — Médico referente, voz profesional
+          "Como médico de primer contacto, refiero a mis pacientes con insuficiencia renal a Monte Sinaí con total confianza. Recibo reportes mensuales de laboratorios puntualmente y el equipo siempre responde rápido cuando hay una complicación. El acceso vascular se maneja con angiólogo especialista. Recomendada ampliamente a colegas.",
+
+          // 5 — Familiar con comparativa, tono coloquial
+          "Antes llevábamos a mi mamá a otra clínica y nunca nos explicaban nada. Desde que la cambiamos a Monte Sinaí, la Dra. Díaz Villar nos habla claro: qué come, qué no come, cómo va su potasio. Mi mamá llegó muy débil y ahora hasta cocina. Las instalaciones están impecables y nunca hemos tenido que esperar mucho.",
+
+          // 6 — Paciente joven, tono cercano
+          "Tengo 34 años con enfermedad renal y al principio tenía mucho miedo de iniciar diálisis. En Monte Sinaí me explicaron todo paso a paso antes de la primera sesión. Hoy ya llevo 8 meses y me siento estable. Las enfermeras son muy amables y el ambiente es tranquilo. Si estás buscando dónde iniciar tratamiento renal en Tlalnepantla, este es el lugar."
+        ],
+
+        good: [
+          // 1 — Puntualidad y limpieza
+          "Muy buena experiencia en Monte Sinaí. Las sesiones son puntuales y las instalaciones siempre están limpias. El equipo médico es profesional y resuelve las dudas. A veces el tiempo de espera para entrar puede alargarse un poco, pero la calidad de la atención lo compensa. Recomendada para pacientes en hemodiálisis en Tlalnepantla y CDMX.",
+
+          // 2 — Trato humano
+          "Lo que más destaco de Monte Sinaí es el trato humano. Nunca me he sentido como un paciente más de una lista. Las enfermeras conocen mi nombre, saben cómo reacciono a la ultrafiltración y están pendientes. La atención médica es muy buena. Seguiré aquí con confianza.",
+
+          // 3 — Acceso y transporte
+          "Muy buena clínica renal. Queda bien ubicada cerca del Suburbano San Rafael, lo que hace fácil llegar desde CDMX sin necesidad de coche. Las instalaciones son cómodas para las sesiones de 4 horas. El médico nefrólogo revisa resultados cada mes y ajusta el tratamiento. Recomendada.",
+
+          // 4 — Primera evaluación
+          "Acudí a una primera evaluación nefrológica y quedé muy satisfecho con la atención. La Dra. Díaz Villar revisó todos mis estudios con detalle, me explicó en qué etapa de la enfermedad renal estoy y qué opciones tengo. Sin prisa y con mucha claridad. Regresaré sin duda para mi seguimiento.",
+
+          // 5 — Familiar agradecido, tono tranquilo
+          "Mi hermano tiene hemodiálisis tres veces por semana en Monte Sinaí y hasta ahora la experiencia ha sido muy positiva. El equipo lo trata bien, las sesiones son en horario flexible que nos permite organizarnos con el trabajo. Ha habido pequeñas áreas de mejora en la comunicación administrativa, pero la parte clínica es excelente.",
+
+          // 6 — Paciente nuevo
+          "Inicié diálisis hace dos meses en Monte Sinaí y aunque el proceso fue desafiante al principio, el equipo me acompañó muy bien en la adaptación. Me explicaron qué comer, cómo cuidar el catéter y qué esperar en cada sesión. Poco a poco me he estabilizado. Muy agradecido con el equipo médico."
+        ]
+      };
+
+      // Elegir una reseña al azar del banco
+      const bank = REVIEWS[rating];
+      const chosen = bank[Math.floor(Math.random() * bank.length)];
+      document.getElementById('reviewText').value = chosen;
+      updateCharCount();
+      goScreen(3);
+    } else {
+      goScreen(4);
+    }
+  }, 300);
+}
+
+// ══════════════════════════════════════════════════════════════
+// PANTALLA POSITIVA — Funciones de reseña
+// ══════════════════════════════════════════════════════════════
+
+// Agregar frase al final del texto actual
+function addPhrase(text) {
+  const ta = document.getElementById('reviewText');
+  const cur = ta.value.trim();
+  // Si el texto termina en punto o está vacío, agregar directo
+  if (!cur) {
+    ta.value = text.charAt(0).toUpperCase() + text.slice(1) + '.';
+  } else if (cur.endsWith('.') || cur.endsWith('!') || cur.endsWith('?')) {
+    ta.value = cur + ' ' + text.charAt(0).toUpperCase() + text.slice(1) + '.';
+  } else {
+    ta.value = cur + ', ' + text + '.';
+  }
+  ta.focus();
+  updateCharCount();
+  // Animar el chip
+  event.target.style.borderColor = 'var(--teal)';
+  event.target.style.background  = 'var(--teal-p)';
+  event.target.style.color       = 'var(--teal)';
+  setTimeout(() => {
+    event.target.style.borderColor = '';
+    event.target.style.background  = '';
+    event.target.style.color       = '';
+  }, 600);
+}
+
+// Botón "Otra versión" — carga otra reseña aleatoria del banco
+function useSuggestion(btn) {
+  const rating = currentRating;
+  if (!rating || (rating !== 'excellent' && rating !== 'good')) return;
+  const REVIEWS_SHUFFLE = {
+    excellent: [
+      "Mi papá inició hemodiálisis en Monte Sinaí hace unos meses y el cambio ha sido increíble. La Dra. Díaz Villar nos explicó todo desde el principio con mucha paciencia. El personal de enfermería está al pendiente en todo momento durante las sesiones. Las instalaciones son limpias y modernas. Totalmente recomendada para quien busque atención renal de calidad en Tlalnepantla.",
+      "Llevo más de un año en tratamiento de hemodiálisis en Monte Sinaí y no cambiaría a ningún otro centro. Los médicos ajustan mi tratamiento según mis laboratorios cada mes, la máquina nunca ha fallado y el equipo siempre está disponible si surge algo durante la sesión. Lo que más valoro es que me tratan como persona, no como un número.",
+      "Llegué de urgencia con potasio muy alto y el equipo de Monte Sinaí me atendió el mismo día sin hacerme esperar. Me colocaron catéter e iniciaron diálisis en pocas horas. Hoy estoy estable y continúo mi tratamiento aquí. No me imagino haber llegado a otro lado. Gracias totales al equipo médico.",
+      "Como médico de primer contacto, refiero a mis pacientes con insuficiencia renal a Monte Sinaí con total confianza. Recibo reportes mensuales de laboratorios puntualmente y el equipo siempre responde rápido cuando hay una complicación. El acceso vascular se maneja con angiólogo especialista. Recomendada ampliamente a colegas.",
+      "Antes llevábamos a mi mamá a otra clínica y nunca nos explicaban nada. Desde que la cambiamos a Monte Sinaí, la Dra. Díaz Villar nos habla claro: qué come, qué no come, cómo va su potasio. Mi mamá llegó muy débil y ahora hasta cocina. Las instalaciones están impecables y nunca hemos tenido que esperar mucho.",
+      "Tengo 34 años con enfermedad renal y al principio tenía mucho miedo de iniciar diálisis. En Monte Sinaí me explicaron todo paso a paso antes de la primera sesión. Hoy ya llevo 8 meses y me siento estable. Las enfermeras son muy amables y el ambiente es tranquilo. Si estás buscando dónde iniciar tratamiento renal en Tlalnepantla, este es el lugar."
+    ],
+    good: [
+      "Muy buena experiencia en Monte Sinaí. Las sesiones son puntuales y las instalaciones siempre están limpias. El equipo médico es profesional y resuelve las dudas. A veces el tiempo de espera para entrar puede alargarse un poco, pero la calidad de la atención lo compensa. Recomendada para pacientes en hemodiálisis en Tlalnepantla y CDMX.",
+      "Lo que más destaco de Monte Sinaí es el trato humano. Nunca me he sentido como un paciente más de una lista. Las enfermeras conocen mi nombre, saben cómo reacciono a la ultrafiltración y están pendientes. La atención médica es muy buena. Seguiré aquí con confianza.",
+      "Muy buena clínica renal. Queda bien ubicada cerca del Suburbano San Rafael, lo que hace fácil llegar desde CDMX sin necesidad de coche. Las instalaciones son cómodas para las sesiones de 4 horas. El médico nefrólogo revisa resultados cada mes y ajusta el tratamiento. Recomendada.",
+      "Acudí a una primera evaluación nefrológica y quedé muy satisfecho con la atención. La Dra. Díaz Villar revisó todos mis estudios con detalle, me explicó en qué etapa de la enfermedad renal estoy y qué opciones tengo. Sin prisa y con mucha claridad. Regresaré sin duda para mi seguimiento.",
+      "Mi hermano tiene hemodiálisis tres veces por semana en Monte Sinaí y hasta ahora la experiencia ha sido muy positiva. El equipo lo trata bien, las sesiones son en horario flexible que nos permite organizarnos con el trabajo. Ha habido pequeñas áreas de mejora en la comunicación administrativa, pero la parte clínica es excelente.",
+      "Inicié diálisis hace dos meses en Monte Sinaí y aunque el proceso fue desafiante al principio, el equipo me acompañó muy bien en la adaptación. Me explicaron qué comer, cómo cuidar el catéter y qué esperar en cada sesión. Poco a poco me he estabilizado. Muy agradecido con el equipo médico."
+    ]
+  };
+  const bank = REVIEWS_SHUFFLE[rating];
+  const current = document.getElementById('reviewText').value;
+  // Evitar repetir la misma reseña
+  let chosen;
+  let attempts = 0;
+  do {
+    chosen = bank[Math.floor(Math.random() * bank.length)];
+    attempts++;
+  } while (chosen === current && attempts < 10);
+  // Animación de cambio
+  const ta = document.getElementById('reviewText');
+  ta.style.opacity = '0';
+  ta.style.transition = 'opacity .2s';
+  setTimeout(() => {
+    ta.value = chosen;
+    ta.style.opacity = '1';
+    updateCharCount();
+  }, 200);
+  // Feedback visual del botón
+  btn.textContent = '✓ Nueva versión cargada';
+  btn.style.borderColor = 'var(--green)';
+  btn.style.color = 'var(--green)';
+  setTimeout(() => {
+    btn.textContent = '🔄 Otra versión';
+    btn.style.borderColor = '';
+    btn.style.color = '';
+  }, 1800);
+}
+
+// Mantener compatibilidad con nombre viejo
+function addSuggestion(text) { addPhrase(text); }
+
+function updateCharCount() {
+  const ta = document.getElementById('reviewText');
+  const len = ta.value.length;
+  const el = document.getElementById('charCount');
+  el.textContent = len + ' / 500 caracteres';
+  el.className = 'char-count';
+  if (len > 100) el.classList.add('good');
+  if (len > 450) { el.classList.remove('good'); el.classList.add('warn'); }
+}
+
+function copyReview() {
+  const text = document.getElementById('reviewText').value;
+  if (!text.trim()) {
+    alert('Escribe tu experiencia primero para poder copiarla.');
+    return;
+  }
+  navigator.clipboard.writeText(text).then(() => {
+    showToast();
+  }).catch(() => {
+    // Fallback para iOS Safari
+    const ta = document.getElementById('reviewText');
+    ta.select();
+    document.execCommand('copy');
+    showToast();
+  });
+}
+
+function showToast() {
+  const toast = document.getElementById('copyToast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+function openGoogle(e) {
+  const text = document.getElementById('reviewText').value;
+  if (text.trim()) {
+    // Copiar automáticamente al abrir Google
+    navigator.clipboard.writeText(text).catch(() => {});
+  }
+  // Abrir Google Reviews
+  msTrack('google_review_click',{event_category:'opinion',event_label:'Abrió Google Reviews'});
+  window.open(CONFIG.GOOGLE_REVIEWS_URL, '_blank');
+
+  // Mostrar pantalla de éxito después de un momento
+  setTimeout(() => goScreen(5), 800);
+}
+
+// ══════════════════════════════════════════════════════════════
+// PANTALLA NEGATIVA — Envío de formulario
+// ══════════════════════════════════════════════════════════════
+
+function sendNegative() {
+  msTrack('feedback_negativo',{event_category:'opinion',event_label:'Comentario privado enviado'});
+  const nombre    = document.getElementById('nf_nombre').value.trim();
+  const tel       = document.getElementById('nf_tel').value.trim();
+  const servicio  = document.getElementById('nf_servicio').value;
+  const fecha     = document.getElementById('nf_fecha').value;
+  const comentario= document.getElementById('nf_comentario').value.trim();
+
+  if (!nombre) { alert('Por favor ingresa tu nombre'); return; }
+  if (!comentario || comentario.length < 10) { alert('Por favor describe tu experiencia'); return; }
+
+  // ── Opción 1: Enviar a WhatsApp (siempre funciona, sin backend)
+  const msg =
+`*⚠️ Comentario Privado — Monte Sinaí*
+
+*Nombre:* ${nombre || 'No especificado'}
+*Teléfono:* ${tel || 'No especificado'}
+*Servicio:* ${servicio || 'No especificado'}
+*Fecha de visita:* ${fecha || 'No especificada'}
+
+*Comentario:*
+${comentario}
+
+_Enviado desde montesinai.space/opinion_`;
+
+  // Guardar en localStorage como respaldo
+  const registro = {
+    timestamp: new Date().toISOString(),
+    nombre, tel, servicio, fecha, comentario,
+    rating: currentRating
+  };
+  const existentes = JSON.parse(localStorage.getItem('ms_feedback') || '[]');
+  existentes.push(registro);
+  localStorage.setItem('ms_feedback', JSON.stringify(existentes));
+
+  // Abrir WhatsApp con el mensaje
+  const url = 'https://wa.me/' + CONFIG.WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+
+  // Ir a pantalla de éxito
+  goScreen(6);
+}
+
+function sendWhatsApp() {
+  const nombre = document.getElementById('nf_nombre').value.trim() || 'Paciente';
+  const msg = `Hola Monte Sinaí, soy ${nombre} y me gustaría hablar con alguien del equipo sobre mi experiencia en la clínica.`;
+  window.open('https://wa.me/' + CONFIG.WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// ══════════════════════════════════════════════════════════════
+// CANVAS FONDO — Partículas suaves
+// ══════════════════════════════════════════════════════════════
+(function() {
+  const cv = document.getElementById('bg-canvas');
+  const ctx = cv.getContext('2d');
+  let W, H;
+  const PALETTE = [
+    {r:42,g:157,b:143},
+    {r:107,g:63,b:160},
+    {r:91,g:192,b:222},
+    {r:40,g:182,b:115},
+  ];
+  const c = (col, a) => `rgba(${col.r},${col.g},${col.b},${a})`;
+  const rc = () => PALETTE[Math.floor(Math.random() * PALETTE.length)];
+
+  const resize = () => {
+    W = cv.width = window.innerWidth;
+    H = cv.height = window.innerHeight;
+  };
+  resize();
+  window.addEventListener('resize', resize, {passive: true});
+
+  class Particle {
+    constructor() { this.init(); }
+    init() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r  = 0.5 + Math.random() * 1.5;
+      this.vx = (Math.random() - .5) * .2;
+      this.vy = (Math.random() - .5) * .2;
+      this.col = rc();
+      this.maxA = .04 + Math.random() * .08;
+      this.ph  = Math.random() * Math.PI * 2;
+      this.life = 0;
+      this.max  = 200 + Math.random() * 300;
+    }
+    draw() {
+      this.life++;
+      if (this.life > this.max) { this.init(); return; }
+      this.ph += .025;
+      const p = Math.min(this.life / 40, 1) * Math.min(1, (this.max - this.life) / 40);
+      const r = this.r * (1 + Math.sin(this.ph) * .2) * 3;
+      const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, r);
+      g.addColorStop(0, c(this.col, this.maxA * p * 1.5));
+      g.addColorStop(1, c(this.col, 0));
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+      ctx.fill();
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < -10) this.x = W + 10;
+      if (this.x > W + 10) this.x = -10;
+      if (this.y < -10) this.y = H + 10;
+      if (this.y > H + 10) this.y = -10;
+    }
+  }
+
+  const particles = Array.from({length: 40}, () => new Particle());
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => p.draw());
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ══════════════════════════════════════════════════════════════
+// INSTRUCCIONES DE IMPLEMENTACIÓN (en comentarios)
+// ══════════════════════════════════════════════════════════════
+/*
+  ┌─────────────────────────────────────────────────────────────┐
+  │  CÓMO CONFIGURAR ESTA PÁGINA                                │
+  ├─────────────────────────────────────────────────────────────┤
+  │                                                             │
+  │  1. LINK DE GOOGLE REVIEWS                                  │
+  │     → Ve a tu Google Business Profile                       │
+  │     → "Obtener más reseñas" → Copia el link                 │
+  │     → Reemplaza CONFIG.GOOGLE_REVIEWS_URL arriba            │
+  │                                                             │
+  │  2. WHATSAPP PARA COMENTARIOS NEGATIVOS                     │
+  │     → Ya configurado: 5645192997                            │
+  │     → Cambia CONFIG.WHATSAPP_NUMBER si es necesario         │
+  │                                                             │
+  │  3. SUBIR A GITHUB                                          │
+  │     → Guardar como opinion.html en raíz del repo            │
+  │     → Agregar a vercel.json:                                │
+  │       { "source":"/opinion","destination":"/opinion.html" } │
+  │     → URL final: montesinai.space/opinion                   │
+  │                                                             │
+  │  4. VER COMENTARIOS GUARDADOS                               │
+  │     → Abrir DevTools → Application → LocalStorage           │
+  │     → Key: ms_feedback                                      │
+  │                                                             │
+  │  5. QR CODE                                                 │
+  │     → Genera tu QR en: qr-code-generator.com               │
+  │     → URL: https://montesinai.space/opinion                  │
+  │     → Imprime y coloca en sala de espera                    │
+  │                                                             │
+  └─────────────────────────────────────────────────────────────┘
+*/
+</script>
+</body>
+</html>
