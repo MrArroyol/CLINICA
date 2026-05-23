@@ -1,19 +1,51 @@
 {
   "rewrites": [
-    { "source": "/",            "destination": "/index.html" },
-    { "source": "/citas",       "destination": "/citas.html" },
-    { "source": "/guia",        "destination": "/guia.html" },
-    { "source": "/glosario",    "destination": "/glosario.html" },
-    { "source": "/nutricion",   "destination": "/nutricion.html" }
+    { "source": "/",          "destination": "/index.html" },
+    { "source": "/citas",     "destination": "/pages/citas.html" },
+    { "source": "/guia",      "destination": "/pages/guia.html" },
+    { "source": "/glosario",  "destination": "/pages/glosario.html" },
+    { "source": "/nutricion", "destination": "/pages/nutricion.html" },
+    { "source": "/opinion",   "destination": "/opinion.html" },
+
+    { "source": "/blog",      "destination": "/blog.html" },
+
+    { "source": "/hemodialisis-tlalnepantla",
+      "destination": "/hemodialisis-tlalnepantla.html" },
+    { "source": "/urgencias-renales",
+      "destination": "/urgencias-renales.html" },
+    { "source": "/nefrologo-tlalnepantla",
+      "destination": "/nefrologo-tlalnepantla.html" },
+    { "source": "/hemodialisis-suburbano-san-rafael",
+      "destination": "/hemodialisis-suburbano-san-rafael.html" },
+    { "source": "/hemodialisis-gustavo-baz",
+      "destination": "/hemodialisis-gustavo-baz.html" },
+    { "source": "/hemodialisis-periferico-norte",
+      "destination": "/hemodialisis-periferico-norte.html" },
+
+    { "source": "/creatinina-alta-que-significa",
+      "destination": "/creatinina-alta-que-significa.html" },
+    { "source": "/sintomas-insuficiencia-renal",
+      "destination": "/sintomas-insuficiencia-renal.html" },
+    { "source": "/primera-sesion-hemodialisis",
+      "destination": "/primera-sesion-hemodialisis.html" },
+    { "source": "/potasio-alto-dialisis",
+      "destination": "/potasio-alto-dialisis.html" },
+    { "source": "/fistula-arteriovenosa-cuidados",
+      "destination": "/fistula-arteriovenosa-cuidados.html" },
+    { "source": "/dieta-hemodialisis",
+      "destination": "/dieta-hemodialisis.html" },
+    { "source": "/guia-familiar-hemodialisis",
+      "destination": "/guia-familiar-hemodialisis.html" },
+    { "source": "/hemodialisis-vs-dialisis-peritoneal",
+      "destination": "/hemodialisis-vs-dialisis-peritoneal.html" }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options",   "value": "nosniff" },
-        { "key": "X-Frame-Options",          "value": "SAMEORIGIN" },
-        { "key": "X-XSS-Protection",         "value": "1; mode=block" },
-        { "key": "Referrer-Policy",          "value": "strict-origin-when-cross-origin" }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options",        "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" }
       ]
     },
     {
@@ -25,17 +57,9 @@
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
-      ]
-    },
-    {
-      "source": "/robots.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain" },
+        { "key": "Content-Type",  "value": "application/xml" },
         { "key": "Cache-Control", "value": "public, max-age=86400" }
       ]
     }
   ]
 }
-
