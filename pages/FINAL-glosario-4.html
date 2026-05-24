@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+<meta name="theme-color" content="#071E35">
+<title>Glosario Renal · Monte Sinaí — Diccionario Médico</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#071E35;--primary:#0D3B66;--secondary:#1B5EBC;
+  --teal:#2A9D8F;--teal-l:#3BBFB0;--teal-p:#E3F4F2;
+  --purple:#6B3FA0;--purple-l:#9B6ED4;--purple-p:#F0E8FF;
+  --sky:#5BC0DE;--sky-p:#E8F6FC;
+  --gold:#FFB703;--red:#E63946;--green:#28B673;
+  --bg:#F0F5FB;--base:#FFFFFF;
+  --text:#0A1520;--text-mid:#1A2E40;--text-s:#4A6070;--border:#C8DCE8;
+  --safe-top:env(safe-area-inset-top,0px);--safe-bot:env(safe-area-inset-bottom,0px);
+  --nav-h:62px;--px:16px;
+  --ease:cubic-bezier(.25,.46,.45,.94);--spring:cubic-bezier(.34,1.56,.64,1);--out:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:calc(68px + var(--safe-bot));}
+*{-webkit-tap-highlight-color:transparent;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--purple);border-radius:4px;}
+
+#glowCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;background:linear-gradient(90deg,var(--purple),var(--teal),var(--sky),var(--purple));background-size:200%;transform:scaleX(0);transform-origin:left;animation:prog-move 4s linear infinite;}
+@keyframes prog-move{0%{background-position:0%}100%{background-position:200%}}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;padding-top:var(--safe-top);background:rgba(7,30,53,.97);backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid rgba(107,63,160,.25);}
+.nav__i{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--px);}
+.nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav__logo img{height:40px;width:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(107,63,160,.45);box-shadow:0 0 0 3px rgba(107,63,160,.12);}
+.nav__brand strong{display:block;color:white;font-size:.8rem;font-weight:800;}
+.nav__brand em{display:block;color:var(--teal-l);font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-style:normal;}
+.nav__r{display:flex;align-items:center;gap:8px;}
+.nav__tel{width:40px;height:40px;border-radius:50%;background:rgba(42,157,143,.18);border:1px solid rgba(42,157,143,.3);display:flex;align-items:center;justify-content:center;text-decoration:none;}
+.nav__tel svg{width:17px;height:17px;stroke:var(--teal-l);fill:none;stroke-width:2.5;}
+.nav__cta{height:36px;padding:0 16px;border-radius:100px;background:linear-gradient(135deg,var(--purple),var(--teal));color:white;font-size:.77rem;font-weight:700;border:none;font-family:'Poppins',sans-serif;text-decoration:none;display:flex;align-items:center;box-shadow:0 3px 14px rgba(107,63,160,.45);}
+
+.nav-bar{background:white;border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;position:relative;z-index:3;}
+.nav-bar::-webkit-scrollbar{display:none;}
+.nav-bar-i{display:inline-flex;gap:0;padding:0 12px;min-width:100%;}
+.nb-link{display:inline-flex;align-items:center;gap:7px;padding:13px 15px;font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:600;color:var(--text-s);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;transition:all .18s;}
+.nb-link.on{color:var(--primary);border-bottom-color:var(--purple);font-weight:700;}
+.nb-link:last-child{color:var(--green);font-weight:700;}
+
+.hero{min-height:260px;position:relative;overflow:hidden;background:linear-gradient(155deg,var(--navy) 0%,#1A0940 40%,var(--primary) 100%);padding:calc(var(--nav-h) + var(--safe-top) + 48px + 28px) var(--px) 36px;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(107,63,160,.35),transparent 60%),radial-gradient(ellipse 45% 45% at 10% 80%,rgba(42,157,143,.25),transparent 55%);pointer-events:none;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;}
+.hero__in{position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(107,63,160,.3),rgba(42,157,143,.2));border:1px solid rgba(107,63,160,.4);border-radius:100px;padding:6px 16px;margin-bottom:14px;}
+.hb-text{color:var(--teal-l);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.hb-level{background:var(--purple);color:white;font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:100px;}
+.hero__title{color:white;font-size:clamp(1.7rem,7vw,2.3rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px;}
+.hero__title em{background:linear-gradient(135deg,var(--teal-l),var(--sky),var(--purple-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal;}
+.hero__sub{color:rgba(255,255,255,.62);font-size:.9rem;line-height:1.75;margin-bottom:20px;}
+.hero-stats{display:flex;gap:10px;flex-wrap:wrap;}
+.hs{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;backdrop-filter:blur(8px);}
+.hs-n{color:white;font-size:.95rem;font-weight:700;line-height:1;}
+.hs-l{color:rgba(255,255,255,.45);font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;}
+
+.search-wrap{background:white;padding:14px var(--px);position:sticky;top:calc(var(--nav-h) + var(--safe-top) + 48px);z-index:50;border-bottom:1px solid var(--border);box-shadow:0 4px 20px rgba(13,59,102,.08);}
+.search-box{display:flex;align-items:center;gap:10px;background:var(--bg);border:2px solid var(--border);border-radius:16px;padding:0 16px;height:50px;transition:all .2s;}
+.search-box:focus-within{border-color:var(--purple);background:white;box-shadow:0 0 0 4px rgba(107,63,160,.1);}
+.search-ico{font-size:1.1rem;flex-shrink:0;}
+#searchInput{flex:1;background:none;border:none;outline:none;font-family:'Poppins',sans-serif;font-size:.92rem;color:var(--text);}
+#searchInput::placeholder{color:var(--text-s);}
+.search-clear{width:28px;height:28px;border-radius:50%;background:var(--border);border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:.8rem;color:var(--text-s);flex-shrink:0;}
+.search-clear.vis{display:flex;}
+.cat-pills{display:flex;gap:8px;overflow-x:auto;padding:12px var(--px) 2px;scrollbar-width:none;}
+.cat-pills::-webkit-scrollbar{display:none;}
+.cat-pill{flex-shrink:0;height:34px;padding:0 14px;border-radius:100px;font-family:'Poppins',sans-serif;font-size:.75rem;font-weight:700;border:2px solid var(--border);background:white;color:var(--text-s);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+.cat-pill.on{border-color:var(--purple);background:var(--purple-p);color:var(--purple);}
+
+/* THEMED SECTION IMAGE */
+.themed-sec{position:relative;overflow:hidden;margin:0;}
+.themed-img{width:100%;height:170px;object-fit:cover;display:block;filter:brightness(.5) saturate(1.3);}
+.themed-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 25%,rgba(7,30,53,.95) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:16px var(--px);}
+.themed-cat-label{display:inline-flex;align-items:center;gap:7px;padding:4px 12px;border-radius:100px;margin-bottom:7px;font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);width:fit-content;}
+.themed-overlay h2{color:white;font-size:1.25rem;font-weight:700;line-height:1.2;margin-bottom:3px;}
+.themed-overlay p{color:rgba(255,255,255,.62);font-size:.78rem;line-height:1.6;}
+
+/* TERM CARDS GRID */
+.terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px var(--px);}
+
+.term-card{background:white;border-radius:20px;border:2px solid var(--border);overflow:visible;position:relative;cursor:pointer;transition:all .22s var(--spring);}
+.term-card:active{transform:scale(.96);}
+.term-card.open{border-color:var(--purple);box-shadow:0 8px 28px rgba(107,63,160,.2);z-index:10;}
+
+.tc-bar{height:4px;border-radius:4px 4px 0 0;margin:-2px -2px 0;width:calc(100% + 4px);}
+.tc-bar-p{background:linear-gradient(90deg,var(--purple),var(--purple-l));}
+.tc-bar-t{background:linear-gradient(90deg,var(--teal),var(--teal-l));}
+.tc-bar-s{background:linear-gradient(90deg,var(--sky),#7DD4EC);}
+.tc-bar-g{background:linear-gradient(90deg,var(--gold),#FFD166);}
+.tc-bar-r{background:linear-gradient(90deg,var(--red),#FF6B6B);}
+.tc-bar-gr{background:linear-gradient(90deg,var(--green),#52D9A4);}
+
+.tc-inner{padding:14px 12px;}
+.tc-ico{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.45rem;margin-bottom:9px;transition:transform .22s var(--spring);}
+.term-card.open .tc-ico{transform:scale(1.12) rotate(-6deg);}
+.tc-ico-p{background:var(--purple-p);}
+.tc-ico-t{background:var(--teal-p);}
+.tc-ico-s{background:var(--sky-p);}
+.tc-ico-g{background:rgba(255,183,3,.12);}
+.tc-ico-r{background:rgba(230,57,70,.1);}
+.tc-ico-gr{background:rgba(40,182,115,.1);}
+.tc-word{font-size:.8rem;font-weight:800;color:var(--primary);line-height:1.2;margin-bottom:3px;}
+.tc-hint{font-size:.66rem;color:var(--text-s);line-height:1.4;}
+.tc-tap{position:absolute;top:9px;right:9px;width:20px;height:20px;border-radius:50%;background:var(--purple-p);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--purple);font-weight:700;transition:all .22s var(--spring);}
+.term-card.open .tc-tap{background:var(--purple);color:white;transform:rotate(45deg);}
+
+.tc-panel{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.term-card.open .tc-panel{max-height:360px;}
+.tc-panel-inner{padding:12px 12px 14px;border-top:1px solid var(--border);}
+.tc-def{font-size:.8rem;color:var(--text-mid);line-height:1.8;margin-bottom:10px;}
+.tc-keys{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;}
+.tc-key{display:flex;align-items:flex-start;gap:7px;font-size:.74rem;color:var(--text-mid);line-height:1.5;}
+.tc-key-ico{width:18px;height:18px;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;margin-top:1px;}
+.tki-p{background:var(--purple-p);}
+.tki-t{background:var(--teal-p);}
+.tki-s{background:var(--sky-p);}
+.tc-tip{background:var(--purple-p);border-radius:9px;padding:7px 9px;border-left:3px solid var(--purple);font-size:.72rem;color:#4A2070;font-weight:500;line-height:1.6;display:flex;gap:6px;align-items:flex-start;}
+.tc-tip span{flex-shrink:0;font-size:.85rem;}
+
+/* FULL WIDTH CARD */
+.term-card-full{grid-column:1/-1;background:white;border-radius:20px;border:2px solid var(--border);overflow:hidden;position:relative;cursor:pointer;transition:all .22s var(--spring);}
+.term-card-full:active{transform:scale(.99);}
+.term-card-full.open{border-color:var(--teal);box-shadow:0 8px 28px rgba(42,157,143,.2);}
+.tcf-inner{display:flex;gap:14px;padding:16px 14px;align-items:flex-start;}
+.tcf-ico{width:58px;height:58px;border-radius:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.7rem;}
+.tcf-content{flex:1;}
+.tcf-word{font-size:.92rem;font-weight:800;color:var(--primary);margin-bottom:3px;}
+.tcf-sub{font-size:.73rem;color:var(--text-s);margin-bottom:5px;}
+.tcf-preview{font-size:.78rem;color:var(--text-mid);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.tcf-arrow{width:30px;height:30px;border-radius:50%;background:var(--purple-p);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .22s var(--spring);color:var(--purple);font-size:.88rem;font-weight:700;align-self:center;}
+.term-card-full.open .tcf-arrow{background:var(--purple);color:white;transform:rotate(45deg);}
+.tcf-panel{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.term-card-full.open .tcf-panel{max-height:480px;}
+.tcf-panel-inner{padding:14px 14px 16px;border-top:1px solid var(--border);}
+.tcf-def{font-size:.82rem;color:var(--text-mid);line-height:1.85;margin-bottom:12px;}
+.tcf-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.tcf-stat{background:var(--bg);border-radius:12px;padding:9px 11px;border:1px solid var(--border);}
+.tcf-stat-n{font-size:1.05rem;font-weight:800;color:var(--primary);}
+.tcf-stat-l{font-size:.66rem;color:var(--text-s);text-transform:uppercase;letter-spacing:.05em;}
+
+/* MID CTA */
+.mid-cta{margin:8px var(--px) 0;background:linear-gradient(135deg,var(--purple),var(--teal));border-radius:20px;padding:18px;display:flex;align-items:center;gap:12px;}
+.mid-cta img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.25);flex-shrink:0;}
+.mid-cta-text strong{display:block;color:white;font-size:.88rem;font-weight:700;margin-bottom:2px;}
+.mid-cta-text span{color:rgba(255,255,255,.65);font-size:.76rem;}
+.mid-cta-btn{flex-shrink:0;height:34px;padding:0 13px;border-radius:100px;background:white;color:var(--purple);font-family:'Poppins',sans-serif;font-weight:700;font-size:.73rem;text-decoration:none;display:flex;align-items:center;}
+
+#emptyState{display:none;text-align:center;padding:48px var(--px);}
+#emptyState .es-ico{font-size:3rem;margin-bottom:14px;}
+#emptyState p{color:var(--text-s);font-size:.9rem;}
+
+footer{background:#040E18;padding:30px 0 20px;}
+.ft-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.ft-logo{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(107,63,160,.3);}
+.ft-brand strong{display:block;color:white;font-size:.8rem;font-weight:800;}
+.ft-brand span{color:var(--teal-l);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;}
+.ft-tag{color:#1E3040;font-size:.76rem;line-height:1.7;margin-bottom:14px;}
+.ft-links{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+.ft-link{color:#1A2D3D;font-size:.76rem;text-decoration:none;padding:5px 11px;border-radius:7px;background:rgba(255,255,255,.04);}
+.ft-bottom p{color:#0E1E28;font-size:.67rem;text-align:center;}
+
+.bnav{position:fixed;bottom:0;left:0;right:0;z-index:900;padding-bottom:var(--safe-bot);background:rgba(255,255,255,.97);backdrop-filter:blur(20px) saturate(180%);border-top:2px solid var(--border);box-shadow:0 -4px 24px rgba(13,59,102,.1);}
+.bnav-i{display:flex;height:68px;align-items:stretch;}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--text-s);font-size:.57rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;transition:color .18s;position:relative;padding:8px 4px;}
+.bn:active{background:rgba(107,63,160,.04);}
+.bn.on{color:var(--purple);}
+.bn.on::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:22px;height:3px;border-radius:3px;background:var(--purple);}
+.bn-ic{width:22px;height:22px;}
+.bn-cta{background:linear-gradient(135deg,var(--purple),var(--teal));color:white!important;border-radius:12px;margin:8px 5px;flex:1.4;padding:0 8px;box-shadow:0 4px 16px rgba(107,63,160,.42);}
+.bn-cta::before{display:none!important;}
+
+[data-r]{opacity:0;transform:translateY(18px);transition:opacity .55s var(--out),transform .55s var(--out);}
+[data-r].vis{opacity:1;transform:translateY(0);}
+[data-rd="1"]{transition-delay:.07s;}
+
+@media(min-width:768px){.bnav{display:none;}body{padding-bottom:0;}.terms-grid{grid-template-columns:repeat(3,1fr);}}
+</style>
+
+  <!-- ══════════════════════════════════════════════
+    GOOGLE ANALYTICS 4 — Monte Sinaí
+    INSTRUCCIÓN: Reemplaza G-RHZJ6NCE54 con tu código real
+    Ejemplo: G-RHZJ6NCE54 → G-AB12CD34EF
+  ══════════════════════════════════════════════ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZJ6NCE54"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Configuración principal
+    gtag('config', 'G-RHZJ6NCE54', {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
+
+    // ══ FUNCIÓN GLOBAL — registrar eventos ══
+    function msTrack(eventName, params) {
+      gtag('event', eventName, params || {});
+    }
+
+    // ══ EVENTO: Clic en WhatsApp (cualquier página) ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href*="wa.me"]');
+      if (el) {
+        msTrack('whatsapp_click', {
+          event_category: 'contacto',
+          event_label: 'WhatsApp abierto',
+          page: window.location.pathname
+        });
+      }
+    });
+
+    // ══ EVENTO: Clic en llamar (tel:) ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href^="tel:"]');
+      if (el) {
+        msTrack('llamada_click', {
+          event_category: 'contacto',
+          event_label: 'Llamada iniciada',
+          page: window.location.pathname
+        });
+      }
+    });
+
+    // ══ EVENTO: Clic en Google Maps ══
+    document.addEventListener('click', function(e) {
+      const el = e.target.closest('a[href*="maps.google"]');
+      if (el) {
+        msTrack('maps_click', {
+          event_category: 'ubicacion',
+          event_label: 'Google Maps abierto'
+        });
+      }
+    });
+
+    // ══ EVENTO: Tiempo en página (30 segundos = usuario interesado) ══
+    setTimeout(function() {
+      msTrack('engaged_user', {
+        event_category: 'engagement',
+        event_label: '30 segundos en página',
+        page: window.location.pathname
+      });
+    }, 30000);
+
+    // ══ EVENTO: Scroll profundo (70% de la página) ══
+    (function() {
+      var fired70 = false;
+      window.addEventListener('scroll', function() {
+        if (fired70) return;
+        var scrolled = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrolled >= 0.70) {
+          fired70 = true;
+          msTrack('deep_scroll', {
+            event_category: 'engagement',
+            event_label: '70% página leída',
+            page: window.location.pathname
+          });
+        }
+      }, {passive: true});
+    })();
+  </script>
+
+</head>
+<body>
+<div id="prog"></div>
+<canvas id="glowCanvas"></canvas>
+
+<nav class="nav">
+  <div class="nav__i">
+    <a href="../index.html" class="nav__logo">
+      <img src="../assets/logo-hemodialisis.jpg" alt="Monte Sinaí" onerror="this.style.display='none'">
+      <div class="nav__brand"><strong>MONTE SINAÍ</strong><em>Glosario Renal</em></div>
+    </a>
+    <div class="nav__r">
+      <a href="tel:5596808859" class="nav__tel"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.46 12.85 19.79 19.79 0 01.38 4.26 2 2 0 012.36 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.73a16 16 0 006.36 6.36l1.09-1.7a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+      <a href="citas.html" class="nav__cta">Consulta →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-bar" style="margin-top:calc(var(--nav-h) + var(--safe-top));">
+  <div class="nav-bar-i">
+    <a href="../index.html" class="nb-link">🏠 Inicio</a>
+    <a href="citas.html"    class="nb-link">🗓️ Citas</a>
+    <a href="guia.html"     class="nb-link">📚 Guía</a>
+    <a href="glosario.html" class="nb-link on">📖 Glosario</a>
+    <a href="tel:5596808859" class="nb-link">📞 Llamar</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero__in">
+    <div class="hero-badge">
+      <span>🧬</span>
+      <span class="hb-text">Diccionario médico interactivo</span>
+      <span class="hb-level">89 términos</span>
+    </div>
+    <h1 class="hero__title">Entiende tu<br><em>diagnóstico renal</em></h1>
+    <p class="hero__sub">Toca cualquier tarjeta para ver la explicación. Sin jerga, sin confusión.</p>
+    <div class="hero-stats">
+      <div class="hs"><span>🫘</span><div><div class="hs-n">9</div><div class="hs-l">Categorías</div></div></div>
+      <div class="hs"><span>📖</span><div><div class="hs-n">89</div><div class="hs-l">Términos</div></div></div>
+      <div class="hs"><span>✅</span><div><div class="hs-n">100%</div><div class="hs-l">Claro</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-ico">🔍</span>
+    <input type="text" id="searchInput" placeholder="Buscar término médico..." oninput="filterTerms(this.value)">
+    <button class="search-clear" id="clearBtn" onclick="clearSearch()">✕</button>
+  </div>
+</div>
+<div class="cat-pills">
+  <button class="cat-pill on" onclick="filterCat('all',this)">Todos</button>
+  <button class="cat-pill" onclick="filterCat('rinon',this)">🫘 Riñón</button>
+  <button class="cat-pill" onclick="filterCat('dialisis',this)">💉 Diálisis</button>
+  <button class="cat-pill" onclick="filterCat('acceso',this)">🔗 Acceso</button>
+  <button class="cat-pill" onclick="filterCat('sangre',this)">🩸 Sangre</button>
+  <button class="cat-pill" onclick="filterCat('nutricion',this)">🥗 Nutrición</button>
+  <button class="cat-pill" onclick="filterCat('cardiovascular',this)">❤️ Cardio</button>
+  <button class="cat-pill" onclick="filterCat('medicamentos',this)">💊 Medicamentos</button>
+  <button class="cat-pill" onclick="filterCat('general',this)">🏥 General</button>
+  <button class="cat-pill" onclick="filterCat('salud',this)">🌿 Bienestar</button>
+</div>
+
+
+<div id="sec-rinon" class="cat-section" data-section="rinon">
+  <div class="themed-sec" data-r>
+    <img src="../assets/galeria-5-sala-dialisis.jpg" class="themed-img" alt="🫘 Riñón y Función Renal" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">🫘 Riñón y Función Renal</div>
+      <h2>Riñón y Función Renal</h2>
+      <p>Todo sobre la función renal y sus alteraciones</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="rinon" data-word="riñón riñón">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🫘</div>
+        <div class="tc-word">Riñón</div>
+        <div class="tc-hint">El filtro natural del cuerpo</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Órganos del tamaño de un puño que filtran 180 litros de sangre al día, eliminan toxinas y regulan presión y líquidos.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">📏</div> Del tamaño de un puño, uno a cada lado</div><div class="tc-key"><div class="tc-key-ico tki-t">🔬</div> Contienen 1 millón de filtros (nefronas) cada uno</div></div>
+        <div class="tc-tip"><span>⚠️</span> Cuando pierden el 85% de función, se requiere diálisis o trasplante.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="insuficiencia renal crónica insuficiencia_renal_crónica">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">⚠️</div>
+        <div class="tc-word">Insuficiencia Renal Crónica</div>
+        <div class="tc-hint">Daño progresivo y permanente</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Pérdida gradual e irreversible de la función renal, clasificada en 5 estadios según la filtración glomerular.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">📊</div> G1–G2: leve. G3: moderada. G4–G5: severa</div><div class="tc-key"><div class="tc-key-ico tki-t">🚨</div> Estadio 5: necesita diálisis o trasplante</div></div>
+        <div class="tc-tip"><span>💡 </span>La diabetes e hipertensión son las causas más comunes en México.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="insuficiencia renal aguda insuficiencia_renal_aguda">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🔴</div>
+        <div class="tc-word">Insuficiencia Renal Aguda</div>
+        <div class="tc-hint">Falla repentina del riñón</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Pérdida súbita y generalmente reversible de la función renal, causada por deshidratación, infección o medicamentos.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">⏱</div>️ Ocurre en horas o días</div><div class="tc-key"><div class="tc-key-ico tki-t">✅</div> Con tratamiento oportuno puede revertirse</div></div>
+        <div class="tc-tip"><span>⚡ </span>Si orina muy poco de repente o deja de orinar, es urgencia médica.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="nefrona nefrona">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🔬</div>
+        <div class="tc-word">Nefrona</div>
+        <div class="tc-hint">La unidad funcional del riñón</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Cada riñón tiene 1 millón de nefronas — los filtros microscópicos que limpian la sangre y forman la orina.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🔬</div> Tamaño microscópico, no se ven a simple vista</div><div class="tc-key"><div class="tc-key-ico tki-t">💧</div> Filtran y reabsorben nutrientes esenciales</div></div>
+        <div class="tc-tip"><span>💡 </span>En ERC, las nefronas se van dañando progresivamente y no se regeneran.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="tasa de filtración glomerular tasa_de_filtración_glomerular">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">📊</div>
+        <div class="tc-word">Tasa de Filtración Glomerular</div>
+        <div class="tc-hint">El termómetro de los riñones</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Mide cuánta sangre filtran los riñones por minuto. Es el indicador más importante de la salud renal.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">✅</div> Normal: más de 90 mL/min</div><div class="tc-key"><div class="tc-key-ico tki-t">🚨</div> Diálisis: menos de 15 mL/min</div></div>
+        <div class="tc-tip"><span>📋 </span>Aparece como 'TFGe' o 'eGFR' en tus estudios.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="creatinina creatinina">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">⚗️</div>
+        <div class="tc-word">Creatinina</div>
+        <div class="tc-hint">Indicador clave en sangre</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Desecho del músculo que los riñones sanos eliminan. Cuando fallan, se acumula y sube en los análisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">✅</div> Normal: 0.6–1.2 mg/dL</div><div class="tc-key"><div class="tc-key-ico tki-t">📈</div> Alta = riñones funcionando menos</div></div>
+        <div class="tc-tip"><span>📋 </span>Junto con el BUN, son los marcadores más solicitados.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="glomérulo glomérulo">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🌐</div>
+        <div class="tc-word">Glomérulo</div>
+        <div class="tc-hint">El filtro principal de la nefrona</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Red de capilares dentro de la nefrona que realiza la filtración inicial de la sangre. Su daño causa proteinuria.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🔬</div> Miles de glomérulos en cada riñón</div><div class="tc-key"><div class="tc-key-ico tki-t">⚠</div>️ Glomerulonefritis = inflamación del glomérulo</div></div>
+        <div class="tc-tip"><span>💡 </span>La proteína en orina (proteinuria) es señal de daño glomerular.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="proteinuria proteinuria">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🫧</div>
+        <div class="tc-word">Proteinuria</div>
+        <div class="tc-hint">Proteína en orina — señal de daño</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Presencia anormal de proteínas en orina. La orina puede verse espumosa. Señal de daño en los filtros renales.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🫧</div> Orina espumosa puede indicar proteinuria</div><div class="tc-key"><div class="tc-key-ico tki-t">📊</div> Se mide en mg/g de creatinina en orina</div></div>
+        <div class="tc-tip"><span>⚠️</span> Si tu orina está espumosa persistentemente, consúltate con un nefrólogo.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="uremia uremia">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">😮‍💨</div>
+        <div class="tc-word">Uremia</div>
+        <div class="tc-hint">Intoxicación por desechos renales</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Acumulación de toxinas (urea, creatinina) en sangre cuando los riñones no las eliminan. Causa fatiga, náuseas y confusión.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">😮</div>‍💨 Síntomas: cansancio, náuseas, sabor metálico</div><div class="tc-key"><div class="tc-key-ico tki-t">✅</div> La diálisis las elimina eficazmente</div></div>
+        <div class="tc-tip"><span>🚨 </span>Uremia severa con confusión es emergencia — llama al 911.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="microalbuminuria microalbuminuria">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🔍</div>
+        <div class="tc-word">Microalbuminuria</div>
+        <div class="tc-hint">Señal temprana de daño renal</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Pequeña cantidad de albúmina en orina que indica daño incipiente del riñón, antes de que aparezcan síntomas.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🔍</div> Detectable con examen especial de orina</div><div class="tc-key"><div class="tc-key-ico tki-t">⚡</div> Señal de alerta en diabéticos e hipertensos</div></div>
+        <div class="tc-tip"><span>✅ </span>Detectada a tiempo, puede revertirse con tratamiento adecuado.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="hematuria hematuria">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🩸</div>
+        <div class="tc-word">Hematuria</div>
+        <div class="tc-hint">Sangre en orina</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Presencia de sangre en la orina, visible o microscópica. Puede indicar infección, cálculos o enfermedad renal.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🔴</div> Orina color rosa, roja o café</div><div class="tc-key"><div class="tc-key-ico tki-t">🔬</div> La microscópica solo se detecta en examen de orina</div></div>
+        <div class="tc-tip"><span>⚠️</span> La hematuria siempre requiere evaluación médica, aunque sea leve y pase.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="rinon" data-word="nefropatía diabética nefropatía_diabética">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🍬</div>
+        <div class="tc-word">Nefropatía Diabética</div>
+        <div class="tc-hint">Daño renal por diabetes</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Daño progresivo de los riñones causado por el azúcar elevada crónica. Es la primera causa de diálisis en México.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">📊</div> Se detecta por microalbuminuria inicialmente</div><div class="tc-key"><div class="tc-key-ico tki-t">🎯</div> Control glucémico HbA1c menor de 7% la previene</div></div>
+        <div class="tc-tip"><span>💡 </span>Puedes tener nefropatía diabética sin síntomas durante años. Hazte análisis anuales.</div>
+      </div></div>
+    </div></div>
+</div>
+<div id="sec-dialisis" class="cat-section" data-section="dialisis">
+  <div class="themed-sec" data-r>
+    <img src="../assets/galeria-3-equipo-dialisis.jpg" class="themed-img" alt="💉 Diálisis y Tratamiento" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">💉 Diálisis y Tratamiento</div>
+      <h2>Diálisis y Tratamiento</h2>
+      <p>Todo sobre el proceso de hemodiálisis</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="dialisis" data-word="hemodiálisis hemodiálisis">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">💉</div>
+        <div class="tc-word">Hemodiálisis</div>
+        <div class="tc-hint">El tratamiento principal</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Limpia la sangre con una máquina cuando los riñones no pueden hacerlo. Sesiones de 3–4 horas, 3 veces/semana.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">🛋</div>️ Puedes descansar, leer o ver TV</div><div class="tc-key"><div class="tc-key-ico tki-s">👨</div>‍⚕️ Equipo médico presente en todo momento</div></div>
+        <div class="tc-tip"><span>💡 </span>La primera sesión genera miedo — nuestro equipo te acompaña en cada paso.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="dializador dializador">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">🔩</div>
+        <div class="tc-word">Dializador</div>
+        <div class="tc-hint">El riñón artificial</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Dispositivo con miles de fibras huecas microscópicas que filtran las toxinas. Desechable — nuevo en cada sesión.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">♻</div>️ Se cambia por seguridad en cada sesión</div><div class="tc-key"><div class="tc-key-ico tki-s">🔬</div> Sus fibras miden solo 0.2 mm de diámetro</div></div>
+        <div class="tc-tip"><span>🛡️</span> El dializador se verifica antes de cada sesión para tu seguridad.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="ultrafiltración ultrafiltración">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">💧</div>
+        <div class="tc-word">Ultrafiltración</div>
+        <div class="tc-hint">Elimina el líquido extra</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Proceso por el que la máquina elimina el exceso de líquido acumulado entre sesiones de diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">⚖</div>️ Se calcula con tu 'peso seco' ideal</div><div class="tc-key"><div class="tc-key-ico tki-s">❤</div>️ Exceso de líquido puede dañar el corazón</div></div>
+        <div class="tc-tip"><span>⚖️</span> Tu peso seco es cuánto deberías pesar sin líquido extra. Tu médico lo ajusta mensualmente.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="heparina en diálisis heparina_en_diálisis">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">💊</div>
+        <div class="tc-word">Heparina en Diálisis</div>
+        <div class="tc-hint">Evita coágulos durante la sesión</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Anticoagulante que impide que la sangre se coagule dentro del circuito del dializador durante la sesión.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">⏱</div>️ Su efecto desaparece al terminar la sesión</div><div class="tc-key"><div class="tc-key-ico tki-s">💉</div> Se aplica al inicio de cada sesión</div></div>
+        <div class="tc-tip"><span>ℹ️</span> Es normal que el sitio de punción sangre un poco al terminar. Presiona 5–10 minutos.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="diálisis peritoneal diálisis_peritoneal">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">🏠</div>
+        <div class="tc-word">Diálisis Peritoneal</div>
+        <div class="tc-hint">Alternativa en casa</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Usa el peritoneo (membrana del abdomen) como filtro natural. Puede realizarse en casa sin máquina de diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">🏡</div> Se hace en el domicilio del paciente</div><div class="tc-key"><div class="tc-key-ico tki-s">🔄</div> Requiere cambios de líquido varias veces al día</div></div>
+        <div class="tc-tip"><span>💡 </span>Consulta con tu médico cuál modalidad es mejor para tu caso y estilo de vida.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="adecuación de diálisis kt/v adecuación_de_diálisis_ktv">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">📐</div>
+        <div class="tc-word">Adecuación de Diálisis Kt/V</div>
+        <div class="tc-hint">Qué tan efectiva es tu sesión</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Medida de la eficiencia de cada sesión. Indica si se están eliminando suficientes toxinas de la sangre.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">🎯</div> Meta: Kt/V mayor a 1.2 por sesión</div><div class="tc-key"><div class="tc-key-ico tki-s">📊</div> Se calcula con análisis pre y post sesión</div></div>
+        <div class="tc-tip"><span>📋 </span>Si tu Kt/V está bajo, tu médico puede ajustar la duración o el flujo de tu sesión.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="bicarbonato de diálisis bicarbonato_de_diálisis">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">⚗️</div>
+        <div class="tc-word">Bicarbonato de Diálisis</div>
+        <div class="tc-hint">Corrector de acidez en sangre</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Solución que se usa durante la diálisis para corregir la acidosis metabólica frecuente en pacientes renales.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">🧪</div> Se mezcla en el líquido de diálisis (dializante)</div><div class="tc-key"><div class="tc-key-ico tki-s">⚖</div>️ Regula el pH de tu sangre durante la sesión</div></div>
+        <div class="tc-tip"><span>💡 </span>La acidosis causa cansancio y pérdida de músculo si no se corrige.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="hipotensión intradialítica hipotensión_intradialítica">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">📉</div>
+        <div class="tc-word">Hipotensión Intradialítica</div>
+        <div class="tc-hint">Presión baja durante la sesión</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Caída de presión arterial durante la hemodiálisis. Causa más común de complicaciones durante las sesiones.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">😮</div>‍💨 Síntomas: mareo, náuseas, calambres</div><div class="tc-key"><div class="tc-key-ico tki-s">💧</div> Causa frecuente: ultrafiltración demasiado rápida</div></div>
+        <div class="tc-tip"><span>💡 </span>Avísale a la enfermera inmediatamente si sientes mareo durante tu sesión.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="sesión de diálisis larga sesión_de_diálisis_larga">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">⏳</div>
+        <div class="tc-word">Sesión de Diálisis Larga</div>
+        <div class="tc-hint">Más tiempo, mejores resultados</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Sesiones de 4 horas o más se asocian a mejor eliminación de toxinas y menor mortalidad cardiovascular.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">✅</div> Mejor control de presión y toxinas</div><div class="tc-key"><div class="tc-key-ico tki-s">😌</div> Permite ultrafiltrar más despacio y con menos síntomas</div></div>
+        <div class="tc-tip"><span>💡 </span>Si puedes tolerar sesiones más largas, habla con tu médico sobre ajustar tu esquema.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="agua de ósmosis para diálisis agua_de_ósmosis_para_diálisis">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">💎</div>
+        <div class="tc-word">Agua de Ósmosis para Diálisis</div>
+        <div class="tc-hint">El agua pura que cuida tu sangre</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">El agua usada en diálisis pasa por 7 procesos de purificación. Es más pura que el agua embotellada.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">🔬</div> Se monitorea bacteriológica y químicamente</div><div class="tc-key"><div class="tc-key-ico tki-s">🛡</div>️ Estándares internacionales ISO para diálisis</div></div>
+        <div class="tc-tip"><span>🏥 </span>En Monte Sinaí el sistema de agua se verifica diariamente para garantizar tu seguridad.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="circuito extracorpóreo circuito_extracorpóreo">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">🔄</div>
+        <div class="tc-word">Circuito Extracorpóreo</div>
+        <div class="tc-hint">El recorrido de tu sangre</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">El trayecto que hace la sangre desde tu cuerpo hacia la máquina y de regreso durante la sesión de diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">🔄</div> La sangre recorre 200–300 mL fuera del cuerpo</div><div class="tc-key"><div class="tc-key-ico tki-s">⏱</div>️ Flujo normal: 250–350 mL por minuto</div></div>
+        <div class="tc-tip"><span>💡 </span>Si ves burbujas en el circuito o alarmas en la máquina, avísale de inmediato a la enfermera.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="dialisis" data-word="diálisis de urgencia diálisis_de_urgencia">
+      <div class="tc-bar tc-bar-s"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-s">🚨</div>
+        <div class="tc-word">Diálisis de Urgencia</div>
+        <div class="tc-hint">Cuando se necesita diálisis inmediata</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Inicio de diálisis por situación de emergencia médica: potasio muy alto, edema pulmonar o uremia severa.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-s">⚡</div> Se inicia el mismo día con catéter temporal</div><div class="tc-key"><div class="tc-key-ico tki-s">🚑</div> Indica al servicio de urgencias que eres paciente renal</div></div>
+        <div class="tc-tip"><span>🚨 </span>Si tienes dificultad para respirar, confusión o potasio muy alto, ve a urgencias de inmediato.</div>
+      </div></div>
+    </div></div>
+</div>
+<div id="sec-acceso" class="cat-section" data-section="acceso">
+  <div class="themed-sec" data-r>
+    <img src="../assets/galeria-4-enfermero.jpg" class="themed-img" alt="🔗 Acceso Vascular" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">🔗 Acceso Vascular</div>
+      <h2>Acceso Vascular</h2>
+      <p>Fístulas, catéteres y todo sobre el acceso para diálisis</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="acceso" data-word="fístula arteriovenosa fístula_arteriovenosa">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">⭐</div>
+        <div class="tc-word">Fístula Arteriovenosa</div>
+        <div class="tc-hint">El acceso ideal — dura años</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Conexión quirúrgica entre arteria y vena del brazo que crea un acceso duradero, seguro y de bajo riesgo.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">⏱</div>️ Tarda 6–12 semanas en madurar</div><div class="tc-key"><div class="tc-key-ico tki-p">✅</div> La opción preferida para largo plazo</div></div>
+        <div class="tc-tip"><span>✅ </span>Puedes sentir la fístula 'vibrar' al tocarla — eso es buena señal. Se llama 'thrill'.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="acceso" data-word="catéter temporal catéter_temporal">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">🔗</div>
+        <div class="tc-word">Catéter Temporal</div>
+        <div class="tc-hint">Acceso de emergencia</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Tubo en vena grande del cuello o pecho para iniciar diálisis de urgencia mientras se crea acceso permanente.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">⚡</div> Permite iniciar diálisis el mismo día</div><div class="tc-key"><div class="tc-key-ico tki-p">📅</div> Uso máximo de pocas semanas</div></div>
+        <div class="tc-tip"><span>⚠️</span> Requiere higiene estricta para evitar infecciones. Nuestro equipo te enseña cómo cuidarlo.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="acceso" data-word="permcath permcath">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">🏥</div>
+        <div class="tc-word">Permcath</div>
+        <div class="tc-hint">Catéter permanente bajo la piel</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Catéter tunelizado para uso permanente en pacientes que no pueden tener fístula arteriovenosa.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">🔒</div> Más seguro que catéter temporal</div><div class="tc-key"><div class="tc-key-ico tki-p">🚿</div> Restricciones para bañarse e hidroterapia</div></div>
+        <div class="tc-tip"><span>💡 </span>El angiólogo evalúa tus venas con Doppler para elegir el mejor acceso para ti.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="acceso" data-word="injerto vascular ptfe injerto_vascular_ptfe">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">🔧</div>
+        <div class="tc-word">Injerto Vascular PTFE</div>
+        <div class="tc-hint">Tubo artificial como alternativa</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Material sintético (PTFE) que conecta arteria y vena cuando las venas propias no son adecuadas para fístula.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">🔧</div> Alternativa cuando la fístula no es posible</div><div class="tc-key"><div class="tc-key-ico tki-p">⏱</div>️ Lista para usar en 2–4 semanas</div></div>
+        <div class="tc-tip"><span>💡 </span>Tiene mayor riesgo de infección que la fístula nativa. Requiere vigilancia especial.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="acceso" data-word="trombosis del acceso trombosis_del_acceso">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">🚫</div>
+        <div class="tc-word">Trombosis del Acceso</div>
+        <div class="tc-hint">Cuando el acceso se coagula</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Coágulo que obstruye el acceso vascular. Es la complicación más común de la fístula y el catéter.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">⚠</div>️ El 'thrill' (vibración) desaparece</div><div class="tc-key"><div class="tc-key-ico tki-p">🚑</div> Requiere atención urgente — mismo día</div></div>
+        <div class="tc-tip"><span>🚨 </span>Si no sientes la vibración de tu fístula o el catéter no funciona, acude a urgencias.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="acceso" data-word="angioplastia de acceso angioplastia_de_acceso">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">🎈</div>
+        <div class="tc-word">Angioplastia de Acceso</div>
+        <div class="tc-hint">Desobstruir el acceso con globo</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Procedimiento para dilatar el acceso vascular mediante un globo o stent, sin cirugía abierta.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">🎈</div> Anestesia local — sin cirugía mayor</div><div class="tc-key"><div class="tc-key-ico tki-p">✅</div> Recuperación rápida — mismo día</div></div>
+        <div class="tc-tip"><span>💡 </span>Monte Sinaí coordina este procedimiento con angiólogos especialistas en acceso dialítico.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="acceso" data-word="maduración de la fístula maduración_de_la_fístula">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">🌱</div>
+        <div class="tc-word">Maduración de la Fístula</div>
+        <div class="tc-hint">El tiempo que necesita para funcionar</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Proceso de fortalecimiento de la fístula antes de poder usarse. Requiere ejercicios con la mano.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">⏱</div>️ 6–12 semanas de maduración</div><div class="tc-key"><div class="tc-key-ico tki-p">💪</div> Ejercicios con pelotita para fortalecer la vena</div></div>
+        <div class="tc-tip"><span>💪 </span>Aprieta una pelotita suave 50 veces, 3 veces al día para ayudar a madurar tu fístula.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="acceso" data-word="doppler vascular doppler_vascular">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">📡</div>
+        <div class="tc-word">Doppler Vascular</div>
+        <div class="tc-hint">Ultrasonido para ver los vasos</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Estudio de imagen que evalúa el flujo de sangre en arterias y venas sin radiación.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">📡</div> No duele, no tiene radiación</div><div class="tc-key"><div class="tc-key-ico tki-p">🔍</div> Evalúa la fístula y el acceso vascular antes y después</div></div>
+        <div class="tc-tip"><span>📋 </span>Se hace antes de crear la fístula y cuando hay problemas con el acceso existente.</div>
+      </div></div>
+    </div></div>
+</div>
+<div id="sec-sangre" class="cat-section" data-section="sangre">
+  <div class="themed-sec" data-r>
+    <img src="../assets/galeria-2-recepcion.jpg" class="themed-img" alt="🩸 Sangre y Laboratorio" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">🩸 Sangre y Laboratorio</div>
+      <h2>Sangre y Laboratorio</h2>
+      <p>Entiende cada valor de tus análisis de sangre</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="sangre" data-word="potasio k potasio_k">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">⚡</div>
+        <div class="tc-word">Potasio K</div>
+        <div class="tc-hint">El mineral más vigilado en diálisis</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Controla el ritmo cardíaco. En ERC se acumula peligrosamente porque el riñón no lo elimina.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">✅</div> Meta: 3.5–5.5 mEq/L en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-r">🚨</div> Más de 6.5 es emergencia cardíaca</div></div>
+        <div class="tc-tip"><span>🥗 </span>Evitar: plátano, naranja, aguacate, papa, frijoles, chocolate.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="fósforo fósforo">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🦴</div>
+        <div class="tc-word">Fósforo</div>
+        <div class="tc-hint">Daña huesos y arterias</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Mineral que en exceso calcifica vasos sanguíneos y huesos. En ERC se acumula y el riñón no lo elimina.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">🎯</div> Meta: 3.5–5.5 mg/dL en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-r">💊</div> Los quelantes se toman CON las comidas</div></div>
+        <div class="tc-tip"><span>🥤 </span>Evitar: refrescos oscuros, lácteos, nueces, carnes procesadas.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="hemoglobina y anemia hemoglobina_y_anemia">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🩸</div>
+        <div class="tc-word">Hemoglobina y Anemia</div>
+        <div class="tc-hint">Por qué te cansas tanto</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Los riñones producen EPO, hormona que fabrica glóbulos rojos. Sin ella hay anemia y fatiga crónica.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">🎯</div> Meta: Hemoglobina 10–12 g/dL en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-r">💉</div> Se trata con EPO inyectable</div></div>
+        <div class="tc-tip"><span>💡 </span>Si estás más cansado de lo usual, díselo a tu médico. Puede ajustar tu tratamiento.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="sodio na sodio_na">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🧂</div>
+        <div class="tc-word">Sodio Na</div>
+        <div class="tc-hint">La sal y la retención de líquidos</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Controla cuánta agua retiene el cuerpo. Comer mucha sal genera más sed y más retención de líquido.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">🎯</div> Meta: 135–145 mEq/L</div><div class="tc-key"><div class="tc-key-ico tki-r">🔄</div> Más sal → más sed → más líquido retenido</div></div>
+        <div class="tc-tip"><span>🧂 </span>Evita alimentos procesados, embutidos, sopas de sobre y enlatados.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="calcio ca calcio_ca">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🥛</div>
+        <div class="tc-word">Calcio Ca</div>
+        <div class="tc-hint">Huesos y función cardíaca</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Mineral esencial. En ERC, el desequilibrio calcio-fósforo puede calcificar arterias y debilitar huesos.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">⚖</div>️ Normal: 8.5–10.5 mg/dL</div><div class="tc-key"><div class="tc-key-ico tki-r">⚠</div>️ Exceso puede calcificar vasos sanguíneos</div></div>
+        <div class="tc-tip"><span>💊 </span>Tu médico puede indicarte vitamina D activa (calcitriol) para mejorar la absorción de calcio.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="albúmina albúmina">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">💪</div>
+        <div class="tc-word">Albúmina</div>
+        <div class="tc-hint">Indicador de nutrición y supervivencia</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Proteína del hígado que refleja el estado nutricional. Baja en pacientes desnutridos o con inflamación crónica.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">✅</div> Meta: más de 4.0 g/dL en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-r">📉</div> Albúmina baja = mayor mortalidad</div></div>
+        <div class="tc-tip"><span>🥚 </span>Come suficiente proteína en cada comida: huevo, pollo, pescado, leguminosas.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="parathormona pth parathormona_pth">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">⚗️</div>
+        <div class="tc-word">Parathormona PTH</div>
+        <div class="tc-hint">Hormona que regula calcio y fósforo</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Hormona que regula el calcio y fósforo. Elevada crónicamente en ERC, puede dañar los huesos.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">🎯</div> Meta en diálisis: 150–300 pg/mL</div><div class="tc-key"><div class="tc-key-ico tki-r">⚠</div>️ PTH muy alta debilita los huesos</div></div>
+        <div class="tc-tip"><span>💊 </span>Cinacalcet y vitamina D activa son medicamentos que controlan la PTH elevada.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="bun nitrógeno ureico bun_nitrógeno_ureico">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🔬</div>
+        <div class="tc-word">BUN Nitrógeno Ureico</div>
+        <div class="tc-hint">Otro desecho que miden tus riñones</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Producto del metabolismo de proteínas que los riñones eliminan. En ERC se acumula en sangre.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">✅</div> Normal: 7–20 mg/dL</div><div class="tc-key"><div class="tc-key-ico tki-r">📈</div> Sube junto con la creatinina en falla renal</div></div>
+        <div class="tc-tip"><span>💡 </span>BUN muy alto con creatinina alta = riñones muy comprometidos. Requiere atención urgente.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="ácido úrico ácido_úrico">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🔺</div>
+        <div class="tc-word">Ácido Úrico</div>
+        <div class="tc-hint">El causante de la gota</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Desecho del metabolismo que se acumula en articulaciones (gota) y puede dañar los riñones.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">⚠</div>️ Niveles altos dañan el riñón a largo plazo</div><div class="tc-key"><div class="tc-key-ico tki-r">🦶</div> Causa gota: dolor e inflamación articular agudo</div></div>
+        <div class="tc-tip"><span>💧 </span>Hidratación adecuada (según tu restricción de líquidos) y evitar bebidas alcohólicas.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="pcr proteína c reactiva pcr_proteína_c_reactiva">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🔥</div>
+        <div class="tc-word">PCR Proteína C Reactiva</div>
+        <div class="tc-hint">Marcador de inflamación</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Proteína que sube cuando hay inflamación o infección. Frecuentemente elevada en diálisis de forma crónica.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">⚠</div>️ Alta asociada a mayor riesgo cardiovascular</div><div class="tc-key"><div class="tc-key-ico tki-r">🩺</div> Se mide regularmente como parte del seguimiento</div></div>
+        <div class="tc-tip"><span>💡 </span>PCR elevada persistente puede indicar infección del acceso — avísale a tu médico.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="ferritina y saturación de transferrina ferritina_y_saturación_de_transferrina">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🔴</div>
+        <div class="tc-word">Ferritina y Saturación de Transferrina</div>
+        <div class="tc-hint">Reservas de hierro en el cuerpo</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Marcadores que indican cuánto hierro tiene el cuerpo disponible para producir glóbulos rojos.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">🎯</div> Meta ferritina: 200–500 ng/mL en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-r">🎯</div> Saturación de transferrina: 20–50%</div></div>
+        <div class="tc-tip"><span>💡 </span>Si tu ferritina está baja, tu médico puede indicarte hierro intravenoso durante las sesiones.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="sangre" data-word="bicarbonato sérico bicarbonato_sérico">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">⚖️</div>
+        <div class="tc-word">Bicarbonato Sérico</div>
+        <div class="tc-hint">El pH de tu sangre</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">El riñón regula el pH de la sangre produciendo bicarbonato. En ERC hay acidosis metabólica.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">✅</div> Normal: 22–29 mEq/L en sangre</div><div class="tc-key"><div class="tc-key-ico tki-r">😮</div>‍💨 Acidosis causa fatiga y pérdida muscular</div></div>
+        <div class="tc-tip"><span>💊 </span>Se corrige con bicarbonato oral o durante la sesión de diálisis.</div>
+      </div></div>
+    </div></div>
+</div>
+<div id="sec-nutricion" class="cat-section" data-section="nutricion">
+  <div class="themed-sec" data-r>
+    <img src="../assets/fachada-hospital.jpg" class="themed-img" alt="🥗 Nutrición Renal" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">🥗 Nutrición Renal</div>
+      <h2>Nutrición Renal</h2>
+      <p>Guía completa de alimentación para pacientes renales</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="nutricion" data-word="dieta renal dieta_renal">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">🥗</div>
+        <div class="tc-word">Dieta Renal</div>
+        <div class="tc-hint">Tu plan de alimentación personalizado</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Plan para reducir carga renal y evitar acumulación de toxinas. Parte fundamental del tratamiento.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🚫</div> Reducir: potasio, fósforo, sodio y líquidos</div><div class="tc-key"><div class="tc-key-ico tki-gr">✅</div> Sí: manzana, pera, arroz, pollo, pasta</div></div>
+        <div class="tc-tip"><span>📋 </span>En Monte Sinaí te damos una guía nutricional personalizada desde tu primera consulta.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="quelante de fósforo quelante_de_fósforo">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">💊</div>
+        <div class="tc-word">Quelante de Fósforo</div>
+        <div class="tc-hint">Pastilla que comes con la comida</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Bloquea la absorción del fósforo en el intestino cuando se toma junto con los alimentos.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🍽</div>️ Se toma AL INICIO de cada comida</div><div class="tc-key"><div class="tc-key-ico tki-gr">💊</div> Ej: carbonato de calcio, sevelamer, lantano</div></div>
+        <div class="tc-tip"><span>⚠️</span> Si lo olvidas al comenzar la comida, ya no tiene efecto. La dosis es por comida, no por día.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="proteínas en diálisis proteínas_en_diálisis">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">💪</div>
+        <div class="tc-word">Proteínas en Diálisis</div>
+        <div class="tc-hint">Necesitas más de lo que crees</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">En hemodiálisis necesitas más proteínas, porque la diálisis elimina aminoácidos junto con las toxinas.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🥚</div> Meta: 1.2–1.4 g por kg de peso al día</div><div class="tc-key"><div class="tc-key-ico tki-gr">🐔</div> Preferir: huevo, pollo, pescado, leguminosas</div></div>
+        <div class="tc-tip"><span>⚠️</span> La desnutrición empeora el pronóstico. Tu médico monitorea tu albúmina en sangre.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="restricción de líquidos restricción_de_líquidos">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">💧</div>
+        <div class="tc-word">Restricción de Líquidos</div>
+        <div class="tc-hint">Cuánto puedes beber al día</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Límite de líquidos para evitar sobrecarga de volumen y daño cardíaco entre sesiones de diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">💧</div> Incluye agua, jugos, sopas, frutas y verduras</div><div class="tc-key"><div class="tc-key-ico tki-gr">🎯</div> Generalmente 1–1.5 L al día según tu médico</div></div>
+        <div class="tc-tip"><span>🧊 </span>Si tienes mucha sed, chupa cubitos de hielo — sacias la sed sin añadir tanto volumen.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="ganancia interdialítica de peso ganancia_interdialítica_de_peso">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">⚖️</div>
+        <div class="tc-word">Ganancia Interdialítica de Peso</div>
+        <div class="tc-hint">El peso que ganas entre sesiones</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Aumento de peso por líquido acumulado entre sesiones. Debe mantenerse controlado para proteger el corazón.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🎯</div> Meta: no más de 1.5–2 kg entre sesiones</div><div class="tc-key"><div class="tc-key-ico tki-gr">❤</div>️ Exceso de líquido sobrecarga el corazón</div></div>
+        <div class="tc-tip"><span>⚖️</span> Pésate todos los días a la misma hora. Lleva un registro a cada sesión.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="alimentos con alto potasio alimentos_con_alto_potasio">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">🍌</div>
+        <div class="tc-word">Alimentos con Alto Potasio</div>
+        <div class="tc-hint">Los que debes limitar más</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Alimentos ricos en potasio que deben limitarse para evitar hiperpotasemia y arritmias cardíacas.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🚫</div> Evitar: plátano, naranja, papa, aguacate, jitomate</div><div class="tc-key"><div class="tc-key-ico tki-gr">✅</div> Preferir: manzana, pera, uva, zanahoria cocida</div></div>
+        <div class="tc-tip"><span>🥦 </span>El remojo y la cocción de verduras reduce hasta 30% su contenido de potasio.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="alimentos con alto fósforo alimentos_con_alto_fósforo">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">🥛</div>
+        <div class="tc-word">Alimentos con Alto Fósforo</div>
+        <div class="tc-hint">Los que elevan tu fósforo</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Alimentos que aumentan el fósforo en sangre y deben limitarse o combinarse con quelantes.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🚫</div> Evitar: refrescos oscuros, lácteos, nueces, mariscos</div><div class="tc-key"><div class="tc-key-ico tki-gr">✅</div> El fósforo vegetal (fitato) se absorbe menos</div></div>
+        <div class="tc-tip"><span>🥤 </span>Un refresco de cola tiene hasta 500 mg de fósforo. Cámbialo por agua o limonada natural.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="vitamina d activa calcitriol vitamina_d_activa_calcitriol">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">☀️</div>
+        <div class="tc-word">Vitamina D Activa Calcitriol</div>
+        <div class="tc-hint">La vitamina que activa el riñón</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">El riñón activa la vitamina D. En ERC esta activación falla y se necesita suplemento de calcitriol.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">☀</div>️ Sin ella el calcio no se absorbe bien</div><div class="tc-key"><div class="tc-key-ico tki-gr">💊</div> Se prescribe como paricalcitol o calcitriol</div></div>
+        <div class="tc-tip"><span>💡 </span>La vitamina D de farmacia (colecalciferol) no es suficiente — necesitas la forma activa.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="suplementos nutricionales renales suplementos_nutricionales_renales">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">🥤</div>
+        <div class="tc-word">Suplementos Nutricionales Renales</div>
+        <div class="tc-hint">Bebidas específicas para diálisis</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Fórmulas especiales con alto contenido proteico y bajo en potasio y fósforo, diseñadas para pacientes en diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🥤</div> Ejemplos: Nepro, Renastart, Suplena</div><div class="tc-key"><div class="tc-key-ico tki-gr">✅</div> Complementan la dieta cuando no se puede comer suficiente</div></div>
+        <div class="tc-tip"><span>💊 </span>Consúmelos SOLO si tu médico o nutricionista te los indica. No los uses sin receta.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="índice de masa corporal imc índice_de_masa_corporal_imc">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">⚖️</div>
+        <div class="tc-word">Índice de Masa Corporal IMC</div>
+        <div class="tc-hint">Tu relación peso-talla</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Relación peso/talla² que indica si estás en peso normal, bajo peso o sobrepeso. En diálisis el contexto cambia.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">📊</div> Normal: 18.5–24.9 kg/m²</div><div class="tc-key"><div class="tc-key-ico tki-gr">⚠</div>️ En diálisis, IMC bajo puede indicar desnutrición</div></div>
+        <div class="tc-tip"><span>💡 </span>En pacientes en diálisis, un IMC ligeramente más alto puede ser protector para la supervivencia.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="reducción de potasio por cocción reducción_de_potasio_por_cocción">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">🍳</div>
+        <div class="tc-word">Reducción de Potasio por Cocción</div>
+        <div class="tc-hint">Truco culinario para comer más variado</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Técnica de remojo y doble cocción que reduce el contenido de potasio en verduras y tubérculos.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🥦</div> Pela, corta en trozos pequeños y remoja 2 horas</div><div class="tc-key"><div class="tc-key-ico tki-gr">♨</div>️ Hierve con abundante agua (cambiándola una vez)</div></div>
+        <div class="tc-tip"><span>🍳 </span>Con esta técnica puedes comer más variado. Consúltale a tu nutricionista los tiempos exactos.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="nutricion" data-word="sal de mesa vs sal de potasio sal_de_mesa_vs_sal_de_potasio">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">🧂</div>
+        <div class="tc-word">Sal de Mesa vs Sal de Potasio</div>
+        <div class="tc-hint">Cuidado con los sustitutos de sal</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Los sustitutos de sal (KCl) contienen potasio en vez de sodio. Son muy peligrosos para pacientes renales.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🚨</div> Los sustitutos de sal pueden elevar peligrosamente el potasio</div><div class="tc-key"><div class="tc-key-ico tki-gr">✅</div> Usa hierbas y especias para dar sabor sin sal</div></div>
+        <div class="tc-tip"><span>🚨 </span>NUNCA uses 'sal light' o sustitutos de sal sin autorización de tu médico. Pueden ser letales.</div>
+      </div></div>
+    </div></div>
+</div>
+<div id="sec-cardiovascular" class="cat-section" data-section="cardiovascular">
+  <div class="themed-sec" data-r>
+    <img src="../assets/galeria-1-clinica.jpg" class="themed-img" alt="❤️ Cardiovascular" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">❤️ Cardiovascular</div>
+      <h2>Cardiovascular</h2>
+      <p>El corazón y los vasos sanguíneos en la enfermedad renal</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="cardiovascular" data-word="hipertensión arterial hipertensión_arterial">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">❤️</div>
+        <div class="tc-word">Hipertensión Arterial</div>
+        <div class="tc-hint">La presión alta daña los riñones</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Presión arterial elevada que daña los vasos de los riñones. Es la segunda causa de ERC en México.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">🎯</div> Meta en diálisis: menos de 140/90 mmHg</div><div class="tc-key"><div class="tc-key-ico tki-r">💊</div> Requiere medicación y control de sal</div></div>
+        <div class="tc-tip"><span>📏 </span>Mide tu presión diariamente y lleva un registro a cada consulta.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="cardiovascular" data-word="hipertrofia ventricular izquierda hipertrofia_ventricular_izquierda">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">💔</div>
+        <div class="tc-word">Hipertrofia Ventricular Izquierda</div>
+        <div class="tc-hint">El corazón se agranda por sobrecarga</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Engrosamiento del músculo cardíaco izquierdo causado por hipertensión y sobrecarga de volumen en diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">⚠</div>️ Muy común en pacientes en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-r">📡</div> Se diagnostica con ecocardiograma</div></div>
+        <div class="tc-tip"><span>💡 </span>Controlar la presión y la ganancia de peso interdialítica protege al corazón.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="cardiovascular" data-word="calcificación vascular calcificación_vascular">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🦴</div>
+        <div class="tc-word">Calcificación Vascular</div>
+        <div class="tc-hint">Calcio en las arterias</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Depósito de calcio en las paredes arteriales, frecuente en ERC por el desequilibrio calcio-fósforo.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">⚠</div>️ Causa arteriosclerosis acelerada en jóvenes</div><div class="tc-key"><div class="tc-key-ico tki-r">❤</div>️ Aumenta el riesgo de infarto y AVC</div></div>
+        <div class="tc-tip"><span>🎯 </span>Controlar el fósforo y evitar quelantes con calcio en exceso reduce este riesgo.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="cardiovascular" data-word="edema edema">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🦵</div>
+        <div class="tc-word">Edema</div>
+        <div class="tc-hint">Hinchazón por retención de líquidos</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Acumulación de líquido en tejidos, especialmente en piernas, pies y párpados. Señal de sobrecarga de líquidos.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">🦵</div> Aparece primero en tobillos y pies</div><div class="tc-key"><div class="tc-key-ico tki-r">💧</div> Indica que estás tomando demasiado líquido</div></div>
+        <div class="tc-tip"><span>⚖️</span> Si tus pies están muy hinchados al llegar a la sesión, avísale a tu enfermera.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="cardiovascular" data-word="fibrilación auricular fibrilación_auricular">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">💓</div>
+        <div class="tc-word">Fibrilación Auricular</div>
+        <div class="tc-hint">Ritmo cardíaco irregular</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Arritmia frecuente en ERC, relacionada con hipertensión y desequilibrios de electrolitos como el potasio.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">⚡</div> El potasio alto puede desencadenarla</div><div class="tc-key"><div class="tc-key-ico tki-r">💊</div> Requiere anticoagulación y control del ritmo</div></div>
+        <div class="tc-tip"><span>❤️</span> Si sientes que tu corazón 'palpita raro' o muy fuerte, infórmalo a tu médico ese día.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="cardiovascular" data-word="pericarditis urémica pericarditis_urémica">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">🫀</div>
+        <div class="tc-word">Pericarditis Urémica</div>
+        <div class="tc-hint">Inflamación del saco del corazón</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Inflamación del pericardio causada por acumulación de toxinas urémicas. Urgencia médica que requiere diálisis intensiva.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">🚨</div> Urgencia médica que requiere diálisis intensiva</div><div class="tc-key"><div class="tc-key-ico tki-r">🩺</div> Dolor en el pecho que mejora al inclinarse</div></div>
+        <div class="tc-tip"><span>🚨 </span>Si tienes dolor en el pecho intenso, acude a urgencias de inmediato.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="cardiovascular" data-word="insuficiencia cardíaca insuficiencia_cardíaca">
+      <div class="tc-bar tc-bar-r"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-r">💗</div>
+        <div class="tc-word">Insuficiencia Cardíaca</div>
+        <div class="tc-hint">Cuando el corazón falla</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">El corazón no puede bombear suficiente sangre. En ERC es muy frecuente por sobrecarga de líquidos e hipertensión.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-r">😮</div>‍💨 Síntomas: falta de aire, hinchazón, cansancio</div><div class="tc-key"><div class="tc-key-ico tki-r">💊</div> Requiere diuréticos (a veces) y control de líquidos</div></div>
+        <div class="tc-tip"><span>💡 </span>Si te falta el aire al acostarte o al hacer esfuerzo mínimo, busca atención médica ese día.</div>
+      </div></div>
+    </div></div>
+</div>
+<div id="sec-medicamentos" class="cat-section" data-section="medicamentos">
+  <div class="themed-sec" data-r>
+    <img src="../assets/galeria-5-sala-dialisis.jpg" class="themed-img" alt="💊 Medicamentos" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">💊 Medicamentos</div>
+      <h2>Medicamentos</h2>
+      <p>Los medicamentos más comunes en el tratamiento renal</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="medicamentos" data-word="eritropoyetina epo eritropoyetina_epo">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">🔴</div>
+        <div class="tc-word">Eritropoyetina EPO</div>
+        <div class="tc-hint">Hormona que produce glóbulos rojos</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Hormona renal que estimula la producción de glóbulos rojos. En ERC disminuye y causa anemia.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">💉</div> Inyección 1–3 veces por semana</div><div class="tc-key"><div class="tc-key-ico tki-p">⚡</div> Mejora energía y reduce fatiga significativamente</div></div>
+        <div class="tc-tip"><span>💡 </span>También llamada darbepoetina alfa o epoetina alfa. Tu médico elige la mejor opción.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="medicamentos" data-word="ieca y ara ii ieca_y_ara_ii">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">🛡️</div>
+        <div class="tc-word">IECA y ARA II</div>
+        <div class="tc-hint">Protegen los riñones</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Medicamentos antihipertensivos (enalapril, losartán) que protegen los riñones al reducir la presión glomerular.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">🛡</div>️ Protegen los riñones en ERC temprana</div><div class="tc-key"><div class="tc-key-ico tki-p">⚠</div>️ Pueden elevar el potasio — vigilar</div></div>
+        <div class="tc-tip"><span>⚠️</span> No suspendas estos medicamentos sin consultar a tu médico, aunque te sientas bien.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="medicamentos" data-word="cinacalcet cinacalcet">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">⚗️</div>
+        <div class="tc-word">Cinacalcet</div>
+        <div class="tc-hint">Controla la hormona PTH elevada</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Calcimimético que controla la hormona paratiroidea elevada en la enfermedad mineral ósea renal.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">🎯</div> Reduce PTH y riesgo de cirugía de paratiroides</div><div class="tc-key"><div class="tc-key-ico tki-p">🤢</div> Puede causar náuseas al inicio del tratamiento</div></div>
+        <div class="tc-tip"><span>🍽️</span> Tómalo con la comida para reducir las náuseas.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="medicamentos" data-word="calcitriol paricalcitol calcitriol_paricalcitol">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">☀️</div>
+        <div class="tc-word">Calcitriol Paricalcitol</div>
+        <div class="tc-hint">Vitamina D activa para el riñón</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Forma activa de la vitamina D que el riñón enfermo no puede producir. Necesaria para absorber calcio y controlar PTH.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">☀</div>️ Mejora la absorción de calcio</div><div class="tc-key"><div class="tc-key-ico tki-p">📊</div> Controla la PTH elevada</div></div>
+        <div class="tc-tip"><span>⚠️</span> No tomes vitamina D de farmacia sin receta — necesitas la forma activa (calcitriol o paricalcitol).</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="medicamentos" data-word="hierro intravenoso hierro_intravenoso">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">💉</div>
+        <div class="tc-word">Hierro Intravenoso</div>
+        <div class="tc-hint">Hierro directo a la vena</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Suplemento de hierro administrado durante la sesión de diálisis para tratar la deficiencia y apoyar a la EPO.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">💉</div> Más eficaz que el hierro oral en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-p">🔴</div> Ayuda a subir la hemoglobina</div></div>
+        <div class="tc-tip"><span>💡 </span>Puede causar ligera coloración oscura de la orina por un día. Es completamente normal.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="medicamentos" data-word="bicarbonato oral bicarbonato_oral">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">⚗️</div>
+        <div class="tc-word">Bicarbonato Oral</div>
+        <div class="tc-hint">Corrector de acidez en sangre</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Suplemento que corrige la acidosis metabólica frecuente en ERC, protegiendo huesos y músculo.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">⚖</div>️ Mantiene el pH de la sangre en rango normal</div><div class="tc-key"><div class="tc-key-ico tki-p">💊</div> Se toma generalmente 2–3 veces al día</div></div>
+        <div class="tc-tip"><span>🥛 </span>Puede causar gases o sensación de llenura. Tómalo con agua suficiente.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="medicamentos" data-word="antihipertensivos antihipertensivos">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">❤️</div>
+        <div class="tc-word">Antihipertensivos</div>
+        <div class="tc-hint">Medicamentos para la presión arterial</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Medicamentos para controlar la presión arterial elevada, esencial para proteger riñones y corazón.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">💊</div> Muchos tipos: IECA, ARA II, betabloqueadores, calcio antagonistas</div><div class="tc-key"><div class="tc-key-ico tki-p">⏰</div> Deben tomarse a la misma hora todos los días</div></div>
+        <div class="tc-tip"><span>⚠️</span> Consulta si debes tomar tu antihipertensivo el día de diálisis — puede bajar demasiado la presión.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="medicamentos" data-word="quelantes de potasio quelantes_de_potasio">
+      <div class="tc-bar tc-bar-p"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-p">⚡</div>
+        <div class="tc-word">Quelantes de Potasio</div>
+        <div class="tc-hint">Para bajar el potasio alto</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Medicamentos que capturan el potasio en el intestino antes de que se absorba, reduciendo su nivel en sangre.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-p">💊</div> Ejemplos: patiromer, ciclosilicato de sodio y zirconio</div><div class="tc-key"><div class="tc-key-ico tki-p">🍽</div>️ Se toman con las comidas o entre comidas</div></div>
+        <div class="tc-tip"><span>🚨 </span>Potasio alto es una emergencia cardíaca. Si te recetan quelante de potasio, tómalo sin falta.</div>
+      </div></div>
+    </div></div>
+</div>
+<div id="sec-general" class="cat-section" data-section="general">
+  <div class="themed-sec" data-r>
+    <img src="../assets/fachada-hospital.jpg" class="themed-img" alt="🏥 Medicina General" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">🏥 Medicina General</div>
+      <h2>Medicina General</h2>
+      <p>Términos médicos generales importantes para tu cuidado</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="general" data-word="trasplante renal trasplante_renal">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">💚</div>
+        <div class="tc-word">Trasplante Renal</div>
+        <div class="tc-hint">La solución definitiva</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Cirugía en que se coloca un riñón sano en el cuerpo del paciente. Es la mejor opción a largo plazo.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">👨</div>‍👩‍👧 Donante vivo familiar es preferible</div><div class="tc-key"><div class="tc-key-ico tki-t">💊</div> Inmunosupresores de por vida para evitar rechazo</div></div>
+        <div class="tc-tip"><span>💡 </span>Monte Sinaí te orienta y conecta con centros de trasplante cuando llegue el momento.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="nefrología nefrología">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🩺</div>
+        <div class="tc-word">Nefrología</div>
+        <div class="tc-hint">La especialidad de los riñones</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Especialidad médica dedicada al diagnóstico y tratamiento de las enfermedades de los riñones.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🎓</div> Médico + especialidad de 3–4 años adicionales</div><div class="tc-key"><div class="tc-key-ico tki-t">🏥</div> Maneja ERC, diálisis y trasplante renal</div></div>
+        <div class="tc-tip"><span>🩺 </span>Tu nefrólogo es tu médico más importante en este proceso. Consúltale todas tus dudas.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="angiología angiología">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🔍</div>
+        <div class="tc-word">Angiología</div>
+        <div class="tc-hint">Especialista en vasos sanguíneos</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Especialidad que trata enfermedades de arterias y venas. En diálisis crea y supervisa el acceso vascular.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🔬</div> Usa Doppler para evaluar tus venas</div><div class="tc-key"><div class="tc-key-ico tki-t">🔗</div> Crea fístulas y coloca catéteres</div></div>
+        <div class="tc-tip"><span>🏥 </span>En Monte Sinaí el angiólogo evalúa tus venas antes de decidir el mejor acceso vascular.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="diabetes mellitus diabetes_mellitus">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🍬</div>
+        <div class="tc-word">Diabetes Mellitus</div>
+        <div class="tc-hint">Primera causa de ERC en México</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Enfermedad metabólica que eleva la glucosa en sangre y daña los vasos sanguíneos del riñón.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🏆</div> Primera causa de ERC en México y el mundo</div><div class="tc-key"><div class="tc-key-ico tki-t">🎯</div> Control glucémico: HbA1c menor de 7%</div></div>
+        <div class="tc-tip"><span>💉 </span>El control del azúcar desde el inicio puede prevenir o retrasar la ERC muchos años.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="hiperparatiroidismo secundario hiperparatiroidismo_secundario">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🦴</div>
+        <div class="tc-word">Hiperparatiroidismo Secundario</div>
+        <div class="tc-hint">Paratiroides hiperactivas por ERC</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Las glándulas paratiroides trabajan de más para compensar el desequilibrio calcio-fósforo en ERC.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">⚠</div>️ Muy frecuente en pacientes en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-t">💊</div> Se trata con calcitriol y cinacalcet</div></div>
+        <div class="tc-tip"><span>🦴 </span>Huesos que duelen o se fracturan fácilmente pueden ser señal de PTH no controlada.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="infección del acceso vascular infección_del_acceso_vascular">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🦠</div>
+        <div class="tc-word">Infección del Acceso Vascular</div>
+        <div class="tc-hint">Urgencia que requiere atención inmediata</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Infección del sitio de fístula o catéter. Una de las complicaciones más graves en diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🔴</div> Signos: enrojecimiento, pus, fiebre, dolor local</div><div class="tc-key"><div class="tc-key-ico tki-t">🚑</div> Requiere atención urgente — no puede esperar</div></div>
+        <div class="tc-tip"><span>🚨 </span>Si tu acceso está rojo, caliente o supura, acude a urgencias ese mismo día.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="síndrome de piernas inquietas síndrome_de_piernas_inquietas">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🦵</div>
+        <div class="tc-word">Síndrome de Piernas Inquietas</div>
+        <div class="tc-hint">Incomodidad nocturna en las piernas</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Necesidad irresistible de mover las piernas, especialmente de noche. Muy común en pacientes en diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🌙</div> Peor en la noche y en reposo</div><div class="tc-key"><div class="tc-key-ico tki-t">💊</div> Existen tratamientos efectivos</div></div>
+        <div class="tc-tip"><span>💡 </span>Cuéntale a tu médico — hay medicamentos que mejoran mucho la calidad de sueño.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="prurito urémico prurito_urémico">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🤚</div>
+        <div class="tc-word">Prurito Urémico</div>
+        <div class="tc-hint">Picazón por toxinas en sangre</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Picazón intensa sin causa aparente en la piel. Frecuente en pacientes en diálisis por toxinas acumuladas.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🤚</div> Afecta la calidad de vida significativamente</div><div class="tc-key"><div class="tc-key-ico tki-t">💊</div> Existen cremas y medicamentos efectivos</div></div>
+        <div class="tc-tip"><span>🧴 </span>Hidrata bien tu piel con crema sin perfume y usa ropa de algodón para aliviar la picazón.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="ictericia ictericia">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🟡</div>
+        <div class="tc-word">Ictericia</div>
+        <div class="tc-hint">Coloración amarilla de la piel</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Coloración amarilla de piel y ojos por bilirrubina elevada. En ERC puede indicar hepatitis u otras complicaciones.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🟡</div> Afecta piel, ojos y orina (más oscura)</div><div class="tc-key"><div class="tc-key-ico tki-t">🏥</div> Requiere evaluación médica ese mismo día</div></div>
+        <div class="tc-tip"><span>⚠️</span> Si notas coloración amarilla en tus ojos o piel, consulta a tu médico de inmediato.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="general" data-word="sepsis sepsis">
+      <div class="tc-bar tc-bar-t"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-t">🚨</div>
+        <div class="tc-word">Sepsis</div>
+        <div class="tc-hint">Infección grave generalizada</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Respuesta inflamatoria grave a infección que puede causar falla orgánica. Emergencia médica absoluta.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-t">🌡</div>️ Síntomas: fiebre alta, confusión, presión baja</div><div class="tc-key"><div class="tc-key-ico tki-t">🚑</div> Requiere hospitalización urgente</div></div>
+        <div class="tc-tip"><span>🚨 </span>En pacientes en diálisis, las infecciones escalan rápido. Ante fiebre alta ve a urgencias.</div>
+      </div></div>
+    </div></div>
+</div>
+<div id="sec-salud" class="cat-section" data-section="salud">
+  <div class="themed-sec" data-r>
+    <img src="../assets/galeria-4-enfermero.jpg" class="themed-img" alt="🌿 Salud y Bienestar" onerror="this.parentElement.style.background='linear-gradient(135deg,#071E35,#1A0940)';this.style.display='none'">
+    <div class="themed-overlay">
+      <div class="themed-cat-label">🌿 Salud y Bienestar</div>
+      <h2>Salud y Bienestar</h2>
+      <p>Cuidado integral del paciente renal — cuerpo y mente</p>
+    </div>
+  </div>
+  <div class="terms-grid">
+    <div class="term-card" data-cat="salud" data-word="calidad de vida en diálisis calidad_de_vida_en_diálisis">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">❤️‍🩹</div>
+        <div class="tc-word">Calidad de Vida en Diálisis</div>
+        <div class="tc-hint">Vivir bien con el tratamiento</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">La mayoría de los pacientes en diálisis trabajan, viajan y mantienen vida social activa con el tratamiento adecuado.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">💼</div> Muchos pacientes trabajan normalmente</div><div class="tc-key"><div class="tc-key-ico tki-gr">✈</div>️ Es posible viajar con coordinación médica</div></div>
+        <div class="tc-tip"><span>💡 </span>El tratamiento se adapta a tu vida — no al revés. Cuéntanos tus actividades.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="salud" data-word="ejercicio en diálisis ejercicio_en_diálisis">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">🏃</div>
+        <div class="tc-word">Ejercicio en Diálisis</div>
+        <div class="tc-hint">Actividad física recomendada y beneficiosa</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">El ejercicio moderado mejora la función cardiovascular, muscular y el bienestar general del paciente en diálisis.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🚶</div> Caminar 30 min, 3–5 días a la semana</div><div class="tc-key"><div class="tc-key-ico tki-gr">💪</div> Ejercicio intradialítico durante las sesiones</div></div>
+        <div class="tc-tip"><span>🧘 </span>El yoga suave y la fisioterapia también son excelentes opciones. Consulta con tu médico.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="salud" data-word="sueño y descanso sueño_y_descanso">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">😴</div>
+        <div class="tc-word">Sueño y Descanso</div>
+        <div class="tc-hint">El descanso también es parte del tratamiento</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Los trastornos del sueño son muy frecuentes en diálisis: insomnio, apnea del sueño, piernas inquietas.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🌙</div> El 70% de pacientes tiene algún trastorno de sueño</div><div class="tc-key"><div class="tc-key-ico tki-gr">💊</div> Existen tratamientos efectivos para cada tipo</div></div>
+        <div class="tc-tip"><span>💡 </span>Dormir mal puede empeorar la fatiga del día siguiente. Cuéntale a tu médico si duermes mal.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="salud" data-word="salud mental en erc salud_mental_en_erc">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">🧠</div>
+        <div class="tc-word">Salud Mental en ERC</div>
+        <div class="tc-hint">Cuidar también la mente</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">La depresión y ansiedad son muy frecuentes en pacientes con ERC y diálisis. Son tratables — no hay que ignorarlas.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">😢</div> 30–40% de pacientes en diálisis tiene depresión</div><div class="tc-key"><div class="tc-key-ico tki-gr">💊</div> Hay antidepresivos seguros en ERC</div></div>
+        <div class="tc-tip"><span>💙 </span>Si te sientes triste, ansioso o sin esperanza, cuéntaselo a tu médico. Hay ayuda disponible.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="salud" data-word="sexualidad en diálisis sexualidad_en_diálisis">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">💑</div>
+        <div class="tc-word">Sexualidad en Diálisis</div>
+        <div class="tc-hint">Tema importante que pocas veces se habla</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">La ERC puede afectar la función sexual. Es un tema médico legítimo con tratamientos disponibles.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">🩺</div> Es un tema médico — no debes ignorarlo ni avergonzarte</div><div class="tc-key"><div class="tc-key-ico tki-gr">💊</div> Hay tratamientos para la mayoría de los casos</div></div>
+        <div class="tc-tip"><span>💬 </span>No dudes en hablar con tu médico. Puedes preguntar con total confianza y privacidad.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="salud" data-word="vacunas en erc vacunas_en_erc">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">💉</div>
+        <div class="tc-word">Vacunas en ERC</div>
+        <div class="tc-hint">Protección extra necesaria</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Los pacientes con ERC tienen el sistema inmune alterado y necesitan vacunas especiales adicionales.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">💉</div> Vacuna contra hepatitis B — obligatoria en diálisis</div><div class="tc-key"><div class="tc-key-ico tki-gr">🦠</div> Influenza anual, neumococo, COVID-19</div></div>
+        <div class="tc-tip"><span>📋 </span>Pregunta a tu médico cuáles vacunas tienes pendientes. En muchos casos son gratuitas.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="salud" data-word="viaje con diálisis viaje_con_diálisis">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">✈️</div>
+        <div class="tc-word">Viaje con Diálisis</div>
+        <div class="tc-hint">Sí puedes viajar y disfrutar</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">Los pacientes en diálisis pueden viajar nacional e internacionalmente coordinando sus sesiones.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">📋</div> Se programa con 4–6 semanas de anticipación</div><div class="tc-key"><div class="tc-key-ico tki-gr">🌍</div> Hay clínicas de diálisis en todo el mundo</div></div>
+        <div class="tc-tip"><span>💡 </span>Monte Sinaí puede ayudarte a encontrar clínicas de diálisis en tu destino. Solo avísanos con tiempo.</div>
+      </div></div>
+    </div>
+    <div class="term-card" data-cat="salud" data-word="apoyo familiar en diálisis apoyo_familiar_en_diálisis">
+      <div class="tc-bar tc-bar-gr"></div>
+      <div class="tc-inner" onclick="toggleCard(this.closest('.term-card'))">
+        <div class="tc-tap">+</div>
+        <div class="tc-ico tc-ico-gr">👨‍👩‍👧</div>
+        <div class="tc-word">Apoyo Familiar en Diálisis</div>
+        <div class="tc-hint">La familia es parte del tratamiento</div>
+      </div>
+      <div class="tc-panel"><div class="tc-panel-inner">
+        <p class="tc-def">El apoyo familiar es un factor determinante en la calidad de vida y adherencia al tratamiento.</p>
+        <div class="tc-keys"><div class="tc-key"><div class="tc-key-ico tki-gr">❤</div>️ Familia informada = paciente más seguro</div><div class="tc-key"><div class="tc-key-ico tki-gr">📚</div> Invita a un familiar a tu consulta para aprender juntos</div></div>
+        <div class="tc-tip"><span>💙 </span>En Monte Sinaí los familiares son bienvenidos en las consultas y charlas educativas.</div>
+      </div></div>
+    </div></div>
+</div>
+
+<div id="emptyState">
+  <div class="es-ico">🔍</div>
+  <p>No encontramos ese término.<br>Prueba con otra palabra o <a href="citas.html" style="color:var(--purple);font-weight:700;">consulta con un especialista</a>.</p>
+</div>
+
+<!-- CTA FINAL -->
+<div style="padding:20px var(--px) 8px;" data-r>
+  <div style="background:linear-gradient(135deg,var(--navy),#1A0940);border-radius:22px;padding:26px 18px;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:rgba(107,63,160,.2);pointer-events:none;"></div>
+    <img src="../assets/logo-hemodialisis.jpg" style="width:68px;height:68px;border-radius:50%;object-fit:cover;border:3px solid rgba(107,63,160,.35);box-shadow:0 6px 22px rgba(107,63,160,.4);margin:0 auto 12px;display:block;" onerror="this.style.display='none'" alt="">
+    <h2 style="color:white;font-size:1.15rem;font-weight:700;margin-bottom:8px;position:relative;z-index:1;">¿Escuchaste un término nuevo?</h2>
+    <p style="color:rgba(255,255,255,.6);font-size:.84rem;margin-bottom:18px;line-height:1.75;position:relative;z-index:1;">Nuestros especialistas te explican todo en lenguaje claro y humano.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;position:relative;z-index:1;">
+      <a href="citas.html" style="height:48px;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--teal));color:white;font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">🗓️ Agendar consulta gratuita</a>
+      <a href="https://wa.me/5215645192997?text=Tengo%20dudas%20sobre%20términos%20médicos" target="_blank" style="height:48px;border-radius:13px;background:#25D366;color:white;font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">💬 Preguntar por WhatsApp</a>
+      <a href="guia.html" style="height:48px;border-radius:13px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:white;font-family:'Poppins',sans-serif;font-weight:600;font-size:.88rem;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;">📚 Ver Guía de Acompañamiento</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="padding:0 var(--px);">
+    <div class="ft-top">
+      <img src="../assets/logo-hemodialisis.jpg" class="ft-logo" alt="" onerror="this.style.display:'none'">
+      <div class="ft-brand"><strong>MONTE SINAÍ</strong><span>Clínica de Hemodiálisis</span></div>
+    </div>
+    <p class="ft-tag">Humanismo, integridad y excelencia. Tlalnepantla, Estado de México.</p>
+    <div class="ft-links">
+      <a href="../index.html" class="ft-link">🏠 Inicio</a>
+      <a href="citas.html" class="ft-link">🗓️ Citas</a>
+      <a href="guia.html" class="ft-link">📚 Guía</a>
+      <a href="tel:5596808859" class="ft-link">📞 55 9680-8859</a>
+    </div>
+    <div class="ft-bottom"><p>© 2025 Hospital de Especialidades Monte Sinaí · Información educativa.</p></div>
+  </div>
+</footer>
+
+<nav class="bnav">
+  <div class="bnav-i">
+    <a href="../index.html" class="bn"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio</a>
+    <a href="guia.html" class="bn"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>Guía</a>
+    <a href="citas.html" class="bn bn-cta"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar</a>
+    <a href="glosario.html" class="bn on"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Glosario</a>
+    <a href="tel:5596808859" class="bn"><svg class="bn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.46 12.85 19.79 19.79 0 01.38 4.26 2 2 0 012.36 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.73a16 16 0 006.36 6.36l1.09-1.7a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Llamar</a>
+  </div>
+</nav>
+
+<script>
+(function(){const cv=document.getElementById('glowCanvas');if(!cv)return;const ctx=cv.getContext('2d');let W,H;const P=[{r:107,g:63,b:160},{r:42,g:157,b:143},{r:91,g:192,b:222},{r:59,g:191,b:176},{r:155,g:110,b:212}];const c=(col,a)=>`rgba(${col.r},${col.g},${col.b},${a})`;const rc=()=>P[Math.floor(Math.random()*P.length)];const resize=()=>{W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;};resize();window.addEventListener('resize',resize,{passive:true});class Particle{constructor(){this.init();}init(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=.7+Math.random()*2;this.vx=(Math.random()-.5)*.28;this.vy=(Math.random()-.5)*.28;this.col=rc();this.maxA=.06+Math.random()*.13;this.ph=Math.random()*Math.PI*2;this.life=0;this.max=180+Math.random()*200;}draw(){this.life++;if(this.life>this.max)this.init();this.ph+=.033;const p=Math.min(this.life/38,1)*Math.min(1,(this.max-this.life)/38);const r=this.r*(1+Math.sin(this.ph)*.22)*3.2;const g=ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,r);g.addColorStop(0,c(this.col,this.maxA*p*1.4));g.addColorStop(1,c(this.col,0));ctx.fillStyle=g;ctx.beginPath();ctx.arc(this.x,this.y,r,0,Math.PI*2);ctx.fill();this.x+=this.vx;this.y+=this.vy;if(this.x<-10)this.x=W+10;if(this.x>W+10)this.x=-10;if(this.y<-10)this.y=H+10;if(this.y>H+10)this.y=-10;}}class Line{constructor(){this.init();}init(){const s=Math.floor(Math.random()*4);if(s===0){this.x=-100;this.y=Math.random()*H;this.vx=.4+Math.random()*.7;this.vy=(Math.random()-.5)*.3;}else if(s===1){this.x=W+100;this.y=Math.random()*H;this.vx=-(0.4+Math.random()*.7);this.vy=(Math.random()-.5)*.3;}else if(s===2){this.x=Math.random()*W;this.y=-100;this.vx=(Math.random()-.5)*.3;this.vy=.4+Math.random()*.6;}else{this.x=Math.random()*W;this.y=H+100;this.vx=(Math.random()-.5)*.3;this.vy=-(0.4+Math.random()*.6);}this.col=rc();this.len=60+Math.random()*110;this.a=.04+Math.random()*.08;this.w=.6+Math.random()*1.6;}draw(){const ex=this.x-this.vx*this.len,ey=this.y-this.vy*this.len;const g=ctx.createLinearGradient(ex,ey,this.x,this.y);g.addColorStop(0,c(this.col,0));g.addColorStop(.5,c(this.col,this.a));g.addColorStop(1,c(this.col,0));ctx.strokeStyle=g;ctx.lineWidth=this.w;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(this.x,this.y);ctx.stroke();this.x+=this.vx;this.y+=this.vy;if(this.x<-200||this.x>W+200||this.y<-200||this.y>H+200)this.init();}}
+const parts=[],lines=[];for(let i=0;i<50;i++)parts.push(new Particle());for(let i=0;i<11;i++)lines.push(new Line());function animate(){ctx.clearRect(0,0,W,H);lines.forEach(l=>l.draw());parts.forEach(p=>p.draw());requestAnimationFrame(animate);}animate();})();
+
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{const h=document.documentElement;prog.style.transform=`scaleX(${h.scrollTop/(h.scrollHeight-h.clientHeight)})`;},{passive:true});
+
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('[data-r]').forEach(el=>ro.observe(el));
+
+function toggleCard(card){
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.term-card.open,.term-card-full.open').forEach(c=>{if(c!==card)c.classList.remove('open');});
+  if(!isOpen){card.classList.add('open');setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'nearest'}),100);if(navigator.vibrate)navigator.vibrate(18);}
+  else{card.classList.remove('open');}
+}
+
+function filterTerms(q){
+  const qL=q.toLowerCase().trim();
+  document.getElementById('clearBtn').classList.toggle('vis',q.length>0);
+  const cards=document.querySelectorAll('.term-card,.term-card-full');
+  let vis=0;
+  cards.forEach(card=>{const match=!qL||(card.dataset.word||'').toLowerCase().includes(qL)||card.innerText.toLowerCase().includes(qL);card.style.display=match?'':'none';if(match)vis++;});
+  document.querySelectorAll('.themed-sec,.mid-cta').forEach(el=>{el.style.display=qL?'none':'';});
+  document.getElementById('emptyState').style.display=vis===0?'block':'none';
+}
+
+function clearSearch(){document.getElementById('searchInput').value='';filterTerms('');}
+
+function filterCat(cat,btn){
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  const cards=document.querySelectorAll('.term-card,.term-card-full');
+  let vis=0;
+  cards.forEach(card=>{const cats=(card.dataset.cat||'general').split(' ');const match=cat==='all'||cats.includes(cat);card.style.display=match?'':'none';if(match)vis++;});
+  document.querySelectorAll('.themed-sec,.mid-cta').forEach(el=>{el.style.display=cat==='all'?'':'none';});
+  document.getElementById('emptyState').style.display=vis===0?'block':'none';
+}
+
+if(window.innerWidth>=768){const w=document.createElement('a');w.href='https://wa.me/5215645192997';w.target='_blank';w.rel='noopener';w.style.cssText='position:fixed;bottom:28px;right:28px;z-index:999;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(37,211,102,.5);text-decoration:none;';w.innerHTML='<svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';document.body.appendChild(w);}
+</script>
+</body>
+</html>
