@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+<meta name="theme-color" content="#071E35">
+<title>Mi Cuidado Renal — Portal del Paciente · Monte Sinaí Tlalnepantla</title>
+<meta name="description" content="Portal del paciente renal de Monte Sinaí: monitoreo de peso diario, centro de medicamentos, asistente nutricional inteligente y tarjeta de emergencia. Herramientas que te acompañan entre sesiones.">
+<meta name="keywords" content="portal paciente hemodiálisis, monitor peso diálisis, calculadora ganancia interdialítica, asistente nutricional renal, tarjeta emergencia diálisis, Monte Sinaí Tlalnepantla">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Clínica de Hemodiálisis Monte Sinaí">
+<link rel="canonical" href="https://montesinai.space/mi-cuidado.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://montesinai.space/mi-cuidado.html">
+<meta property="og:title" content="Mi Cuidado Renal — Portal del Paciente · Monte Sinaí">
+<meta property="og:description" content="Herramientas digitales para acompañarte entre sesiones de hemodiálisis. Monitoreo, medicamentos, nutrición y alertas familiares.">
+<meta property="og:image" content="https://montesinai.space/assets/logo-hemodialisis.jpg">
+<meta property="og:locale" content="es_MX">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/logo-hemodialisis.jpg" fetchpriority="high">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Portal del Paciente Renal Monte Sinaí",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web Browser",
+  "url": "https://montesinai.space/mi-cuidado.html",
+  "description": "Sistema integral de acompañamiento para pacientes en hemodiálisis: monitoreo diario de peso, control de medicamentos, asistente nutricional, termómetro de síntomas y tarjeta de emergencia.",
+  "publisher": {
+    "@type": "MedicalClinic",
+    "name": "Clínica de Hemodiálisis Monte Sinaí",
+    "url": "https://montesinai.space/"
+  },
+  "audience": {"@type":"Patient","name":"Pacientes en hemodiálisis y sus familias"},
+  "featureList": [
+    "Monitoreo diario de peso interdialítico",
+    "Centro de medicamentos personalizado",
+    "Asistente nutricional con base de datos renal",
+    "Termómetro de síntomas con sistema de alarma",
+    "Tarjeta de emergencia digital para paramédicos"
+  ]
+}
+</script>
+
+<!-- Google Analytics 4 — Monte Sinaí G-RHZJ6NCE54 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZJ6NCE54"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RHZJ6NCE54', {page_title:document.title,page_location:window.location.href});
+  function msTrack(e,p){gtag('event',e,p||{});}
+</script>
+
+<style>
+:root{
+  --navy:#071E35;--primary:#0D3B66;--primary-l:#1A4A80;
+  --teal:#2A9D8F;--teal-l:#3BBFB0;--teal-p:#E3F4F2;--teal-d:#1F7D71;
+  --purple:#6B3FA0;--purple-l:#8A5BC4;--purple-p:#F0E8FF;
+  --green:#28B673;--green-l:#3DD68A;--green-p:#E6F7EF;
+  --gold:#FFB703;--gold-p:#FFF6E0;
+  --red:#E63946;--red-l:#FF5A6B;--red-p:#FDECEA;
+  --sky:#5BC0DE;--sky-p:#E7F5FB;
+  --bg:#F0F5FB;--bg-2:#E8EFF7;--white:#FFFFFF;
+  --text:#0A1520;--text-m:#1A2E40;--text-s:#4A6070;
+  --border:#C8DCE8;--border-l:#DCE7F0;
+  --shadow:0 4px 16px rgba(13,59,102,.08);
+  --shadow-l:0 8px 32px rgba(13,59,102,.12);
+  --shadow-c:0 2px 8px rgba(13,59,102,.06);
+  --r-sm:8px;--r-md:14px;--r-lg:18px;--r-xl:24px;
+  --px:18px;--nav-h:60px;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bot:env(safe-area-inset-bottom,0px);
+  --out:cubic-bezier(.16,1,.3,1);
+  --max:920px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:calc(72px + var(--safe-bot));}
+*{-webkit-tap-highlight-color:transparent;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:inherit;}
+input,select,textarea{font-family:inherit;}
+
+/* ═══════ NAV ═══════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;padding-top:var(--safe-top);background:rgba(7,30,53,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(42,157,143,.2);}
+.nav__i{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--px);max-width:var(--max);margin:0 auto;}
+.nav__logo{display:flex;align-items:center;gap:10px;}
+.nav__logo img{height:36px;width:36px;border-radius:50%;object-fit:cover;border:2px solid rgba(42,157,143,.4);}
+.nav__brand strong{display:block;color:white;font-size:.78rem;font-weight:800;letter-spacing:-.01em;}
+.nav__brand em{display:block;color:var(--teal-l);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;font-style:normal;}
+.nav__cta{height:32px;padding:0 14px;border-radius:100px;background:linear-gradient(135deg,var(--teal),var(--teal-l));color:white;font-size:.72rem;font-weight:700;display:flex;align-items:center;border:none;}
+
+/* ═══════ HERO ═══════ */
+.hero{
+  background:linear-gradient(155deg,var(--navy) 0%,#0A2030 50%,#0F3055 100%);
+  padding:calc(var(--nav-h) + var(--safe-top) + 24px) var(--px) 28px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 45% at 85% 25%,rgba(42,157,143,.18),transparent 60%),
+    radial-gradient(ellipse 45% 40% at 10% 80%,rgba(107,63,160,.15),transparent 55%);
+}
+.hero-i{position:relative;z-index:1;max-width:var(--max);margin:0 auto;}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(42,157,143,.15);border:1px solid rgba(42,157,143,.3);
+  border-radius:100px;padding:4px 12px;margin-bottom:10px;
+}
+.hero-chip-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-l);animation:pulse 2s infinite;}
+.hero-chip-text{color:var(--teal-l);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero-h1{color:white;font-size:clamp(1.4rem,5.5vw,2rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:6px;}
+.hero-h1 em{background:linear-gradient(135deg,var(--teal-l) 0%,#7EE8B0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal;}
+.hero-sub{color:rgba(255,255,255,.65);font-size:.82rem;line-height:1.65;margin-bottom:14px;max-width:520px;}
+
+/* ═══════ TAB CARDS DEL HERO ═══════ */
+.hero-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.htab{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-md);padding:11px;
+  display:flex;align-items:center;gap:8px;
+  cursor:pointer;transition:all .2s;text-decoration:none;
+}
+.htab:active{background:rgba(255,255,255,.12);transform:scale(.98);}
+.htab-ico{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  flex-shrink:0;
+}
+.htab-ico-1{background:rgba(42,157,143,.2);}
+.htab-ico-2{background:rgba(107,63,160,.2);}
+.htab-ico-3{background:rgba(40,182,115,.2);}
+.htab-ico-4{background:rgba(230,57,70,.2);}
+.htab-text strong{display:block;color:white;font-size:.76rem;font-weight:700;line-height:1.2;}
+.htab-text span{display:block;color:rgba(255,255,255,.5);font-size:.6rem;}
+
+/* ═══════ MAIN ═══════ */
+.main{max-width:var(--max);margin:0 auto;padding:24px var(--px);}
+
+/* ═══════ IDENTIFICACIÓN OPCIONAL ═══════ */
+.id-box{
+  background:white;border-radius:var(--r-lg);padding:18px;
+  box-shadow:var(--shadow);margin-bottom:20px;
+  border:1px solid var(--border);
+}
+.id-box.greeting{
+  background:linear-gradient(135deg,var(--teal-p),#F0F8F7);
+  border-color:rgba(42,157,143,.25);
+}
+.id-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.id-ava{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:.85rem;font-weight:800;
+}
+.id-info strong{display:block;font-size:.92rem;font-weight:700;color:var(--primary);}
+.id-info span{display:block;font-size:.7rem;color:var(--text-s);}
+.id-edit{
+  margin-left:auto;font-size:.65rem;font-weight:700;
+  color:var(--teal);background:white;border:1px solid var(--border);
+  border-radius:100px;padding:5px 10px;
+}
+.id-prompt{display:flex;flex-direction:column;gap:10px;}
+.id-prompt p{font-size:.82rem;color:var(--text-m);line-height:1.55;}
+.id-form{display:grid;gap:8px;}
+.id-input{
+  height:42px;padding:0 14px;
+  border:1.5px solid var(--border);border-radius:var(--r-sm);
+  background:white;font-size:.85rem;color:var(--text);
+  transition:border-color .15s;
+}
+.id-input:focus{outline:none;border-color:var(--teal);}
+.id-btns{display:flex;gap:8px;}
+.id-save{
+  flex:1;height:42px;border-radius:var(--r-sm);
+  background:linear-gradient(135deg,var(--teal),var(--teal-l));
+  color:white;border:none;font-size:.8rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.id-skip{
+  height:42px;padding:0 14px;border-radius:var(--r-sm);
+  background:var(--bg);color:var(--text-s);
+  border:1px solid var(--border);font-size:.75rem;font-weight:600;
+}
+
+/* ═══════ SECCIONES PRINCIPALES ═══════ */
+.section{margin-bottom:24px;scroll-margin-top:80px;}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.sec-head-ico{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.05rem;flex-shrink:0;
+}
+.sec-head-1{background:var(--teal-p);}
+.sec-head-2{background:var(--purple-p);}
+.sec-head-3{background:var(--green-p);}
+.sec-head-4{background:var(--red-p);}
+.sec-head-5{background:var(--sky-p);}
+.sec-head h2{font-size:1.05rem;font-weight:700;color:var(--primary);letter-spacing:-.01em;}
+.sec-head span{display:block;font-size:.66rem;color:var(--text-s);font-weight:500;letter-spacing:.04em;text-transform:uppercase;margin-top:1px;}
+
+/* ═══════ CARD GENÉRICO ═══════ */
+.card{
+  background:white;border-radius:var(--r-lg);padding:18px;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+
+/* ═══════ MONITOR DE PESO ═══════ */
+.weight-config{margin-bottom:14px;}
+.weight-config-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.wc-field label{display:block;font-size:.66rem;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.wc-field input{
+  width:100%;height:46px;padding:0 12px;
+  border:1.5px solid var(--border);border-radius:var(--r-sm);
+  background:white;font-size:1.05rem;font-weight:700;color:var(--primary);
+  text-align:center;
+}
+.wc-field input:focus{outline:none;border-color:var(--teal);}
+.wc-help{font-size:.7rem;color:var(--text-s);line-height:1.5;}
+.weight-now{
+  background:linear-gradient(135deg,#F8FAFD,#FFFFFF);
+  border-radius:var(--r-md);padding:16px;margin:12px 0;
+  border:1px solid var(--border-l);
+}
+.wn-label{font-size:.66rem;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;text-align:center;}
+.wn-input-wrap{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:12px;}
+.wn-input{
+  width:120px;height:60px;
+  border:2px solid var(--teal);border-radius:var(--r-md);
+  background:white;font-size:1.7rem;font-weight:800;
+  color:var(--primary);text-align:center;
+}
+.wn-input:focus{outline:none;box-shadow:0 0 0 4px var(--teal-p);}
+.wn-unit{font-size:1rem;font-weight:600;color:var(--text-s);}
+.wn-register{
+  width:100%;height:46px;
+  background:linear-gradient(135deg,var(--teal),var(--teal-l));
+  border:none;border-radius:var(--r-sm);
+  color:white;font-size:.82rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  box-shadow:0 4px 12px rgba(42,157,143,.3);
+}
+.wn-register:disabled{background:#9FB5C2;box-shadow:none;cursor:not-allowed;}
+
+/* Resultado del peso */
+.weight-result{
+  border-radius:var(--r-md);padding:14px;margin-top:12px;
+  display:none;
+}
+.weight-result.green{background:var(--green-p);border:1px solid rgba(40,182,115,.25);}
+.weight-result.yellow{background:var(--gold-p);border:1px solid rgba(255,183,3,.3);}
+.weight-result.red{background:var(--red-p);border:1px solid rgba(230,57,70,.25);}
+.wr-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.wr-emoji{font-size:1.4rem;}
+.wr-status{font-size:.88rem;font-weight:700;}
+.wr-result-green .wr-status{color:var(--green);}
+.weight-result.green .wr-status{color:var(--teal-d);}
+.weight-result.yellow .wr-status{color:#8A5A00;}
+.weight-result.red .wr-status{color:var(--red);}
+.wr-detail{font-size:.78rem;color:var(--text-m);line-height:1.65;}
+.wr-detail strong{color:var(--primary);}
+
+/* Historial */
+.weight-history{margin-top:14px;}
+.wh-title{font-size:.7rem;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;}
+.wh-list{display:flex;flex-direction:column;gap:6px;max-height:280px;overflow-y:auto;}
+.wh-empty{
+  text-align:center;padding:20px;
+  color:var(--text-s);font-size:.78rem;
+}
+.wh-item{
+  background:var(--bg);border-radius:var(--r-sm);padding:10px 12px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border:1px solid var(--border-l);
+}
+.wh-date{font-size:.72rem;color:var(--text-s);font-weight:600;}
+.wh-weight{font-size:.85rem;color:var(--primary);font-weight:700;}
+.wh-gain{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:100px;}
+.wh-gain.g{background:var(--green-p);color:var(--green);}
+.wh-gain.y{background:var(--gold-p);color:#8A5A00;}
+.wh-gain.r{background:var(--red-p);color:var(--red);}
+
+/* ═══════ MEDICAMENTOS ═══════ */
+.med-add{
+  background:var(--purple-p);border:1px dashed rgba(107,63,160,.3);
+  border-radius:var(--r-md);padding:14px;margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;cursor:pointer;
+}
+.med-add-ico{
+  width:34px;height:34px;border-radius:9px;
+  background:var(--purple);color:white;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:700;
+}
+.med-add-text{font-size:.84rem;font-weight:700;color:var(--purple);}
+.med-add-sub{font-size:.7rem;color:var(--text-s);}
+
+.med-form{display:none;background:var(--purple-p);border-radius:var(--r-md);padding:14px;margin-bottom:12px;}
+.med-form.open{display:block;}
+.med-form-row{display:grid;gap:8px;margin-bottom:8px;}
+.med-form-row label{font-size:.66rem;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.06em;}
+.med-form-row input,.med-form-row select{
+  height:42px;padding:0 12px;
+  border:1.5px solid var(--border);border-radius:var(--r-sm);
+  background:white;font-size:.82rem;
+}
+.med-form-row input:focus,.med-form-row select:focus{outline:none;border-color:var(--purple);}
+.med-form-btns{display:flex;gap:8px;}
+.med-form-save{flex:1;height:42px;background:var(--purple);color:white;border:none;border-radius:var(--r-sm);font-size:.78rem;font-weight:700;}
+.med-form-cancel{height:42px;padding:0 16px;background:white;color:var(--text-s);border:1px solid var(--border);border-radius:var(--r-sm);font-size:.75rem;font-weight:600;}
+
+.med-list{display:flex;flex-direction:column;gap:8px;}
+.med-empty{
+  background:var(--bg);border-radius:var(--r-md);padding:24px;
+  text-align:center;color:var(--text-s);font-size:.8rem;
+}
+.med-item{
+  background:white;border:1px solid var(--border);border-radius:var(--r-md);
+  padding:12px 14px;display:flex;align-items:center;gap:10px;
+  box-shadow:var(--shadow-c);
+}
+.med-item-ico{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:var(--purple-p);color:var(--purple);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.med-item-info{flex:1;min-width:0;}
+.med-item-name{font-size:.86rem;font-weight:700;color:var(--primary);}
+.med-item-detail{font-size:.7rem;color:var(--text-s);margin-top:1px;}
+.med-item-time{
+  font-size:.65rem;font-weight:700;
+  background:var(--bg);color:var(--text-s);
+  border-radius:100px;padding:3px 9px;
+}
+.med-item-del{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--red-p);color:var(--red);
+  border:none;font-size:.85rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.med-tip{
+  background:linear-gradient(135deg,var(--gold-p),#FFFAEB);
+  border:1px solid rgba(255,183,3,.3);border-radius:var(--r-md);
+  padding:12px;margin-top:12px;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.med-tip-ico{font-size:1.1rem;flex-shrink:0;}
+.med-tip-text{font-size:.74rem;color:var(--text-m);line-height:1.6;}
+.med-tip-text strong{color:#8A5A00;}
+
+/* ═══════ NUTRICIÓN ═══════ */
+.nut-search-wrap{position:relative;margin-bottom:12px;}
+.nut-search{
+  width:100%;height:46px;padding:0 14px 0 42px;
+  border:1.5px solid var(--border);border-radius:var(--r-md);
+  background:white;font-size:.86rem;
+}
+.nut-search:focus{outline:none;border-color:var(--green);}
+.nut-search-ico{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:18px;height:18px;stroke:var(--text-s);fill:none;stroke-width:2.5;
+}
+.nut-quickchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.nut-chip{
+  font-size:.7rem;font-weight:600;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:100px;padding:6px 12px;color:var(--text-s);
+  cursor:pointer;
+}
+.nut-chip:active,.nut-chip.active{background:var(--green);border-color:var(--green);color:white;}
+
+.nut-results{display:flex;flex-direction:column;gap:6px;max-height:380px;overflow-y:auto;padding-right:2px;}
+.nut-result{
+  background:white;border:1px solid var(--border);border-radius:var(--r-md);
+  padding:11px 13px;display:flex;align-items:center;gap:10px;
+  cursor:pointer;
+}
+.nut-result-ico{font-size:1.1rem;flex-shrink:0;}
+.nut-result-info{flex:1;min-width:0;}
+.nut-result-name{font-size:.82rem;font-weight:700;color:var(--primary);}
+.nut-result-vals{font-size:.66rem;color:var(--text-s);margin-top:2px;}
+.nut-result-badge{
+  font-size:.62rem;font-weight:800;letter-spacing:.05em;
+  padding:3px 8px;border-radius:100px;text-transform:uppercase;
+  flex-shrink:0;
+}
+.nut-badge-g{background:var(--green-p);color:var(--green);}
+.nut-badge-y{background:var(--gold-p);color:#8A5A00;}
+.nut-badge-r{background:var(--red-p);color:var(--red);}
+
+.nut-modal-bg{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(7,30,53,.6);backdrop-filter:blur(8px);
+  display:none;align-items:flex-end;justify-content:center;
+  padding:var(--px);
+}
+.nut-modal-bg.open{display:flex;animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.nut-modal{
+  background:white;border-radius:var(--r-xl) var(--r-xl) 0 0;
+  width:100%;max-width:500px;max-height:80vh;overflow-y:auto;
+  padding:22px;
+  animation:slideUp .25s var(--out);
+  margin-bottom:env(safe-area-inset-bottom,0px);
+}
+@keyframes slideUp{from{transform:translateY(40px);}to{transform:translateY(0);}}
+.nut-modal-handle{
+  width:40px;height:4px;background:var(--border);border-radius:100px;
+  margin:0 auto 14px;
+}
+.nut-modal-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.nut-modal-ico{font-size:1.8rem;}
+.nut-modal-title{flex:1;}
+.nut-modal-title h3{font-size:1.1rem;font-weight:700;color:var(--primary);}
+.nut-modal-title p{font-size:.7rem;color:var(--text-s);margin-top:1px;}
+.nut-modal-verdict{
+  padding:12px;border-radius:var(--r-md);margin-bottom:14px;
+  font-size:.86rem;font-weight:700;text-align:center;
+}
+.nut-verdict-g{background:var(--green-p);color:var(--green);}
+.nut-verdict-y{background:var(--gold-p);color:#8A5A00;}
+.nut-verdict-r{background:var(--red-p);color:var(--red);}
+.nut-modal-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.nut-val-cell{
+  background:var(--bg);border-radius:var(--r-sm);padding:10px;text-align:center;
+}
+.nut-val-label{font-size:.6rem;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.05em;}
+.nut-val-num{font-size:1rem;font-weight:800;color:var(--primary);margin-top:3px;}
+.nut-val-unit{font-size:.62rem;color:var(--text-s);}
+.nut-modal-tip{
+  background:var(--teal-p);border-left:3px solid var(--teal);
+  padding:10px 12px;border-radius:var(--r-sm);
+  font-size:.78rem;color:var(--text-m);line-height:1.65;
+}
+.nut-modal-close{
+  width:100%;height:44px;margin-top:14px;
+  background:var(--bg);color:var(--text-s);
+  border:1px solid var(--border);border-radius:var(--r-sm);
+  font-size:.8rem;font-weight:700;
+}
+
+/* ═══════ TERMÓMETRO DE SÍNTOMAS ═══════ */
+.thermo-intro{
+  background:var(--red-p);border:1px solid rgba(230,57,70,.2);
+  border-radius:var(--r-md);padding:12px;margin-bottom:14px;
+  font-size:.78rem;color:var(--text-m);line-height:1.65;
+}
+.thermo-intro strong{color:var(--red);}
+.thermo-q{
+  background:white;border:1.5px solid var(--border);border-radius:var(--r-md);
+  padding:14px;margin-bottom:10px;
+}
+.thermo-q-text{font-size:.84rem;font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.45;}
+.thermo-q-opts{display:flex;flex-direction:column;gap:6px;}
+.thermo-opt{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 12px;
+  background:var(--bg);border:1.5px solid transparent;border-radius:var(--r-sm);
+  cursor:pointer;transition:all .15s;
+}
+.thermo-opt:active{transform:scale(.98);}
+.thermo-opt.selected{
+  background:var(--teal-p);border-color:var(--teal);
+}
+.thermo-opt.selected.warn{background:var(--gold-p);border-color:var(--gold);}
+.thermo-opt.selected.danger{background:var(--red-p);border-color:var(--red);}
+.thermo-opt-ico{
+  width:22px;height:22px;border-radius:50%;flex-shrink:0;
+  border:2px solid var(--border);background:white;
+  display:flex;align-items:center;justify-content:center;
+}
+.thermo-opt.selected .thermo-opt-ico{background:var(--teal);border-color:var(--teal);}
+.thermo-opt.selected .thermo-opt-ico::after{content:'';width:8px;height:8px;background:white;border-radius:50%;}
+.thermo-opt.selected.warn .thermo-opt-ico{background:var(--gold);border-color:var(--gold);}
+.thermo-opt.selected.danger .thermo-opt-ico{background:var(--red);border-color:var(--red);}
+.thermo-opt-text{font-size:.8rem;color:var(--text-m);font-weight:500;}
+
+.thermo-result{
+  border-radius:var(--r-md);padding:16px;margin-top:14px;
+  display:none;
+}
+.thermo-result.green{background:var(--green-p);border:1px solid rgba(40,182,115,.3);}
+.thermo-result.yellow{background:var(--gold-p);border:1px solid rgba(255,183,3,.3);}
+.thermo-result.red{background:var(--red-p);border:1px solid rgba(230,57,70,.3);}
+.tr-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.tr-emoji{font-size:1.6rem;}
+.tr-title{font-size:.95rem;font-weight:700;}
+.thermo-result.green .tr-title{color:var(--green);}
+.thermo-result.yellow .tr-title{color:#8A5A00;}
+.thermo-result.red .tr-title{color:var(--red);}
+.tr-desc{font-size:.8rem;color:var(--text-m);line-height:1.7;margin-bottom:12px;}
+.tr-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.tr-btn-call{
+  height:42px;padding:0 16px;border-radius:var(--r-sm);
+  background:var(--red);color:white;font-weight:700;font-size:.78rem;
+  display:flex;align-items:center;gap:6px;text-decoration:none;
+}
+.tr-btn-wa{
+  height:42px;padding:0 16px;border-radius:var(--r-sm);
+  background:#25D366;color:white;font-weight:700;font-size:.78rem;
+  display:flex;align-items:center;gap:6px;text-decoration:none;
+}
+
+/* ═══════ TARJETA DE EMERGENCIA ═══════ */
+.emerg-card{
+  background:linear-gradient(135deg,var(--navy),#0C2A48);
+  border-radius:var(--r-lg);padding:18px;
+  color:white;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 8px 32px rgba(7,30,53,.25);
+}
+.emerg-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.1);}
+.emerg-logo{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,var(--red),#C0392B);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+}
+.emerg-title{flex:1;}
+.emerg-title strong{display:block;color:white;font-size:.9rem;font-weight:800;letter-spacing:-.01em;}
+.emerg-title span{display:block;color:rgba(255,255,255,.55);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;margin-top:1px;}
+
+.emerg-fields{display:grid;gap:8px;margin-bottom:14px;}
+.emerg-field{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r-sm);padding:10px 12px;
+}
+.emerg-field label{display:block;font-size:.6rem;color:rgba(255,255,255,.5);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px;}
+.emerg-field input,.emerg-field textarea{
+  width:100%;background:transparent;border:none;
+  color:white;font-size:.88rem;font-weight:600;
+  padding:0;font-family:inherit;resize:none;
+}
+.emerg-field input:focus,.emerg-field textarea:focus{outline:none;}
+.emerg-field input::placeholder,.emerg-field textarea::placeholder{color:rgba(255,255,255,.3);font-weight:500;}
+
+.emerg-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.emerg-clinic{
+  background:rgba(42,157,143,.12);border:1px solid rgba(42,157,143,.25);
+  border-radius:var(--r-sm);padding:10px 12px;
+  font-size:.7rem;color:rgba(255,255,255,.7);line-height:1.55;
+  margin-bottom:12px;
+}
+.emerg-clinic strong{color:var(--teal-l);display:block;font-size:.72rem;margin-bottom:2px;}
+.emerg-save{
+  width:100%;height:46px;
+  background:linear-gradient(135deg,var(--red),#C0392B);
+  color:white;border:none;border-radius:var(--r-sm);
+  font-size:.82rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.emerg-saved{
+  text-align:center;font-size:.7rem;color:var(--green-l);margin-top:8px;
+  display:none;
+}
+.emerg-saved.show{display:block;}
+
+/* ═══════ CTA INFERIOR ═══════ */
+.cta-final{
+  background:linear-gradient(135deg,var(--purple),var(--purple-l));
+  border-radius:var(--r-lg);padding:22px;text-align:center;
+  color:white;margin-top:8px;
+  box-shadow:0 8px 32px rgba(107,63,160,.25);
+}
+.cta-final h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;}
+.cta-final p{font-size:.78rem;line-height:1.7;color:rgba(255,255,255,.78);margin-bottom:16px;}
+.cta-final-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.cta-tel,.cta-wa{
+  height:44px;padding:0 18px;border-radius:var(--r-sm);
+  font-weight:700;font-size:.8rem;text-decoration:none;
+  display:flex;align-items:center;gap:6px;
+}
+.cta-tel{background:white;color:var(--purple);}
+.cta-wa{background:#25D366;color:white;}
+
+/* ═══════ BOTTOM NAV ═══════ */
+.bnav{position:fixed;bottom:0;left:0;right:0;z-index:900;padding-bottom:var(--safe-bot);background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:2px solid var(--border);box-shadow:0 -4px 24px rgba(13,59,102,.1);}
+.bnav-i{display:flex;height:72px;align-items:stretch;}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--text-s);font-size:.56rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.bn-ic{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2;}
+.bn-cta{background:linear-gradient(135deg,var(--teal),var(--teal-l));color:white!important;border-radius:12px;margin:8px 5px;flex:1.4;padding:0 8px;box-shadow:0 4px 16px rgba(42,157,143,.4);}
+
+/* ═══════ SCROLL REVEAL ═══════ */
+[data-r]{opacity:0;transform:translateY(14px);transition:opacity .55s var(--out),transform .55s var(--out);}
+[data-r].vis{opacity:1;transform:translateY(0);}
+[data-r][data-d="1"]{transition-delay:.08s;}
+[data-r][data-d="2"]{transition-delay:.16s;}
+
+/* ═══════ TOAST ═══════ */
+.toast{
+  position:fixed;bottom:calc(80px + var(--safe-bot));left:50%;transform:translateX(-50%);
+  background:var(--primary);color:white;
+  padding:12px 18px;border-radius:100px;
+  font-size:.78rem;font-weight:600;
+  box-shadow:0 8px 32px rgba(13,59,102,.3);
+  z-index:1100;display:none;
+}
+.toast.show{display:block;animation:toastIn .3s ease,toastOut .3s ease 2.2s;}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,20px);}to{opacity:1;transform:translate(-50%,0);}}
+@keyframes toastOut{to{opacity:0;transform:translate(-50%,20px);}}
+
+@media(min-width:640px){
+  .weight-config-grid{grid-template-columns:1fr 1fr 1fr;}
+}
+@media(min-width:768px){
+  .bnav{display:none;}
+  body{padding-bottom:0;}
+  .hero-tabs{grid-template-columns:repeat(4,1fr);}
+}
+@supports (-webkit-touch-callout:none){
+  input,textarea,select{font-size:16px!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Navegación principal">
+  <div class="nav__i">
+    <a href="/" class="nav__logo" aria-label="Monte Sinaí — Inicio">
+      <img src="assets/logo-hemodialisis.jpg" alt="Logo Clínica Monte Sinaí" width="36" height="36" onerror="this.style.display='none'">
+      <div class="nav__brand"><strong>MONTE SINAÍ</strong><em>Hemodiálisis · Tlalnepantla</em></div>
+    </a>
+    <a href="citas.html" class="nav__cta">Consulta →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="hero-i">
+    <div class="hero-chip"><span class="hero-chip-dot"></span><span class="hero-chip-text">Portal del Paciente</span></div>
+    <h1 class="hero-h1">Mi <em>Cuidado Renal</em></h1>
+    <p class="hero-sub">Herramientas que te acompañan entre sesiones. Monitorea tu peso, registra tus medicamentos, consulta alimentos y comparte tu estado con tu familia.</p>
+    <div class="hero-tabs" role="navigation" aria-label="Accesos rápidos">
+      <a href="#peso" class="htab"><div class="htab-ico htab-ico-1">⚖️</div><div class="htab-text"><strong>Mi peso</strong><span>Monitoreo diario</span></div></a>
+      <a href="#medicamentos" class="htab"><div class="htab-ico htab-ico-2">💊</div><div class="htab-text"><strong>Mis medicamentos</strong><span>Horarios y dosis</span></div></a>
+      <a href="#nutricion" class="htab"><div class="htab-ico htab-ico-3">🍽️</div><div class="htab-text"><strong>¿Puedo comer?</strong><span>Asistente nutricional</span></div></a>
+      <a href="#sintomas" class="htab"><div class="htab-ico htab-ico-4">🚨</div><div class="htab-text"><strong>Mis síntomas</strong><span>Termómetro hoy</span></div></a>
+    </div>
+  </div>
+</header>
+
+<main class="main" role="main">
+
+  <!-- IDENTIFICACIÓN OPCIONAL -->
+  <div class="id-box" id="idBox" data-r>
+    <div id="idPrompt" class="id-prompt">
+      <p><strong>¿Quieres personalizar tu portal?</strong> Pon tu nombre y, si lo deseas, tu WhatsApp para que podamos contactarte en emergencias. Tus datos quedan guardados solo en tu teléfono.</p>
+      <div class="id-form">
+        <input type="text" class="id-input" id="userName" placeholder="Tu nombre (ej. María)" maxlength="40" aria-label="Nombre">
+        <input type="tel" class="id-input" id="userPhone" placeholder="Tu WhatsApp (opcional) — 10 dígitos" maxlength="10" inputmode="numeric" aria-label="WhatsApp">
+        <div class="id-btns">
+          <button class="id-save" onclick="saveUser()">💙 Guardar y continuar</button>
+          <button class="id-skip" onclick="skipUser()">Omitir</button>
+        </div>
+      </div>
+    </div>
+    <div id="idGreeting" style="display:none;">
+      <div class="id-head">
+        <div class="id-ava" id="userAva">M</div>
+        <div class="id-info">
+          <strong id="userGreet">Hola</strong>
+          <span>Bienvenido a tu portal de cuidado renal</span>
+        </div>
+        <button class="id-edit" onclick="editUser()">Editar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECCIÓN 1: MONITOR DE PESO ═══ -->
+  <section class="section" id="peso" data-r>
+    <div class="sec-head">
+      <div class="sec-head-ico sec-head-1">⚖️</div>
+      <div><h2>Mi peso diario</h2><span>Monitoreo de ganancia interdialítica</span></div>
+    </div>
+    <div class="card">
+      <div class="weight-config">
+        <div class="weight-config-grid">
+          <div class="wc-field">
+            <label for="pesoSeco">Peso seco objetivo</label>
+            <input type="number" id="pesoSeco" step="0.1" placeholder="65.0" inputmode="decimal" aria-label="Peso seco en kilogramos">
+          </div>
+          <div class="wc-field">
+            <label for="pesoPost">Peso post última sesión</label>
+            <input type="number" id="pesoPost" step="0.1" placeholder="65.5" inputmode="decimal" aria-label="Peso después de la última sesión">
+          </div>
+          <div class="wc-field">
+            <label for="diasEntre">Días desde última sesión</label>
+            <input type="number" id="diasEntre" min="1" max="4" placeholder="2" inputmode="numeric" aria-label="Días desde la última sesión">
+          </div>
+        </div>
+        <p class="wc-help">Configura estos valores con tu nefróloga. Se guardan en tu teléfono.</p>
+      </div>
+
+      <div class="weight-now">
+        <div class="wn-label">¿Cuál es tu peso ahora?</div>
+        <div class="wn-input-wrap">
+          <input type="number" class="wn-input" id="pesoHoy" step="0.1" placeholder="0.0" inputmode="decimal" aria-label="Peso actual">
+          <span class="wn-unit">kg</span>
+        </div>
+        <button class="wn-register" id="btnRegistrar" onclick="registrarPeso()" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Calcular ganancia
+        </button>
+      </div>
+
+      <div class="weight-result" id="weightResult" role="status" aria-live="polite">
+        <div class="wr-head">
+          <div class="wr-emoji" id="wrEmoji">✅</div>
+          <div class="wr-status" id="wrStatus">Zona segura</div>
+        </div>
+        <div class="wr-detail" id="wrDetail">Tu ganancia es saludable.</div>
+      </div>
+
+      <div class="weight-history">
+        <h3 class="wh-title">Últimos 14 días</h3>
+        <div class="wh-list" id="weightHistory">
+          <div class="wh-empty">Aún no has registrado mediciones. Comienza con tu peso de hoy.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 2: MEDICAMENTOS ═══ -->
+  <section class="section" id="medicamentos" data-r>
+    <div class="sec-head">
+      <div class="sec-head-ico sec-head-2">💊</div>
+      <div><h2>Mis medicamentos</h2><span>Lista personalizada con horarios</span></div>
+    </div>
+    <div class="card">
+      <div class="med-add" onclick="toggleMedForm()">
+        <div class="med-add-ico">+</div>
+        <div>
+          <div class="med-add-text">Agregar medicamento</div>
+          <div class="med-add-sub">Anota uno por uno con su horario</div>
+        </div>
+      </div>
+
+      <div class="med-form" id="medForm">
+        <div class="med-form-row">
+          <label for="medName">Nombre del medicamento</label>
+          <input type="text" id="medName" placeholder="Ej. Sevelamer, Eritropoyetina..." maxlength="60">
+        </div>
+        <div class="med-form-row">
+          <label for="medDose">Dosis</label>
+          <input type="text" id="medDose" placeholder="Ej. 800 mg, 1 ampolla, 2 tabletas..." maxlength="40">
+        </div>
+        <div class="med-form-row">
+          <label for="medTime">Cuándo lo tomas</label>
+          <select id="medTime">
+            <option value="Mañana">Mañana</option>
+            <option value="Comida">Con la comida</option>
+            <option value="Cena">Con la cena</option>
+            <option value="Noche">Antes de dormir</option>
+            <option value="Con cada comida">Con cada comida (quelante)</option>
+            <option value="En diálisis">Durante la sesión</option>
+            <option value="Solo si es necesario">Solo si es necesario</option>
+          </select>
+        </div>
+        <div class="med-form-btns">
+          <button class="med-form-save" onclick="saveMed()">Agregar a mi lista</button>
+          <button class="med-form-cancel" onclick="toggleMedForm()">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="med-list" id="medList">
+        <div class="med-empty">Aún no has agregado medicamentos. Ten tu lista siempre a la mano.</div>
+      </div>
+
+      <div class="med-tip">
+        <span class="med-tip-ico">💡</span>
+        <div class="med-tip-text"><strong>Tip importante:</strong> el quelante de fósforo (sevelamer, carbonato de calcio, lantano) debe tomarse <strong>al inicio</strong> de cada comida, no después. Si lo tomas tarde, el fósforo ya se absorbió.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 3: NUTRICIÓN ═══ -->
+  <section class="section" id="nutricion" data-r>
+    <div class="sec-head">
+      <div class="sec-head-ico sec-head-3">🍽️</div>
+      <div><h2>¿Puedo comer esto?</h2><span>Asistente nutricional renal</span></div>
+    </div>
+    <div class="card">
+      <div class="nut-search-wrap">
+        <svg class="nut-search-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="nut-search" id="nutSearch" placeholder="Busca un alimento (ej. plátano, jitomate, pollo...)" autocomplete="off" aria-label="Buscar alimento">
+      </div>
+      <div class="nut-quickchips">
+        <button class="nut-chip" onclick="filterNut('todo')">Todo</button>
+        <button class="nut-chip" onclick="filterNut('frutas')">🍎 Frutas</button>
+        <button class="nut-chip" onclick="filterNut('verduras')">🥬 Verduras</button>
+        <button class="nut-chip" onclick="filterNut('proteinas')">🍗 Proteínas</button>
+        <button class="nut-chip" onclick="filterNut('lacteos')">🥛 Lácteos</button>
+        <button class="nut-chip" onclick="filterNut('bebidas')">🥤 Bebidas</button>
+      </div>
+      <div class="nut-results" id="nutResults"></div>
+    </div>
+  </section>
+
+  <!-- Modal Nutrición -->
+  <div class="nut-modal-bg" id="nutModalBg" onclick="closeNutModal(event)">
+    <div class="nut-modal" onclick="event.stopPropagation()">
+      <div class="nut-modal-handle"></div>
+      <div class="nut-modal-head">
+        <div class="nut-modal-ico" id="nmIco">🍎</div>
+        <div class="nut-modal-title">
+          <h3 id="nmName">Alimento</h3>
+          <p id="nmPortion">Por porción</p>
+        </div>
+      </div>
+      <div class="nut-modal-verdict" id="nmVerdict">Verdict</div>
+      <div class="nut-modal-vals">
+        <div class="nut-val-cell"><div class="nut-val-label">Potasio</div><div class="nut-val-num" id="nmK">0</div><div class="nut-val-unit">mg</div></div>
+        <div class="nut-val-cell"><div class="nut-val-label">Fósforo</div><div class="nut-val-num" id="nmP">0</div><div class="nut-val-unit">mg</div></div>
+        <div class="nut-val-cell"><div class="nut-val-label">Sodio</div><div class="nut-val-num" id="nmNa">0</div><div class="nut-val-unit">mg</div></div>
+      </div>
+      <div class="nut-modal-tip" id="nmTip">Tip nutricional</div>
+      <button class="nut-modal-close" onclick="closeNutModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- ═══ SECCIÓN 4: TERMÓMETRO ═══ -->
+  <section class="section" id="sintomas" data-r>
+    <div class="sec-head">
+      <div class="sec-head-ico sec-head-4">🚨</div>
+      <div><h2>Termómetro de síntomas</h2><span>Autoevaluación diaria · 30 segundos</span></div>
+    </div>
+    <div class="card">
+      <div class="thermo-intro">
+        Responde estas 4 preguntas. Te diremos si puedes esperar a tu sesión, llamarnos hoy o si es <strong>una emergencia que requiere atención inmediata</strong>.
+      </div>
+
+      <div class="thermo-q" data-q="1">
+        <div class="thermo-q-text">1. ¿Cómo respiras hoy?</div>
+        <div class="thermo-q-opts">
+          <div class="thermo-opt" data-v="0" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Normal, sin problemas</div></div>
+          <div class="thermo-opt warn" data-v="1" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Un poco cansado al subir escaleras</div></div>
+          <div class="thermo-opt danger" data-v="2" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Me ahogo al acostarme o al esfuerzo mínimo</div></div>
+        </div>
+      </div>
+
+      <div class="thermo-q" data-q="2">
+        <div class="thermo-q-text">2. ¿Tu acceso vascular (fístula o catéter) está bien?</div>
+        <div class="thermo-q-opts">
+          <div class="thermo-opt" data-v="0" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Normal, vibra bien, sin enrojecimiento</div></div>
+          <div class="thermo-opt warn" data-v="1" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Algo de molestia o cambio leve</div></div>
+          <div class="thermo-opt danger" data-v="2" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">No vibra · enrojecido · con pus o fiebre</div></div>
+        </div>
+      </div>
+
+      <div class="thermo-q" data-q="3">
+        <div class="thermo-q-text">3. ¿Has tenido calambres o palpitaciones inusuales?</div>
+        <div class="thermo-q-opts">
+          <div class="thermo-opt" data-v="0" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">No, me siento normal</div></div>
+          <div class="thermo-opt warn" data-v="1" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Algún calambre leve en la noche</div></div>
+          <div class="thermo-opt danger" data-v="2" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Calambres severos con palpitaciones del corazón</div></div>
+        </div>
+      </div>
+
+      <div class="thermo-q" data-q="4">
+        <div class="thermo-q-text">4. ¿Cómo está tu mente y nivel de alerta?</div>
+        <div class="thermo-q-opts">
+          <div class="thermo-opt" data-v="0" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Despejada, igual que siempre</div></div>
+          <div class="thermo-opt warn" data-v="1" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Un poco cansado o lento</div></div>
+          <div class="thermo-opt danger" data-v="2" onclick="selectThermo(this)"><div class="thermo-opt-ico"></div><div class="thermo-opt-text">Confundido · muy somnoliento · no me siento yo</div></div>
+        </div>
+      </div>
+
+      <div class="thermo-result" id="thermoResult" role="status" aria-live="polite">
+        <div class="tr-head">
+          <div class="tr-emoji" id="trEmoji">✅</div>
+          <div class="tr-title" id="trTitle">Resultado</div>
+        </div>
+        <div class="tr-desc" id="trDesc">Descripción</div>
+        <div class="tr-actions" id="trActions"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 5: TARJETA DE EMERGENCIA ═══ -->
+  <section class="section" id="emergencia" data-r>
+    <div class="sec-head">
+      <div class="sec-head-ico sec-head-5">🆘</div>
+      <div><h2>Tarjeta de emergencia</h2><span>Datos críticos para paramédicos</span></div>
+    </div>
+    <div class="emerg-card">
+      <div class="emerg-head">
+        <div class="emerg-logo">🆘</div>
+        <div class="emerg-title">
+          <strong>PACIENTE EN HEMODIÁLISIS</strong>
+          <span>Información para personal de emergencia</span>
+        </div>
+      </div>
+
+      <div class="emerg-fields">
+        <div class="emerg-field">
+          <label for="emName">Nombre completo</label>
+          <input type="text" id="emName" placeholder="Mi nombre completo">
+        </div>
+        <div class="emerg-pair">
+          <div class="emerg-field">
+            <label for="emBlood">Tipo de sangre</label>
+            <input type="text" id="emBlood" placeholder="O+" maxlength="6">
+          </div>
+          <div class="emerg-field">
+            <label for="emAge">Edad</label>
+            <input type="number" id="emAge" placeholder="65" inputmode="numeric">
+          </div>
+        </div>
+        <div class="emerg-field">
+          <label for="emAllergies">Alergias conocidas</label>
+          <input type="text" id="emAllergies" placeholder="Ninguna conocida / penicilina / etc.">
+        </div>
+        <div class="emerg-field">
+          <label for="emAccess">Tipo de acceso vascular</label>
+          <input type="text" id="emAccess" placeholder="Fístula brazo izquierdo / catéter yugular">
+        </div>
+        <div class="emerg-field">
+          <label for="emConditions">Otras condiciones médicas</label>
+          <textarea id="emConditions" rows="2" placeholder="Diabetes, hipertensión, etc."></textarea>
+        </div>
+        <div class="emerg-field">
+          <label for="emContact">Contacto familiar (nombre y teléfono)</label>
+          <input type="text" id="emContact" placeholder="Familiar — 55 0000-0000">
+        </div>
+      </div>
+
+      <div class="emerg-clinic">
+        <strong>Mi clínica de hemodiálisis</strong>
+        Monte Sinaí Tlalnepantla · Calle Puerto 1, El Olivo 2 · 24/7: 55 9680-8859
+      </div>
+
+      <button class="emerg-save" onclick="saveEmerg()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar mi tarjeta de emergencia
+      </button>
+      <div class="emerg-saved" id="emSaved">✅ Tarjeta guardada en tu teléfono</div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <div class="cta-final" data-r>
+    <h3>¿Tienes una duda médica?</h3>
+    <p>Tu equipo de Monte Sinaí está disponible para resolver cualquier pregunta sobre tu tratamiento, dieta o medicamentos. No esperes a tu próxima cita.</p>
+    <div class="cta-final-btns">
+      <a href="tel:5596808859" class="cta-tel">📞 55 9680-8859</a>
+      <a href="https://wa.me/5215645192997" target="_blank" rel="noopener" class="cta-wa">💬 WhatsApp</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav" aria-label="Navegación inferior">
+  <div class="bnav-i">
+    <a href="/" class="bn"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio</a>
+    <a href="guia.html" class="bn"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Guía</a>
+    <a href="citas.html" class="bn bn-cta"><svg class="bn-ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Cita</a>
+    <a href="nutricion.html" class="bn"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 13L2 9z"/></svg>Nutrición</a>
+    <a href="tel:5596808859" class="bn"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.46 12.85 19.79 19.79 0 01.38 4.26 2 2 0 012.36 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.73a16 16 0 006.36 6.36l1.09-1.7a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Urgencias</a>
+  </div>
+</nav>
+
+<div class="toast" id="toast">Guardado</div>
+
+<script>
+'use strict';
+
+// ═══════════════════════════════════════════
+// STORAGE: clave única en localStorage
+// ═══════════════════════════════════════════
+const STORE = 'ms_mi_cuidado';
+function loadStore(){
+  try { return JSON.parse(localStorage.getItem(STORE) || '{}'); }
+  catch(e){ return {}; }
+}
+function saveStore(d){
+  try { localStorage.setItem(STORE, JSON.stringify(d)); } catch(e){}
+}
+let DATA = loadStore();
+
+// Toast
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2500);
+}
+
+// ═══════════════════════════════════════════
+// IDENTIFICACIÓN OPCIONAL
+// ═══════════════════════════════════════════
+function saveUser(){
+  const name = document.getElementById('userName').value.trim();
+  const phone = document.getElementById('userPhone').value.trim();
+  if(!name){ toast('Pon al menos tu nombre'); return; }
+  DATA.user = {name, phone, registered: Date.now()};
+  saveStore(DATA);
+  renderUser();
+  toast('¡Bienvenido a tu portal, ' + name.split(' ')[0] + '!');
+  if(typeof msTrack === 'function') msTrack('portal_user_registered', {has_phone: !!phone});
+}
+function skipUser(){
+  DATA.user = {name: null, phone: null, skipped: true};
+  saveStore(DATA);
+  document.getElementById('idBox').style.display = 'none';
+}
+function editUser(){
+  document.getElementById('idPrompt').style.display = '';
+  document.getElementById('idGreeting').style.display = 'none';
+  if(DATA.user){
+    document.getElementById('userName').value = DATA.user.name || '';
+    document.getElementById('userPhone').value = DATA.user.phone || '';
+  }
+}
+function renderUser(){
+  if(!DATA.user || !DATA.user.name){
+    if(DATA.user && DATA.user.skipped) document.getElementById('idBox').style.display = 'none';
+    return;
+  }
+  document.getElementById('idPrompt').style.display = 'none';
+  document.getElementById('idGreeting').style.display = '';
+  document.getElementById('idBox').classList.add('greeting');
+  const first = DATA.user.name.split(' ')[0];
+  const h = new Date().getHours();
+  const greet = h < 12 ? 'Buenos días' : h < 19 ? 'Buenas tardes' : 'Buenas noches';
+  document.getElementById('userGreet').textContent = greet + ', ' + first;
+  document.getElementById('userAva').textContent = first.charAt(0).toUpperCase();
+}
+
+// ═══════════════════════════════════════════
+// MONITOR DE PESO
+// ═══════════════════════════════════════════
+function initWeight(){
+  if(DATA.weight){
+    document.getElementById('pesoSeco').value = DATA.weight.seco || '';
+    document.getElementById('pesoPost').value = DATA.weight.post || '';
+    document.getElementById('diasEntre').value = DATA.weight.dias || '';
+  }
+  ['pesoSeco','pesoPost','diasEntre','pesoHoy'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', validateWeight);
+  });
+  renderHistory();
+}
+function validateWeight(){
+  const ps = parseFloat(document.getElementById('pesoSeco').value);
+  const pp = parseFloat(document.getElementById('pesoPost').value);
+  const ph = parseFloat(document.getElementById('pesoHoy').value);
+  const btn = document.getElementById('btnRegistrar');
+  btn.disabled = !(ps > 20 && pp > 20 && ph > 20);
+  
+  // Guardar configuración
+  if(ps > 20 || pp > 20){
+    DATA.weight = DATA.weight || {};
+    if(ps > 20) DATA.weight.seco = ps;
+    if(pp > 20) DATA.weight.post = pp;
+    const dias = parseInt(document.getElementById('diasEntre').value);
+    if(dias > 0) DATA.weight.dias = dias;
+    saveStore(DATA);
+  }
+}
+function registrarPeso(){
+  const seco = parseFloat(document.getElementById('pesoSeco').value);
+  const post = parseFloat(document.getElementById('pesoPost').value);
+  const hoy = parseFloat(document.getElementById('pesoHoy').value);
+  const dias = parseInt(document.getElementById('diasEntre').value) || 2;
+  
+  const ganancia = (hoy - post).toFixed(2);
+  const sobrepasaPeso = (hoy - seco).toFixed(2);
+  let zona, emoji, status, detail;
+  
+  if(ganancia < 2.0){
+    zona = 'green'; emoji = '✅'; status = 'Zona segura';
+    detail = `Has ganado <strong>${ganancia} kg</strong> en ${dias} día${dias>1?'s':''}. Estás <strong>${sobrepasaPeso} kg por encima</strong> de tu peso seco. Esta es una ganancia ideal — tu corazón te lo agradece. Sigue así.`;
+  } else if(ganancia < 3.5){
+    zona = 'yellow'; emoji = '⚠️'; status = 'Precaución';
+    detail = `Has ganado <strong>${ganancia} kg</strong> en ${dias} día${dias>1?'s':''}. Estás <strong>${sobrepasaPeso} kg por encima</strong> de tu peso seco. Reduce líquidos hoy y evita alimentos salados. Avisa a la clínica si tienes hinchazón.`;
+  } else {
+    zona = 'red'; emoji = '🚨'; status = 'Ganancia alta — Riesgo';
+    detail = `Has ganado <strong>${ganancia} kg</strong> en ${dias} día${dias>1?'s':''}. Estás <strong>${sobrepasaPeso} kg por encima</strong> de tu peso seco. <strong>Llama al 55 9680-8859</strong>. Esta ganancia puede causar dificultad para respirar o sobrecarga cardíaca.`;
+  }
+  
+  const rEl = document.getElementById('weightResult');
+  rEl.className = 'weight-result ' + zona;
+  rEl.style.display = 'block';
+  document.getElementById('wrEmoji').textContent = emoji;
+  document.getElementById('wrStatus').textContent = status;
+  document.getElementById('wrDetail').innerHTML = detail;
+  
+  // Guardar historial
+  DATA.weightHistory = DATA.weightHistory || [];
+  DATA.weightHistory.unshift({
+    fecha: Date.now(),
+    peso: hoy,
+    ganancia: parseFloat(ganancia),
+    zona
+  });
+  DATA.weightHistory = DATA.weightHistory.slice(0, 14);
+  saveStore(DATA);
+  renderHistory();
+  
+  if(typeof msTrack === 'function') msTrack('weight_registered', {zone: zona, gain: ganancia});
+}
+function renderHistory(){
+  const list = document.getElementById('weightHistory');
+  if(!DATA.weightHistory || DATA.weightHistory.length === 0){
+    list.innerHTML = '<div class="wh-empty">Aún no has registrado mediciones. Comienza con tu peso de hoy.</div>';
+    return;
+  }
+  list.innerHTML = DATA.weightHistory.map(w=>{
+    const d = new Date(w.fecha);
+    const fecha = d.toLocaleDateString('es-MX', {day:'numeric', month:'short'});
+    const hora = d.toLocaleTimeString('es-MX', {hour:'2-digit', minute:'2-digit'});
+    const z = w.zona === 'green' ? 'g' : w.zona === 'yellow' ? 'y' : 'r';
+    return `<div class="wh-item">
+      <div class="wh-date">${fecha} · ${hora}</div>
+      <div class="wh-weight">${w.peso} kg</div>
+      <div class="wh-gain ${z}">+${w.ganancia} kg</div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// MEDICAMENTOS
+// ═══════════════════════════════════════════
+function toggleMedForm(){
+  const f = document.getElementById('medForm');
+  f.classList.toggle('open');
+  if(f.classList.contains('open')){
+    setTimeout(()=>document.getElementById('medName').focus(), 100);
+  } else {
+    document.getElementById('medName').value = '';
+    document.getElementById('medDose').value = '';
+  }
+}
+function saveMed(){
+  const name = document.getElementById('medName').value.trim();
+  const dose = document.getElementById('medDose').value.trim();
+  const time = document.getElementById('medTime').value;
+  if(!name){ toast('Pon el nombre del medicamento'); return; }
+  DATA.meds = DATA.meds || [];
+  DATA.meds.push({id:Date.now(), name, dose, time});
+  saveStore(DATA);
+  toggleMedForm();
+  renderMeds();
+  toast('Medicamento agregado');
+  if(typeof msTrack === 'function') msTrack('med_added', {time_slot: time});
+}
+function deleteMed(id){
+  DATA.meds = (DATA.meds || []).filter(m=>m.id !== id);
+  saveStore(DATA);
+  renderMeds();
+}
+function renderMeds(){
+  const list = document.getElementById('medList');
+  if(!DATA.meds || DATA.meds.length === 0){
+    list.innerHTML = '<div class="med-empty">Aún no has agregado medicamentos. Ten tu lista siempre a la mano.</div>';
+    return;
+  }
+  list.innerHTML = DATA.meds.map(m=>{
+    return `<div class="med-item">
+      <div class="med-item-ico">💊</div>
+      <div class="med-item-info">
+        <div class="med-item-name">${escapeHtml(m.name)}</div>
+        <div class="med-item-detail">${escapeHtml(m.dose || 'Sin dosis especificada')}</div>
+      </div>
+      <div class="med-item-time">${escapeHtml(m.time)}</div>
+      <button class="med-item-del" onclick="deleteMed(${m.id})" aria-label="Eliminar ${escapeHtml(m.name)}">×</button>
+    </div>`;
+  }).join('');
+}
+function escapeHtml(s){
+  if(!s) return '';
+  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// ═══════════════════════════════════════════
+// BASE DE DATOS NUTRICIONAL
+// ═══════════════════════════════════════════
+const FOODS = [
+  // FRUTAS
+  {name:'Manzana', portion:'1 mediana', ico:'🍎', cat:'frutas', k:107, p:11, na:1, status:'g', tip:'Excelente opción. La manzana es de las frutas más seguras en diálisis — baja en potasio y fósforo.'},
+  {name:'Pera', portion:'1 mediana', ico:'🍐', cat:'frutas', k:116, p:18, na:1, status:'g', tip:'Buena opción. Aporta fibra sin elevar potasio significativamente.'},
+  {name:'Fresas', portion:'½ taza', ico:'🍓', cat:'frutas', k:138, p:18, na:1, status:'g', tip:'Ricas en vitamina C y bajas en potasio. Una ración pequeña diaria es ideal.'},
+  {name:'Uvas', portion:'15 piezas', ico:'🍇', cat:'frutas', k:140, p:13, na:1, status:'y', tip:'Permitidas en porciones controladas. No comas el racimo completo.'},
+  {name:'Durazno', portion:'1 mediano', ico:'🍑', cat:'frutas', k:285, p:30, na:0, status:'y', tip:'Permitido en ½ pieza. Entero es alto en potasio.'},
+  {name:'Plátano', portion:'1 mediano', ico:'🍌', cat:'frutas', k:422, p:26, na:1, status:'r', tip:'EVITAR. El plátano tiene el potasio más alto de las frutas comunes — puede causar arritmias.'},
+  {name:'Naranja', portion:'1 mediana', ico:'🍊', cat:'frutas', k:237, p:18, na:0, status:'r', tip:'EVITAR. Tanto la naranja como su jugo concentran potasio peligroso.'},
+  {name:'Aguacate', portion:'½ pieza', ico:'🥑', cat:'frutas', k:487, p:52, na:7, status:'r', tip:'EVITAR. El aguacate es la fruta con MÁS potasio. Una sola ½ pieza puede ser peligrosa.'},
+  {name:'Sandía', portion:'1 taza', ico:'🍉', cat:'frutas', k:170, p:17, na:2, status:'y', tip:'Permitida en pequeña cantidad pero cuenta como líquido — 1 taza = ~150 mL.'},
+  {name:'Mango', portion:'1 mediano', ico:'🥭', cat:'frutas', k:323, p:23, na:2, status:'r', tip:'EVITAR. Alto en potasio y azúcares — no recomendado en diálisis.'},
+  {name:'Piña', portion:'1 rebanada', ico:'🍍', cat:'frutas', k:109, p:8, na:1, status:'g', tip:'Permitida en porciones moderadas. Buena alternativa baja en potasio.'},
+  {name:'Arándanos', portion:'½ taza', ico:'🫐', cat:'frutas', k:57, p:9, na:1, status:'g', tip:'Excelente opción. Muy bajos en potasio y ricos en antioxidantes.'},
+  
+  // VERDURAS
+  {name:'Jitomate', portion:'1 mediano', ico:'🍅', cat:'verduras', k:292, p:29, na:6, status:'r', tip:'EVITAR. El jitomate concentra mucho potasio. Salsas y purés son aún peores.'},
+  {name:'Papa cocida', portion:'1 mediana', ico:'🥔', cat:'verduras', k:421, p:60, na:8, status:'r', tip:'EVITAR. Si la consumes, aplica doble cocción para reducir 50% del potasio.'},
+  {name:'Zanahoria', portion:'1 mediana', ico:'🥕', cat:'verduras', k:230, p:30, na:42, status:'y', tip:'Permitida con doble cocción. Cruda concentra más potasio que cocida.'},
+  {name:'Pepino', portion:'½ pieza', ico:'🥒', cat:'verduras', k:76, p:14, na:1, status:'g', tip:'Excelente opción. Bajo en potasio y refrescante.'},
+  {name:'Calabaza', portion:'½ taza cocida', ico:'🥒', cat:'verduras', k:206, p:30, na:2, status:'y', tip:'Permitida cocida y escurrida (doble cocción reduce el potasio).'},
+  {name:'Repollo/Col', portion:'½ taza cocida', ico:'🥬', cat:'verduras', k:73, p:17, na:9, status:'g', tip:'Excelente. Una de las verduras más seguras en diálisis.'},
+  {name:'Brócoli', portion:'½ taza cocido', ico:'🥦', cat:'verduras', k:230, p:52, na:21, status:'y', tip:'Permitido con doble cocción. Aporta vitamina C y fibra.'},
+  {name:'Ejotes', portion:'½ taza', ico:'🫛', cat:'verduras', k:90, p:24, na:3, status:'g', tip:'Excelente opción. Bajos en potasio y aportan fibra.'},
+  {name:'Espinaca cocida', portion:'½ taza', ico:'🥬', cat:'verduras', k:419, p:50, na:63, status:'r', tip:'EVITAR cocida. Cruda en pequeñas cantidades puede ser tolerable.'},
+  {name:'Nopal', portion:'½ taza cocido', ico:'🌵', cat:'verduras', k:166, p:18, na:30, status:'y', tip:'Permitido cocido y escurrido. Aplicar doble cocción.'},
+  {name:'Chayote', portion:'½ taza cocido', ico:'🥬', cat:'verduras', k:138, p:19, na:1, status:'g', tip:'Excelente. Bajo en potasio y muy versátil en cocina mexicana.'},
+  
+  // PROTEÍNAS
+  {name:'Pollo (pechuga)', portion:'90 g', ico:'🍗', cat:'proteinas', k:220, p:196, na:55, status:'g', tip:'Excelente fuente de proteína. En diálisis necesitas 1.2-1.4 g/kg de peso al día.'},
+  {name:'Pescado (tilapia)', portion:'90 g', ico:'🐟', cat:'proteinas', k:380, p:170, na:50, status:'y', tip:'Permitido 2-3 veces por semana. Buena fuente de proteína magra.'},
+  {name:'Carne de res magra', portion:'90 g', ico:'🥩', cat:'proteinas', k:280, p:170, na:55, status:'y', tip:'Permitida en porciones de 90-120 g. Evita cortes muy grasos.'},
+  {name:'Huevo entero', portion:'1 pieza', ico:'🥚', cat:'proteinas', k:69, p:96, na:62, status:'y', tip:'Permitido 3-4 a la semana. Limita la yema (alta en fósforo).'},
+  {name:'Clara de huevo', portion:'1 clara', ico:'🥚', cat:'proteinas', k:54, p:5, na:55, status:'g', tip:'La mejor proteína para diálisis: alta calidad, mínimo fósforo. Sin restricción.'},
+  {name:'Frijoles negros', portion:'½ taza', ico:'🫘', cat:'proteinas', k:401, p:120, na:1, status:'r', tip:'EVITAR. Las leguminosas concentran potasio y fósforo en exceso.'},
+  {name:'Lentejas', portion:'½ taza', ico:'🫘', cat:'proteinas', k:365, p:178, na:2, status:'r', tip:'EVITAR. Similar a los frijoles — muy alta en potasio y fósforo.'},
+  {name:'Jamón', portion:'2 rebanadas', ico:'🥓', cat:'proteinas', k:165, p:140, na:730, status:'r', tip:'EVITAR. Los embutidos tienen sodio extremo y fosfatos añadidos.'},
+  
+  // LÁCTEOS
+  {name:'Leche entera', portion:'1 vaso (240 mL)', ico:'🥛', cat:'lacteos', k:322, p:222, na:115, status:'r', tip:'EVITAR. Alto en potasio y fósforo. Cuenta también como líquido.'},
+  {name:'Yogurt natural', portion:'1 vaso', ico:'🥛', cat:'lacteos', k:380, p:233, na:113, status:'r', tip:'EVITAR. Los lácteos son fuentes muy concentradas de fósforo.'},
+  {name:'Queso panela', portion:'30 g', ico:'🧀', cat:'lacteos', k:25, p:140, na:208, status:'y', tip:'Permitido en porción pequeña. Mejor opción láctea que la leche.'},
+  
+  // BEBIDAS
+  {name:'Café negro', portion:'1 taza', ico:'☕', cat:'bebidas', k:116, p:7, na:5, status:'y', tip:'Permitido 1-2 tazas al día. Cuenta como líquido.'},
+  {name:'Refresco de cola', portion:'1 lata 355 mL', ico:'🥤', cat:'bebidas', k:13, p:50, na:30, status:'r', tip:'EVITAR. Contiene ácido fosfórico — fósforo de altísima absorción. Es de lo peor.'},
+  {name:'Agua simple', portion:'250 mL', ico:'💧', cat:'bebidas', k:0, p:0, na:5, status:'g', tip:'La mejor bebida — sin restricciones más allá del límite total de líquidos diarios.'},
+  {name:'Té de manzanilla', portion:'1 taza', ico:'🍵', cat:'bebidas', k:21, p:4, na:2, status:'g', tip:'Excelente opción. Bajo en potasio y fósforo. Cuenta como líquido.'},
+];
+
+function renderFoods(filter='todo', search=''){
+  const container = document.getElementById('nutResults');
+  let list = FOODS;
+  if(filter !== 'todo') list = list.filter(f=>f.cat === filter);
+  if(search){
+    const s = search.toLowerCase().trim();
+    list = list.filter(f=>f.name.toLowerCase().includes(s));
+  }
+  if(list.length === 0){
+    container.innerHTML = `<div class="med-empty">No encontramos "${escapeHtml(search)}". Intenta con otro nombre.</div>`;
+    return;
+  }
+  container.innerHTML = list.map((f,i)=>{
+    const badge = f.status === 'g' ? 'Permitido' : f.status === 'y' ? 'Moderado' : 'Evitar';
+    return `<div class="nut-result" onclick="showFood(${FOODS.indexOf(f)})">
+      <div class="nut-result-ico">${f.ico}</div>
+      <div class="nut-result-info">
+        <div class="nut-result-name">${escapeHtml(f.name)}</div>
+        <div class="nut-result-vals">K: ${f.k}mg · P: ${f.p}mg · ${escapeHtml(f.portion)}</div>
+      </div>
+      <div class="nut-result-badge nut-badge-${f.status}">${badge}</div>
+    </div>`;
+  }).join('');
+}
+function filterNut(cat){
+  document.querySelectorAll('.nut-chip').forEach(c=>c.classList.remove('active'));
+  event.target.classList.add('active');
+  renderFoods(cat, document.getElementById('nutSearch').value);
+}
+function showFood(idx){
+  const f = FOODS[idx];
+  document.getElementById('nmIco').textContent = f.ico;
+  document.getElementById('nmName').textContent = f.name;
+  document.getElementById('nmPortion').textContent = 'Porción de referencia: ' + f.portion;
+  document.getElementById('nmK').textContent = f.k;
+  document.getElementById('nmP').textContent = f.p;
+  document.getElementById('nmNa').textContent = f.na;
+  document.getElementById('nmTip').textContent = f.tip;
+  
+  const verdict = document.getElementById('nmVerdict');
+  if(f.status === 'g'){ verdict.className = 'nut-modal-verdict nut-verdict-g'; verdict.textContent = '✅ Puedes comerlo'; }
+  else if(f.status === 'y'){ verdict.className = 'nut-modal-verdict nut-verdict-y'; verdict.textContent = '⚠️ Con moderación'; }
+  else { verdict.className = 'nut-modal-verdict nut-verdict-r'; verdict.textContent = '🚫 Mejor evitarlo'; }
+  
+  document.getElementById('nutModalBg').classList.add('open');
+  if(typeof msTrack === 'function') msTrack('food_searched', {food: f.name, status: f.status});
+}
+function closeNutModal(e){
+  if(e && e.target !== e.currentTarget && !e.target.classList.contains('nut-modal-close')) return;
+  document.getElementById('nutModalBg').classList.remove('open');
+}
+
+// ═══════════════════════════════════════════
+// TERMÓMETRO DE SÍNTOMAS
+// ═══════════════════════════════════════════
+let thermoAnswers = {1:null, 2:null, 3:null, 4:null};
+
+function selectThermo(el){
+  const q = el.closest('.thermo-q').dataset.q;
+  const v = parseInt(el.dataset.v);
+  el.closest('.thermo-q').querySelectorAll('.thermo-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  thermoAnswers[q] = v;
+  
+  if(Object.values(thermoAnswers).every(v=>v!==null)){
+    evaluateThermo();
+  }
+}
+function evaluateThermo(){
+  const vals = Object.values(thermoAnswers);
+  const max = Math.max(...vals);
+  const result = document.getElementById('thermoResult');
+  const phone = (DATA.user && DATA.user.phone) ? DATA.user.phone : '5645192997';
+  const name = (DATA.user && DATA.user.name) ? DATA.user.name.split(' ')[0] : 'un paciente';
+  
+  if(max === 0){
+    result.className = 'thermo-result green';
+    document.getElementById('trEmoji').textContent = '✅';
+    document.getElementById('trTitle').textContent = 'Todo en orden';
+    document.getElementById('trDesc').innerHTML = 'Tus síntomas son normales. Continúa con tu rutina habitual. Recuerda: peso diario, dieta renal, medicamentos a tiempo y asistir a tu próxima sesión.';
+    document.getElementById('trActions').innerHTML = '';
+    if(typeof msTrack === 'function') msTrack('thermo_green');
+  } else if(max === 1){
+    result.className = 'thermo-result yellow';
+    document.getElementById('trEmoji').textContent = '⚠️';
+    document.getElementById('trTitle').textContent = 'Atención — Avisa a la clínica';
+    document.getElementById('trDesc').innerHTML = 'Tienes algunos síntomas leves que merecen atención. <strong>Llama a la clínica hoy</strong> para que evaluemos tu caso y decidamos si necesitas adelantar tu sesión o ajustar algo.';
+    document.getElementById('trActions').innerHTML = `
+      <a href="tel:5596808859" class="tr-btn-call" onclick="msTrack&&msTrack('thermo_call_yellow')">📞 Llamar a la clínica</a>
+      <a href="https://wa.me/5215645192997?text=Hola%20Monte%20Sina%C3%AD%2C%20soy%20${encodeURIComponent(name)}%20y%20tengo%20s%C3%ADntomas%20leves%20que%20quiero%20consultar" target="_blank" rel="noopener" class="tr-btn-wa">💬 WhatsApp</a>
+    `;
+    if(typeof msTrack === 'function') msTrack('thermo_yellow');
+  } else {
+    result.className = 'thermo-result red';
+    document.getElementById('trEmoji').textContent = '🚨';
+    document.getElementById('trTitle').textContent = 'URGENCIA — Llama AHORA';
+    document.getElementById('trDesc').innerHTML = '<strong>Tienes señales que requieren atención inmediata.</strong> No esperes a tu próxima sesión. Llama al 55 9680-8859 ahora — estamos disponibles las 24 horas.';
+    document.getElementById('trActions').innerHTML = `
+      <a href="tel:5596808859" class="tr-btn-call" onclick="msTrack&&msTrack('thermo_call_red')">📞 LLAMAR YA</a>
+      <a href="https://wa.me/5215645192997?text=URGENCIA%20-%20Soy%20${encodeURIComponent(name)}%20y%20tengo%20s%C3%ADntomas%20graves" target="_blank" rel="noopener" class="tr-btn-wa">💬 WhatsApp urgente</a>
+    `;
+    if(typeof msTrack === 'function') msTrack('thermo_red');
+  }
+  result.style.display = 'block';
+  result.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+// ═══════════════════════════════════════════
+// TARJETA DE EMERGENCIA
+// ═══════════════════════════════════════════
+function initEmerg(){
+  if(!DATA.emerg) return;
+  ['emName','emBlood','emAge','emAllergies','emAccess','emConditions','emContact'].forEach(id=>{
+    if(DATA.emerg[id]) document.getElementById(id).value = DATA.emerg[id];
+  });
+  // Si el usuario tiene nombre principal, prellenar
+  if(!DATA.emerg.emName && DATA.user && DATA.user.name){
+    document.getElementById('emName').value = DATA.user.name;
+  }
+}
+function saveEmerg(){
+  DATA.emerg = {};
+  ['emName','emBlood','emAge','emAllergies','emAccess','emConditions','emContact'].forEach(id=>{
+    DATA.emerg[id] = document.getElementById(id).value.trim();
+  });
+  saveStore(DATA);
+  const saved = document.getElementById('emSaved');
+  saved.classList.add('show');
+  setTimeout(()=>saved.classList.remove('show'), 4000);
+  toast('Tarjeta de emergencia guardada');
+  if(typeof msTrack === 'function') msTrack('emergency_card_saved');
+}
+
+// ═══════════════════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════════════════
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold:.05});
+document.querySelectorAll('[data-r]').forEach(el=>observer.observe(el));
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderUser();
+  initWeight();
+  renderMeds();
+  renderFoods('todo');
+  initEmerg();
+  
+  // Search nutritional
+  document.getElementById('nutSearch').addEventListener('input', (e)=>{
+    const active = document.querySelector('.nut-chip.active');
+    const cat = active ? (active.textContent.includes('Todo') ? 'todo' : 
+                          active.textContent.includes('Frutas') ? 'frutas' :
+                          active.textContent.includes('Verduras') ? 'verduras' :
+                          active.textContent.includes('Proteínas') ? 'proteinas' :
+                          active.textContent.includes('Lácteos') ? 'lacteos' :
+                          active.textContent.includes('Bebidas') ? 'bebidas' : 'todo') : 'todo';
+    renderFoods(cat, e.target.value);
+  });
+  
+  // Set first chip active
+  document.querySelector('.nut-chip').classList.add('active');
+  
+  // Smooth scroll
+  document.querySelectorAll('.htab').forEach(t=>{
+    t.addEventListener('click',(e)=>{
+      e.preventDefault();
+      const id = t.getAttribute('href').slice(1);
+      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  
+  if(typeof msTrack === 'function') msTrack('portal_opened', {has_user: !!(DATA.user && DATA.user.name)});
+});
+</script>
+</body>
+</html>
