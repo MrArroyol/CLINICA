@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#071E35">
+<title>Panel de Contenido · Comunidad Renal Monte Sinaí</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#071E35;--primary:#0D3B66;--teal:#2A9D8F;--teal-l:#3BBFB0;--teal-p:#E3F4F2;
+  --purple:#6B3FA0;--purple-p:#F0E8FF;--green:#28B673;--green-p:#E6F7EF;--green-d:#1F9460;
+  --gold:#FFB703;--gold-p:#FFF6E0;--red:#E63946;--red-p:#FDECEA;--sky:#5BC0DE;--sky-p:#E7F5FB;
+  --wa:#25D366;--bg:#F0F5FB;--white:#FFFFFF;--text:#0A1520;--text-m:#1A2E40;--text-s:#4A6070;
+  --border:#C8DCE8;--border-l:#DCE7F0;--shadow:0 4px 16px rgba(13,59,102,.08);
+  --r-sm:8px;--r-md:14px;--r-lg:18px;--px:18px;--nav-h:60px;
+  --safe-top:env(safe-area-inset-top,0px);--safe-bot:env(safe-area-inset-bottom,0px);
+  --out:cubic-bezier(.16,1,.3,1);--max:880px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:calc(20px + var(--safe-bot));}
+*{-webkit-tap-highlight-color:transparent;}
+button{cursor:pointer;font-family:inherit;}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;padding-top:var(--safe-top);background:rgba(7,30,53,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(42,157,143,.2);}
+.nav__i{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--px);max-width:var(--max);margin:0 auto;}
+.nav__logo{display:flex;align-items:center;gap:10px;}
+.nav__logo-ico{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--purple));display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.nav__brand strong{display:block;color:white;font-size:.8rem;font-weight:800;}
+.nav__brand em{display:block;color:var(--teal-l);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;font-style:normal;}
+.nav__badge{background:rgba(42,157,143,.15);border:1px solid rgba(42,157,143,.3);color:var(--teal-l);font-size:.62rem;font-weight:700;padding:5px 11px;border-radius:100px;}
+
+.hero{background:linear-gradient(155deg,var(--navy),#0A2030 60%,#0F3055);padding:calc(var(--nav-h) + var(--safe-top) + 20px) var(--px) 18px;}
+.hero-i{max-width:var(--max);margin:0 auto;}
+.hero h1{color:white;font-size:clamp(1.25rem,5vw,1.6rem);font-weight:800;line-height:1.2;margin-bottom:6px;}
+.hero h1 em{background:linear-gradient(135deg,var(--teal-l),#7EE8B0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal;}
+.hero p{color:rgba(255,255,255,.62);font-size:.78rem;line-height:1.55;}
+
+/* Tabs principales de tipo de contenido */
+.maintabs{display:flex;gap:6px;overflow-x:auto;padding:12px var(--px) 0;max-width:var(--max);margin:0 auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.maintabs::-webkit-scrollbar{display:none;}
+.maintab{flex-shrink:0;padding:10px 14px;border-radius:var(--r-sm) var(--r-sm) 0 0;background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.6);font-size:.74rem;font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.maintab.active{background:var(--bg);color:var(--primary);}
+
+.main{max-width:var(--max);margin:0 auto;padding:18px var(--px);}
+
+.howto{background:linear-gradient(135deg,var(--gold-p),#FFFAEB);border:1px solid rgba(255,183,3,.3);border-radius:var(--r-md);padding:13px 15px;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start;}
+.howto-ico{font-size:1.1rem;flex-shrink:0;}
+.howto-text{font-size:.76rem;color:var(--text-m);line-height:1.55;}
+.howto-text strong{color:#8A5A00;}
+
+.week-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.week-tabs::-webkit-scrollbar{display:none;}
+.week-tab{flex-shrink:0;min-width:44px;height:44px;border-radius:var(--r-sm);background:white;border:1.5px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .15s;}
+.week-tab.active{background:linear-gradient(135deg,var(--teal),var(--teal-l));border-color:transparent;}
+.week-tab-num{font-size:.9rem;font-weight:800;color:var(--primary);line-height:1;}
+.week-tab.active .week-tab-num{color:white;}
+.week-tab-lbl{font-size:.48rem;color:var(--text-s);text-transform:uppercase;margin-top:2px;}
+.week-tab.active .week-tab-lbl{color:rgba(255,255,255,.8);}
+
+.week-theme{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.week-theme-num{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--teal));color:white;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;flex-shrink:0;}
+.week-theme-info strong{display:block;font-size:1.02rem;font-weight:700;color:var(--primary);}
+.week-theme-info span{display:block;font-size:.64rem;color:var(--text-s);text-transform:uppercase;letter-spacing:.05em;margin-top:1px;}
+
+.section-intro{background:white;border-radius:var(--r-md);padding:14px 16px;margin-bottom:16px;border:1px solid var(--border);border-left:4px solid var(--teal);}
+.section-intro h2{font-size:.92rem;font-weight:700;color:var(--primary);margin-bottom:4px;}
+.section-intro p{font-size:.76rem;color:var(--text-s);line-height:1.55;}
+
+.msg-card{background:white;border-radius:var(--r-lg);box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:14px;overflow:hidden;}
+.msg-head{display:flex;align-items:center;gap:10px;padding:13px 15px;border-bottom:1px solid var(--border-l);}
+.msg-day-ico{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.di-1{background:var(--teal-p);}.di-2{background:var(--green-p);}.di-3{background:var(--purple-p);}.di-4{background:var(--gold-p);}.di-5{background:var(--red-p);}.di-6{background:var(--sky-p);}
+.msg-day-info{flex:1;}
+.msg-day-name{font-size:.83rem;font-weight:700;color:var(--primary);}
+.msg-day-cat{font-size:.6rem;color:var(--text-s);text-transform:uppercase;letter-spacing:.05em;}
+.msg-day-time{font-size:.58rem;font-weight:700;color:var(--teal);background:var(--teal-p);padding:3px 8px;border-radius:100px;white-space:nowrap;}
+
+.msg-preview{padding:13px 15px;background:#ECE5DD;}
+.msg-bubble{background:#fff;border-radius:0 8px 8px 8px;padding:11px 13px;box-shadow:0 1px 2px rgba(0,0,0,.1);font-size:.8rem;line-height:1.55;color:#1A2E40;white-space:pre-wrap;word-wrap:break-word;position:relative;}
+.msg-bubble::before{content:'';position:absolute;top:0;left:-8px;width:0;height:0;border-top:8px solid #fff;border-left:8px solid transparent;}
+
+.recipe-nut{display:flex;gap:6px;padding:0 15px 11px;flex-wrap:wrap;}
+.rnut{background:var(--bg);border:1px solid var(--border-l);border-radius:100px;padding:4px 9px;font-size:.62rem;font-weight:600;color:var(--text-s);}
+.rnut strong{color:var(--primary);}
+
+.msg-actions{display:flex;gap:8px;padding:11px 15px;}
+.btn-copy{flex:1;height:44px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--teal),var(--teal-l));color:white;border:none;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .15s;}
+.btn-copy:active{transform:scale(.98);}
+.btn-copy.copied{background:linear-gradient(135deg,var(--green),var(--green-d));}
+.btn-copy svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;}
+.btn-wa{height:44px;width:46px;border-radius:var(--r-sm);background:var(--wa);color:white;border:none;display:flex;align-items:center;justify-content:center;}
+.btn-wa svg{width:19px;height:19px;fill:white;}
+
+/* Badge especial para guarda esto */
+.badge-impact{display:inline-flex;align-items:center;gap:4px;background:var(--red-p);color:var(--red);font-size:.56rem;font-weight:800;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto;}
+
+.foot-nav{display:flex;gap:10px;margin-top:8px;}
+.foot-btn{flex:1;height:46px;border-radius:var(--r-sm);background:white;border:1.5px solid var(--border);color:var(--primary);font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;}
+.foot-btn:disabled{opacity:.4;}
+.foot-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;}
+
+.toast{position:fixed;bottom:calc(24px + var(--safe-bot));left:50%;transform:translateX(-50%);background:var(--primary);color:white;padding:12px 20px;border-radius:100px;font-size:.8rem;font-weight:600;box-shadow:0 8px 32px rgba(13,59,102,.3);z-index:1100;display:none;border:2px solid var(--teal-l);}
+.toast.show{display:block;animation:tin .3s ease,tout .3s ease 2s;}
+@keyframes tin{from{opacity:0;transform:translate(-50%,15px);}to{opacity:1;transform:translate(-50%,0);}}
+@keyframes tout{to{opacity:0;transform:translate(-50%,15px);}}
+
+@media(min-width:768px){.msg-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;}.msg-card{margin-bottom:0;}}
+@supports (-webkit-touch-callout:none){button{font-size:16px;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__i">
+    <div class="nav__logo">
+      <div class="nav__logo-ico">💙</div>
+      <div class="nav__brand"><strong>Comunidad Renal</strong><em>Panel de contenido · Monte Sinaí</em></div>
+    </div>
+    <div class="nav__badge">Uso interno</div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-i">
+    <h1>Banco de contenido del <em>canal de WhatsApp</em></h1>
+    <p>67 mensajes listos. Contenido semanal + piezas de alto reenvío que hacen crecer tu canal.</p>
+  </div>
+  <div class="maintabs" id="mainTabs">
+    <button class="maintab active" onclick="switchTab('semanal')">📅 Semanal (48)</button>
+    <button class="maintab" onclick="switchTab('guarda')">🚨 Guarda esto (6)</button>
+    <button class="maintab" onclick="switchTab('historias')">❤️ Historias (6)</button>
+    <button class="maintab" onclick="switchTab('estacional')">🎉 Estacional (7)</button>
+  </div>
+</header>
+
+<main class="main">
+  <div id="tabContent"></div>
+  <div class="foot-nav" id="footNav" style="display:none;">
+    <button class="foot-btn" id="prevBtn" onclick="changeWeek(-1)"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Anterior</button>
+    <button class="foot-btn" id="nextBtn" onclick="changeWeek(1)">Siguiente <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+  </div>
+</main>
+
+<div class="toast" id="toast">Copiado</div>
+
+<script>
+const DATA = {"semanas": [{"num": 1, "tema": "El cuerpo y tu peso", "lunes": {"titulo": "Tu peso seco puede cambiar con el tiempo", "cuerpo": "El peso seco no es un número fijo para siempre. Cambia si subes o bajas masa muscular, con las estaciones, o si tu estado de salud se modifica.", "accion": "Si llegas a tu peso seco pero sigues sintiéndote hinchado o muy cansado, coméntalo en tu próxima sesión. Tu peso seco puede necesitar ajuste."}, "miercoles": {"nombre": "Pollo a la mostaza con arroz blanco", "porciones": "2", "tiempo": "25 minutos", "ingredientes": ["200 g pechuga de pollo sin piel", "1 taza de arroz blanco cocido", "1 cda de mostaza Dijon sin sal añadida", "Pimienta negra al gusto", "1 cdita de aceite de oliva", "Perejil fresco (opcional)"], "preparacion": ["Marina el pollo con mostaza y pimienta 10 minutos", "Cocina a fuego medio con aceite hasta dorar (15 min)", "Sirve sobre el arroz blanco caliente"], "k": "280", "p": "195", "na": "120"}, "viernes": "¿Cuál fue el primer síntoma que te enseñó a 'leer' a tu cuerpo? A veces aprendemos a detectar señales que ningún análisis muestra. Comparte tu experiencia.", "inspiracion": {"titulo": "La hemodiálisis es maratón, no carrera", "cuerpo": "Si hoy tu cuerpo pide descanso, escúchalo sin culpa. Cada día que cuidas tu energía es un día que inviertes en ti."}}, {"num": 2, "tema": "Nutrición inteligente", "lunes": {"titulo": "El truco del doble cocido reduce el potasio hasta 50%", "cuerpo": "Pelar, cortar en trozos pequeños, remojar 2 horas (cambiando el agua a la mitad) y hervir en abundante agua sin sal. Después escurres y desechas esa agua.", "accion": "Esta semana prueba el doble cocido con zanahoria o calabaza. Nunca reutilices el agua de cocción para sopas."}, "miercoles": {"nombre": "Bowl de fresas y manzana", "porciones": "2", "tiempo": "10 minutos", "ingredientes": ["1 taza de fresas frescas en mitades", "1 manzana mediana en cubos", "1 cda de jugo de limón", "Canela al gusto", "Hojas de menta (opcional)"], "preparacion": ["Lava bien las frutas", "Mezcla fresas y manzana en un tazón", "Rocía con limón y espolvorea canela", "Sirve frío"], "k": "245", "p": "27", "na": "2"}, "viernes": "¿Cuál es el alimento que más extrañas desde que iniciaste tu dieta renal? Y lo más importante: ¿has encontrado alguna forma de manejar ese antojo? Tu truco puede ayudar a otros.", "inspiracion": {"titulo": "Disfruta lo que SÍ puedes comer", "cuerpo": "La dieta renal no es solo lista de prohibiciones. Hay sabores permitidos que valen la pena redescubrir con calma y creatividad."}}, {"num": 3, "tema": "La familia y el apoyo", "lunes": {"titulo": "Cómo hablar con tus nietos sobre la diálisis", "cuerpo": "Los niños entienden más de lo que creemos. Explicarles con palabras simples ('el abuelo va a una máquina que limpia su sangre porque sus riñones descansan') reduce su miedo.", "accion": "Si tienes nietos pequeños, considera mostrarles una foto de la clínica. Lo desconocido asusta más que lo explicado."}, "miercoles": {"nombre": "Tacos de pollo con tortilla de maíz", "porciones": "2", "tiempo": "20 minutos", "ingredientes": ["200 g pechuga de pollo deshebrada", "4 tortillas de maíz", "1/4 de cebolla picada", "Cilantro fresco", "1 limón", "Pimienta al gusto"], "preparacion": ["Cocina y deshebra el pollo sin sal", "Calienta las tortillas", "Arma los tacos con pollo, cebolla y cilantro", "Sirve con limón al gusto"], "k": "310", "p": "210", "na": "95"}, "viernes": "¿Quién es el 'héroe silencioso' de tu tratamiento? Esa persona que te lleva, te acompaña o simplemente está ahí. Hoy es buen día para reconocerlo. Cuéntanos quién es.", "inspiracion": {"titulo": "Los cuidadores también son valientes", "cuerpo": "Detrás de cada paciente hay alguien que carga en silencio. Si eres cuidador y lees esto: tu trabajo importa y se ve."}}, {"num": 4, "tema": "Entender tu tratamiento", "lunes": {"titulo": "Qué es el Kt/V de tu reporte mensual", "cuerpo": "El Kt/V mide qué tan bien tu diálisis limpia tu sangre. El valor recomendado es 1.2 o más. Si está por debajo, tu sesión podría no estar siendo suficiente.", "accion": "En tu próximo reporte, busca el Kt/V. Si no lo encuentras o no te lo explican, pídelo. Es tu derecho conocer la eficacia de tu tratamiento."}, "miercoles": {"nombre": "Ensalada de manzana y pollo a la plancha", "porciones": "2", "tiempo": "20 minutos", "ingredientes": ["200 g pechuga de pollo", "1 manzana en cubos", "2 tazas de lechuga", "1 cda de aceite de oliva", "1 cda de vinagre de manzana", "Pimienta al gusto"], "preparacion": ["Cocina el pollo a la plancha y corta en tiras", "Mezcla lechuga y manzana", "Agrega el pollo encima", "Adereza con aceite, vinagre y pimienta"], "k": "290", "p": "200", "na": "85"}, "viernes": "¿Qué cosa NUEVA aprendiste sobre tu cuerpo o tu tratamiento este mes? Aprender nunca termina. Tu descubrimiento puede ser justo lo que otra persona necesita saber.", "inspiracion": {"titulo": "La medicina avanza, y tú con ella", "cuerpo": "Cada año hay mejores tratamientos, mejores máquinas, más opciones. No estás en el mismo lugar que hace una década. Hay razones reales para la esperanza."}}, {"num": 5, "tema": "Líquidos y equilibrio", "lunes": {"titulo": "Cómo manejar la sed sin tomar de más", "cuerpo": "La sed es uno de los retos más grandes. Chupar un cubito de hielo satisface con mucho menos líquido que un vaso de agua. El hielo cuenta como la mitad de su volumen en agua.", "accion": "Esta semana ten cubitos de hielo a la mano. También funciona enjuagar la boca con agua fría sin tragar, y masticar chicle sin azúcar."}, "miercoles": {"nombre": "Arroz frito con verduras de doble cocido", "porciones": "2", "tiempo": "25 minutos", "ingredientes": ["1.5 tazas de arroz blanco cocido", "1/2 taza de zanahoria (doble cocción)", "1/2 taza de ejotes picados", "1 clara de huevo", "1 cdita de aceite", "Pimienta al gusto"], "preparacion": ["Aplica doble cocción a la zanahoria", "Saltea las verduras con aceite", "Agrega el arroz y mezcla", "Incorpora la clara de huevo revuelta"], "k": "210", "p": "85", "na": "45"}, "viernes": "¿Cuál es tu estrategia personal para los días en que la sed es más difícil de controlar? Todos tenemos un truco. Compartir el tuyo puede aliviar el día de alguien más.", "inspiracion": {"titulo": "Cada pequeño control cuenta", "cuerpo": "Controlar líquidos no es fácil, pero cada vez que lo logras proteges tu corazón y respiras mejor. Reconoce ese esfuerzo invisible."}}, {"num": 6, "tema": "El acceso vascular", "lunes": {"titulo": "Revisa tu fístula todos los días", "cuerpo": "El thrill (esa vibración suave que sientes al tocar tu fístula) debe sentirse igual cada día. Es la señal de que la sangre fluye bien.", "accion": "Cada mañana, antes de levantarte, coloca tus dedos sobre la fístula. Si un día vibra menos o no vibra, llama de inmediato al 55 9680-8859. No esperes."}, "miercoles": {"nombre": "Pescado blanco al limón con arroz", "porciones": "2", "tiempo": "20 minutos", "ingredientes": ["200 g de filete de tilapia o robalo", "1 taza de arroz blanco cocido", "1 limón", "1 cdita de aceite de oliva", "Pimienta y ajo en polvo al gusto"], "preparacion": ["Sazona el pescado con limón, pimienta y ajo", "Cocina a la plancha 4 min por lado", "Sirve sobre arroz blanco"], "k": "350", "p": "215", "na": "75"}, "viernes": "Para quienes ya tienen tiempo con su fístula: ¿qué consejo de cuidado le darían a alguien que apenas va a tener la suya? La experiencia vale oro.", "inspiracion": {"titulo": "Tu fístula es tu línea de vida", "cuerpo": "Cuidarla es cuidarte. Cada revisión diaria, cada precaución, es un acto de amor propio. Estás haciendo lo correcto."}}, {"num": 7, "tema": "Salud emocional", "lunes": {"titulo": "Sentirse triste a veces es normal", "cuerpo": "La enfermedad renal afecta el cuerpo y también las emociones. Hasta 4 de cada 10 pacientes en diálisis experimentan tristeza profunda. No es debilidad — es humano.", "accion": "Si la tristeza dura más de dos semanas o te quita las ganas de todo, habla con tu médico. La salud mental es parte del tratamiento, no algo aparte."}, "miercoles": {"nombre": "Sopa ligera de pollo y arroz", "porciones": "2", "tiempo": "30 minutos", "ingredientes": ["150 g de pollo en cubos", "1/2 taza de arroz blanco", "1/2 zanahoria (doble cocción)", "1 rama de apio pequeña", "Pimienta y hierbas al gusto", "4 tazas de agua"], "preparacion": ["Aplica doble cocción a la zanahoria", "Cocina el pollo en agua sin sal", "Agrega arroz y verduras", "Sazona con hierbas y pimienta. Cuenta como líquido"], "k": "230", "p": "150", "na": "60"}, "viernes": "¿Qué cosa pequeña te ayuda a levantar el ánimo en los días difíciles? Una canción, una llamada, un recuerdo. Compartir tu fuente de calma puede ser un regalo para alguien hoy.", "inspiracion": {"titulo": "Está bien no estar bien todos los días", "cuerpo": "No tienes que ser fuerte cada momento. Permitirte sentir es parte de sanar. Mañana es otra oportunidad."}}, {"num": 8, "tema": "Medicamentos", "lunes": {"titulo": "El quelante se toma AL INICIO de la comida", "cuerpo": "El quelante de fósforo solo funciona si lo tomas justo cuando empiezas a comer. Si lo tomas 30 minutos después, el fósforo ya se absorbió y el medicamento no sirvió.", "accion": "Esta semana ten tus quelantes en la mesa donde comes, no en el botiquín. Tomarlos al primer bocado se vuelve hábito cuando están a la vista."}, "miercoles": {"nombre": "Wrap de pollo y pepino", "porciones": "2", "tiempo": "15 minutos", "ingredientes": ["200 g de pollo cocido en tiras", "2 tortillas de harina blanca", "1/2 pepino en tiras", "Lechuga al gusto", "1 cda de queso crema light", "Pimienta al gusto"], "preparacion": ["Unta el queso crema en las tortillas", "Coloca pollo, pepino y lechuga", "Enrolla firmemente y corta a la mitad"], "k": "270", "p": "180", "na": "140"}, "viernes": "¿Cómo organizas tus medicamentos para no olvidarlos? Pastilleros, alarmas, rutinas... Cada sistema es distinto. El tuyo puede inspirar a quien batalla con esto.", "inspiracion": {"titulo": "Cada pastilla a tiempo es un acto de cuidado", "cuerpo": "Tomar tus medicamentos bien no siempre es fácil, pero cada dosis correcta protege tus huesos, tu corazón y tu energía. Vas bien."}}, {"num": 9, "tema": "Vida activa", "lunes": {"titulo": "El ejercicio suave sí es posible en diálisis", "cuerpo": "Caminar, estiramientos ligeros o ejercicios sentado mejoran tu energía, tu ánimo y hasta la eficacia de la diálisis. No necesitas gimnasio.", "accion": "Esta semana intenta caminar 10 minutos al día, si tu médico lo autoriza. Empieza poco. El movimiento, aunque sea mínimo, suma."}, "miercoles": {"nombre": "Huevo revuelto con claras y pan blanco", "porciones": "2", "tiempo": "10 minutos", "ingredientes": ["4 claras de huevo + 1 huevo entero", "2 rebanadas de pan blanco", "1 cdita de aceite", "Pimienta al gusto", "Cebollín picado (opcional)"], "preparacion": ["Bate las claras con el huevo entero", "Cocina a fuego bajo con aceite", "Sazona con pimienta y cebollín", "Acompaña con pan blanco tostado"], "k": "180", "p": "110", "na": "180"}, "viernes": "¿Has encontrado alguna forma de mantenerte activo que disfrutes? Desde jardinería hasta bailar en la sala. El movimiento que da alegría es el que dura. Cuéntanos el tuyo.", "inspiracion": {"titulo": "Tu cuerpo todavía puede mucho", "cuerpo": "La diálisis no te define por completo. Dentro de tus posibilidades hay espacio para moverte, disfrutar y vivir. Descúbrelo a tu ritmo."}}, {"num": 10, "tema": "Prevención de complicaciones", "lunes": {"titulo": "El potasio alto a veces no da síntomas", "cuerpo": "El potasio peligrosamente alto puede no avisar hasta que es una emergencia cardíaca. Por eso la dieta importa aunque te sientas bien.", "accion": "Recuerda los alimentos a evitar: plátano, naranja, aguacate, jitomate, papa sin doble cocción y refrescos de cola. Tenerlos presentes salva vidas."}, "miercoles": {"nombre": "Pasta blanca con pollo y albahaca", "porciones": "2", "tiempo": "25 minutos", "ingredientes": ["150 g de pasta blanca", "200 g de pollo en cubos", "Hojas de albahaca fresca", "1 cda de aceite de oliva", "1 diente de ajo", "Pimienta al gusto"], "preparacion": ["Cuece la pasta en agua sin sal", "Saltea el pollo con ajo y aceite", "Mezcla pasta y pollo", "Agrega albahaca fresca y pimienta"], "k": "260", "p": "190", "na": "70"}, "viernes": "¿Cuál es tu mayor duda sobre el potasio o el fósforo en tu dieta? No hay preguntas tontas. La que tú tienes, seguro la tienen muchos más. Pregunta sin pena.", "inspiracion": {"titulo": "Saber es protegerte", "cuerpo": "Cada cosa que aprendes sobre tu enfermedad te da más control. No eres pasajero de este tratamiento: eres el protagonista informado."}}, {"num": 11, "tema": "Calidad de vida", "lunes": {"titulo": "Puedes viajar estando en hemodiálisis", "cuerpo": "Muchos pacientes viajan coordinando sesiones en clínicas del destino. Requiere planear con 4-6 semanas de anticipación, pero es totalmente posible.", "accion": "Si sueñas con un viaje, no lo descartes. Coméntalo con tu equipo médico. Podemos ayudarte a coordinar diálisis en otra ciudad."}, "miercoles": {"nombre": "Quesadilla de pollo con tortilla de maíz", "porciones": "2", "tiempo": "15 minutos", "ingredientes": ["4 tortillas de maíz", "150 g de pollo deshebrado", "30 g de queso panela rallado", "Cilantro al gusto", "Pimienta al gusto"], "preparacion": ["Rellena tortillas con pollo y poco queso", "Dobla y calienta en comal", "Voltea hasta dorar ambos lados", "Sirve con cilantro fresco"], "k": "200", "p": "175", "na": "160"}, "viernes": "Si pudieras hacer un viaje a cualquier lugar, ¿a dónde irías? A veces soñar es el primer paso para volverlo plan. Comparte tu destino soñado.", "inspiracion": {"titulo": "La diálisis se adapta a tu vida, no al revés", "cuerpo": "Tu tratamiento es parte de tu vida, pero no es toda tu vida. Hay planes, sueños y momentos que todavía te esperan."}}, {"num": 12, "tema": "Comunidad y esperanza", "lunes": {"titulo": "El trasplante renal es una posibilidad real", "cuerpo": "Para muchos pacientes en diálisis, el trasplante es una opción que mejora enormemente la calidad de vida. En México el programa de trasplantes crece cada año.", "accion": "Si quieres saber si eres candidato a trasplante, pregúntale a tu nefróloga. Conocer tus opciones siempre vale la pena."}, "miercoles": {"nombre": "Pollo al horno con hierbas y arroz", "porciones": "2", "tiempo": "35 minutos", "ingredientes": ["250 g de pollo sin piel", "1 taza de arroz blanco cocido", "Romero y tomillo frescos", "1 cda de aceite de oliva", "1 limón", "Pimienta al gusto"], "preparacion": ["Sazona el pollo con hierbas, limón y pimienta", "Hornea a 180°C por 25 minutos", "Sirve sobre arroz blanco caliente"], "k": "300", "p": "205", "na": "80"}, "viernes": "Después de estos 3 meses juntos en este canal: ¿qué tema te gustaría que abordáramos más? Tu voz construye esta comunidad. Dinos qué necesitas saber.", "inspiracion": {"titulo": "No caminas solo", "cuerpo": "En este canal somos una comunidad. Cada persona aquí entiende lo que vives. Y tu clínica está contigo en cada paso del camino. Gracias por estar."}}], "guarda": [{"titulo": "Señales de urgencia renal", "subtitulo": "Guarda y comparte con tu familia", "cuerpo": "Si la persona en diálisis presenta CUALQUIERA de estas señales, llamen de inmediato:", "lista": ["No respira bien o se ahoga al acostarse", "Calambres fuertes con palpitaciones del corazón", "Confusión, desorientación o sueño excesivo", "La fístula dejó de vibrar (sin thrill)", "No ha orinado en más de 12 horas", "Hinchazón severa que apareció de repente"], "cierre": "📞 Urgencias 24/7: 55 9680-8859\n\nCompártelo con quien cuida a un paciente renal. Puede salvar una vida."}, {"titulo": "Alimentos que NUNCA debes comer en exceso", "subtitulo": "Guarda esta lista en tu teléfono", "cuerpo": "Estos alimentos concentran potasio peligroso para el corazón:", "lista": ["Plátano (1 solo tiene 422 mg de potasio)", "Aguacate (el más alto: 487 mg por mitad)", "Naranja y su jugo (237 mg)", "Jitomate y salsas (292 mg)", "Papa sin doble cocción (421 mg)", "Refresco de cola (fósforo de alta absorción)", "Frijoles y lentejas (400+ mg)"], "cierre": "Guarda este mensaje y tenlo a la mano al hacer el súper.\n— Dra. Leidy Díaz Villar · Monte Sinaí"}, {"titulo": "Qué hacer si sangra tu fístula en casa", "subtitulo": "Guarda esto — puede pasar de noche", "cuerpo": "Si tu acceso vascular sangra después de la sesión, actúa así:", "lista": ["Presiona firme el sitio con gasa limpia 10 minutos", "NO levantes la gasa para revisar antes de tiempo", "Mantén el brazo elevado por encima del corazón", "Si no para en 15 minutos, llama de inmediato", "Si el sangrado es abundante, ve a urgencias"], "cierre": "📞 24/7: 55 9680-8859\nGuarda este mensaje donde lo encuentres rápido."}, {"titulo": "Tu lista para el día de diálisis", "subtitulo": "Guarda y úsala cada sesión", "cuerpo": "Lleva esto a cada sesión para una experiencia más cómoda:", "lista": ["Suéter o cobija ligera (las salas son frescas)", "Audífonos y teléfono cargado", "Botella pequeña de agua (según tu límite)", "Bocadillo permitido para después", "Tu lista de medicamentos actualizada", "Algo para entretenerte: libro, serie, música"], "cierre": "Guarda este mensaje y revísalo antes de salir de casa.\n— Monte Sinaí Hemodiálisis"}, {"titulo": "Cómo bajar el potasio de tus verduras", "subtitulo": "Guarda la técnica del doble cocido", "cuerpo": "Reduce hasta 50% del potasio con esta técnica:", "lista": ["Pela y corta la verdura en trozos pequeños", "Remoja en agua fría 2 horas (cambia el agua a la mitad)", "Hierve en abundante agua sin sal", "Escurre y DESECHA el agua de cocción", "Nunca uses esa agua para sopas o guisos"], "cierre": "Funciona con zanahoria, papa, calabaza, nopal y chayote.\n— Dra. Leidy Díaz Villar"}, {"titulo": "Preguntas para tu próxima consulta", "subtitulo": "Guarda y llévalas anotadas", "cuerpo": "No olvides preguntarle a tu nefróloga:", "lista": ["¿Cómo salió mi Kt/V este mes?", "¿Mi peso seco sigue siendo el correcto?", "¿Cómo están mi potasio y mi fósforo?", "¿Necesito ajustar algún medicamento?", "¿Mi hemoglobina está en buen nivel?"], "cierre": "Llevar tus dudas anotadas hace que la consulta valga más.\n— Monte Sinaí"}], "historias": [{"intro": "Historia de esperanza", "texto": "Don Roberto* llegó a nosotros con miedo. \"Pensé que la diálisis era el final\", nos dijo el primer día. Hoy, 6 años después, acaba de conocer a su primera bisnieta. Va a sus sesiones, las toma como parte de su rutina, y dice que aprendió a vivir \"con\" la diálisis, no \"a pesar\" de ella.", "mensaje": "La diálisis no es el final de tu historia. Es un capítulo más, y todavía quedan muchos por escribir.", "nota": "*Nombre cambiado para proteger su privacidad."}, {"intro": "Historia de fuerza", "texto": "La señora Carmen* trabajaba como costurera cuando inició hemodiálisis. Creyó que tendría que dejar todo. Su nefróloga le ayudó a ajustar sus sesiones al turno vespertino. Hoy sigue cosiendo en las mañanas y va a diálisis por las tardes. \"No dejé de ser yo\", dice.", "mensaje": "Tu tratamiento puede adaptarse a tu vida. Trabajar, crear y seguir siendo quien eres es posible.", "nota": "*Nombre cambiado para proteger su privacidad."}, {"intro": "Historia de familia", "texto": "Cuando Don Miguel* empezó diálisis, su hija de 12 años no entendía qué pasaba. Tenía miedo. Un día la llevamos a conocer la clínica, le explicamos con dibujos cómo la máquina ayuda a su papá. Salió tranquila. \"Ahora sé que mi papá está bien cuidado\", dijo.", "mensaje": "Incluir a la familia en el proceso reduce el miedo de todos. Los niños entienden más de lo que creemos.", "nota": "*Nombre cambiado para proteger su privacidad."}, {"intro": "Historia de constancia", "texto": "La señora Esperanza* —sí, así se llama— nunca ha faltado a una sesión en 4 años. Ni en lluvia, ni en fiestas. \"Mi cuerpo cuenta conmigo\", dice. Sus análisis son de los más estables de la clínica. Su secreto no es nada extraordinario: constancia y no saltarse jamás una sesión.", "mensaje": "La constancia es el tratamiento más poderoso. No faltar a tus sesiones es el acto de amor propio más grande.", "nota": "*Nombre cambiado para proteger su privacidad."}, {"intro": "Historia de esperanza", "texto": "Después de 3 años en hemodiálisis, Don Javier* recibió la llamada que esperaba: había un riñón compatible. Hoy está trasplantado y vive sin diálisis. Antes de irse nos dijo: \"Estos años en diálisis me mantuvieron vivo para llegar a este momento.\"", "mensaje": "La diálisis puede ser el puente hacia un trasplante. Cada sesión te mantiene fuerte para lo que viene.", "nota": "*Nombre cambiado para proteger su privacidad."}, {"intro": "Historia de comunidad", "texto": "En la sala de diálisis, dos pacientes que coincidían en el turno de las 7 am se hicieron amigos. Empezaron a llegar juntos, a platicar durante las sesiones, a echarse porras. \"Venir ya no se siente pesado\", dicen. La diálisis les dio, sin buscarlo, una amistad.", "mensaje": "No estás solo en esto. A veces los lugares más inesperados nos regalan compañía y comunidad.", "nota": "*Historia compartida con autorización."}], "estacional": [{"fecha": "Marzo — Día Mundial del Riñón (2do jueves)", "emoji": "🌍", "titulo": "Hoy es el Día Mundial del Riñón", "cuerpo": "Hoy honramos a cada persona que vive con enfermedad renal y a quienes los cuidan. Tus riñones trabajaron mucho por ti. Hoy tú trabajas por tu salud. Eso es valentía.\n\nSi conoces a alguien con diabetes o presión alta, recuérdale que un simple análisis de creatinina puede detectar problemas renales a tiempo.", "cierre": "Comparte este mensaje. La prevención empieza con información.\n— Monte Sinaí"}, {"fecha": "Abril-Mayo — Temporada de calor", "emoji": "☀️", "titulo": "El calor y tu control de líquidos", "cuerpo": "Llega el calor y con él más sed. Es uno de los retos más difíciles para quien controla líquidos. Algunos trucos para esta temporada:\n\n• Congela uvas permitidas y chúpalas como paleta\n• Usa vasos pequeños, llenos se sienten más\n• Enjuágate la boca con agua fría sin tragar\n• Evita salir en las horas de más calor", "cierre": "El verano se disfruta también cuidándote. 💙\n— Dra. Leidy Díaz Villar"}, {"fecha": "Septiembre — Fiestas Patrias", "emoji": "🇲🇽", "titulo": "Cómo disfrutar el 15 de septiembre", "cuerpo": "Las fiestas patrias traen antojitos que retan la dieta renal. No tienes que privarte de todo, solo elegir con cabeza:\n\n• Pozole: pide poco caldo (es líquido y sodio)\n• Prefiere las tostadas a los tacos dorados\n• Evita el tepache y aguas de sabor con mucha fruta\n• Una porción pequeña de tu antojo favorito, no el plato completo", "cierre": "Celebrar con medida también es celebrar. ¡Viva México! 🎉\n— Monte Sinaí"}, {"fecha": "Noviembre — Día de Muertos", "emoji": "🌼", "titulo": "El pan de muerto y tu dieta", "cuerpo": "Llega la temporada del pan de muerto. La buena noticia: en porción pequeña, el pan blanco es relativamente seguro. La precaución: el azúcar y el tamaño.\n\n• Una rebanada pequeña, no la pieza completa\n• Evita acompañarlo con chocolate caliente (alto en fósforo y potasio)\n• Mejor con un café americano ligero", "cierre": "Honrar a quienes se fueron, cuidando a quien sigue aquí: tú. 🕯️\n— Dra. Leidy Díaz Villar"}, {"fecha": "Diciembre — Cena navideña", "emoji": "🎄", "titulo": "Sobrevivir la cena de Navidad", "cuerpo": "La cena decembrina es un campo minado para la dieta renal. Tu guía rápida:\n\n• Pavo o pierna: SÍ, en porción moderada (proteína buena)\n• Ensalada de manzana: cuidado con nuez, pasas y crema\n• Bacalao: muy alto en sodio, mejor evitar\n• Ponche: es líquido + fruta concentrada, una taza pequeña máximo\n• Romeritos: altísimos en potasio, evítalos", "cierre": "Las fiestas se disfrutan mejor sin una urgencia el día 25. Cuídate. 💙\n— Monte Sinaí"}, {"fecha": "Enero — Propósitos de año nuevo", "emoji": "✨", "titulo": "Tu mejor propósito: cuidarte", "cuerpo": "Año nuevo, misma fuerza. Este año te proponemos metas reales y alcanzables:\n\n• No faltar a ninguna sesión\n• Registrar tu peso todos los días\n• Tomar tus quelantes al inicio de cada comida\n• Caminar 10 minutos diarios (si tu médico lo autoriza)\n• Hacer tu pregunta en cada consulta", "cierre": "Las metas pequeñas y constantes ganan siempre. Este es tu año. 🎯\n— Dra. Leidy Díaz Villar"}, {"fecha": "Febrero — Cuaresma", "emoji": "🐟", "titulo": "Cuaresma y dieta renal", "cuerpo": "En Cuaresma muchos comen más pescado. Buena oportunidad, con cuidados:\n\n• Pescado blanco (tilapia, robalo): excelente proteína\n• Evita pescados pequeños que se comen enteros (alto fósforo)\n• Cuidado con el bacalao: muchísimo sodio\n• Las tortitas de camarón seco: muy altas en sodio y fósforo\n• Prefiere a la plancha, no capeado", "cierre": "Tradición y salud renal pueden ir juntas. 🙏\n— Monte Sinaí"}]};
+let currentTab = 'semanal';
+let currentWeek = 0;
+
+const DAYS = [
+  {key:'lunes', name:'Lunes', cat:'Dato Médico', ico:'🩺', cls:'1', time:'9:00 AM'},
+  {key:'miercoles', name:'Miércoles', cat:'Receta Renal', ico:'🍽️', cls:'2', time:'2:00 PM'},
+  {key:'viernes', name:'Viernes', cat:'Pregunta', ico:'💬', cls:'3', time:'7:00 PM'},
+  {key:'sabado', name:'Sábado', cat:'Inspiración', ico:'☀️', cls:'4', time:'10:00 AM'}
+];
+
+function buildWeekMsg(s, dayKey){
+  if(dayKey==='lunes'){const m=s.lunes;return `🩺 *Dato Médico del Lunes*\n\n${m.titulo}\n\n${m.cuerpo}\n\n*Esta semana:* ${m.accion}\n\n— Dra. Leidy Díaz Villar\nNefrología · Monte Sinaí`;}
+  if(dayKey==='miercoles'){const r=s.miercoles;const ing=r.ingredientes.map(i=>`• ${i}`).join('\n');const prep=r.preparacion.map((p,i)=>`${i+1}. ${p}`).join('\n');return `🍽️ *Receta Renal · Miércoles*\n\n*${r.nombre}*\nPorciones: ${r.porciones} · Tiempo: ${r.tiempo}\n\n*Ingredientes:*\n${ing}\n\n*Preparación:*\n${prep}\n\n*Por porción:*\nPotasio: ${r.k} mg · Fósforo: ${r.p} mg · Sodio: ${r.na} mg\n\nGuarda este mensaje en favoritos 💙\nMonte Sinaí Hemodiálisis`;}
+  if(dayKey==='viernes'){return `💬 *Pregunta del Viernes*\n\n${s.viernes}\n\nResponde o guarda este mensaje para reflexionar. Tu experiencia ayuda a toda la comunidad.\n\n— Comunidad Renal Monte Sinaí`;}
+  if(dayKey==='sabado'){const i=s.inspiracion;return `☀️ *${i.titulo}*\n\n${i.cuerpo}\n\n— Tu equipo de Monte Sinaí 💙`;}
+  return '';
+}
+function buildGuardaMsg(g){const lista=g.lista.map(i=>`• ${i}`).join('\n');return `🚨 *${g.subtitulo}*\n\n*${g.titulo}*\n\n${g.cuerpo}\n\n${lista}\n\n${g.cierre}`;}
+function buildHistoriaMsg(h){return `❤️ *${h.intro}*\n\n${h.texto}\n\n💙 ${h.mensaje}\n\n${h.nota}\n— Monte Sinaí Hemodiálisis`;}
+function buildEstacionalMsg(e){return `${e.emoji} *${e.titulo}*\n\n${e.cuerpo}\n\n${e.cierre}`;}
+
+function fmt(msg){return msg.replace(/\\n/g,'\n').replace(/\*([^*]+)\*/g,'<strong>$1</strong>');}
+
+function renderCard(ico,cls,name,cat,time,msg,nutHtml,impactBadge){
+  return `<div class="msg-card">
+    <div class="msg-head">
+      <div class="msg-day-ico di-${cls}">${ico}</div>
+      <div class="msg-day-info"><div class="msg-day-name">${name}</div><div class="msg-day-cat">${cat}</div></div>
+      ${impactBadge?'<span class="badge-impact">🔥 Alto reenvío</span>':`<div class="msg-day-time">${time}</div>`}
+    </div>
+    <div class="msg-preview"><div class="msg-bubble">${fmt(msg)}</div></div>
+    ${nutHtml||''}
+    <div class="msg-actions">
+      <button class="btn-copy" data-msg="${encodeURIComponent(msg)}" onclick="copyMsg(this)"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar mensaje</button>
+      <button class="btn-wa" data-msg="${encodeURIComponent(msg)}" onclick="openWA(this)" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.6 6.3A7.85 7.85 0 0012 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.8 1h.0a7.94 7.94 0 005.6-13.6zM12 18.5a6.5 6.5 0 01-3.4-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.6 6.6 0 01-1-3.5A6.6 6.6 0 0112 5.4a6.6 6.6 0 016.6 6.6 6.6 6.6 0 01-6.6 6.5zm3.6-4.9c-.2-.1-1.2-.6-1.3-.6-.2-.1-.3-.1-.4.1l-.6.7c-.1.1-.2.1-.4 0a5.3 5.3 0 01-1.6-1 6 6 0 01-1.1-1.4c-.1-.2 0-.3.1-.4l.3-.3.2-.3v-.3l-.6-1.4c-.1-.3-.3-.3-.4-.3h-.3a.7.7 0 00-.5.2 2 2 0 00-.6 1.5 3.5 3.5 0 00.7 1.8 8 8 0 003.1 2.7c1.5.6 1.5.4 1.8.4a1.8 1.8 0 001.2-.8 1.5 1.5 0 00.1-.8c0-.2-.2-.2-.4-.3z"/></svg></button>
+    </div>
+  </div>`;
+}
+
+function renderTab(){
+  const c = document.getElementById('tabContent');
+  const foot = document.getElementById('footNav');
+
+  if(currentTab === 'semanal'){
+    foot.style.display = 'flex';
+    const s = DATA.semanas[currentWeek];
+    let h = `<div class="week-tabs" id="weekTabs">`;
+    DATA.semanas.forEach((sm,i)=>{h+=`<button class="week-tab ${i===currentWeek?'active':''}" onclick="selectWeek(${i})"><span class="week-tab-num">${sm.num}</span><span class="week-tab-lbl">Sem</span></button>`;});
+    h += `</div><div class="week-theme"><div class="week-theme-num">${s.num}</div><div class="week-theme-info"><strong>${s.tema}</strong><span>Semana ${s.num} de 12</span></div></div><div class="msg-list">`;
+    DAYS.forEach(d=>{
+      const msg = buildWeekMsg(s, d.key);
+      let nut='';
+      if(d.key==='miercoles'){const r=s.miercoles;nut=`<div class="recipe-nut"><span class="rnut">Potasio: <strong>${r.k} mg</strong></span><span class="rnut">Fósforo: <strong>${r.p} mg</strong></span><span class="rnut">Sodio: <strong>${r.na} mg</strong></span></div>`;}
+      h += renderCard(d.ico, d.cls, d.name, d.cat, d.time, msg, nut, false);
+    });
+    h += `</div>`;
+    c.innerHTML = h;
+    document.getElementById('prevBtn').disabled = currentWeek===0;
+    document.getElementById('nextBtn').disabled = currentWeek===DATA.semanas.length-1;
+  }
+  else if(currentTab === 'guarda'){
+    foot.style.display = 'none';
+    let h = `<div class="section-intro"><h2>🚨 Mensajes "Guarda esto"</h2><p>Estos son tus mensajes de mayor reenvío. La gente los guarda y los comparte con toda su familia. Publica uno cada 2 semanas. Cada vez que se reenvían, tu clínica llega a más personas.</p></div><div class="msg-list">`;
+    DATA.guarda.forEach(g=>{h += renderCard('🚨','5',g.titulo,'Guarda y comparte','',buildGuardaMsg(g),'',true);});
+    h += `</div>`;
+    c.innerHTML = h;
+  }
+  else if(currentTab === 'historias'){
+    foot.style.display = 'none';
+    let h = `<div class="section-intro"><h2>❤️ Historias reales (anónimas)</h2><p>Las historias generan esperanza y lealtad como ningún otro contenido. Publica una al mes. Generan los comentarios más emotivos y acercan a la gente a tu clínica de forma natural.</p></div><div class="msg-list">`;
+    DATA.historias.forEach(hi=>{h += renderCard('❤️','3',hi.intro,'Historia inspiradora','',buildHistoriaMsg(hi),'',true);});
+    h += `</div>`;
+    c.innerHTML = h;
+  }
+  else if(currentTab === 'estacional'){
+    foot.style.display = 'none';
+    let h = `<div class="section-intro"><h2>🎉 Contenido estacional</h2><p>Mensajes ligados a fechas del calendario mexicano. Publícalos en su temporada. Se sienten oportunos y relevantes, lo que aumenta el reenvío y demuestra que el canal está vivo.</p></div><div class="msg-list">`;
+    DATA.estacional.forEach(e=>{h += renderCard(e.emoji,'6',e.fecha,'Según temporada','',buildEstacionalMsg(e),'',false);});
+    h += `</div>`;
+    c.innerHTML = h;
+  }
+}
+
+function switchTab(tab){
+  currentTab = tab;
+  document.querySelectorAll('.maintab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  renderTab();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function selectWeek(i){currentWeek=i;renderTab();document.querySelectorAll('.week-tab')[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});window.scrollTo({top:0,behavior:'smooth'});}
+function changeWeek(dir){const n=currentWeek+dir;if(n>=0&&n<DATA.semanas.length)selectWeek(n);}
+
+async function copyMsg(btn){
+  const msg = decodeURIComponent(btn.dataset.msg).replace(/\\n/g,'\n');
+  try{
+    if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(msg);}
+    else{const ta=document.createElement('textarea');ta.value=msg;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}
+    btn.classList.add('copied');
+    btn.innerHTML='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> ¡Copiado!';
+    showToast('✅ Copiado — pégalo en tu canal');
+    setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML='<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar mensaje';},2000);
+  }catch(e){showToast('No se pudo copiar');}
+}
+function openWA(btn){const msg=decodeURIComponent(btn.dataset.msg).replace(/\\n/g,'\n');window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank','noopener');}
+function showToast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400);}
+
+renderTab();
+</script>
+</body>
+</html>

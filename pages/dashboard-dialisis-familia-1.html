@@ -1,0 +1,2707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A1628">
+<title>Dashboard · Diálisis en Familia · Monte Sinaí</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Modo claro */
+  --bg: #F7F8FA;
+  --bg-2: #EDF1F6;
+  --surface: #FFFFFF;
+  --surface-2: #F4F6F9;
+  --border: #E2E8F0;
+  --border-soft: #EDF2F7;
+  --text: #0A1628;
+  --text-2: #2D3E50;
+  --text-3: #6B7A8F;
+  --text-4: #94A3B8;
+
+  /* Marca Monte Sinaí */
+  --brand: #2A9D8F;
+  --brand-2: #3BBFB0;
+  --brand-soft: #E3F4F2;
+  --brand-deep: #1F7D71;
+
+  --accent: #6B3FA0;
+  --accent-soft: #F0E8FF;
+
+  --success: #16A34A;
+  --success-soft: #DCFCE7;
+  --warning: #D97706;
+  --warning-soft: #FEF3C7;
+  --danger: #DC2626;
+  --danger-soft: #FEE2E2;
+  --info: #0284C7;
+  --info-soft: #DBEAFE;
+
+  /* Categorías */
+  --cat-medico: #2A9D8F;
+  --cat-receta: #16A34A;
+  --cat-pregunta: #6B3FA0;
+  --cat-inspiracion: #D97706;
+  --cat-guarda: #DC2626;
+  --cat-historia: #DB2777;
+  --cat-estacional: #0284C7;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow: 0 4px 12px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08), 0 4px 8px rgba(15, 23, 42, 0.04);
+
+  /* Radius */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  --nav-h: 60px;
+  --tab-h: 56px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bot: env(safe-area-inset-bottom, 0px);
+  --max: 1100px;
+  --out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #0A1628;
+  --bg-2: #0F1F35;
+  --surface: #15263F;
+  --surface-2: #1B304E;
+  --border: #1F3A5F;
+  --border-soft: #19304F;
+  --text: #F1F5F9;
+  --text-2: #CBD5E1;
+  --text-3: #94A3B8;
+  --text-4: #64748B;
+  --brand-soft: rgba(42, 157, 143, 0.15);
+  --accent-soft: rgba(107, 63, 160, 0.18);
+  --success-soft: rgba(22, 163, 74, 0.15);
+  --warning-soft: rgba(217, 119, 6, 0.15);
+  --danger-soft: rgba(220, 38, 38, 0.15);
+  --info-soft: rgba(2, 132, 199, 0.15);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  padding-bottom: calc(var(--tab-h) + var(--safe-bot) + 8px);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+* { -webkit-tap-highlight-color: transparent; }
+button, input, textarea, select { font-family: inherit; color: inherit; }
+button { cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+
+/* ════════════ NAV SUPERIOR ════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding-top: var(--safe-top);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav-inner {
+  height: var(--nav-h);
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.nav-logo {
+  width: 38px; height: 38px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(42, 157, 143, 0.25);
+}
+.nav-text { min-width: 0; }
+.nav-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav-sub {
+  font-size: 0.65rem;
+  color: var(--text-3);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+.nav-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.nav-icon-btn {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.nav-icon-btn:hover { background: var(--bg-2); }
+.nav-icon-btn svg {
+  width: 17px; height: 17px;
+  stroke: var(--text-2);
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ════════════ MAIN CONTENT ════════════ */
+.main {
+  padding: calc(var(--nav-h) + var(--safe-top) + 16px) 18px 16px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.view { display: none; }
+.view.active { display: block; animation: fadeIn 0.3s var(--out); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ════════════ DASHBOARD ════════════ */
+.greeting {
+  margin-bottom: 20px;
+}
+.greeting-time {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.greeting-text {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.025em;
+  margin-bottom: 6px;
+}
+.greeting-text em {
+  font-style: italic;
+  color: var(--brand);
+  font-weight: 600;
+}
+.greeting-meta {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.greeting-meta strong {
+  color: var(--text-2);
+  font-weight: 600;
+}
+
+/* Hero: tarjeta del próximo mensaje */
+.hero-card {
+  background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+  border-radius: var(--r-xl);
+  padding: 22px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 18px;
+  box-shadow: 0 20px 40px -10px rgba(42, 157, 143, 0.35);
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 60%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 5px 11px;
+  border-radius: 100px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero-label-dot {
+  width: 6px; height: 6px;
+  background: #7EE8B0;
+  border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.hero-cat {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.hero-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.hero-preview {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.hero-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.hero-time svg {
+  width: 14px; height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+}
+.hero-actions {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.hero-btn-primary {
+  flex: 1;
+  min-height: 46px;
+  background: white;
+  color: var(--brand-deep);
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: transform 0.15s;
+}
+.hero-btn-primary:active { transform: scale(0.97); }
+.hero-btn-primary svg {
+  width: 15px; height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+}
+.hero-btn-secondary {
+  min-height: 46px;
+  padding: 0 16px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: white;
+  border-radius: var(--r-sm);
+  font-weight: 600;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-empty {
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: var(--r-xl);
+  padding: 32px 22px;
+  text-align: center;
+  margin-bottom: 18px;
+  color: var(--text-3);
+}
+.hero-empty-ico { font-size: 2rem; margin-bottom: 8px; }
+.hero-empty h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  color: var(--text-2);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.hero-empty p { font-size: 0.78rem; line-height: 1.6; }
+
+/* Métricas */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  padding: 12px 10px;
+  box-shadow: var(--shadow-sm);
+}
+.metric-label {
+  font-size: 0.6rem;
+  color: var(--text-3);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+.metric-value {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 3px;
+  letter-spacing: -0.025em;
+}
+.metric-sub {
+  font-size: 0.62rem;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.metric-sub.positive { color: var(--success); }
+
+/* Sección de progreso semanal */
+.section-block {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.015em;
+}
+.section-meta {
+  font-size: 0.7rem;
+  color: var(--text-3);
+  font-weight: 500;
+}
+
+.week-progress {
+  height: 8px;
+  background: var(--border-soft);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.week-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  border-radius: 100px;
+  transition: width 0.5s var(--out);
+}
+
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.day-pill {
+  background: var(--bg-2);
+  border-radius: var(--r-sm);
+  padding: 11px 8px;
+  text-align: center;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+  position: relative;
+}
+.day-pill.today {
+  background: var(--brand-soft);
+  border-color: var(--brand);
+}
+.day-pill.done {
+  background: var(--success-soft);
+}
+.day-pill.future { opacity: 0.55; }
+.day-name {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+.day-pill.today .day-name { color: var(--brand); }
+.day-pill.done .day-name { color: var(--success); }
+.day-emoji {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+.day-status {
+  font-size: 0.56rem;
+  font-weight: 600;
+  color: var(--text-4);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.day-pill.today .day-status { color: var(--brand); }
+.day-pill.done .day-status { color: var(--success); }
+
+/* Acciones rápidas */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.qa-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  transition: all 0.15s;
+  box-shadow: var(--shadow-sm);
+}
+.qa-card:active { transform: scale(0.98); }
+.qa-card:hover { border-color: var(--brand); box-shadow: var(--shadow); }
+.qa-ico {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+.qa-ico-1 { background: var(--brand-soft); color: var(--brand); }
+.qa-ico-2 { background: var(--accent-soft); color: var(--accent); }
+.qa-ico-3 { background: var(--warning-soft); color: var(--warning); }
+.qa-ico-4 { background: var(--info-soft); color: var(--info); }
+.qa-text { min-width: 0; }
+.qa-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.qa-sub {
+  font-size: 0.65rem;
+  color: var(--text-3);
+  line-height: 1.3;
+}
+
+/* Próximas publicaciones */
+.upcoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.up-item {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+}
+.up-date {
+  width: 46px;
+  flex-shrink: 0;
+  text-align: center;
+}
+.up-date-day {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.up-date-month {
+  font-size: 0.58rem;
+  color: var(--text-3);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 3px;
+}
+.up-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border-soft);
+  margin: 4px 0;
+}
+.up-content {
+  flex: 1;
+  min-width: 0;
+}
+.up-cat {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+.up-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.up-time {
+  font-size: 0.65rem;
+  color: var(--text-3);
+  font-weight: 500;
+  margin-top: 2px;
+}
+.up-arrow {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: var(--surface-2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.up-arrow svg {
+  width: 13px; height: 13px;
+  stroke: var(--text-3);
+  fill: none;
+  stroke-width: 2.4;
+}
+
+/* ════════════ VIEW: CONTENIDO ════════════ */
+.cat-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.cat-tabs::-webkit-scrollbar { display: none; }
+.cat-tab {
+  flex-shrink: 0;
+  padding: 9px 14px;
+  border-radius: 100px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  color: var(--text-2);
+  font-size: 0.74rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.cat-tab.active {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+.cat-tab-count {
+  font-size: 0.62rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+/* Message cards */
+.msg-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s var(--out);
+}
+.msg-card.published {
+  opacity: 0.6;
+}
+.msg-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.msg-ico {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.msg-info { flex: 1; min-width: 0; }
+.msg-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+.msg-cat {
+  font-size: 0.6rem;
+  color: var(--text-3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.msg-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.msg-time-pill {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+.msg-impact-pill {
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: var(--danger);
+  background: var(--danger-soft);
+  padding: 2px 7px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.msg-preview {
+  padding: 14px 16px;
+  background: #ECE5DD;
+}
+[data-theme="dark"] .msg-preview { background: #0D1B2A; }
+.msg-bubble {
+  background: white;
+  border-radius: 1px 12px 12px 12px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  font-size: 0.79rem;
+  line-height: 1.55;
+  color: #1A2E40;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  position: relative;
+  font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+[data-theme="dark"] .msg-bubble {
+  background: #2A3F5A;
+  color: #E2E8F0;
+}
+.msg-bubble strong { font-weight: 600; }
+.msg-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid white;
+  border-left: 8px solid transparent;
+}
+[data-theme="dark"] .msg-bubble::before { border-top-color: #2A3F5A; }
+
+.msg-recipe-nut {
+  display: flex;
+  gap: 6px;
+  padding: 0 16px 12px;
+  flex-wrap: wrap;
+}
+.msg-nut-chip {
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  border-radius: 100px;
+  padding: 4px 10px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-3);
+}
+.msg-nut-chip strong { color: var(--text-2); }
+
+.msg-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-soft);
+}
+.msg-btn {
+  min-height: 42px;
+  border-radius: var(--r-sm);
+  font-size: 0.76rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.msg-btn:active { transform: scale(0.97); }
+.msg-btn svg {
+  width: 14px; height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+}
+.msg-btn-primary {
+  flex: 1;
+  background: var(--brand);
+  color: white;
+}
+.msg-btn-primary.published-state {
+  background: var(--success);
+}
+.msg-btn-wa {
+  width: 44px;
+  background: #25D366;
+}
+.msg-btn-wa svg { stroke: white; }
+.msg-btn-edit, .msg-btn-mark {
+  width: 44px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+}
+.msg-btn-mark.is-done {
+  background: var(--success-soft);
+  color: var(--success);
+  border-color: transparent;
+}
+
+/* ════════════ VIEW: CALENDARIO ════════════ */
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.cal-month {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.cal-nav {
+  display: flex;
+  gap: 6px;
+}
+.cal-nav-btn {
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cal-nav-btn svg {
+  width: 16px; height: 16px;
+  stroke: var(--text-2);
+  fill: none;
+  stroke-width: 2.4;
+}
+
+.cal-grid {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 14px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.cal-dow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 6px;
+}
+.cal-dow-cell {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 0;
+}
+.cal-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.cal-day {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.cal-day.empty { background: transparent; cursor: default; }
+.cal-day.has-content { background: var(--brand-soft); }
+.cal-day.today { border-color: var(--brand); background: var(--brand); }
+.cal-day.today .cal-day-num { color: white; }
+.cal-day.past { opacity: 0.45; }
+.cal-day:not(.empty):hover { transform: scale(1.05); }
+.cal-day-num {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.cal-day-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--brand);
+  margin-top: 2px;
+}
+.cal-day.today .cal-day-dot { background: white; }
+
+.cal-legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  margin-bottom: 18px;
+}
+.cal-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: var(--text-3);
+}
+.cal-legend-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+.cal-detail {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.cal-detail-date {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: -0.015em;
+}
+.cal-detail-sub {
+  font-size: 0.72rem;
+  color: var(--text-3);
+  margin-bottom: 14px;
+}
+.cal-detail-empty {
+  text-align: center;
+  padding: 24px 10px;
+  color: var(--text-3);
+  font-size: 0.78rem;
+}
+
+/* ════════════ VIEW: STATS ════════════ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-card.span-2 { grid-column: span 2; }
+.stat-card-label {
+  font-size: 0.62rem;
+  color: var(--text-3);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.stat-card-value {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin-bottom: 4px;
+}
+.stat-card-sub {
+  font-size: 0.7rem;
+  color: var(--text-3);
+}
+.stat-card-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 8px;
+}
+.stat-card-input:focus {
+  outline: none;
+  border-color: var(--brand);
+}
+
+.tip-card {
+  background: linear-gradient(135deg, var(--warning-soft), #FFF8E1);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: var(--r-lg);
+  padding: 16px;
+  margin-bottom: 18px;
+}
+[data-theme="dark"] .tip-card {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.12), rgba(217, 119, 6, 0.06));
+  border-color: rgba(217, 119, 6, 0.25);
+}
+.tip-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--warning);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tip-card p {
+  font-size: 0.76rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ════════════ MODAL DE EDITOR ════════════ */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10, 22, 40, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+.modal-bg.open {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+.modal {
+  background: var(--surface);
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  width: 100%;
+  max-width: 600px;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 22px;
+  animation: slideUp 0.3s var(--out);
+  padding-bottom: calc(22px + var(--safe-bot));
+}
+@keyframes slideUp {
+  from { transform: translateY(40px); }
+  to { transform: translateY(0); }
+}
+.modal-handle {
+  width: 40px; height: 4px;
+  background: var(--border);
+  border-radius: 100px;
+  margin: 0 auto 16px;
+}
+.modal-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 14px;
+  letter-spacing: -0.015em;
+}
+.modal-textarea {
+  width: 100%;
+  min-height: 220px;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: 0.84rem;
+  color: var(--text);
+  line-height: 1.6;
+  resize: vertical;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.modal-textarea:focus {
+  outline: none;
+  border-color: var(--brand);
+}
+.modal-hint {
+  font-size: 0.66rem;
+  color: var(--text-3);
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+.modal-actions {
+  display: flex;
+  gap: 8px;
+}
+.modal-btn {
+  min-height: 46px;
+  border-radius: var(--r-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.modal-btn-primary {
+  flex: 1;
+  background: var(--brand);
+  color: white;
+}
+.modal-btn-secondary {
+  padding: 0 18px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+}
+
+/* ════════════ TAB BAR INFERIOR ════════════ */
+.tabbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 100;
+  padding-bottom: var(--safe-bot);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+}
+.tabbar-inner {
+  height: var(--tab-h);
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+}
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-3);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.tab-item.active { color: var(--brand); }
+.tab-item svg {
+  width: 21px; height: 21px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ════════════ TOAST ════════════ */
+.toast {
+  position: fixed;
+  bottom: calc(var(--tab-h) + var(--safe-bot) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: var(--bg);
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  z-index: 300;
+  display: none;
+  max-width: 90%;
+  text-align: center;
+}
+.toast.show {
+  display: block;
+  animation: toastIn 0.3s ease, toastOut 0.3s ease 2.4s;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 16px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+@keyframes toastOut {
+  to { opacity: 0; transform: translate(-50%, 16px); }
+}
+
+/* ════════════ RESPONSIVE ════════════ */
+@media (min-width: 768px) {
+  .quick-actions { grid-template-columns: repeat(4, 1fr); }
+  .msg-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .msg-card { margin-bottom: 0; }
+}
+@supports (-webkit-touch-callout: none) {
+  button, input, textarea, select { font-size: 16px; }
+}
+
+/* ════════════ ACCESIBILIDAD ════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV SUPERIOR -->
+<nav class="nav" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo">DF</div>
+      <div class="nav-text">
+        <div class="nav-title">Diálisis en Familia</div>
+        <div class="nav-sub">Dashboard del canal · Monte Sinaí</div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="toggleTheme()" aria-label="Cambiar tema">
+        <svg viewBox="0 0 24 24" id="themeIcon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="nav-icon-btn" onclick="exportData()" aria-label="Exportar datos">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main">
+
+  <!-- ════════ VISTA: DASHBOARD ════════ -->
+  <section class="view active" id="view-dashboard" aria-labelledby="dashboard-title">
+    <header class="greeting">
+      <div class="greeting-time" id="greetingTime">Jueves 28 de mayo</div>
+      <h1 class="greeting-text" id="greetingText">Buenas tardes,<br><em>Dra. Díaz Villar</em></h1>
+      <div class="greeting-meta" id="greetingMeta">Semana <strong>1</strong> · Día de <strong>apertura del canal</strong></div>
+    </header>
+
+    <!-- Tarjeta hero del próximo mensaje -->
+    <div id="heroContainer"></div>
+
+    <!-- Métricas -->
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-label">Publicados</div>
+        <div class="metric-value" id="metricPublished">0</div>
+        <div class="metric-sub" id="metricPublishedSub">de 67 mensajes</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Esta semana</div>
+        <div class="metric-value" id="metricWeek">0/4</div>
+        <div class="metric-sub">mensajes</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Suscriptores</div>
+        <div class="metric-value" id="metricSubs">—</div>
+        <div class="metric-sub">en el canal</div>
+      </div>
+    </div>
+
+    <!-- Progreso semanal -->
+    <div class="section-block">
+      <div class="section-head">
+        <h2 class="section-title">Esta semana</h2>
+        <div class="section-meta" id="weekRange">Sem 1 · Apertura</div>
+      </div>
+      <div class="week-progress">
+        <div class="week-progress-fill" id="weekProgressFill" style="width: 0%"></div>
+      </div>
+      <div class="week-days" id="weekDays"></div>
+    </div>
+
+    <!-- Acciones rápidas -->
+    <div class="quick-actions">
+      <button class="qa-card" onclick="navigateTo('content')">
+        <div class="qa-ico qa-ico-1">📚</div>
+        <div class="qa-text">
+          <div class="qa-title">Banco de contenido</div>
+          <div class="qa-sub">67 mensajes</div>
+        </div>
+      </button>
+      <button class="qa-card" onclick="navigateTo('calendar')">
+        <div class="qa-ico qa-ico-2">📅</div>
+        <div class="qa-text">
+          <div class="qa-title">Calendario</div>
+          <div class="qa-sub">Vista mensual</div>
+        </div>
+      </button>
+      <button class="qa-card" onclick="filterContent('guarda')">
+        <div class="qa-ico qa-ico-3">🚨</div>
+        <div class="qa-text">
+          <div class="qa-title">Alto reenvío</div>
+          <div class="qa-sub">6 mensajes clave</div>
+        </div>
+      </button>
+      <button class="qa-card" onclick="navigateTo('stats')">
+        <div class="qa-ico qa-ico-4">📊</div>
+        <div class="qa-text">
+          <div class="qa-title">Estadísticas</div>
+          <div class="qa-sub">Tu progreso</div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Próximas publicaciones -->
+    <div class="section-block">
+      <div class="section-head">
+        <h2 class="section-title">Próximas publicaciones</h2>
+      </div>
+      <div class="upcoming-list" id="upcomingList"></div>
+    </div>
+  </section>
+
+  <!-- ════════ VISTA: CONTENIDO ════════ -->
+  <section class="view" id="view-content" aria-labelledby="content-title">
+    <header class="greeting" style="margin-bottom: 14px;">
+      <h1 class="greeting-text" style="font-size: 1.4rem; margin-bottom: 4px;">Banco de contenido</h1>
+      <div class="greeting-meta">67 mensajes en 4 categorías</div>
+    </header>
+
+    <div class="cat-tabs" id="catTabs">
+      <button class="cat-tab active" data-cat="all" onclick="filterContent('all')">Todos <span class="cat-tab-count">67</span></button>
+      <button class="cat-tab" data-cat="semanal" onclick="filterContent('semanal')">📅 Semanal <span class="cat-tab-count">48</span></button>
+      <button class="cat-tab" data-cat="guarda" onclick="filterContent('guarda')">🚨 Guarda esto <span class="cat-tab-count">6</span></button>
+      <button class="cat-tab" data-cat="historias" onclick="filterContent('historias')">❤️ Historias <span class="cat-tab-count">6</span></button>
+      <button class="cat-tab" data-cat="estacional" onclick="filterContent('estacional')">🎉 Estacional <span class="cat-tab-count">7</span></button>
+    </div>
+
+    <div class="msg-list" id="msgList"></div>
+  </section>
+
+  <!-- ════════ VISTA: CALENDARIO ════════ -->
+  <section class="view" id="view-calendar" aria-labelledby="calendar-title">
+    <div class="cal-head">
+      <h1 class="cal-month" id="calMonthTitle">Mayo 2026</h1>
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="changeMonth(-1)" aria-label="Mes anterior">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="cal-nav-btn" onclick="changeMonth(1)" aria-label="Mes siguiente">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="cal-grid">
+      <div class="cal-dow">
+        <div class="cal-dow-cell">D</div>
+        <div class="cal-dow-cell">L</div>
+        <div class="cal-dow-cell">M</div>
+        <div class="cal-dow-cell">M</div>
+        <div class="cal-dow-cell">J</div>
+        <div class="cal-dow-cell">V</div>
+        <div class="cal-dow-cell">S</div>
+      </div>
+      <div class="cal-days" id="calDays"></div>
+    </div>
+
+    <div class="cal-legend">
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background: var(--brand)"></div> Hoy</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background: var(--brand-soft); border: 1px solid var(--brand)"></div> Con publicación</div>
+    </div>
+
+    <div class="cal-detail" id="calDetail">
+      <div class="cal-detail-empty">
+        Toca un día con publicación para ver el mensaje programado.
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ VISTA: STATS ════════ -->
+  <section class="view" id="view-stats" aria-labelledby="stats-title">
+    <header class="greeting" style="margin-bottom: 16px;">
+      <h1 class="greeting-text" style="font-size: 1.4rem; margin-bottom: 4px;">Tu progreso</h1>
+      <div class="greeting-meta">Tu canal · Tu evolución</div>
+    </header>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-label">Total publicado</div>
+        <div class="stat-card-value" id="statsPublished">0</div>
+        <div class="stat-card-sub" id="statsPublishedPct">0% del banco</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Racha activa</div>
+        <div class="stat-card-value" id="statsStreak">0</div>
+        <div class="stat-card-sub">semanas seguidas</div>
+      </div>
+      <div class="stat-card span-2">
+        <div class="stat-card-label">Suscriptores del canal</div>
+        <div class="stat-card-value" id="statsSubsValue">—</div>
+        <div class="stat-card-sub">Actualiza este número cuando WhatsApp te lo muestre</div>
+        <input
+          type="number"
+          class="stat-card-input"
+          id="subsInput"
+          placeholder="Pon el número actual"
+          inputmode="numeric"
+          oninput="updateSubs(this.value)"
+        >
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <h4>💡 Cómo crecer tu canal</h4>
+      <p>Comparte el link del canal en cada consulta. Pídele a tus pacientes actuales que lo compartan con un familiar. Los mensajes "Guarda esto" son los que más se reenvían — publica uno cada 2 semanas.</p>
+    </div>
+
+    <div class="section-block">
+      <div class="section-head">
+        <h2 class="section-title">Distribución por categoría</h2>
+      </div>
+      <div id="catDistribution"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- TAB BAR INFERIOR -->
+<nav class="tabbar" aria-label="Navegación inferior">
+  <div class="tabbar-inner">
+    <button class="tab-item active" data-view="dashboard" onclick="navigateTo('dashboard')" aria-label="Inicio">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Inicio
+    </button>
+    <button class="tab-item" data-view="content" onclick="navigateTo('content')" aria-label="Contenido">
+      <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      Contenido
+    </button>
+    <button class="tab-item" data-view="calendar" onclick="navigateTo('calendar')" aria-label="Calendario">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Calendario
+    </button>
+    <button class="tab-item" data-view="stats" onclick="navigateTo('stats')" aria-label="Estadísticas">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Stats
+    </button>
+  </div>
+</nav>
+
+<!-- MODAL EDITOR -->
+<div class="modal-bg" id="editorBg" role="dialog" aria-modal="true" aria-labelledby="editor-title" onclick="closeEditor(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-handle" aria-hidden="true"></div>
+    <h2 class="modal-title" id="editor-title">Personalizar mensaje</h2>
+    <textarea class="modal-textarea" id="editorText" aria-label="Texto del mensaje"></textarea>
+    <div class="modal-hint">Edita lo que necesites. Tus cambios se guardarán para este mensaje.</div>
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-secondary" onclick="closeEditor()">Cancelar</button>
+      <button class="modal-btn modal-btn-primary" onclick="saveEditedAndCopy()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar y copiar
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+
+// ════════════════════════════════════════════════════════════
+// FECHA DE INICIO DEL CANAL: jueves 28 de mayo de 2026
+// ════════════════════════════════════════════════════════════
+const CHANNEL_START = new Date(2026, 4, 28); // mes 0-indexed: mayo = 4
+
+// ════════════════════════════════════════════════════════════
+// BANCO DE CONTENIDO COMPLETO
+// ════════════════════════════════════════════════════════════
+const SEMANAS = [
+  {
+    num: 1, tema: "Bienvenida y comunidad",
+    lunes: {
+      titulo: "¿Sabías que entre sesiones tu cuerpo trabaja diferente?",
+      cuerpo: "En los días sin diálisis tus riñones reciben un descanso pero las toxinas siguen acumulándose. Por eso lo que comes y bebes entre sesiones importa tanto como la sesión misma.",
+      accion: "Esta semana presta atención a cómo te sientes el día siguiente de cada sesión. Tu cuerpo te enseña su ritmo."
+    },
+    miercoles: {
+      nombre: "Pollo a la mostaza con arroz blanco", porciones: "2", tiempo: "25 minutos",
+      ingredientes: ["200 g pechuga de pollo sin piel", "1 taza de arroz blanco cocido", "1 cda de mostaza Dijon sin sal añadida", "Pimienta negra al gusto", "1 cdita de aceite de oliva", "Perejil fresco (opcional)"],
+      preparacion: ["Marina el pollo con mostaza y pimienta 10 minutos", "Cocina a fuego medio con aceite hasta dorar (15 min)", "Sirve sobre el arroz blanco caliente"],
+      k: "280", p: "195", na: "120"
+    },
+    viernes: "¿Qué te trajo a este canal? Cada persona que entra tiene una historia distinta — quizás eres paciente, familiar, cuidador. Cuéntanos un poco de ti para conocernos mejor.",
+    inspiracion: { titulo: "Bienvenido a tu nueva comunidad", cuerpo: "Aquí encontrarás información, recetas, consejos y un espacio para sentirte acompañado. Gracias por estar." }
+  },
+  {
+    num: 2, tema: "El cuerpo y tu peso",
+    lunes: {
+      titulo: "Tu peso seco puede cambiar con el tiempo",
+      cuerpo: "El peso seco no es un número fijo para siempre. Cambia si subes o bajas masa muscular, con las estaciones o si tu estado de salud se modifica.",
+      accion: "Si llegas a tu peso seco pero sigues sintiéndote hinchado o muy cansado, coméntalo en tu próxima sesión. Tu peso seco puede necesitar ajuste."
+    },
+    miercoles: {
+      nombre: "Bowl de fresas y manzana", porciones: "2", tiempo: "10 minutos",
+      ingredientes: ["1 taza de fresas frescas en mitades", "1 manzana mediana en cubos", "1 cda de jugo de limón", "Canela al gusto", "Hojas de menta (opcional)"],
+      preparacion: ["Lava bien las frutas", "Mezcla fresas y manzana en un tazón", "Rocía con limón y espolvorea canela", "Sirve frío"],
+      k: "245", p: "27", na: "2"
+    },
+    viernes: "¿Cuál fue el primer síntoma que te enseñó a 'leer' a tu cuerpo? A veces aprendemos a detectar señales que ningún análisis muestra.",
+    inspiracion: { titulo: "La hemodiálisis es maratón, no carrera", cuerpo: "Si hoy tu cuerpo pide descanso, escúchalo sin culpa. Cada día que cuidas tu energía es un día que inviertes en ti." }
+  },
+  {
+    num: 3, tema: "Nutrición inteligente",
+    lunes: {
+      titulo: "El truco del doble cocido reduce el potasio hasta 50%",
+      cuerpo: "Pelar, cortar en trozos pequeños, remojar 2 horas (cambiando el agua a la mitad) y hervir en abundante agua sin sal. Después escurres y desechas esa agua.",
+      accion: "Esta semana prueba el doble cocido con zanahoria o calabaza. Nunca reutilices el agua de cocción para sopas."
+    },
+    miercoles: {
+      nombre: "Tacos de pollo con tortilla de maíz", porciones: "2", tiempo: "20 minutos",
+      ingredientes: ["200 g pechuga de pollo deshebrada", "4 tortillas de maíz", "1/4 de cebolla picada", "Cilantro fresco", "1 limón", "Pimienta al gusto"],
+      preparacion: ["Cocina y deshebra el pollo sin sal", "Calienta las tortillas", "Arma los tacos con pollo, cebolla y cilantro", "Sirve con limón al gusto"],
+      k: "310", p: "210", na: "95"
+    },
+    viernes: "¿Cuál es el alimento que más extrañas desde que iniciaste tu dieta renal? Y lo más importante: ¿has encontrado alguna forma de manejar ese antojo?",
+    inspiracion: { titulo: "Disfruta lo que SÍ puedes comer", cuerpo: "La dieta renal no es solo lista de prohibiciones. Hay sabores permitidos que valen la pena redescubrir con calma y creatividad." }
+  },
+  {
+    num: 4, tema: "La familia y el apoyo",
+    lunes: {
+      titulo: "Cómo hablar con tus nietos sobre la diálisis",
+      cuerpo: "Los niños entienden más de lo que creemos. Explicarles con palabras simples ('el abuelo va a una máquina que limpia su sangre porque sus riñones descansan') reduce su miedo.",
+      accion: "Si tienes nietos pequeños, considera mostrarles una foto de la clínica. Lo desconocido asusta más que lo explicado."
+    },
+    miercoles: {
+      nombre: "Ensalada de manzana y pollo a la plancha", porciones: "2", tiempo: "20 minutos",
+      ingredientes: ["200 g pechuga de pollo", "1 manzana en cubos", "2 tazas de lechuga", "1 cda de aceite de oliva", "1 cda de vinagre de manzana", "Pimienta al gusto"],
+      preparacion: ["Cocina el pollo a la plancha y corta en tiras", "Mezcla lechuga y manzana", "Agrega el pollo encima", "Adereza con aceite, vinagre y pimienta"],
+      k: "290", p: "200", na: "85"
+    },
+    viernes: "¿Quién es el 'héroe silencioso' de tu tratamiento? Esa persona que te lleva, te acompaña o simplemente está ahí. Hoy es buen día para reconocerlo.",
+    inspiracion: { titulo: "Los cuidadores también son valientes", cuerpo: "Detrás de cada paciente hay alguien que carga en silencio. Si eres cuidador y lees esto: tu trabajo importa y se ve." }
+  },
+  {
+    num: 5, tema: "Líquidos y equilibrio",
+    lunes: {
+      titulo: "Cómo manejar la sed sin tomar de más",
+      cuerpo: "La sed es uno de los retos más grandes. Chupar un cubito de hielo satisface con mucho menos líquido que un vaso de agua. El hielo cuenta como la mitad de su volumen en agua.",
+      accion: "Esta semana ten cubitos de hielo a la mano. También funciona enjuagar la boca con agua fría sin tragar, y masticar chicle sin azúcar."
+    },
+    miercoles: {
+      nombre: "Arroz frito con verduras de doble cocido", porciones: "2", tiempo: "25 minutos",
+      ingredientes: ["1.5 tazas de arroz blanco cocido", "1/2 taza de zanahoria (doble cocción)", "1/2 taza de ejotes picados", "1 clara de huevo", "1 cdita de aceite", "Pimienta al gusto"],
+      preparacion: ["Aplica doble cocción a la zanahoria", "Saltea las verduras con aceite", "Agrega el arroz y mezcla", "Incorpora la clara de huevo revuelta"],
+      k: "210", p: "85", na: "45"
+    },
+    viernes: "¿Cuál es tu estrategia personal para los días en que la sed es más difícil de controlar? Compartir el tuyo puede aliviar el día de alguien más.",
+    inspiracion: { titulo: "Cada pequeño control cuenta", cuerpo: "Controlar líquidos no es fácil, pero cada vez que lo logras proteges tu corazón y respiras mejor." }
+  },
+  {
+    num: 6, tema: "El acceso vascular",
+    lunes: {
+      titulo: "Revisa tu fístula todos los días",
+      cuerpo: "El thrill (esa vibración suave que sientes al tocar tu fístula) debe sentirse igual cada día. Es la señal de que la sangre fluye bien.",
+      accion: "Cada mañana, antes de levantarte, coloca tus dedos sobre la fístula. Si un día vibra menos o no vibra, llama de inmediato al 55 9680-8859."
+    },
+    miercoles: {
+      nombre: "Pescado blanco al limón con arroz", porciones: "2", tiempo: "20 minutos",
+      ingredientes: ["200 g de filete de tilapia o robalo", "1 taza de arroz blanco cocido", "1 limón", "1 cdita de aceite de oliva", "Pimienta y ajo en polvo al gusto"],
+      preparacion: ["Sazona el pescado con limón, pimienta y ajo", "Cocina a la plancha 4 min por lado", "Sirve sobre arroz blanco"],
+      k: "350", p: "215", na: "75"
+    },
+    viernes: "Para quienes ya tienen tiempo con su fístula: ¿qué consejo de cuidado le darían a alguien que apenas va a tener la suya?",
+    inspiracion: { titulo: "Tu fístula es tu línea de vida", cuerpo: "Cuidarla es cuidarte. Cada revisión diaria, cada precaución, es un acto de amor propio." }
+  },
+  {
+    num: 7, tema: "Salud emocional",
+    lunes: {
+      titulo: "Sentirse triste a veces es normal",
+      cuerpo: "La enfermedad renal afecta el cuerpo y también las emociones. Hasta 4 de cada 10 pacientes en diálisis experimentan tristeza profunda. No es debilidad — es humano.",
+      accion: "Si la tristeza dura más de dos semanas o te quita las ganas de todo, habla con tu médico. La salud mental es parte del tratamiento, no algo aparte."
+    },
+    miercoles: {
+      nombre: "Sopa ligera de pollo y arroz", porciones: "2", tiempo: "30 minutos",
+      ingredientes: ["150 g de pollo en cubos", "1/2 taza de arroz blanco", "1/2 zanahoria (doble cocción)", "1 rama de apio pequeña", "Pimienta y hierbas al gusto", "4 tazas de agua"],
+      preparacion: ["Aplica doble cocción a la zanahoria", "Cocina el pollo en agua sin sal", "Agrega arroz y verduras", "Sazona con hierbas y pimienta. Cuenta como líquido"],
+      k: "230", p: "150", na: "60"
+    },
+    viernes: "¿Qué cosa pequeña te ayuda a levantar el ánimo en los días difíciles? Una canción, una llamada, un recuerdo.",
+    inspiracion: { titulo: "Está bien no estar bien todos los días", cuerpo: "No tienes que ser fuerte cada momento. Permitirte sentir es parte de sanar." }
+  },
+  {
+    num: 8, tema: "Medicamentos",
+    lunes: {
+      titulo: "El quelante se toma AL INICIO de la comida",
+      cuerpo: "El quelante de fósforo solo funciona si lo tomas justo cuando empiezas a comer. Si lo tomas 30 minutos después, el fósforo ya se absorbió y el medicamento no sirvió.",
+      accion: "Esta semana ten tus quelantes en la mesa donde comes, no en el botiquín. Tomarlos al primer bocado se vuelve hábito cuando están a la vista."
+    },
+    miercoles: {
+      nombre: "Wrap de pollo y pepino", porciones: "2", tiempo: "15 minutos",
+      ingredientes: ["200 g de pollo cocido en tiras", "2 tortillas de harina blanca", "1/2 pepino en tiras", "Lechuga al gusto", "1 cda de queso crema light", "Pimienta al gusto"],
+      preparacion: ["Unta el queso crema en las tortillas", "Coloca pollo, pepino y lechuga", "Enrolla firmemente y corta a la mitad"],
+      k: "270", p: "180", na: "140"
+    },
+    viernes: "¿Cómo organizas tus medicamentos para no olvidarlos? Pastilleros, alarmas, rutinas... El tuyo puede inspirar a quien batalla con esto.",
+    inspiracion: { titulo: "Cada pastilla a tiempo es un acto de cuidado", cuerpo: "Tomar tus medicamentos bien no siempre es fácil, pero cada dosis correcta protege tus huesos, tu corazón y tu energía." }
+  },
+  {
+    num: 9, tema: "Vida activa",
+    lunes: {
+      titulo: "El ejercicio suave sí es posible en diálisis",
+      cuerpo: "Caminar, estiramientos ligeros o ejercicios sentado mejoran tu energía, tu ánimo y hasta la eficacia de la diálisis. No necesitas gimnasio.",
+      accion: "Esta semana intenta caminar 10 minutos al día, si tu médico lo autoriza. Empieza poco. El movimiento, aunque sea mínimo, suma."
+    },
+    miercoles: {
+      nombre: "Huevo revuelto con claras y pan blanco", porciones: "2", tiempo: "10 minutos",
+      ingredientes: ["4 claras de huevo + 1 huevo entero", "2 rebanadas de pan blanco", "1 cdita de aceite", "Pimienta al gusto", "Cebollín picado (opcional)"],
+      preparacion: ["Bate las claras con el huevo entero", "Cocina a fuego bajo con aceite", "Sazona con pimienta y cebollín", "Acompaña con pan blanco tostado"],
+      k: "180", p: "110", na: "180"
+    },
+    viernes: "¿Has encontrado alguna forma de mantenerte activo que disfrutes? Desde jardinería hasta bailar en la sala.",
+    inspiracion: { titulo: "Tu cuerpo todavía puede mucho", cuerpo: "La diálisis no te define por completo. Dentro de tus posibilidades hay espacio para moverte, disfrutar y vivir." }
+  },
+  {
+    num: 10, tema: "Prevención de complicaciones",
+    lunes: {
+      titulo: "El potasio alto a veces no da síntomas",
+      cuerpo: "El potasio peligrosamente alto puede no avisar hasta que es una emergencia cardíaca. Por eso la dieta importa aunque te sientas bien.",
+      accion: "Recuerda los alimentos a evitar: plátano, naranja, aguacate, jitomate, papa sin doble cocción y refrescos de cola."
+    },
+    miercoles: {
+      nombre: "Pasta blanca con pollo y albahaca", porciones: "2", tiempo: "25 minutos",
+      ingredientes: ["150 g de pasta blanca", "200 g de pollo en cubos", "Hojas de albahaca fresca", "1 cda de aceite de oliva", "1 diente de ajo", "Pimienta al gusto"],
+      preparacion: ["Cuece la pasta en agua sin sal", "Saltea el pollo con ajo y aceite", "Mezcla pasta y pollo", "Agrega albahaca fresca y pimienta"],
+      k: "260", p: "190", na: "70"
+    },
+    viernes: "¿Cuál es tu mayor duda sobre el potasio o el fósforo en tu dieta? No hay preguntas tontas.",
+    inspiracion: { titulo: "Saber es protegerte", cuerpo: "Cada cosa que aprendes sobre tu enfermedad te da más control. No eres pasajero de este tratamiento: eres el protagonista informado." }
+  },
+  {
+    num: 11, tema: "Calidad de vida",
+    lunes: {
+      titulo: "Puedes viajar estando en hemodiálisis",
+      cuerpo: "Muchos pacientes viajan coordinando sesiones en clínicas del destino. Requiere planear con 4-6 semanas de anticipación, pero es totalmente posible.",
+      accion: "Si sueñas con un viaje, no lo descartes. Coméntalo con tu equipo médico. Podemos ayudarte a coordinar diálisis en otra ciudad."
+    },
+    miercoles: {
+      nombre: "Quesadilla de pollo con tortilla de maíz", porciones: "2", tiempo: "15 minutos",
+      ingredientes: ["4 tortillas de maíz", "150 g de pollo deshebrado", "30 g de queso panela rallado", "Cilantro al gusto", "Pimienta al gusto"],
+      preparacion: ["Rellena tortillas con pollo y poco queso", "Dobla y calienta en comal", "Voltea hasta dorar ambos lados", "Sirve con cilantro fresco"],
+      k: "200", p: "175", na: "160"
+    },
+    viernes: "Si pudieras hacer un viaje a cualquier lugar, ¿a dónde irías? A veces soñar es el primer paso para volverlo plan.",
+    inspiracion: { titulo: "La diálisis se adapta a tu vida, no al revés", cuerpo: "Tu tratamiento es parte de tu vida, pero no es toda tu vida." }
+  },
+  {
+    num: 12, tema: "Comunidad y esperanza",
+    lunes: {
+      titulo: "El trasplante renal es una posibilidad real",
+      cuerpo: "Para muchos pacientes en diálisis, el trasplante es una opción que mejora enormemente la calidad de vida. En México el programa de trasplantes crece cada año.",
+      accion: "Si quieres saber si eres candidato a trasplante, pregúntale a tu nefróloga. Conocer tus opciones siempre vale la pena."
+    },
+    miercoles: {
+      nombre: "Pollo al horno con hierbas y arroz", porciones: "2", tiempo: "35 minutos",
+      ingredientes: ["250 g de pollo sin piel", "1 taza de arroz blanco cocido", "Romero y tomillo frescos", "1 cda de aceite de oliva", "1 limón", "Pimienta al gusto"],
+      preparacion: ["Sazona el pollo con hierbas, limón y pimienta", "Hornea a 180°C por 25 minutos", "Sirve sobre arroz blanco caliente"],
+      k: "300", p: "205", na: "80"
+    },
+    viernes: "Después de estos 3 meses juntos en este canal: ¿qué tema te gustaría que abordáramos más?",
+    inspiracion: { titulo: "No caminas solo", cuerpo: "En este canal somos una comunidad. Cada persona aquí entiende lo que vives. Y tu clínica está contigo en cada paso del camino. Gracias por estar." }
+  }
+];
+
+const GUARDA = [
+  { titulo: "Señales de urgencia renal", subtitulo: "Guarda y comparte con tu familia",
+    cuerpo: "Si la persona en diálisis presenta CUALQUIERA de estas señales, llamen de inmediato:",
+    lista: ["No respira bien o se ahoga al acostarse","Calambres fuertes con palpitaciones del corazón","Confusión, desorientación o sueño excesivo","La fístula dejó de vibrar (sin thrill)","No ha orinado en más de 12 horas","Hinchazón severa que apareció de repente"],
+    cierre: "📞 Urgencias 24/7: 55 9680-8859\\n\\nCompártelo con quien cuida a un paciente renal. Puede salvar una vida." },
+  { titulo: "Alimentos que NUNCA debes comer en exceso", subtitulo: "Guarda esta lista en tu teléfono",
+    cuerpo: "Estos alimentos concentran potasio peligroso para el corazón:",
+    lista: ["Plátano (1 solo tiene 422 mg de potasio)","Aguacate (el más alto: 487 mg por mitad)","Naranja y su jugo (237 mg)","Jitomate y salsas (292 mg)","Papa sin doble cocción (421 mg)","Refresco de cola (fósforo de alta absorción)","Frijoles y lentejas (400+ mg)"],
+    cierre: "Guarda este mensaje y tenlo a la mano al hacer el súper.\\n— Dra. Leidy Díaz Villar · Monte Sinaí" },
+  { titulo: "Qué hacer si sangra tu fístula en casa", subtitulo: "Guarda esto — puede pasar de noche",
+    cuerpo: "Si tu acceso vascular sangra después de la sesión, actúa así:",
+    lista: ["Presiona firme el sitio con gasa limpia 10 minutos","NO levantes la gasa para revisar antes de tiempo","Mantén el brazo elevado por encima del corazón","Si no para en 15 minutos, llama de inmediato","Si el sangrado es abundante, ve a urgencias"],
+    cierre: "📞 24/7: 55 9680-8859\\nGuarda este mensaje donde lo encuentres rápido." },
+  { titulo: "Tu lista para el día de diálisis", subtitulo: "Guarda y úsala cada sesión",
+    cuerpo: "Lleva esto a cada sesión para una experiencia más cómoda:",
+    lista: ["Suéter o cobija ligera (las salas son frescas)","Audífonos y teléfono cargado","Botella pequeña de agua (según tu límite)","Bocadillo permitido para después","Tu lista de medicamentos actualizada","Algo para entretenerte: libro, serie, música"],
+    cierre: "Guarda este mensaje y revísalo antes de salir de casa.\\n— Monte Sinaí Hemodiálisis" },
+  { titulo: "Cómo bajar el potasio de tus verduras", subtitulo: "Guarda la técnica del doble cocido",
+    cuerpo: "Reduce hasta 50% del potasio con esta técnica:",
+    lista: ["Pela y corta la verdura en trozos pequeños","Remoja en agua fría 2 horas (cambia el agua a la mitad)","Hierve en abundante agua sin sal","Escurre y DESECHA el agua de cocción","Nunca uses esa agua para sopas o guisos"],
+    cierre: "Funciona con zanahoria, papa, calabaza, nopal y chayote.\\n— Dra. Leidy Díaz Villar" },
+  { titulo: "Preguntas para tu próxima consulta", subtitulo: "Guarda y llévalas anotadas",
+    cuerpo: "No olvides preguntarle a tu nefróloga:",
+    lista: ["¿Cómo salió mi Kt/V este mes?","¿Mi peso seco sigue siendo el correcto?","¿Cómo están mi potasio y mi fósforo?","¿Necesito ajustar algún medicamento?","¿Mi hemoglobina está en buen nivel?"],
+    cierre: "Llevar tus dudas anotadas hace que la consulta valga más.\\n— Monte Sinaí" }
+];
+
+const HISTORIAS = [
+  { intro: "Historia de esperanza",
+    texto: "Don Roberto* llegó a nosotros con miedo. \\"Pensé que la diálisis era el final\\", nos dijo el primer día. Hoy, 6 años después, acaba de conocer a su primera bisnieta. Va a sus sesiones, las toma como parte de su rutina, y dice que aprendió a vivir \\"con\\" la diálisis, no \\"a pesar\\" de ella.",
+    mensaje: "La diálisis no es el final de tu historia. Es un capítulo más, y todavía quedan muchos por escribir.",
+    nota: "*Nombre cambiado para proteger su privacidad." },
+  { intro: "Historia de fuerza",
+    texto: "La señora Carmen* trabajaba como costurera cuando inició hemodiálisis. Creyó que tendría que dejar todo. Su nefróloga le ayudó a ajustar sus sesiones al turno vespertino. Hoy sigue cosiendo en las mañanas y va a diálisis por las tardes. \\"No dejé de ser yo\\", dice.",
+    mensaje: "Tu tratamiento puede adaptarse a tu vida. Trabajar, crear y seguir siendo quien eres es posible.",
+    nota: "*Nombre cambiado para proteger su privacidad." },
+  { intro: "Historia de familia",
+    texto: "Cuando Don Miguel* empezó diálisis, su hija de 12 años no entendía qué pasaba. Tenía miedo. Un día la llevamos a conocer la clínica, le explicamos con dibujos cómo la máquina ayuda a su papá. Salió tranquila. \\"Ahora sé que mi papá está bien cuidado\\", dijo.",
+    mensaje: "Incluir a la familia en el proceso reduce el miedo de todos. Los niños entienden más de lo que creemos.",
+    nota: "*Nombre cambiado para proteger su privacidad." },
+  { intro: "Historia de constancia",
+    texto: "La señora Esperanza* —sí, así se llama— nunca ha faltado a una sesión en 4 años. Ni en lluvia, ni en fiestas. \\"Mi cuerpo cuenta conmigo\\", dice. Sus análisis son de los más estables de la clínica.",
+    mensaje: "La constancia es el tratamiento más poderoso. No faltar a tus sesiones es el acto de amor propio más grande.",
+    nota: "*Nombre cambiado para proteger su privacidad." },
+  { intro: "Historia de esperanza",
+    texto: "Después de 3 años en hemodiálisis, Don Javier* recibió la llamada que esperaba: había un riñón compatible. Hoy está trasplantado y vive sin diálisis. Antes de irse nos dijo: \\"Estos años en diálisis me mantuvieron vivo para llegar a este momento.\\"",
+    mensaje: "La diálisis puede ser el puente hacia un trasplante. Cada sesión te mantiene fuerte para lo que viene.",
+    nota: "*Nombre cambiado para proteger su privacidad." },
+  { intro: "Historia de comunidad",
+    texto: "En la sala de diálisis, dos pacientes que coincidían en el turno de las 7 am se hicieron amigos. Empezaron a llegar juntos, a platicar durante las sesiones, a echarse porras. \\"Venir ya no se siente pesado\\", dicen.",
+    mensaje: "No estás solo en esto. A veces los lugares más inesperados nos regalan compañía y comunidad.",
+    nota: "*Historia compartida con autorización." }
+];
+
+const ESTACIONAL = [
+  { fecha: "Marzo — Día Mundial del Riñón", emoji: "🌍",
+    titulo: "Hoy es el Día Mundial del Riñón",
+    cuerpo: "Hoy honramos a cada persona que vive con enfermedad renal y a quienes los cuidan. Tus riñones trabajaron mucho por ti. Hoy tú trabajas por tu salud. Eso es valentía.\\n\\nSi conoces a alguien con diabetes o presión alta, recuérdale que un simple análisis de creatinina puede detectar problemas renales a tiempo.",
+    cierre: "Comparte este mensaje. La prevención empieza con información.\\n— Monte Sinaí" },
+  { fecha: "Abril-Mayo — Temporada de calor", emoji: "☀️",
+    titulo: "El calor y tu control de líquidos",
+    cuerpo: "Llega el calor y con él más sed. Es uno de los retos más difíciles para quien controla líquidos. Algunos trucos para esta temporada:\\n\\n• Congela uvas permitidas y chúpalas como paleta\\n• Usa vasos pequeños, llenos se sienten más\\n• Enjuágate la boca con agua fría sin tragar\\n• Evita salir en las horas de más calor",
+    cierre: "El verano se disfruta también cuidándote. 💙\\n— Dra. Leidy Díaz Villar" },
+  { fecha: "Septiembre — Fiestas Patrias", emoji: "🇲🇽",
+    titulo: "Cómo disfrutar el 15 de septiembre",
+    cuerpo: "Las fiestas patrias traen antojitos que retan la dieta renal. No tienes que privarte de todo, solo elegir con cabeza:\\n\\n• Pozole: pide poco caldo (es líquido y sodio)\\n• Prefiere las tostadas a los tacos dorados\\n• Evita el tepache y aguas de sabor con mucha fruta\\n• Una porción pequeña de tu antojo favorito, no el plato completo",
+    cierre: "Celebrar con medida también es celebrar. ¡Viva México! 🎉\\n— Monte Sinaí" },
+  { fecha: "Noviembre — Día de Muertos", emoji: "🌼",
+    titulo: "El pan de muerto y tu dieta",
+    cuerpo: "Llega la temporada del pan de muerto. La buena noticia: en porción pequeña, el pan blanco es relativamente seguro. La precaución: el azúcar y el tamaño.\\n\\n• Una rebanada pequeña, no la pieza completa\\n• Evita acompañarlo con chocolate caliente (alto en fósforo y potasio)\\n• Mejor con un café americano ligero",
+    cierre: "Honrar a quienes se fueron, cuidando a quien sigue aquí: tú. 🕯️\\n— Dra. Leidy Díaz Villar" },
+  { fecha: "Diciembre — Cena navideña", emoji: "🎄",
+    titulo: "Sobrevivir la cena de Navidad",
+    cuerpo: "La cena decembrina es un campo minado para la dieta renal. Tu guía rápida:\\n\\n• Pavo o pierna: SÍ, en porción moderada (proteína buena)\\n• Ensalada de manzana: cuidado con nuez, pasas y crema\\n• Bacalao: muy alto en sodio, mejor evitar\\n• Ponche: es líquido + fruta concentrada, una taza pequeña máximo\\n• Romeritos: altísimos en potasio, evítalos",
+    cierre: "Las fiestas se disfrutan mejor sin una urgencia el día 25. Cuídate. 💙\\n— Monte Sinaí" },
+  { fecha: "Enero — Propósitos de año nuevo", emoji: "✨",
+    titulo: "Tu mejor propósito: cuidarte",
+    cuerpo: "Año nuevo, misma fuerza. Este año te proponemos metas reales y alcanzables:\\n\\n• No faltar a ninguna sesión\\n• Registrar tu peso todos los días\\n• Tomar tus quelantes al inicio de cada comida\\n• Caminar 10 minutos diarios (si tu médico lo autoriza)\\n• Hacer tu pregunta en cada consulta",
+    cierre: "Las metas pequeñas y constantes ganan siempre. Este es tu año. 🎯\\n— Dra. Leidy Díaz Villar" },
+  { fecha: "Febrero — Cuaresma", emoji: "🐟",
+    titulo: "Cuaresma y dieta renal",
+    cuerpo: "En Cuaresma muchos comen más pescado. Buena oportunidad, con cuidados:\\n\\n• Pescado blanco (tilapia, robalo): excelente proteína\\n• Evita pescados pequeños que se comen enteros (alto fósforo)\\n• Cuidado con el bacalao: muchísimo sodio\\n• Las tortitas de camarón seco: muy altas en sodio y fósforo\\n• Prefiere a la plancha, no capeado",
+    cierre: "Tradición y salud renal pueden ir juntas. 🙏\\n— Monte Sinaí" }
+];
+
+const DAYS_CONFIG = [
+  { key: 'lunes', name: 'Lunes', dow: 1, cat: 'Dato Médico', emoji: '🩺', color: 'cat-medico', time: '9:00 AM' },
+  { key: 'miercoles', name: 'Miércoles', dow: 3, cat: 'Receta Renal', emoji: '🍽️', color: 'cat-receta', time: '2:00 PM' },
+  { key: 'viernes', name: 'Viernes', dow: 5, cat: 'Pregunta', emoji: '💬', color: 'cat-pregunta', time: '7:00 PM' },
+  { key: 'sabado', name: 'Sábado', dow: 6, cat: 'Inspiración', emoji: '☀️', color: 'cat-inspiracion', time: '10:00 AM' }
+];
+
+// ════════════════════════════════════════════════════════════
+// CONSTRUCCIÓN DE MENSAJES
+// ════════════════════════════════════════════════════════════
+function buildSemanalMsg(semana, dayKey) {
+  if (dayKey === 'lunes') {
+    const m = semana.lunes;
+    return `🩺 *Dato Médico del Lunes*\n\n${m.titulo}\n\n${m.cuerpo}\n\n*Esta semana:* ${m.accion}\n\n— Dra. Leidy Díaz Villar\nNefrología · Monte Sinaí`;
+  }
+  if (dayKey === 'miercoles') {
+    const r = semana.miercoles;
+    const ing = r.ingredientes.map(i => `• ${i}`).join('\n');
+    const prep = r.preparacion.map((p, i) => `${i+1}. ${p}`).join('\n');
+    return `🍽️ *Receta Renal · Miércoles*\n\n*${r.nombre}*\nPorciones: ${r.porciones} · Tiempo: ${r.tiempo}\n\n*Ingredientes:*\n${ing}\n\n*Preparación:*\n${prep}\n\n*Por porción:*\nPotasio: ${r.k} mg · Fósforo: ${r.p} mg · Sodio: ${r.na} mg\n\nGuarda este mensaje en favoritos 💙\nMonte Sinaí Hemodiálisis`;
+  }
+  if (dayKey === 'viernes') {
+    return `💬 *Pregunta del Viernes*\n\n${semana.viernes}\n\nResponde o guarda este mensaje para reflexionar. Tu experiencia ayuda a toda la comunidad.\n\n— Diálisis en Familia\nMonte Sinaí`;
+  }
+  if (dayKey === 'sabado') {
+    const i = semana.inspiracion;
+    return `☀️ *${i.titulo}*\n\n${i.cuerpo}\n\n— Tu equipo de Monte Sinaí 💙`;
+  }
+  return '';
+}
+
+function buildGuardaMsg(g) {
+  const lista = g.lista.map(i => `• ${i}`).join('\n');
+  return `🚨 *${g.subtitulo}*\n\n*${g.titulo}*\n\n${g.cuerpo}\n\n${lista}\n\n${g.cierre.replace(/\\\\n/g,'\n')}`;
+}
+function buildHistoriaMsg(h) {
+  return `❤️ *${h.intro}*\n\n${h.texto}\n\n💙 ${h.mensaje}\n\n${h.nota}\n— Monte Sinaí Hemodiálisis`;
+}
+function buildEstacionalMsg(e) {
+  return `${e.emoji} *${e.titulo}*\n\n${e.cuerpo.replace(/\\\\n/g,'\n')}\n\n${e.cierre.replace(/\\\\n/g,'\n')}`;
+}
+
+// ════════════════════════════════════════════════════════════
+// STORAGE Y ESTADO
+// ════════════════════════════════════════════════════════════
+const STORE_KEY = 'ms_canal_dialisis_familia';
+let state = loadState();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return {
+    theme: 'auto',
+    published: {},
+    customMessages: {},
+    subscribers: null,
+    calendarMonth: null,
+    selectedCalDay: null
+  };
+}
+function saveState() {
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  } catch (e) {}
+}
+
+// ════════════════════════════════════════════════════════════
+// TEMA
+// ════════════════════════════════════════════════════════════
+function applyTheme() {
+  const hour = new Date().getHours();
+  const isDark = (hour < 7 || hour >= 19);
+  if (state.theme === 'dark' || (state.theme === 'auto' && isDark)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+}
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  state.theme = current === 'dark' ? 'light' : 'dark';
+  saveState();
+  applyTheme();
+}
+
+// ════════════════════════════════════════════════════════════
+// NAVEGACIÓN
+// ════════════════════════════════════════════════════════════
+function navigateTo(view) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  document.getElementById('view-' + view).classList.add('active');
+  document.querySelector(`.tab-item[data-view="${view}"]`)?.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (view === 'content') renderContent('all');
+  if (view === 'calendar') renderCalendar();
+  if (view === 'stats') renderStats();
+  if (view === 'dashboard') renderDashboard();
+}
+
+// ════════════════════════════════════════════════════════════
+// LÓGICA DE FECHAS — calculada desde el inicio del canal
+// ════════════════════════════════════════════════════════════
+function dateOnly(d) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+function diffDays(d1, d2) {
+  return Math.round((dateOnly(d2) - dateOnly(d1)) / (1000 * 60 * 60 * 24));
+}
+function getCurrentWeekNum() {
+  const today = new Date();
+  const diff = diffDays(CHANNEL_START, today);
+  if (diff < 0) return 0;
+  return Math.min(Math.floor(diff / 7) + 1, 12);
+}
+function getCurrentSemana() {
+  const wn = getCurrentWeekNum();
+  if (wn < 1 || wn > 12) return null;
+  return SEMANAS[wn - 1];
+}
+
+// Para cada día de la semana actual, devuelve la fecha real
+function datesOfCurrentWeek() {
+  const wn = getCurrentWeekNum();
+  if (wn < 1) return [];
+  const weekStart = new Date(CHANNEL_START);
+  weekStart.setDate(weekStart.getDate() + (wn - 1) * 7);
+
+  // CHANNEL_START es jueves 28 mayo, así que Semana 1 va de jue 28-mié 3
+  // Pero los días son: Lunes (dow=1), Mié (3), Vie (5), Sáb (6)
+  // En la semana 1 (que arranca jueves), los días serían:
+  //   Lunes = falta (no aplica esta semana porque ya pasó)
+  //   Mié = el siguiente miércoles
+  //   Vie = el viernes después
+  //   Sáb = el sábado siguiente
+  //   Para semanas 2+ aplica el orden normal
+
+  // Mejor lógica: el "ciclo" empieza el lunes que sigue al CHANNEL_START
+  // y se aplica desde la semana 1. Pero como el canal abre jueves 28 mayo,
+  // los primeros mensajes serían:
+  //   Vie 29 mayo = pregunta de semana 1
+  //   Sáb 30 mayo = inspiración de semana 1
+  //   Lun 1 jun = dato médico de semana 1 (técnicamente, sería de semana 2 según los lunes)
+  // Decisión de diseño: usamos lunes-domingo como ciclo semanal
+  // La semana 1 son los 7 días que contienen el CHANNEL_START
+
+  const lunesDeEstaSemana = new Date(weekStart);
+  const dow = lunesDeEstaSemana.getDay();
+  const offset = dow === 0 ? -6 : (1 - dow);
+  lunesDeEstaSemana.setDate(lunesDeEstaSemana.getDate() + offset);
+
+  return DAYS_CONFIG.map(d => {
+    const dt = new Date(lunesDeEstaSemana);
+    dt.setDate(dt.getDate() + (d.dow - 1));
+    return { ...d, date: dt };
+  });
+}
+
+function msgIdForDate(weekNum, dayKey) {
+  return `s${weekNum}_${dayKey}`;
+}
+
+function getMsgStatus(weekNum, dayKey, date) {
+  const id = msgIdForDate(weekNum, dayKey);
+  if (state.published[id]) return 'done';
+  const today = dateOnly(new Date());
+  const d = dateOnly(date);
+  if (d.getTime() === today.getTime()) return 'today';
+  if (d < today) return 'past';
+  return 'future';
+}
+
+// ════════════════════════════════════════════════════════════
+// DASHBOARD
+// ════════════════════════════════════════════════════════════
+function renderDashboard() {
+  const now = new Date();
+  const hour = now.getHours();
+  const greet = hour < 12 ? 'Buenos días' : hour < 19 ? 'Buenas tardes' : 'Buenas noches';
+
+  const dateStr = now.toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' });
+  document.getElementById('greetingTime').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+  document.getElementById('greetingText').innerHTML = `${greet},<br><em>Dra. Díaz Villar</em>`;
+
+  const wn = getCurrentWeekNum();
+  const semana = getCurrentSemana();
+  document.getElementById('greetingMeta').innerHTML = wn < 1
+    ? `Aún no ha iniciado el canal. Apertura: <strong>28 de mayo</strong>`
+    : `Semana <strong>${wn}</strong> · Tema: <strong>${semana?.tema || ''}</strong>`;
+
+  renderHero();
+  renderWeekProgress();
+  renderUpcoming();
+  renderMetrics();
+}
+
+function renderHero() {
+  const container = document.getElementById('heroContainer');
+  const weekDates = datesOfCurrentWeek();
+  const today = dateOnly(new Date());
+  const wn = getCurrentWeekNum();
+
+  if (wn < 1) {
+    container.innerHTML = `
+      <div class="hero-empty">
+        <div class="hero-empty-ico">📭</div>
+        <h3>El canal abre el 28 de mayo</h3>
+        <p>Cuando llegue ese día, aquí verás el mensaje que toca publicar.</p>
+      </div>`;
+    return;
+  }
+
+  // Buscar el siguiente mensaje pendiente (hoy o futuro)
+  let nextMsg = null;
+  for (const wd of weekDates) {
+    const d = dateOnly(wd.date);
+    if (d < today) continue;
+    const id = msgIdForDate(wn, wd.key);
+    if (state.published[id]) continue;
+    nextMsg = wd;
+    break;
+  }
+
+  if (!nextMsg) {
+    container.innerHTML = `
+      <div class="hero-empty">
+        <div class="hero-empty-ico">✅</div>
+        <h3>Semana ${wn} completa</h3>
+        <p>Ya publicaste todo lo de esta semana. ¡Excelente trabajo!</p>
+      </div>`;
+    return;
+  }
+
+  const semana = getCurrentSemana();
+  const msg = buildSemanalMsg(semana, nextMsg.key);
+  const isToday = dateOnly(nextMsg.date).getTime() === today.getTime();
+  const dayLabel = isToday ? 'HOY' : nextMsg.name.toUpperCase();
+  const dayDate = nextMsg.date.toLocaleDateString('es-MX', { day: 'numeric', month: 'short' });
+
+  // Sacar primer línea/titulo
+  let preview = msg.replace(/^[^\n]+\n\n/, '').replace(/\*/g, '').substring(0, 180);
+
+  container.innerHTML = `
+    <div class="hero-card">
+      <div class="hero-label">
+        <span class="hero-label-dot"></span>
+        ${isToday ? 'TE TOCA PUBLICAR HOY' : 'PRÓXIMO MENSAJE · ' + dayLabel + ' ' + dayDate.toUpperCase()}
+      </div>
+      <div class="hero-cat">${nextMsg.emoji} ${nextMsg.cat}</div>
+      <h2 class="hero-title">${getMsgShortTitle(semana, nextMsg.key)}</h2>
+      <div class="hero-preview">${preview}…</div>
+      <div class="hero-time">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Mejor hora: ${nextMsg.time}
+      </div>
+      <div class="hero-actions">
+        <button class="hero-btn-primary" onclick='quickPublish(${wn}, "${nextMsg.key}")'>
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copiar y publicar
+        </button>
+        <button class="hero-btn-secondary" onclick="navigateTo('content')">
+          Ver banco
+        </button>
+      </div>
+    </div>`;
+}
+
+function getMsgShortTitle(semana, dayKey) {
+  if (dayKey === 'lunes') return semana.lunes.titulo;
+  if (dayKey === 'miercoles') return semana.miercoles.nombre;
+  if (dayKey === 'viernes') return semana.viernes.length > 80 ? semana.viernes.substring(0, 80) + '…' : semana.viernes;
+  if (dayKey === 'sabado') return semana.inspiracion.titulo;
+  return '';
+}
+
+function renderWeekProgress() {
+  const wn = getCurrentWeekNum();
+  if (wn < 1) {
+    document.getElementById('weekDays').innerHTML = '<div style="grid-column:span 4;text-align:center;color:var(--text-3);font-size:0.78rem;padding:14px;">El canal abre el 28 de mayo</div>';
+    document.getElementById('weekProgressFill').style.width = '0%';
+    document.getElementById('weekRange').textContent = '';
+    return;
+  }
+
+  const weekDates = datesOfCurrentWeek();
+  const today = dateOnly(new Date());
+  let doneCount = 0;
+
+  const html = weekDates.map(wd => {
+    const id = msgIdForDate(wn, wd.key);
+    const isPub = !!state.published[id];
+    const d = dateOnly(wd.date);
+    const isToday = d.getTime() === today.getTime();
+    const isPast = d < today;
+
+    let cls = '';
+    let statusText = '';
+    if (isPub) { cls = 'done'; statusText = '✓'; doneCount++; }
+    else if (isToday) { cls = 'today'; statusText = 'Hoy'; }
+    else if (isPast) { cls = 'past'; statusText = 'Pasado'; }
+    else { cls = 'future'; statusText = wd.date.toLocaleDateString('es-MX', { day: 'numeric' }); }
+
+    return `
+      <button class="day-pill ${cls}" onclick='quickPublish(${wn}, "${wd.key}")' aria-label="${wd.name} ${wd.cat}">
+        <div class="day-name">${wd.name.substring(0,3)}</div>
+        <div class="day-emoji">${wd.emoji}</div>
+        <div class="day-status">${statusText}</div>
+      </button>`;
+  }).join('');
+
+  document.getElementById('weekDays').innerHTML = html;
+  const pct = (doneCount / 4) * 100;
+  document.getElementById('weekProgressFill').style.width = pct + '%';
+
+  const semana = getCurrentSemana();
+  document.getElementById('weekRange').textContent = `Sem ${wn} · ${semana?.tema || ''}`;
+}
+
+function renderMetrics() {
+  const totalMsgs = 12 * 4 + GUARDA.length + HISTORIAS.length + ESTACIONAL.length;
+  const publishedCount = Object.keys(state.published).length;
+  document.getElementById('metricPublished').textContent = publishedCount;
+  document.getElementById('metricPublishedSub').textContent = `de ${totalMsgs} mensajes`;
+
+  const wn = getCurrentWeekNum();
+  if (wn >= 1) {
+    const wd = datesOfCurrentWeek();
+    let done = 0;
+    wd.forEach(d => { if (state.published[msgIdForDate(wn, d.key)]) done++; });
+    document.getElementById('metricWeek').textContent = `${done}/4`;
+  } else {
+    document.getElementById('metricWeek').textContent = '0/4';
+  }
+
+  document.getElementById('metricSubs').textContent = state.subscribers != null ? state.subscribers : '—';
+}
+
+function renderUpcoming() {
+  const wn = getCurrentWeekNum();
+  const container = document.getElementById('upcomingList');
+
+  if (wn < 1) {
+    container.innerHTML = `
+      <div style="text-align:center;color:var(--text-3);font-size:0.78rem;padding:14px;">
+        Las publicaciones comienzan el 28 de mayo.
+      </div>`;
+    return;
+  }
+
+  const today = dateOnly(new Date());
+  const upcoming = [];
+
+  // Recolectar próximas 5 publicaciones
+  for (let w = wn; w <= 12 && upcoming.length < 5; w++) {
+    const wkStart = new Date(CHANNEL_START);
+    wkStart.setDate(wkStart.getDate() + (w - 1) * 7);
+    const dow = wkStart.getDay();
+    const offset = dow === 0 ? -6 : (1 - dow);
+    wkStart.setDate(wkStart.getDate() + offset);
+
+    for (const d of DAYS_CONFIG) {
+      const dt = new Date(wkStart);
+      dt.setDate(dt.getDate() + (d.dow - 1));
+      if (dateOnly(dt) < today) continue;
+      const id = msgIdForDate(w, d.key);
+      if (state.published[id]) continue;
+
+      const semana = SEMANAS[w - 1];
+      upcoming.push({
+        date: dt,
+        day: d,
+        semana,
+        weekNum: w,
+        title: getMsgShortTitle(semana, d.key)
+      });
+      if (upcoming.length >= 5) break;
+    }
+  }
+
+  if (upcoming.length === 0) {
+    container.innerHTML = `<div style="text-align:center;color:var(--text-3);font-size:0.78rem;padding:14px;">No hay próximas publicaciones programadas.</div>`;
+    return;
+  }
+
+  container.innerHTML = upcoming.map(u => {
+    const dStr = u.date.getDate();
+    const mStr = u.date.toLocaleDateString('es-MX', { month: 'short' });
+    const catColor = `var(--${u.day.color})`;
+    return `
+      <button class="up-item" onclick='quickPublish(${u.weekNum}, "${u.day.key}")' style="text-align:left;width:100%;background:var(--surface);">
+        <div class="up-date">
+          <div class="up-date-day">${dStr}</div>
+          <div class="up-date-month">${mStr}</div>
+        </div>
+        <div class="up-divider"></div>
+        <div class="up-content">
+          <div class="up-cat" style="color:${catColor}">${u.day.emoji} ${u.day.cat}</div>
+          <div class="up-title">${u.title}</div>
+          <div class="up-time">${u.day.time}</div>
+        </div>
+        <div class="up-arrow">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </button>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════════════════
+// CONTENIDO
+// ════════════════════════════════════════════════════════════
+let currentFilter = 'all';
+
+function filterContent(cat) {
+  currentFilter = cat;
+  navigateTo('content');
+  document.querySelectorAll('.cat-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.cat === cat);
+  });
+  renderContent(cat);
+}
+
+function renderContent(filter) {
+  const list = document.getElementById('msgList');
+  let html = '';
+
+  if (filter === 'all' || filter === 'semanal') {
+    SEMANAS.forEach((s, idx) => {
+      DAYS_CONFIG.forEach(d => {
+        const msg = buildSemanalMsg(s, d.key);
+        const id = msgIdForDate(s.num, d.key);
+        const isPub = !!state.published[id];
+        let nutHtml = '';
+        if (d.key === 'miercoles') {
+          const r = s.miercoles;
+          nutHtml = `
+            <div class="msg-recipe-nut">
+              <span class="msg-nut-chip">Potasio: <strong>${r.k} mg</strong></span>
+              <span class="msg-nut-chip">Fósforo: <strong>${r.p} mg</strong></span>
+              <span class="msg-nut-chip">Sodio: <strong>${r.na} mg</strong></span>
+            </div>`;
+        }
+        html += renderMsgCard({
+          id,
+          title: `Sem ${s.num} · ${d.name}`,
+          subtitle: `${d.cat} · ${s.tema}`,
+          emoji: d.emoji,
+          colorClass: `msg-ico` ,
+          colorVar: `var(--${d.color})`,
+          time: d.time,
+          msg,
+          nutHtml,
+          isPub,
+          isImpact: false
+        });
+      });
+    });
+  }
+
+  if (filter === 'all' || filter === 'guarda') {
+    GUARDA.forEach((g, i) => {
+      const id = `guarda_${i}`;
+      const isPub = !!state.published[id];
+      const msg = buildGuardaMsg(g);
+      html += renderMsgCard({
+        id,
+        title: g.titulo,
+        subtitle: 'Mensaje de alto reenvío',
+        emoji: '🚨',
+        colorClass: 'msg-ico',
+        colorVar: 'var(--cat-guarda)',
+        time: 'Cuando convenga',
+        msg,
+        nutHtml: '',
+        isPub,
+        isImpact: true
+      });
+    });
+  }
+
+  if (filter === 'all' || filter === 'historias') {
+    HISTORIAS.forEach((h, i) => {
+      const id = `hist_${i}`;
+      const isPub = !!state.published[id];
+      const msg = buildHistoriaMsg(h);
+      html += renderMsgCard({
+        id,
+        title: h.intro,
+        subtitle: 'Historia inspiradora',
+        emoji: '❤️',
+        colorClass: 'msg-ico',
+        colorVar: 'var(--cat-historia)',
+        time: 'Una al mes',
+        msg,
+        nutHtml: '',
+        isPub,
+        isImpact: true
+      });
+    });
+  }
+
+  if (filter === 'all' || filter === 'estacional') {
+    ESTACIONAL.forEach((e, i) => {
+      const id = `est_${i}`;
+      const isPub = !!state.published[id];
+      const msg = buildEstacionalMsg(e);
+      html += renderMsgCard({
+        id,
+        title: e.titulo,
+        subtitle: e.fecha,
+        emoji: e.emoji,
+        colorClass: 'msg-ico',
+        colorVar: 'var(--cat-estacional)',
+        time: 'En temporada',
+        msg,
+        nutHtml: '',
+        isPub,
+        isImpact: false
+      });
+    });
+  }
+
+  list.innerHTML = html;
+}
+
+function renderMsgCard({ id, title, subtitle, emoji, colorVar, time, msg, nutHtml, isPub, isImpact }) {
+  const customMsg = state.customMessages[id] || msg;
+  const previewMsg = customMsg.replace(/\*([^*]+)\*/g, '<strong>$1</strong>');
+  return `
+    <div class="msg-card ${isPub ? 'published' : ''}" data-msg-id="${id}">
+      <div class="msg-head">
+        <div class="msg-ico" style="background: ${colorVar}20; color: ${colorVar};">${emoji}</div>
+        <div class="msg-info">
+          <div class="msg-title">${title}</div>
+          <div class="msg-cat">${subtitle}</div>
+        </div>
+        <div class="msg-status">
+          ${isImpact ? '<span class="msg-impact-pill">🔥 Alto reenvío</span>' : ''}
+          <span class="msg-time-pill">${time}</span>
+        </div>
+      </div>
+      <div class="msg-preview">
+        <div class="msg-bubble">${previewMsg}</div>
+      </div>
+      ${nutHtml}
+      <div class="msg-actions">
+        <button class="msg-btn msg-btn-primary ${isPub ? 'published-state' : ''}" onclick='copyAndMark("${id}")'>
+          <svg viewBox="0 0 24 24">
+            ${isPub
+              ? '<polyline points="20 6 9 17 4 12"/>'
+              : '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>'}
+          </svg>
+          ${isPub ? 'Publicado · Copiar de nuevo' : 'Copiar y publicar'}
+        </button>
+        <button class="msg-btn msg-btn-edit" onclick='openEditor("${id}")' aria-label="Editar mensaje">
+          <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+        <button class="msg-btn msg-btn-wa" onclick='openWhatsApp("${id}")' aria-label="Abrir WhatsApp">
+          <svg viewBox="0 0 24 24" fill="white" stroke="white"><path d="M17.6 6.3A7.85 7.85 0 0012 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.8 1h.0a7.94 7.94 0 005.6-13.6zM12 18.5a6.5 6.5 0 01-3.4-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.6 6.6 0 01-1-3.5A6.6 6.6 0 0112 5.4a6.6 6.6 0 016.6 6.6 6.6 6.6 0 01-6.6 6.5z" stroke-width="0.5"/></svg>
+        </button>
+      </div>
+    </div>`;
+}
+
+function getMessageById(id) {
+  if (state.customMessages[id]) return state.customMessages[id];
+
+  if (id.startsWith('s')) {
+    const m = id.match(/^s(\d+)_(\w+)$/);
+    if (m) {
+      const semana = SEMANAS[parseInt(m[1]) - 1];
+      return buildSemanalMsg(semana, m[2]);
+    }
+  }
+  if (id.startsWith('guarda_')) {
+    return buildGuardaMsg(GUARDA[parseInt(id.split('_')[1])]);
+  }
+  if (id.startsWith('hist_')) {
+    return buildHistoriaMsg(HISTORIAS[parseInt(id.split('_')[1])]);
+  }
+  if (id.startsWith('est_')) {
+    return buildEstacionalMsg(ESTACIONAL[parseInt(id.split('_')[1])]);
+  }
+  return '';
+}
+
+async function copyAndMark(id) {
+  const msg = getMessageById(id);
+  await copyToClipboard(msg);
+  if (!state.published[id]) {
+    state.published[id] = new Date().toISOString();
+    saveState();
+    renderDashboard();
+    if (document.getElementById('view-content').classList.contains('active')) {
+      renderContent(currentFilter);
+    }
+    showToast('✅ Copiado · Marcado como publicado');
+  } else {
+    showToast('✅ Copiado de nuevo');
+  }
+}
+
+async function quickPublish(weekNum, dayKey) {
+  const id = msgIdForDate(weekNum, dayKey);
+  await copyAndMark(id);
+}
+
+function openWhatsApp(id) {
+  const msg = getMessageById(id);
+  window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+}
+
+// ════════════════════════════════════════════════════════════
+// EDITOR
+// ════════════════════════════════════════════════════════════
+let editingId = null;
+
+function openEditor(id) {
+  editingId = id;
+  const msg = getMessageById(id);
+  document.getElementById('editorText').value = msg;
+  document.getElementById('editorBg').classList.add('open');
+  document.addEventListener('keydown', editorEsc);
+}
+function closeEditor(e) {
+  if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-btn-secondary')) return;
+  document.getElementById('editorBg').classList.remove('open');
+  editingId = null;
+  document.removeEventListener('keydown', editorEsc);
+}
+function editorEsc(e) {
+  if (e.key === 'Escape') closeEditor();
+}
+async function saveEditedAndCopy() {
+  if (!editingId) return;
+  const newMsg = document.getElementById('editorText').value;
+  state.customMessages[editingId] = newMsg;
+  saveState();
+  await copyToClipboard(newMsg);
+  if (!state.published[editingId]) {
+    state.published[editingId] = new Date().toISOString();
+    saveState();
+  }
+  closeEditor();
+  if (document.getElementById('view-content').classList.contains('active')) {
+    renderContent(currentFilter);
+  }
+  renderDashboard();
+  showToast('✅ Guardado y copiado');
+}
+
+// ════════════════════════════════════════════════════════════
+// CALENDARIO
+// ════════════════════════════════════════════════════════════
+let calMonth = new Date(2026, 4, 1); // mayo 2026
+
+function renderCalendar() {
+  const monthName = calMonth.toLocaleDateString('es-MX', { month: 'long', year: 'numeric' });
+  document.getElementById('calMonthTitle').textContent = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+
+  const firstDay = new Date(calMonth.getFullYear(), calMonth.getMonth(), 1);
+  const lastDay = new Date(calMonth.getFullYear(), calMonth.getMonth() + 1, 0);
+  const startDow = firstDay.getDay();
+
+  const today = dateOnly(new Date());
+  let html = '';
+
+  // Espacios vacíos al inicio
+  for (let i = 0; i < startDow; i++) {
+    html += `<div class="cal-day empty"></div>`;
+  }
+
+  // Días del mes
+  for (let d = 1; d <= lastDay.getDate(); d++) {
+    const date = new Date(calMonth.getFullYear(), calMonth.getMonth(), d);
+    const isToday = dateOnly(date).getTime() === today.getTime();
+    const isPast = dateOnly(date) < today;
+
+    // ¿Hay publicación ese día?
+    const publication = getPublicationForDate(date);
+    const hasContent = !!publication;
+
+    let cls = 'cal-day';
+    if (isToday) cls += ' today';
+    else if (hasContent) cls += ' has-content';
+    if (isPast && !isToday) cls += ' past';
+
+    html += `
+      <button class="${cls}" onclick='showCalDetail("${date.toISOString()}")' aria-label="Día ${d}">
+        <span class="cal-day-num">${d}</span>
+        ${hasContent ? '<span class="cal-day-dot"></span>' : ''}
+      </button>`;
+  }
+
+  document.getElementById('calDays').innerHTML = html;
+
+  // Si hay día seleccionado, renderizar detalle
+  if (state.selectedCalDay) {
+    showCalDetail(state.selectedCalDay);
+  }
+}
+
+function getPublicationForDate(date) {
+  const diff = diffDays(CHANNEL_START, date);
+  if (diff < 0 || diff >= 84) return null; // 12 semanas = 84 días
+
+  // ¿Qué día de la semana es?
+  const dow = date.getDay();
+  const dayConfig = DAYS_CONFIG.find(d => d.dow === dow);
+  if (!dayConfig) return null;
+
+  // ¿Qué semana?
+  const weekNum = Math.floor(diff / 7) + 1;
+  if (weekNum < 1 || weekNum > 12) return null;
+  const semana = SEMANAS[weekNum - 1];
+
+  return { semana, day: dayConfig, weekNum };
+}
+
+function changeMonth(dir) {
+  calMonth = new Date(calMonth.getFullYear(), calMonth.getMonth() + dir, 1);
+  renderCalendar();
+}
+
+function showCalDetail(isoDate) {
+  state.selectedCalDay = isoDate;
+  saveState();
+
+  const date = new Date(isoDate);
+  const dateStr = date.toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' });
+
+  const pub = getPublicationForDate(date);
+  const detail = document.getElementById('calDetail');
+
+  if (!pub) {
+    detail.innerHTML = `
+      <div class="cal-detail-date">${dateStr.charAt(0).toUpperCase() + dateStr.slice(1)}</div>
+      <div class="cal-detail-empty">No hay publicación programada este día.</div>`;
+    return;
+  }
+
+  const msg = buildSemanalMsg(pub.semana, pub.day.key);
+  const id = msgIdForDate(pub.weekNum, pub.day.key);
+  const isPub = !!state.published[id];
+
+  detail.innerHTML = `
+    <div class="cal-detail-date">${dateStr.charAt(0).toUpperCase() + dateStr.slice(1)}</div>
+    <div class="cal-detail-sub">Sem ${pub.weekNum} · ${pub.day.cat} · Hora ideal ${pub.day.time}</div>
+    <div class="msg-preview" style="margin: 0 -18px 14px; padding: 14px 16px;">
+      <div class="msg-bubble">${msg.replace(/\*([^*]+)\*/g, '<strong>$1</strong>')}</div>
+    </div>
+    <div class="msg-actions" style="padding: 0;">
+      <button class="msg-btn msg-btn-primary ${isPub ? 'published-state' : ''}" onclick='copyAndMark("${id}")'>
+        <svg viewBox="0 0 24 24">
+          ${isPub ? '<polyline points="20 6 9 17 4 12"/>' : '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>'}
+        </svg>
+        ${isPub ? 'Publicado · Copiar' : 'Copiar y publicar'}
+      </button>
+      <button class="msg-btn msg-btn-wa" onclick='openWhatsApp("${id}")' aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white" stroke="white"><path d="M17.6 6.3A7.85 7.85 0 0012 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.8 1h.0a7.94 7.94 0 005.6-13.6zM12 18.5a6.5 6.5 0 01-3.4-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.6 6.6 0 01-1-3.5A6.6 6.6 0 0112 5.4a6.6 6.6 0 016.6 6.6 6.6 6.6 0 01-6.6 6.5z" stroke-width="0.5"/></svg>
+      </button>
+    </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// STATS
+// ════════════════════════════════════════════════════════════
+function renderStats() {
+  const totalMsgs = 12 * 4 + GUARDA.length + HISTORIAS.length + ESTACIONAL.length;
+  const publishedCount = Object.keys(state.published).length;
+  const pct = totalMsgs > 0 ? Math.round((publishedCount / totalMsgs) * 100) : 0;
+
+  document.getElementById('statsPublished').textContent = publishedCount;
+  document.getElementById('statsPublishedPct').textContent = `${pct}% del banco completo`;
+
+  // Calcular racha de semanas
+  const streak = calculateStreak();
+  document.getElementById('statsStreak').textContent = streak;
+
+  document.getElementById('statsSubsValue').textContent = state.subscribers != null ? state.subscribers : '—';
+  document.getElementById('subsInput').value = state.subscribers != null ? state.subscribers : '';
+
+  // Distribución por categoría
+  const dist = {
+    'Semanal': 0,
+    'Guarda esto': 0,
+    'Historias': 0,
+    'Estacional': 0
+  };
+  Object.keys(state.published).forEach(id => {
+    if (id.startsWith('s') && /^s\d/.test(id)) dist['Semanal']++;
+    else if (id.startsWith('guarda_')) dist['Guarda esto']++;
+    else if (id.startsWith('hist_')) dist['Historias']++;
+    else if (id.startsWith('est_')) dist['Estacional']++;
+  });
+
+  const totals = { 'Semanal': 48, 'Guarda esto': 6, 'Historias': 6, 'Estacional': 7 };
+  const colors = {
+    'Semanal': 'var(--brand)',
+    'Guarda esto': 'var(--cat-guarda)',
+    'Historias': 'var(--cat-historia)',
+    'Estacional': 'var(--cat-estacional)'
+  };
+
+  let distHtml = '';
+  Object.keys(dist).forEach(cat => {
+    const pct = (dist[cat] / totals[cat]) * 100;
+    distHtml += `
+      <div style="margin-bottom: 14px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.78rem;">
+          <span style="color:var(--text-2);font-weight:600;">${cat}</span>
+          <span style="color:var(--text-3);">${dist[cat]} / ${totals[cat]}</span>
+        </div>
+        <div style="height:8px;background:var(--border-soft);border-radius:100px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:${colors[cat]};border-radius:100px;transition:width 0.5s;"></div>
+        </div>
+      </div>`;
+  });
+
+  document.getElementById('catDistribution').innerHTML = distHtml;
+}
+
+function calculateStreak() {
+  // Cuenta cuántas semanas seguidas tienen al menos 1 publicación
+  let streak = 0;
+  for (let w = 1; w <= 12; w++) {
+    let hasAny = false;
+    DAYS_CONFIG.forEach(d => {
+      if (state.published[msgIdForDate(w, d.key)]) hasAny = true;
+    });
+    if (hasAny) streak++;
+    else if (w > getCurrentWeekNum()) break;
+    else streak = 0;
+  }
+  return streak;
+}
+
+function updateSubs(value) {
+  const n = parseInt(value);
+  state.subscribers = isNaN(n) ? null : n;
+  saveState();
+  renderMetrics();
+}
+
+// ════════════════════════════════════════════════════════════
+// UTILIDADES
+// ════════════════════════════════════════════════════════════
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function showToast(text) {
+  const t = document.getElementById('toast');
+  t.textContent = text;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2700);
+}
+
+function exportData() {
+  const data = JSON.stringify(state, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `dialisis-en-familia-${new Date().toISOString().split('T')[0]}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('📁 Datos exportados');
+}
+
+// ════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  applyTheme();
+  renderDashboard();
+});
+</script>
+</body>
+</html>
