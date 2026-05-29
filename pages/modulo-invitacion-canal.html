@@ -1,0 +1,167 @@
+<!-- ═══════════════════════════════════════════════════════════
+     MÓDULO DE INVITACIÓN AL CANAL DIÁLISIS EN FAMILIA
+     Insertar este bloque en:
+     - blog.html (después de la lista de artículos, antes del CTA)
+     - Cada artículo del blog (antes del cierre, después del contenido)
+     - index.html (sección de comunidad)
+     - mi-cuidado.html (después de la sección de emergencia)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="ms-canal-invite" aria-labelledby="ms-canal-title">
+  <style>
+    .ms-canal-invite{
+      max-width:720px;margin:32px auto;
+      background:linear-gradient(135deg,#0A1628 0%,#15263F 60%,#1F7D71 100%);
+      border-radius:24px;padding:28px 22px;
+      color:white;position:relative;overflow:hidden;
+      box-shadow:0 20px 50px -12px rgba(10,22,40,.35);
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;
+    }
+    .ms-canal-invite::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 60% 50% at 90% 0%,rgba(42,157,143,.25),transparent 65%),
+        radial-gradient(ellipse 40% 40% at 0% 100%,rgba(107,63,160,.15),transparent 60%);
+    }
+    .ms-ci-inner{position:relative;z-index:1;}
+    .ms-ci-grid{
+      display:grid;grid-template-columns:1fr;gap:20px;align-items:center;
+    }
+    @media(min-width:640px){
+      .ms-ci-grid{grid-template-columns:1fr auto;gap:24px;}
+    }
+    .ms-ci-content{min-width:0;}
+    .ms-ci-chip{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);
+      border-radius:100px;padding:5px 12px;margin-bottom:12px;
+      font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    }
+    .ms-ci-chip-dot{
+      width:7px;height:7px;border-radius:50%;background:#7EE8B0;
+      animation:msPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes msPulse{
+      0%,100%{opacity:1;transform:scale(1);}
+      50%{opacity:.4;transform:scale(.85);}
+    }
+    .ms-ci-title{
+      font-size:1.45rem;font-weight:700;line-height:1.2;
+      letter-spacing:-.015em;margin-bottom:8px;color:white;
+    }
+    .ms-ci-title em{
+      background:linear-gradient(135deg,#7EE8B0 0%,#3BBFB0 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;font-style:normal;font-weight:800;
+    }
+    .ms-ci-desc{
+      font-size:.86rem;line-height:1.6;color:rgba(255,255,255,.75);
+      margin-bottom:14px;
+    }
+    .ms-ci-perks{
+      display:flex;flex-direction:column;gap:8px;margin-bottom:18px;
+    }
+    .ms-ci-perk{
+      display:flex;align-items:center;gap:9px;
+      font-size:.78rem;color:rgba(255,255,255,.85);
+    }
+    .ms-ci-perk-ico{
+      width:22px;height:22px;flex-shrink:0;
+      background:rgba(126,232,176,.15);
+      border:1px solid rgba(126,232,176,.3);
+      border-radius:6px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:.7rem;color:#7EE8B0;
+    }
+    .ms-ci-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 22px;min-height:48px;
+      background:#25D366;color:white;
+      border-radius:12px;border:none;cursor:pointer;
+      font-family:inherit;font-size:.88rem;font-weight:700;
+      text-decoration:none;transition:transform .15s ease;
+      box-shadow:0 8px 20px -4px rgba(37,211,102,.5);
+    }
+    .ms-ci-btn:hover{transform:translateY(-1px);}
+    .ms-ci-btn:active{transform:scale(.98);}
+    .ms-ci-btn svg{width:18px;height:18px;fill:white;}
+    .ms-ci-qr{
+      display:none;width:140px;flex-shrink:0;
+    }
+    @media(min-width:640px){
+      .ms-ci-qr{display:block;}
+    }
+    .ms-ci-qr-frame{
+      background:white;border-radius:14px;padding:10px;
+      display:flex;flex-direction:column;align-items:center;gap:6px;
+    }
+    .ms-ci-qr-frame img{
+      width:100%;height:auto;display:block;border-radius:6px;
+    }
+    .ms-ci-qr-label{
+      font-size:.6rem;font-weight:700;color:#0A1628;
+      text-align:center;letter-spacing:.04em;text-transform:uppercase;
+      line-height:1.3;
+    }
+    .ms-ci-foot{
+      margin-top:14px;padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.1);
+      font-size:.68rem;color:rgba(255,255,255,.5);
+      line-height:1.5;
+    }
+    .ms-ci-foot strong{color:rgba(255,255,255,.7);font-weight:600;}
+  </style>
+
+  <div class="ms-ci-inner">
+    <div class="ms-ci-grid">
+      <div class="ms-ci-content">
+        <div class="ms-ci-chip">
+          <span class="ms-ci-chip-dot"></span>
+          <span>Canal de WhatsApp · Gratuito</span>
+        </div>
+        <h2 class="ms-ci-title" id="ms-canal-title">
+          Únete a <em>Diálisis en Familia</em>
+        </h2>
+        <p class="ms-ci-desc">
+          Información médica útil, recetas renales semanales y consejos prácticos
+          directamente en tu WhatsApp. Sin spam, sin saturación.
+        </p>
+        <ul class="ms-ci-perks" role="list">
+          <li class="ms-ci-perk">
+            <span class="ms-ci-perk-ico" aria-hidden="true">✓</span>
+            <span>Tips médicos cada lunes por la Dra. Díaz Villar</span>
+          </li>
+          <li class="ms-ci-perk">
+            <span class="ms-ci-perk-ico" aria-hidden="true">✓</span>
+            <span>Recetas renales con valores nutricionales</span>
+          </li>
+          <li class="ms-ci-perk">
+            <span class="ms-ci-perk-ico" aria-hidden="true">✓</span>
+            <span>Alertas guardables para emergencias renales</span>
+          </li>
+        </ul>
+        <a href="https://whatsapp.com/channel/0029Vb809mk9hXFCnv2tx33W"
+           target="_blank"
+           rel="noopener"
+           class="ms-ci-btn"
+           onclick="if(typeof gtag==='function')gtag('event','canal_join_click',{event_category:'engagement',source:'modulo_invitacion'});"
+           aria-label="Unirme al canal de WhatsApp Diálisis en Familia">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.6 6.3A7.85 7.85 0 0012 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.8 1h.0a7.94 7.94 0 005.6-13.6zM12 18.5a6.5 6.5 0 01-3.4-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.6 6.6 0 01-1-3.5A6.6 6.6 0 0112 5.4a6.6 6.6 0 016.6 6.6 6.6 6.6 0 01-6.6 6.5zm3.6-4.9c-.2-.1-1.2-.6-1.3-.6-.2-.1-.3-.1-.4.1l-.6.7c-.1.1-.2.1-.4 0a5.3 5.3 0 01-1.6-1 6 6 0 01-1.1-1.4c-.1-.2 0-.3.1-.4l.3-.3.2-.3v-.3l-.6-1.4c-.1-.3-.3-.3-.4-.3h-.3a.7.7 0 00-.5.2 2 2 0 00-.6 1.5 3.5 3.5 0 00.7 1.8 8 8 0 003.1 2.7c1.5.6 1.5.4 1.8.4a1.8 1.8 0 001.2-.8 1.5 1.5 0 00.1-.8c0-.2-.2-.2-.4-.3z"/>
+          </svg>
+          Unirme al canal
+        </a>
+      </div>
+      <aside class="ms-ci-qr" aria-label="Código QR para unirse al canal">
+        <div class="ms-ci-qr-frame">
+          <img src="data:image/png;base64,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" alt="Escanea para unirte al canal Diálisis en Familia" width="120" height="120">
+          <div class="ms-ci-qr-label">Escanea<br>con tu cámara</div>
+        </div>
+      </aside>
+    </div>
+    <div class="ms-ci-foot">
+      <strong>Monte Sinaí Hemodiálisis</strong> · Tlalnepantla, Estado de México
+      · Por la Dra. Leidy Jineth Díaz Villar · Nefrología
+    </div>
+  </div>
+</section>
+<!-- ═══ FIN DEL MÓDULO DE INVITACIÓN ═══ -->
