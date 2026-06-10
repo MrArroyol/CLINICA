@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan WhatsApp 20 Semanas · Dr. Luciano · Monte Sinaí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0D3B66;--primary-deep:#071E35;--primary-mid:#0E4D87;
+  --teal:#2A9D8F;--teal-l:#3BBFB0;--teal-pale:#E5F4F1;
+  --gold:#C8A04F;--gold-l:#E8C97A;
+  --bg:#F0F7FB;--base:#fff;--border:#D8E8F2;
+  --text:#0A1520;--text-mid:#2E4257;--text-soft:#5E7A8E;
+  --out:cubic-bezier(.16,1,.3,1);--px:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:var(--text-mid);background:var(--primary-deep);min-height:100vh;overflow-x:hidden;}
+body.modal-open{overflow:hidden;}
+
+/* FONDO ATMOSFÉRICO */
+body::before{content:'';position:fixed;top:-10%;right:-15%;width:55%;height:55%;background:radial-gradient(circle,rgba(42,157,143,.22),transparent 65%);filter:blur(60px);pointer-events:none;z-index:0;animation:aura1 9s ease-in-out infinite;}
+body::after{content:'';position:fixed;bottom:-15%;left:-15%;width:50%;height:50%;background:radial-gradient(circle,rgba(107,63,160,.18),transparent 65%);filter:blur(55px);pointer-events:none;z-index:0;animation:aura1 11s ease-in-out 2s infinite reverse;}
+@keyframes aura1{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
+
+/* HEADER */
+.header{position:relative;z-index:2;text-align:center;padding:48px var(--px) 36px;max-width:760px;margin:0 auto;}
+.header-badge{display:inline-flex;align-items:center;gap:8px;font-size:.64rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-l);background:rgba(59,191,176,.12);border:1px solid rgba(59,191,176,.3);padding:7px 16px;border-radius:100px;margin-bottom:18px;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--teal-l);animation:pulse 1.8s ease-out infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(59,191,176,.6);}100%{box-shadow:0 0 0 9px rgba(59,191,176,0);}}
+.header h1{font-family:'Fraunces',serif;font-size:clamp(2rem,7vw,3rem);font-weight:500;color:white;line-height:1.1;margin-bottom:10px;}
+.header h1 em{font-style:italic;color:var(--teal-l);}
+.header p{font-size:.95rem;color:rgba(255,255,255,.75);max-width:480px;margin:0 auto;}
+.header-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+.hstat{background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:13px 20px;text-align:center;}
+.hstat strong{display:block;font-family:'Fraunces',serif;font-size:1.6rem;font-weight:500;color:white;}
+.hstat span{font-size:.7rem;color:rgba(255,255,255,.65);font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+
+/* GRID DE SEMANAS */
+.grid-wrap{position:relative;z-index:2;max-width:920px;margin:0 auto;padding:0 var(--px) 50px;}
+.grid-lbl{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px;}
+.sem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:13px;}
+@media(max-width:480px){.sem-grid{grid-template-columns:1fr 1fr;}}
+.sem-card{position:relative;display:flex;flex-direction:column;gap:6px;padding:20px 18px;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);backdrop-filter:blur(12px);cursor:pointer;font-family:inherit;text-align:left;transition:transform .3s var(--out),background .3s,border-color .3s;overflow:hidden;}
+.sem-card::before{content:'';position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle,var(--sc),transparent 70%);opacity:.35;border-radius:0 20px 0 100%;}
+.sem-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.25);}
+.sem-card:active{transform:scale(.97);}
+.sem-n{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:var(--sc);line-height:1;}
+.sem-tema{font-size:.84rem;font-weight:700;color:white;line-height:1.25;}
+.sem-pubs{font-size:.7rem;color:rgba(255,255,255,.55);margin-top:2px;}
+.sem-arr{font-size:.9rem;color:var(--sc);margin-top:4px;opacity:.8;}
+
+/* OVERLAY / MODAL */
+.sem-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-start;justify-content:center;padding:18px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;background:rgba(6,20,40,.75);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);}
+.sem-overlay.show{opacity:1;visibility:visible;}
+.sem-box{position:relative;width:100%;max-width:620px;margin:auto;border-radius:26px;background:var(--base);box-shadow:0 50px 100px -25px rgba(0,0,0,.6);transform:translateY(40px) scale(.95);opacity:0;transition:transform .5s var(--out),opacity .4s;overflow:hidden;}
+.sem-overlay.show .sem-box{transform:translateY(0) scale(1);opacity:1;}
+.sem-close{position:absolute;top:14px;right:14px;z-index:20;width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);color:white;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;}
+.sem-close:hover{background:rgba(255,255,255,.35);transform:rotate(90deg);}
+.sem-box-top{padding:28px 24px 22px;color:white;position:relative;overflow:hidden;}
+.sem-box-top::before{content:'';position:absolute;top:-50%;right:-20%;width:65%;height:140%;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 60%);filter:blur(30px);}
+.sem-box-top>*{position:relative;z-index:1;}
+.sem-box-n{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);}
+.sem-box-top h3{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:500;line-height:1.15;margin:6px 0 4px;}
+.sem-box-sub{font-size:.76rem;color:rgba(255,255,255,.72);}
+.sem-box-body{padding:20px;max-height:70vh;overflow-y:auto;}
+.pub-cards{display:flex;flex-direction:column;gap:14px;}
+
+/* TARJETA DE PUBLICACIÓN */
+.pub-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow .25s;}
+.pub-card:hover{box-shadow:0 10px 28px -10px rgba(13,59,102,.18);}
+.pub-card-head{display:flex;align-items:center;gap:11px;padding:14px 16px;background:white;border-bottom:1px solid var(--border);}
+.pub-ico{font-size:1.5rem;flex-shrink:0;}
+.pub-dia{display:block;font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:2px;}
+.pub-titulo{display:block;font-size:.9rem;font-weight:700;color:var(--primary);line-height:1.2;}
+.pub-copy{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:100px;border:none;background:linear-gradient(135deg,var(--teal),var(--teal-l));color:white;font-size:.76rem;font-weight:700;cursor:pointer;font-family:inherit;transition:transform .2s,opacity .2s;white-space:nowrap;flex-shrink:0;}
+.pub-copy svg{width:14px;height:14px;stroke:white;fill:none;stroke-width:2;}
+.pub-copy:active{transform:scale(.95);}
+.pub-copy.copiado{background:linear-gradient(135deg,#28B673,#2ecc71);}
+.pub-texto{padding:16px;font-size:.82rem;line-height:1.65;color:var(--text-mid);white-space:pre-wrap;font-family:'Poppins',sans-serif;}
+
+/* BTN COPIAR TODO */
+.copy-all{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,var(--primary),var(--primary-mid));color:white;font-weight:700;font-size:.88rem;cursor:pointer;font-family:inherit;margin-top:16px;transition:transform .2s;}
+.copy-all:active{transform:scale(.98);}
+.copy-all svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;}
+
+/* FOOTER */
+.foot{position:relative;z-index:2;text-align:center;padding:24px var(--px) 40px;font-size:.76rem;color:rgba(255,255,255,.45);}
+.foot a{color:var(--teal-l);}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(30px);background:var(--primary-deep);color:white;padding:12px 22px;border-radius:100px;font-size:.84rem;font-weight:600;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s,transform .3s;z-index:200;pointer-events:none;border:1px solid rgba(59,191,176,.4);}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;}body::before,body::after{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-badge"><span class="dot"></span>Plan de contenido WhatsApp</div>
+  <h1>Promociones <em>Dr. Luciano</em></h1>
+  <p>Plan de publicaciones de 20 semanas para el grupo de Monte Sinaí. Toca cualquier semana para ver y copiar sus publicaciones.</p>
+  <div class="header-stats">
+    <div class="hstat"><strong>20</strong><span>Semanas</span></div>
+    <div class="hstat"><strong>60</strong><span>Publicaciones</span></div>
+    <div class="hstat"><strong>3x</strong><span>Por semana</span></div>
+    <div class="hstat"><strong>700+</strong><span>Personas</span></div>
+  </div>
+</header>
+
+<!-- GRID -->
+<div class="grid-wrap">
+  <p class="grid-lbl">Selecciona una semana</p>
+  <div class="sem-grid">
+
+      <button class="sem-card" onclick="openSem('m01')" style="--sc:#2A9D8F">
+        <span class="sem-n">S01</span>
+        <span class="sem-tema">El cuidado empieza antes</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m02')" style="--sc:#0E4D87">
+        <span class="sem-n">S02</span>
+        <span class="sem-tema">Lo que nadie te dice del preoperatorio</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m03')" style="--sc:#6B3FA0">
+        <span class="sem-n">S03</span>
+        <span class="sem-tema">La recuperación es parte del resultado</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m04')" style="--sc:#C8A04F">
+        <span class="sem-n">S04</span>
+        <span class="sem-tema">Información que te protege</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m05')" style="--sc:#2A9D8F">
+        <span class="sem-n">S05</span>
+        <span class="sem-tema">Mitos y realidades de la cirugía estética</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m06')" style="--sc:#0E4D87">
+        <span class="sem-n">S06</span>
+        <span class="sem-tema">Piel: la base de todo</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m07')" style="--sc:#6B3FA0">
+        <span class="sem-n">S07</span>
+        <span class="sem-tema">Procedimientos faciales</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m08')" style="--sc:#C8A04F">
+        <span class="sem-n">S08</span>
+        <span class="sem-tema">Cuerpo: confianza desde adentro</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m09')" style="--sc:#2A9D8F">
+        <span class="sem-n">S09</span>
+        <span class="sem-tema">Preguntas frecuentes</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m10')" style="--sc:#0E4D87">
+        <span class="sem-n">S10</span>
+        <span class="sem-tema">Nutrición y cirugía estética</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m11')" style="--sc:#6B3FA0">
+        <span class="sem-n">S11</span>
+        <span class="sem-tema">Cicatrices: todo lo que debes saber</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m12')" style="--sc:#C8A04F">
+        <span class="sem-n">S12</span>
+        <span class="sem-tema">Mama: información con criterio</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m13')" style="--sc:#2A9D8F">
+        <span class="sem-n">S13</span>
+        <span class="sem-tema">Tecnología y cirugía estética</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m14')" style="--sc:#0E4D87">
+        <span class="sem-n">S14</span>
+        <span class="sem-tema">Autoestima y cirugía</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m15')" style="--sc:#6B3FA0">
+        <span class="sem-n">S15</span>
+        <span class="sem-tema">Procedimientos sin cirugía</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m16')" style="--sc:#C8A04F">
+        <span class="sem-n">S16</span>
+        <span class="sem-tema">El valor de la consulta</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m17')" style="--sc:#2A9D8F">
+        <span class="sem-n">S17</span>
+        <span class="sem-tema">Cuidados a largo plazo</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m18')" style="--sc:#0E4D87">
+        <span class="sem-n">S18</span>
+        <span class="sem-tema">Testimonios y comunidad</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m19')" style="--sc:#6B3FA0">
+        <span class="sem-n">S19</span>
+        <span class="sem-tema">Otoño / temporada de cambios</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+      <button class="sem-card" onclick="openSem('m20')" style="--sc:#C8A04F">
+        <span class="sem-n">S20</span>
+        <span class="sem-tema">Cierre: gratitud y continuidad</span>
+        <span class="sem-pubs">3 publicaciones</span>
+        <span class="sem-arr">→</span>
+      </button>
+  </div>
+</div>
+
+<!-- MODALES -->
+
+<div class="sem-overlay" id="m01" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#2A9D8Fdd,#2A9D8F99)">
+      <span class="sem-box-n">Semana 1</span>
+      <h3>El cuidado empieza antes</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Hidratación: el paso número uno</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`La hidratación es el paso número uno en cualquier proceso estético — antes y después del procedimiento.
+
+Una piel bien hidratada desde adentro cicatriza mejor, recupera más rápido y muestra resultados más duraderos.
+
+El 8x8: 8 vasos de agua, 8 semanas previas a cualquier procedimiento. Simple. Poderoso.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">La hidratación es el paso número uno en cualquier proceso estético — antes y después del procedimiento.
+
+Una piel bien hidratada desde adentro cicatriza mejor, recupera más rápido y muestra resultados más duraderos.
+
+El 8x8: 8 vasos de agua, 8 semanas previas a cualquier procedimiento. Simple. Poderoso.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">La mejor cirugía se planea con calma</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Buenos días a todos 👋
+
+Soy el Dr. Luciano y quiero compartirles algo que les digo a mis pacientes antes de cualquier consulta:
+
+"La mejor cirugía es la que se planea con calma."
+
+No hay prisa. No hay decisiones apresuradas en este espacio. Aquí primero viene la información, luego la confianza, y al final — cuando estén listos — la decisión.
+
+¿Tienen alguna duda esta semana? Con gusto la respondo aquí 🤍
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Buenos días a todos 👋
+
+Soy el Dr. Luciano y quiero compartirles algo que les digo a mis pacientes antes de cualquier consulta:
+
+"La mejor cirugía es la que se planea con calma."
+
+No hay prisa. No hay decisiones apresuradas en este espacio. Aquí primero viene la información, luego la confianza, y al final — cuando estén listos — la decisión.
+
+¿Tienen alguna duda esta semana? Con gusto la respondo aquí 🤍
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">Cuidarte no es vanidad</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Para cerrar la semana:
+
+"Cuidarte no es vanidad. Es respeto hacia ti mismo."
+
+Los procedimientos estéticos no cambian quién eres. Refuerzan cómo te proyectas al mundo cuando ya te sientes bien contigo mismo.
+
+Esa es la diferencia entre una cirugía bien indicada y una que no lo era.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Para cerrar la semana:
+
+"Cuidarte no es vanidad. Es respeto hacia ti mismo."
+
+Los procedimientos estéticos no cambian quién eres. Refuerzan cómo te proyectas al mundo cuando ya te sientes bien contigo mismo.
+
+Esa es la diferencia entre una cirugía bien indicada y una que no lo era.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m02" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#0E4D87dd,#0E4D8799)">
+      <span class="sem-box-n">Semana 2</span>
+      <h3>Lo que nadie te dice del preoperatorio</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Tres hábitos que mejoran tus resultados</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Pre-operatorio: lo que marca la diferencia.
+
+Muchos piensan que la preparación empieza días antes. En realidad, empieza semanas — o meses — antes.
+
+Tres hábitos que mejoran dramáticamente tus resultados:
+
+① Dejar de fumar al menos 4 semanas antes. El tabaco reduce el flujo sanguíneo y afecta la cicatrización.
+
+② Estabilizar tu peso. Un peso estable = resultados más predecibles y duraderos.
+
+③ Dormir bien. El cuerpo se repara mientras duermes.
+
+Pequeños detalles. Grandes resultados.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Pre-operatorio: lo que marca la diferencia.
+
+Muchos piensan que la preparación empieza días antes. En realidad, empieza semanas — o meses — antes.
+
+Tres hábitos que mejoran dramáticamente tus resultados:
+
+① Dejar de fumar al menos 4 semanas antes. El tabaco reduce el flujo sanguíneo y afecta la cicatrización.
+
+② Estabilizar tu peso. Un peso estable = resultados más predecibles y duraderos.
+
+③ Dormir bien. El cuerpo se repara mientras duermes.
+
+Pequeños detalles. Grandes resultados.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">¿A qué edad es ideal operarse?</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Una pregunta que me hacen mucho:
+
+"Doctor, ¿a qué edad es ideal operarse?"
+
+Mi respuesta honesta: no hay una edad universal. Hay una madurez física y emocional.
+
+Lo que sí les puedo decir:
+— El cuerpo necesita haber terminado su desarrollo.
+— La decisión debe venir desde adentro, no de una comparación externa.
+— La salud general siempre va antes que cualquier procedimiento.
+
+Cuando esas tres cosas coinciden, la edad es solo un número.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Una pregunta que me hacen mucho:
+
+"Doctor, ¿a qué edad es ideal operarse?"
+
+Mi respuesta honesta: no hay una edad universal. Hay una madurez física y emocional.
+
+Lo que sí les puedo decir:
+— El cuerpo necesita haber terminado su desarrollo.
+— La decisión debe venir desde adentro, no de una comparación externa.
+— La salud general siempre va antes que cualquier procedimiento.
+
+Cuando esas tres cosas coinciden, la edad es solo un número.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Dato</span><strong class="pub-titulo">El colágeno y el tiempo</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Dato curioso del viernes:
+
+¿Sabían que el colágeno empieza a disminuir a partir de los 25 años — aproximadamente un 1% por año?
+
+No es alarma. Es información.
+
+Por eso los procedimientos preventivos y los cuidados tempranos de la piel marcan tanta diferencia a largo plazo. No se trata de "corregir", sino de cuidar con anticipación.
+
+La elegancia del cuidado está en la constancia, no en la urgencia.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Dato curioso del viernes:
+
+¿Sabían que el colágeno empieza a disminuir a partir de los 25 años — aproximadamente un 1% por año?
+
+No es alarma. Es información.
+
+Por eso los procedimientos preventivos y los cuidados tempranos de la piel marcan tanta diferencia a largo plazo. No se trata de "corregir", sino de cuidar con anticipación.
+
+La elegancia del cuidado está en la constancia, no en la urgencia.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m03" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#6B3FA0dd,#6B3FA099)">
+      <span class="sem-box-n">Semana 3</span>
+      <h3>La recuperación es parte del resultado</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Los primeros 7 días post-operatorio</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Post-operatorio: los primeros 7 días.
+
+La recuperación no es el tiempo que pierdes esperando verte bien. Es parte activa del procedimiento.
+
+Lo que marcará la diferencia:
+
+✔ Respetar el reposo indicado — sin excepciones.
+✔ Usar las prendas de compresión el tiempo prescrito.
+✔ No exponerte al sol en las primeras semanas.
+✔ Comer proteína. Tu tejido necesita construirse.
+✔ Asistir a todos tus controles, aunque "te sientas bien".
+
+El resultado final no se ve al día 7. Se ve al mes 3 o al mes 6.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Post-operatorio: los primeros 7 días.
+
+La recuperación no es el tiempo que pierdes esperando verte bien. Es parte activa del procedimiento.
+
+Lo que marcará la diferencia:
+
+✔ Respetar el reposo indicado — sin excepciones.
+✔ Usar las prendas de compresión el tiempo prescrito.
+✔ No exponerte al sol en las primeras semanas.
+✔ Comer proteína. Tu tejido necesita construirse.
+✔ Asistir a todos tus controles, aunque "te sientas bien".
+
+El resultado final no se ve al día 7. Se ve al mes 3 o al mes 6.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Mi trabajo no termina en el quirófano</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Algo que quiero que sepan:
+
+Mi trabajo no termina en el quirófano.
+
+La relación con mis pacientes continúa en cada control, en cada duda, en cada momento de incertidumbre durante la recuperación.
+
+Un buen resultado estético es siempre un trabajo de dos: el cirujano que planea con cuidado, y el paciente que sigue las indicaciones con disciplina.
+
+Cuando ambos hacemos nuestra parte, los resultados hablan solos.
+
+¿Están en proceso de recuperación? ¿Tienen dudas? Aquí estamos 🤍
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Algo que quiero que sepan:
+
+Mi trabajo no termina en el quirófano.
+
+La relación con mis pacientes continúa en cada control, en cada duda, en cada momento de incertidumbre durante la recuperación.
+
+Un buen resultado estético es siempre un trabajo de dos: el cirujano que planea con cuidado, y el paciente que sigue las indicaciones con disciplina.
+
+Cuando ambos hacemos nuestra parte, los resultados hablan solos.
+
+¿Están en proceso de recuperación? ¿Tienen dudas? Aquí estamos 🤍
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">Verse bien vs sentirse bien</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Viernes de reflexión:
+
+Hay una diferencia entre verse bien y sentirse bien.
+
+Los mejores resultados que he visto en mis pacientes no son los más espectaculares técnicamente.
+
+Son los de personas que llegaron con una expectativa realista, se prepararon con cuidado, siguieron cada indicación — y al mes seis, me escriben para decirme que por fin se sienten como siempre quisieron verse.
+
+Eso es lo que buscamos aquí.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Viernes de reflexión:
+
+Hay una diferencia entre verse bien y sentirse bien.
+
+Los mejores resultados que he visto en mis pacientes no son los más espectaculares técnicamente.
+
+Son los de personas que llegaron con una expectativa realista, se prepararon con cuidado, siguieron cada indicación — y al mes seis, me escriben para decirme que por fin se sienten como siempre quisieron verse.
+
+Eso es lo que buscamos aquí.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m04" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#C8A04Fdd,#C8A04F99)">
+      <span class="sem-box-n">Semana 4</span>
+      <h3>Información que te protege</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Preguntas que debes hacer en tu consulta</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Antes de elegir a tu cirujano, estas preguntas son esenciales:
+
+① ¿Está certificado por el Consejo Mexicano de Cirugía Plástica?
+② ¿En qué instalaciones opera? ¿Son certificadas?
+③ ¿Puedo ver casos reales de pacientes con mi situación?
+④ ¿Qué pasa si surgen complicaciones?
+⑤ ¿Quién me acompañará durante mi recuperación?
+
+Un cirujano que no responde estas preguntas con claridad no está listo para operarte.
+
+Infórmense. Siempre.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Antes de elegir a tu cirujano, estas preguntas son esenciales:
+
+① ¿Está certificado por el Consejo Mexicano de Cirugía Plástica?
+② ¿En qué instalaciones opera? ¿Son certificadas?
+③ ¿Puedo ver casos reales de pacientes con mi situación?
+④ ¿Qué pasa si surgen complicaciones?
+⑤ ¿Quién me acompañará durante mi recuperación?
+
+Un cirujano que no responde estas preguntas con claridad no está listo para operarte.
+
+Infórmense. Siempre.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Por qué elegí la cirugía estética</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Les comparto algo personal:
+
+Elegí la cirugía estética porque creo que verse bien — de la forma en que cada persona define "verse bien" — tiene un impacto real en la calidad de vida.
+
+No hablo de perfección. Hablo de ese momento en que alguien se mira al espejo y por fin se siente alineado con lo que es.
+
+Por eso cuido tanto el proceso completo: la consulta, la planeación, la cirugía y la recuperación.
+
+El resultado no es solo físico. Es emocional.
+
+Gracias por confiar en este espacio 🤍
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Les comparto algo personal:
+
+Elegí la cirugía estética porque creo que verse bien — de la forma en que cada persona define "verse bien" — tiene un impacto real en la calidad de vida.
+
+No hablo de perfección. Hablo de ese momento en que alguien se mira al espejo y por fin se siente alineado con lo que es.
+
+Por eso cuido tanto el proceso completo: la consulta, la planeación, la cirugía y la recuperación.
+
+El resultado no es solo físico. Es emocional.
+
+Gracias por confiar en este espacio 🤍
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Cierre</span><strong class="pub-titulo">Un mes juntos</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Un mes juntos en este espacio.
+
+Gracias por estar aquí, por leer, por preguntar y por permitirnos acompañarlos en algo tan personal como el cuidado de su imagen.
+
+Este grupo seguirá siendo un lugar de información de calidad, sin presiones y con el respeto que cada uno de ustedes merece.
+
+Si en algún momento quieren dar el siguiente paso — una consulta, una duda — saben que estamos a un mensaje de distancia.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Un mes juntos en este espacio.
+
+Gracias por estar aquí, por leer, por preguntar y por permitirnos acompañarlos en algo tan personal como el cuidado de su imagen.
+
+Este grupo seguirá siendo un lugar de información de calidad, sin presiones y con el respeto que cada uno de ustedes merece.
+
+Si en algún momento quieren dar el siguiente paso — una consulta, una duda — saben que estamos a un mensaje de distancia.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m05" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#2A9D8Fdd,#2A9D8F99)">
+      <span class="sem-box-n">Semana 5</span>
+      <h3>Mitos y realidades de la cirugía estética</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Mito: 'La cirugía es solo para mujeres'</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Mitos que vale la pena desmentir:
+
+Mito: "La cirugía estética es solo para mujeres."
+
+Realidad: Cada año, más hombres eligen procedimientos estéticos — rinoplastia, ginecomastia, liposucción, blefaroplastia — con resultados naturales que solo buscan verse descansados y seguros.
+
+El cuidado no tiene género. La confianza tampoco.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Mitos que vale la pena desmentir:
+
+Mito: "La cirugía estética es solo para mujeres."
+
+Realidad: Cada año, más hombres eligen procedimientos estéticos — rinoplastia, ginecomastia, liposucción, blefaroplastia — con resultados naturales que solo buscan verse descansados y seguros.
+
+El cuidado no tiene género. La confianza tampoco.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Lo que me dice un paciente ideal</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Cuando un paciente llega a mi consulta y me dice:
+
+"Doctor, no quiero verme diferente. Quiero verme como yo, pero mejor."
+
+Sé que vamos a tener un excelente resultado.
+
+Las expectativas realistas son la base de una buena cirugía. No venimos a crear una persona nueva. Venimos a afinar lo que ya está ahí.
+
+Esa honestidad en la consulta lo cambia todo.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Cuando un paciente llega a mi consulta y me dice:
+
+"Doctor, no quiero verme diferente. Quiero verme como yo, pero mejor."
+
+Sé que vamos a tener un excelente resultado.
+
+Las expectativas realistas son la base de una buena cirugía. No venimos a crear una persona nueva. Venimos a afinar lo que ya está ahí.
+
+Esa honestidad en la consulta lo cambia todo.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Dato</span><strong class="pub-titulo">El efecto halo: la ciencia detrás de verse bien</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Dato que pocos conocen:
+
+El efecto halo es un fenómeno psicológico real: cuando nos sentimos bien con nuestra apariencia, proyectamos más confianza — y los demás lo perciben.
+
+No es superficialidad. Es psicología aplicada.
+
+El bienestar físico y el emocional siempre van de la mano. Por eso lo que hacemos tiene un impacto mucho más profundo de lo que parece.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Dato que pocos conocen:
+
+El efecto halo es un fenómeno psicológico real: cuando nos sentimos bien con nuestra apariencia, proyectamos más confianza — y los demás lo perciben.
+
+No es superficialidad. Es psicología aplicada.
+
+El bienestar físico y el emocional siempre van de la mano. Por eso lo que hacemos tiene un impacto mucho más profundo de lo que parece.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m06" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#0E4D87dd,#0E4D8799)">
+      <span class="sem-box-n">Semana 6</span>
+      <h3>Piel: la base de todo</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Rutina mínima de cuidado de piel</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`La rutina más efectiva no es la más cara. Es la más constante.
+
+Tres pasos que marcan la diferencia:
+
+① Limpieza suave, mañana y noche. Sin frotar, sin jabones agresivos.
+② Hidratación. Una crema que se absorba bien, usada todos los días.
+③ Protector solar. SPF 30 mínimo. Cada día. Sin excepción.
+
+Con esto solo, la piel mejora notablemente en 8 semanas.
+
+Después, podemos hablar de más. Pero primero, lo básico.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">La rutina más efectiva no es la más cara. Es la más constante.
+
+Tres pasos que marcan la diferencia:
+
+① Limpieza suave, mañana y noche. Sin frotar, sin jabones agresivos.
+② Hidratación. Una crema que se absorba bien, usada todos los días.
+③ Protector solar. SPF 30 mínimo. Cada día. Sin excepción.
+
+Con esto solo, la piel mejora notablemente en 8 semanas.
+
+Después, podemos hablar de más. Pero primero, lo básico.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Por qué evalúo la piel antes de cualquier procedimiento</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Antes de planear cualquier cirugía, siempre evalúo el estado de la piel.
+
+¿Por qué? Porque la piel es el canvas donde trabajamos.
+
+Una piel bien cuidada, hidratada y protegida del sol:
+— Cicatriza mejor.
+— Muestra resultados más nítidos.
+— Recupera más rápido.
+
+No es un extra. Es parte del protocolo.
+
+Si estás pensando en un procedimiento, empieza por cuidar tu piel hoy. Tu futuro resultado te lo agradecerá.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Antes de planear cualquier cirugía, siempre evalúo el estado de la piel.
+
+¿Por qué? Porque la piel es el canvas donde trabajamos.
+
+Una piel bien cuidada, hidratada y protegida del sol:
+— Cicatriza mejor.
+— Muestra resultados más nítidos.
+— Recupera más rápido.
+
+No es un extra. Es parte del protocolo.
+
+Si estás pensando en un procedimiento, empieza por cuidar tu piel hoy. Tu futuro resultado te lo agradecerá.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">La piel habla de cómo te cuidas</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Viernes:
+
+La piel es el órgano más grande del cuerpo — y el más visible.
+
+Habla de tus hábitos, tu descanso, tu hidratación, tu estrés.
+
+Antes de cualquier procedimiento estético, la piel en buen estado potencia el resultado. Después, lo conserva.
+
+Cuidarla no es prepararse para algo. Es un estilo de vida.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Viernes:
+
+La piel es el órgano más grande del cuerpo — y el más visible.
+
+Habla de tus hábitos, tu descanso, tu hidratación, tu estrés.
+
+Antes de cualquier procedimiento estético, la piel en buen estado potencia el resultado. Después, lo conserva.
+
+Cuidarla no es prepararse para algo. Es un estilo de vida.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m07" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#6B3FA0dd,#6B3FA099)">
+      <span class="sem-box-n">Semana 7</span>
+      <h3>Procedimientos faciales</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Rinoplastia: lo que debes saber</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Rinoplastia: una de las cirugías más solicitadas — y más malentendidas.
+
+Algunos datos clave:
+
+→ No siempre es para "hacer la nariz más pequeña". A veces es para mejorar la respiración, la simetría o un detalle muy específico.
+→ El resultado definitivo se ve hasta los 12 meses post-cirugía. La nariz tarda en "asentarse".
+→ Una buena rinoplastia no cambia tu cara. La armoniza.
+
+Si la tienes en mente, la consulta es el primer paso. Todo empieza ahí.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Rinoplastia: una de las cirugías más solicitadas — y más malentendidas.
+
+Algunos datos clave:
+
+→ No siempre es para "hacer la nariz más pequeña". A veces es para mejorar la respiración, la simetría o un detalle muy específico.
+→ El resultado definitivo se ve hasta los 12 meses post-cirugía. La nariz tarda en "asentarse".
+→ Una buena rinoplastia no cambia tu cara. La armoniza.
+
+Si la tienes en mente, la consulta es el primer paso. Todo empieza ahí.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Lo que más me preguntan sobre cirugía facial</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`"¿Voy a seguir viéndome como yo?"
+
+Esa es la pregunta que más escucho cuando hablamos de procedimientos faciales.
+
+Mi respuesta siempre es la misma: sí — pero mejor.
+
+El objetivo de la cirugía facial nunca es transformar. Es afinar, equilibrar, armonizar.
+
+Los mejores resultados son los que nadie nota que hubo cirugía, pero todos notan que algo está muy bien.
+
+Eso es lo que busco en cada procedimiento.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">"¿Voy a seguir viéndome como yo?"
+
+Esa es la pregunta que más escucho cuando hablamos de procedimientos faciales.
+
+Mi respuesta siempre es la misma: sí — pero mejor.
+
+El objetivo de la cirugía facial nunca es transformar. Es afinar, equilibrar, armonizar.
+
+Los mejores resultados son los que nadie nota que hubo cirugía, pero todos notan que algo está muy bien.
+
+Eso es lo que busco en cada procedimiento.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Dato</span><strong class="pub-titulo">Blefaroplastia: los ojos que cuentan tu edad</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Dato del viernes:
+
+¿Sabían que la zona de los ojos es la primera en mostrar el paso del tiempo?
+
+La blefaroplastia — corrección de párpados — es uno de los procedimientos con mayor impacto visual por el mínimo cambio que implica.
+
+El resultado: ojos más descansados, mirada más abierta, expresión más fresca.
+
+Y lo mejor: la recuperación es relativamente corta comparada con el impacto visual que genera.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Dato del viernes:
+
+¿Sabían que la zona de los ojos es la primera en mostrar el paso del tiempo?
+
+La blefaroplastia — corrección de párpados — es uno de los procedimientos con mayor impacto visual por el mínimo cambio que implica.
+
+El resultado: ojos más descansados, mirada más abierta, expresión más fresca.
+
+Y lo mejor: la recuperación es relativamente corta comparada con el impacto visual que genera.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m08" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#C8A04Fdd,#C8A04F99)">
+      <span class="sem-box-n">Semana 8</span>
+      <h3>Cuerpo: confianza desde adentro</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Liposucción: lo que sí y lo que no</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Sobre la liposucción, aclaremos algo importante:
+
+Lo que sí es:
+✔ Un procedimiento de contorneo corporal.
+✔ Ideal para depósitos de grasa localizados que no responden al ejercicio.
+✔ Un complemento a un estilo de vida saludable.
+
+Lo que no es:
+✗ Un tratamiento para la obesidad.
+✗ Una solución permanente si los hábitos no cambian.
+✗ Un sustituto del ejercicio y la nutrición.
+
+Entender esto es la diferencia entre una buena decisión y una decepción.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Sobre la liposucción, aclaremos algo importante:
+
+Lo que sí es:
+✔ Un procedimiento de contorneo corporal.
+✔ Ideal para depósitos de grasa localizados que no responden al ejercicio.
+✔ Un complemento a un estilo de vida saludable.
+
+Lo que no es:
+✗ Un tratamiento para la obesidad.
+✗ Una solución permanente si los hábitos no cambian.
+✗ Un sustituto del ejercicio y la nutrición.
+
+Entender esto es la diferencia entre una buena decisión y una decepción.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">El cuerpo que te hace sentir seguro</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Una cosa que he aprendido después de años en esta especialidad:
+
+La cirugía no crea confianza. La revela.
+
+La confianza ya estaba ahí. Lo que hacemos es remover la barrera que la bloqueaba — ese detalle físico que le quitaba protagonismo a todo lo demás.
+
+Cuando un paciente sale de consulta y me dice "por fin me siento listo", eso vale más que cualquier técnica.
+
+Eso es lo que buscamos hacer aquí, cada día.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Una cosa que he aprendido después de años en esta especialidad:
+
+La cirugía no crea confianza. La revela.
+
+La confianza ya estaba ahí. Lo que hacemos es remover la barrera que la bloqueaba — ese detalle físico que le quitaba protagonismo a todo lo demás.
+
+Cuando un paciente sale de consulta y me dice "por fin me siento listo", eso vale más que cualquier técnica.
+
+Eso es lo que buscamos hacer aquí, cada día.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">Tu cuerpo, tu decisión</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Para el viernes:
+
+"Tu cuerpo, tu decisión."
+
+En este grupo nunca vamos a decirte que necesitas cambiar algo. Esa decisión es completamente tuya — y la respetamos.
+
+Lo que sí hacemos es asegurarnos de que, cuando tomes esa decisión, la tomes con la mejor información posible, con el profesional correcto, y desde un lugar de seguridad — no de inseguridad.
+
+Esa es nuestra filosofía.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Para el viernes:
+
+"Tu cuerpo, tu decisión."
+
+En este grupo nunca vamos a decirte que necesitas cambiar algo. Esa decisión es completamente tuya — y la respetamos.
+
+Lo que sí hacemos es asegurarnos de que, cuando tomes esa decisión, la tomes con la mejor información posible, con el profesional correcto, y desde un lugar de seguridad — no de inseguridad.
+
+Esa es nuestra filosofía.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m09" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#2A9D8Fdd,#2A9D8F99)">
+      <span class="sem-box-n">Semana 9</span>
+      <h3>Preguntas frecuentes</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">¿Cuánto tiempo tarda en verse el resultado?</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Una de las preguntas más comunes:
+
+"¿Cuándo voy a ver el resultado?"
+
+Depende del procedimiento, pero como guía general:
+
+→ Semanas 1-2: inflamación y moretones normales.
+→ Mes 1: la inflamación cede, se empieza a intuir el resultado.
+→ Mes 3: resultado visible y bastante definido.
+→ Mes 6-12: resultado final, tejidos completamente asentados.
+
+La paciencia no es opcional. Es parte del tratamiento.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Una de las preguntas más comunes:
+
+"¿Cuándo voy a ver el resultado?"
+
+Depende del procedimiento, pero como guía general:
+
+→ Semanas 1-2: inflamación y moretones normales.
+→ Mes 1: la inflamación cede, se empieza a intuir el resultado.
+→ Mes 3: resultado visible y bastante definido.
+→ Mes 6-12: resultado final, tejidos completamente asentados.
+
+La paciencia no es opcional. Es parte del tratamiento.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">¿Qué pasa si no me gusta el resultado?</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Una pregunta difícil — pero importante:
+
+"¿Qué pasa si no me gusta el resultado?"
+
+Mi respuesta honesta tiene tres partes:
+
+① Primero: espera. La mayoría de las "decepciones" en los primeros meses se resuelven solas cuando la inflamación desaparece.
+
+② Segundo: comunícalo. Un cirujano responsable quiere saber cómo te sientes con tu resultado.
+
+③ Tercero: evalúa con tiempo. Con el resultado definitivo sobre la mesa, se toman mejores decisiones.
+
+La comunicación abierta entre paciente y médico lo resuelve casi todo.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Una pregunta difícil — pero importante:
+
+"¿Qué pasa si no me gusta el resultado?"
+
+Mi respuesta honesta tiene tres partes:
+
+① Primero: espera. La mayoría de las "decepciones" en los primeros meses se resuelven solas cuando la inflamación desaparece.
+
+② Segundo: comunícalo. Un cirujano responsable quiere saber cómo te sientes con tu resultado.
+
+③ Tercero: evalúa con tiempo. Con el resultado definitivo sobre la mesa, se toman mejores decisiones.
+
+La comunicación abierta entre paciente y médico lo resuelve casi todo.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Dato</span><strong class="pub-titulo">Anestesia: lo que debes saber</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Dato del viernes:
+
+La anestesia es uno de los temas que más genera nervios — y menos se habla.
+
+Algunos puntos que aclaran el panorama:
+
+→ El anestesiólogo es un médico especialista. No es un técnico.
+→ Antes de la cirugía, habrá una valoración anestésica donde se evalúa tu estado de salud.
+→ Tu historial médico y los medicamentos que tomas son información crítica para este especialista.
+
+Transparencia con tu equipo médico = mayor seguridad para ti.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Dato del viernes:
+
+La anestesia es uno de los temas que más genera nervios — y menos se habla.
+
+Algunos puntos que aclaran el panorama:
+
+→ El anestesiólogo es un médico especialista. No es un técnico.
+→ Antes de la cirugía, habrá una valoración anestésica donde se evalúa tu estado de salud.
+→ Tu historial médico y los medicamentos que tomas son información crítica para este especialista.
+
+Transparencia con tu equipo médico = mayor seguridad para ti.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m10" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#0E4D87dd,#0E4D8799)">
+      <span class="sem-box-n">Semana 10</span>
+      <h3>Nutrición y cirugía estética</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Come para recuperarte mejor</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Lo que comes después de una cirugía importa más de lo que imaginas.
+
+Tu cuerpo está construyendo tejido nuevo — necesita materiales:
+
+🥩 Proteína → reconstruye tejidos (pollo, huevo, pescado, leguminosas).
+🍊 Vitamina C → apoya la producción de colágeno.
+🥜 Zinc → favorece la cicatrización (nueces, semillas, mariscos).
+💧 Agua → hidratación = recuperación más rápida.
+
+Evita en las primeras semanas:
+✗ Alcohol — interfiere con la cicatrización.
+✗ Sodio en exceso — aumenta la inflamación.
+
+Come bien. Tu resultado lo refleja.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Lo que comes después de una cirugía importa más de lo que imaginas.
+
+Tu cuerpo está construyendo tejido nuevo — necesita materiales:
+
+🥩 Proteína → reconstruye tejidos (pollo, huevo, pescado, leguminosas).
+🍊 Vitamina C → apoya la producción de colágeno.
+🥜 Zinc → favorece la cicatrización (nueces, semillas, mariscos).
+💧 Agua → hidratación = recuperación más rápida.
+
+Evita en las primeras semanas:
+✗ Alcohol — interfiere con la cicatrización.
+✗ Sodio en exceso — aumenta la inflamación.
+
+Come bien. Tu resultado lo refleja.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Nutrición y resultado estético: la conexión</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Algo que no siempre se habla en cirugía estética:
+
+La nutrición es parte del resultado.
+
+No solo en la recuperación. También antes.
+
+Un paciente que llega bien nutrido, con niveles de proteína y hierro adecuados, tiene:
+— Mejor respuesta anestésica.
+— Menor riesgo de complicaciones.
+— Recuperación más rápida y resultados más limpios.
+
+Por eso en Monte Sinaí el acompañamiento nutricional no es un extra. Es parte del protocolo.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Algo que no siempre se habla en cirugía estética:
+
+La nutrición es parte del resultado.
+
+No solo en la recuperación. También antes.
+
+Un paciente que llega bien nutrido, con niveles de proteína y hierro adecuados, tiene:
+— Mejor respuesta anestésica.
+— Menor riesgo de complicaciones.
+— Recuperación más rápida y resultados más limpios.
+
+Por eso en Monte Sinaí el acompañamiento nutricional no es un extra. Es parte del protocolo.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">El cuerpo que alimentas</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Para el viernes:
+
+"Eres lo que comes" es un cliché — pero también es biología.
+
+El cuerpo que lleva a una cirugía y el cuerpo que se recupera de ella son el mismo. Y ambos necesitan los mejores recursos disponibles.
+
+Un procedimiento estético bien planificado, con buena nutrición antes y después, muestra resultados completamente distintos a uno que no lo tuvo.
+
+La elegancia está en los detalles. La preparación es el más importante.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Para el viernes:
+
+"Eres lo que comes" es un cliché — pero también es biología.
+
+El cuerpo que lleva a una cirugía y el cuerpo que se recupera de ella son el mismo. Y ambos necesitan los mejores recursos disponibles.
+
+Un procedimiento estético bien planificado, con buena nutrición antes y después, muestra resultados completamente distintos a uno que no lo tuvo.
+
+La elegancia está en los detalles. La preparación es el más importante.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m11" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#6B3FA0dd,#6B3FA099)">
+      <span class="sem-box-n">Semana 11</span>
+      <h3>Cicatrices: todo lo que debes saber</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">La cicatriz madura — no desaparece</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Sobre las cicatrices, seamos honestos:
+
+Una cicatriz no desaparece. Madura.
+
+La maduración puede tomar de 12 a 18 meses — y durante ese tiempo puede verse roja, dura o elevada antes de volverse suave y pálida.
+
+Lo que sí puedes hacer para mejorarla:
+
+✔ Aplicar los productos indicados con constancia.
+✔ Masaje en la zona una vez que el médico lo autorice.
+✔ Protegerla del sol (el sol oscurece la cicatriz permanentemente).
+✔ No tensionarla en las primeras semanas.
+
+La paciencia y el cuidado marcan toda la diferencia.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Sobre las cicatrices, seamos honestos:
+
+Una cicatriz no desaparece. Madura.
+
+La maduración puede tomar de 12 a 18 meses — y durante ese tiempo puede verse roja, dura o elevada antes de volverse suave y pálida.
+
+Lo que sí puedes hacer para mejorarla:
+
+✔ Aplicar los productos indicados con constancia.
+✔ Masaje en la zona una vez que el médico lo autorice.
+✔ Protegerla del sol (el sol oscurece la cicatriz permanentemente).
+✔ No tensionarla en las primeras semanas.
+
+La paciencia y el cuidado marcan toda la diferencia.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Cómo planeamos las incisiones</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Algo que muy pocas personas preguntan — y que debería ser parte de toda consulta:
+
+"¿Dónde van a quedar las cicatrices?"
+
+En cirugía estética, la ubicación de las incisiones es parte del diseño. Siempre buscamos:
+
+→ Pliegues naturales del cuerpo.
+→ Zonas cubiertas por ropa o cabello.
+→ El ángulo que genere la mínima tensión posible.
+
+Una buena planeación hace que la cicatriz sea casi invisible a largo plazo.
+
+Si tienes una consulta próxima, pregúntame esto. Me gusta explicarlo con detalle.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Algo que muy pocas personas preguntan — y que debería ser parte de toda consulta:
+
+"¿Dónde van a quedar las cicatrices?"
+
+En cirugía estética, la ubicación de las incisiones es parte del diseño. Siempre buscamos:
+
+→ Pliegues naturales del cuerpo.
+→ Zonas cubiertas por ropa o cabello.
+→ El ángulo que genere la mínima tensión posible.
+
+Una buena planeación hace que la cicatriz sea casi invisible a largo plazo.
+
+Si tienes una consulta próxima, pregúntame esto. Me gusta explicarlo con detalle.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Dato</span><strong class="pub-titulo">El sol y las cicatrices: una relación que debes conocer</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Dato importante del viernes:
+
+El sol es el peor enemigo de una cicatriz reciente.
+
+La exposición solar directa en una cicatriz que no ha madurado puede hiperpigmentarla de forma permanente — dejándola más oscura y visible.
+
+Regla de oro: cualquier cicatriz de menos de 12 meses debe estar cubierta o protegida con SPF alto si se expone al sol.
+
+Este detalle marca la diferencia entre un resultado sobresaliente y uno apenas aceptable.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Dato importante del viernes:
+
+El sol es el peor enemigo de una cicatriz reciente.
+
+La exposición solar directa en una cicatriz que no ha madurado puede hiperpigmentarla de forma permanente — dejándola más oscura y visible.
+
+Regla de oro: cualquier cicatriz de menos de 12 meses debe estar cubierta o protegida con SPF alto si se expone al sol.
+
+Este detalle marca la diferencia entre un resultado sobresaliente y uno apenas aceptable.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m12" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#C8A04Fdd,#C8A04F99)">
+      <span class="sem-box-n">Semana 12</span>
+      <h3>Mama: información con criterio</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Aumento mamario: las preguntas correctas</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Si estás considerando un aumento mamario, estas son las preguntas que importan:
+
+① ¿Cuál es el tamaño que realmente me queda a mí — no a alguien más?
+② ¿Cuál es la mejor vía de acceso para mi anatomía?
+③ ¿Implante anatómico o redondo? ¿Cuál para mi caso?
+④ ¿Cuándo podré retomar mi actividad normal?
+⑤ ¿Cada cuánto hay que revisar los implantes?
+
+Las respuestas a estas preguntas se responden en consulta — con tu cirujano, con tus medidas reales, con tu cuerpo real.
+
+No hay talla universal.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Si estás considerando un aumento mamario, estas son las preguntas que importan:
+
+① ¿Cuál es el tamaño que realmente me queda a mí — no a alguien más?
+② ¿Cuál es la mejor vía de acceso para mi anatomía?
+③ ¿Implante anatómico o redondo? ¿Cuál para mi caso?
+④ ¿Cuándo podré retomar mi actividad normal?
+⑤ ¿Cada cuánto hay que revisar los implantes?
+
+Las respuestas a estas preguntas se responden en consulta — con tu cirujano, con tus medidas reales, con tu cuerpo real.
+
+No hay talla universal.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Proporciones, no tamaño</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Cuando hablo de cirugía de mama con mis pacientes, siempre digo lo mismo:
+
+No se trata de tamaño. Se trata de proporción.
+
+El mejor resultado es el que se ve natural en tu cuerpo — que nadie nota que hubo intervención, pero que tú sientes cada vez que te vistes.
+
+Ese equilibrio entre lo que la paciente quiere y lo que su anatomía permite es exactamente el trabajo de una buena consulta.
+
+Por eso no damos resultados por WhatsApp. Los resultados se diseñan en persona.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Cuando hablo de cirugía de mama con mis pacientes, siempre digo lo mismo:
+
+No se trata de tamaño. Se trata de proporción.
+
+El mejor resultado es el que se ve natural en tu cuerpo — que nadie nota que hubo intervención, pero que tú sientes cada vez que te vistes.
+
+Ese equilibrio entre lo que la paciente quiere y lo que su anatomía permite es exactamente el trabajo de una buena consulta.
+
+Por eso no damos resultados por WhatsApp. Los resultados se diseñan en persona.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">Seguridad y decisiones informadas</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Viernes:
+
+En cirugía de mama — como en todos los procedimientos — la seguridad empieza con información.
+
+Conocer las opciones, los materiales, los tiempos de recuperación y las expectativas reales es lo que convierte una decisión emocionalmente cargada en una decisión bien tomada.
+
+Eso es lo que queremos para cada persona en este grupo: que cuando decidan, lo hagan desde la claridad y la confianza, no desde la presión.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Viernes:
+
+En cirugía de mama — como en todos los procedimientos — la seguridad empieza con información.
+
+Conocer las opciones, los materiales, los tiempos de recuperación y las expectativas reales es lo que convierte una decisión emocionalmente cargada en una decisión bien tomada.
+
+Eso es lo que queremos para cada persona en este grupo: que cuando decidan, lo hagan desde la claridad y la confianza, no desde la presión.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m13" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#2A9D8Fdd,#2A9D8F99)">
+      <span class="sem-box-n">Semana 13</span>
+      <h3>Tecnología y cirugía estética</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">No todo lo que ves en redes es cirugía</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Un dato que vale la pena conocer:
+
+Muchos de los "resultados" que ves en redes sociales son una combinación de:
+
+📸 Iluminación estratégica.
+📱 Filtros y edición de imagen.
+⏰ Fotos en el momento más favorable del proceso.
+👗 Ropa seleccionada para realzar el resultado.
+
+Esto no significa que los resultados reales no sean buenos — significa que las comparaciones directas con lo que ves en pantalla no son justas.
+
+La consulta presencial, con resultados reales de pacientes reales, es la referencia válida.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Un dato que vale la pena conocer:
+
+Muchos de los "resultados" que ves en redes sociales son una combinación de:
+
+📸 Iluminación estratégica.
+📱 Filtros y edición de imagen.
+⏰ Fotos en el momento más favorable del proceso.
+👗 Ropa seleccionada para realzar el resultado.
+
+Esto no significa que los resultados reales no sean buenos — significa que las comparaciones directas con lo que ves en pantalla no son justas.
+
+La consulta presencial, con resultados reales de pacientes reales, es la referencia válida.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Cómo uso la tecnología en mi práctica</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`La tecnología ha cambiado la cirugía estética — para bien.
+
+Algunas herramientas que uso en mi práctica:
+
+→ Simulación digital: permite proyectar resultados aproximados antes del procedimiento.
+→ Fotografía estandarizada: para documentar y comparar con objetividad.
+→ Materiales de nueva generación: implantes y suturas que minimizan riesgos.
+
+Pero hay algo que la tecnología no reemplaza: el criterio clínico, la experiencia y la comunicación con el paciente.
+
+La herramienta sirve al cirujano. No al revés.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">La tecnología ha cambiado la cirugía estética — para bien.
+
+Algunas herramientas que uso en mi práctica:
+
+→ Simulación digital: permite proyectar resultados aproximados antes del procedimiento.
+→ Fotografía estandarizada: para documentar y comparar con objetividad.
+→ Materiales de nueva generación: implantes y suturas que minimizan riesgos.
+
+Pero hay algo que la tecnología no reemplaza: el criterio clínico, la experiencia y la comunicación con el paciente.
+
+La herramienta sirve al cirujano. No al revés.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Dato</span><strong class="pub-titulo">El futuro de la estética: mínimamente invasivo</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Tendencia que vale la pena conocer:
+
+El futuro de la estética apunta cada vez más a lo mínimamente invasivo.
+
+Procedimientos con menor tiempo de recuperación, resultados más naturales y riesgos reducidos están ganando terreno.
+
+Esto no significa que la cirugía vaya a desaparecer — hay casos en que solo la cirugía da el resultado correcto.
+
+Significa que cada vez hay más opciones, y que la consulta con un especialista es más importante que nunca para saber cuál es la adecuada para ti.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Tendencia que vale la pena conocer:
+
+El futuro de la estética apunta cada vez más a lo mínimamente invasivo.
+
+Procedimientos con menor tiempo de recuperación, resultados más naturales y riesgos reducidos están ganando terreno.
+
+Esto no significa que la cirugía vaya a desaparecer — hay casos en que solo la cirugía da el resultado correcto.
+
+Significa que cada vez hay más opciones, y que la consulta con un especialista es más importante que nunca para saber cuál es la adecuada para ti.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m14" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#0E4D87dd,#0E4D8799)">
+      <span class="sem-box-n">Semana 14</span>
+      <h3>Autoestima y cirugía</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Cuándo sí y cuándo no es el momento</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`La cirugía estética puede ser una excelente decisión — o una mala, dependiendo del momento.
+
+Momentos donde recomiendo esperar:
+
+✗ Justo después de una pérdida o evento emocionalmente difícil.
+✗ Cuando la motivación principal es "recuperar a alguien" o "verse como otra persona".
+✗ Cuando el peso no está estable (especialmente para abdominoplastia o liposucción).
+
+Momentos donde la decisión suele ser sólida:
+
+✔ Llevas tiempo con la misma inquietud — no es un impulso.
+✔ La motivación viene de ti, no de presión externa.
+✔ Tu salud general está en buen estado.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">La cirugía estética puede ser una excelente decisión — o una mala, dependiendo del momento.
+
+Momentos donde recomiendo esperar:
+
+✗ Justo después de una pérdida o evento emocionalmente difícil.
+✗ Cuando la motivación principal es "recuperar a alguien" o "verse como otra persona".
+✗ Cuando el peso no está estable (especialmente para abdominoplastia o liposucción).
+
+Momentos donde la decisión suele ser sólida:
+
+✔ Llevas tiempo con la misma inquietud — no es un impulso.
+✔ La motivación viene de ti, no de presión externa.
+✔ Tu salud general está en buen estado.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Lo que no es mi trabajo</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Hay algo que dejo claro desde la primera consulta:
+
+Mi trabajo no es hacerte feliz.
+
+Mi trabajo es realizarte un procedimiento seguro, con resultados naturales, alineados con lo que tu cuerpo permite y lo que tú buscas.
+
+La felicidad no viene de ningún bisturí.
+
+Viene de un paciente que tomó la decisión correcta, en el momento correcto, por las razones correctas — y que llegó a la consulta listo para eso.
+
+Mi papel es cuidar que todo eso esté alineado.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Hay algo que dejo claro desde la primera consulta:
+
+Mi trabajo no es hacerte feliz.
+
+Mi trabajo es realizarte un procedimiento seguro, con resultados naturales, alineados con lo que tu cuerpo permite y lo que tú buscas.
+
+La felicidad no viene de ningún bisturí.
+
+Viene de un paciente que tomó la decisión correcta, en el momento correcto, por las razones correctas — y que llegó a la consulta listo para eso.
+
+Mi papel es cuidar que todo eso esté alineado.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">El espejo y la mente</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Para el viernes:
+
+Lo que ves en el espejo no siempre es lo que los demás ven.
+
+Eso no es una crítica — es biología. El cerebro procesa su propia imagen de forma distinta a como procesa la de los demás.
+
+Por eso la expectativa realista es tan importante antes de una cirugía. Y por eso un buen cirujano también escucha lo que el paciente siente — no solo lo que quiere cambiar.
+
+Verse bien empieza por entenderse bien.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Para el viernes:
+
+Lo que ves en el espejo no siempre es lo que los demás ven.
+
+Eso no es una crítica — es biología. El cerebro procesa su propia imagen de forma distinta a como procesa la de los demás.
+
+Por eso la expectativa realista es tan importante antes de una cirugía. Y por eso un buen cirujano también escucha lo que el paciente siente — no solo lo que quiere cambiar.
+
+Verse bien empieza por entenderse bien.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m15" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#6B3FA0dd,#6B3FA099)">
+      <span class="sem-box-n">Semana 15</span>
+      <h3>Procedimientos sin cirugía</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Toxina botulínica: más allá de las arrugas</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`La toxina botulínica (Botox) es uno de los procedimientos más realizados en el mundo — y uno de los más malentendidos.
+
+Algunas cosas que quizás no sabías:
+
+→ No solo sirve para arrugas. También trata hiperhidrosis (sudoración excesiva), migrañas y bruxismo.
+→ Aplicada correctamente, el resultado es natural. No congela la expresión.
+→ Dura aproximadamente 4-6 meses. No es permanente.
+→ Requiere ser aplicada por médico especialista — no en un salón de belleza.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">La toxina botulínica (Botox) es uno de los procedimientos más realizados en el mundo — y uno de los más malentendidos.
+
+Algunas cosas que quizás no sabías:
+
+→ No solo sirve para arrugas. También trata hiperhidrosis (sudoración excesiva), migrañas y bruxismo.
+→ Aplicada correctamente, el resultado es natural. No congela la expresión.
+→ Dura aproximadamente 4-6 meses. No es permanente.
+→ Requiere ser aplicada por médico especialista — no en un salón de belleza.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Cirugía vs procedimientos no invasivos</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Una pregunta que me hacen mucho:
+
+"Doctor, ¿qué me conviene más: cirugía o algo no invasivo?"
+
+Mi respuesta honesta: depende completamente de tu caso.
+
+Hay situaciones donde un relleno o toxina da exactamente lo que se busca. Otras donde solo la cirugía puede lograrlo.
+
+Ninguna opción es superior a la otra en abstracto. La superior es la que está indicada para ti.
+
+Por eso la consulta existe: para no asumir, sino evaluar.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Una pregunta que me hacen mucho:
+
+"Doctor, ¿qué me conviene más: cirugía o algo no invasivo?"
+
+Mi respuesta honesta: depende completamente de tu caso.
+
+Hay situaciones donde un relleno o toxina da exactamente lo que se busca. Otras donde solo la cirugía puede lograrlo.
+
+Ninguna opción es superior a la otra en abstracto. La superior es la que está indicada para ti.
+
+Por eso la consulta existe: para no asumir, sino evaluar.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Dato</span><strong class="pub-titulo">Ácido hialurónico: qué es y qué no es</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Dato del viernes:
+
+El ácido hialurónico es uno de los ingredientes más populares en estética — y también uno de los más sobrevendidos.
+
+Qué sí es:
+✔ Una sustancia que ocurre naturalmente en el cuerpo.
+✔ Un relleno efectivo para volumen y contorno cuando lo aplica un especialista.
+✔ Reversible en caso de necesitarlo.
+
+Qué no es:
+✗ Un tratamiento permanente.
+✗ Igual de efectivo en cremas que en inyección.
+✗ Adecuado para todo perfil o toda zona.
+
+Información = decisiones inteligentes.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Dato del viernes:
+
+El ácido hialurónico es uno de los ingredientes más populares en estética — y también uno de los más sobrevendidos.
+
+Qué sí es:
+✔ Una sustancia que ocurre naturalmente en el cuerpo.
+✔ Un relleno efectivo para volumen y contorno cuando lo aplica un especialista.
+✔ Reversible en caso de necesitarlo.
+
+Qué no es:
+✗ Un tratamiento permanente.
+✗ Igual de efectivo en cremas que en inyección.
+✗ Adecuado para todo perfil o toda zona.
+
+Información = decisiones inteligentes.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m16" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#C8A04Fdd,#C8A04F99)">
+      <span class="sem-box-n">Semana 16</span>
+      <h3>El valor de la consulta</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Para aprovechar al máximo tu consulta</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Una consulta bien aprovechada vale más que mil búsquedas en internet.
+
+Para sacarle el mayor provecho a la tuya:
+
+📸 Lleva fotos tuyas de frente, perfil y tres cuartos — con buena luz, sin filtros.
+📝 Anota las preguntas que tengas, por simples que parezcan.
+🗂 Lleva estudios de laboratorio recientes si los tienes.
+💊 Informa sobre todos los medicamentos o suplementos que tomas.
+🎯 Ten claro qué te molesta — y qué resultado imaginas.
+
+Entre más información traes, mejor puede planear tu cirujano.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Una consulta bien aprovechada vale más que mil búsquedas en internet.
+
+Para sacarle el mayor provecho a la tuya:
+
+📸 Lleva fotos tuyas de frente, perfil y tres cuartos — con buena luz, sin filtros.
+📝 Anota las preguntas que tengas, por simples que parezcan.
+🗂 Lleva estudios de laboratorio recientes si los tienes.
+💊 Informa sobre todos los medicamentos o suplementos que tomas.
+🎯 Ten claro qué te molesta — y qué resultado imaginas.
+
+Entre más información traes, mejor puede planear tu cirujano.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Lo que busco en una primera consulta</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`En una primera consulta con un paciente nuevo, lo que más me importa no es la parte técnica.
+
+Es entender por qué están ahí.
+
+¿Qué los trajo hasta esta consulta? ¿Cuánto tiempo llevan pensándolo? ¿Qué esperan que cambie en su vida?
+
+Esas respuestas me dicen más sobre el procedimiento correcto que cualquier análisis físico.
+
+Una buena cirugía empieza por una buena conversación.
+
+¿Tienen pendiente agendar la suya? Estamos a un mensaje de distancia 🤍
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">En una primera consulta con un paciente nuevo, lo que más me importa no es la parte técnica.
+
+Es entender por qué están ahí.
+
+¿Qué los trajo hasta esta consulta? ¿Cuánto tiempo llevan pensándolo? ¿Qué esperan que cambie en su vida?
+
+Esas respuestas me dicen más sobre el procedimiento correcto que cualquier análisis físico.
+
+Una buena cirugía empieza por una buena conversación.
+
+¿Tienen pendiente agendar la suya? Estamos a un mensaje de distancia 🤍
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">La información es el primer procedimiento</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Para el viernes:
+
+Antes de cualquier procedimiento, hay uno que siempre recomiendo:
+
+Informarte.
+
+Leer, preguntar, entender qué implica lo que estás considerando. No para asustarte — sino para llegar a la consulta como un paciente que participa activamente en su proceso.
+
+Las personas más satisfechas con sus resultados son siempre las que llegaron más preparadas.
+
+Ese es el propósito de este grupo.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Para el viernes:
+
+Antes de cualquier procedimiento, hay uno que siempre recomiendo:
+
+Informarte.
+
+Leer, preguntar, entender qué implica lo que estás considerando. No para asustarte — sino para llegar a la consulta como un paciente que participa activamente en su proceso.
+
+Las personas más satisfechas con sus resultados son siempre las que llegaron más preparadas.
+
+Ese es el propósito de este grupo.
+
+Feliz fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m17" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#2A9D8Fdd,#2A9D8F99)">
+      <span class="sem-box-n">Semana 17</span>
+      <h3>Cuidados a largo plazo</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Cómo mantener tu resultado a largo plazo</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`La cirugía estética no detiene el tiempo. Pero sí puede hacer que el tiempo sea muy amable contigo — si sabes cuidar el resultado.
+
+Hábitos que preservan tu inversión:
+
+☀️ Protector solar todos los días — el sol envejece más que cualquier otra cosa.
+💧 Hidratación constante — por dentro y por fuera.
+⚖️ Peso estable — cambios bruscos afectan contornos y piel.
+🚭 Evitar el tabaco — acelera el envejecimiento cutáneo significativamente.
+😴 Dormir bien — es cuando el cuerpo se repara.
+
+El resultado de tu cirugía dura tanto como lo cuides.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">La cirugía estética no detiene el tiempo. Pero sí puede hacer que el tiempo sea muy amable contigo — si sabes cuidar el resultado.
+
+Hábitos que preservan tu inversión:
+
+☀️ Protector solar todos los días — el sol envejece más que cualquier otra cosa.
+💧 Hidratación constante — por dentro y por fuera.
+⚖️ Peso estable — cambios bruscos afectan contornos y piel.
+🚭 Evitar el tabaco — acelera el envejecimiento cutáneo significativamente.
+😴 Dormir bien — es cuando el cuerpo se repara.
+
+El resultado de tu cirugía dura tanto como lo cuides.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Los controles anuales que recomiendo</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Algo que siempre le digo a mis pacientes al terminar su recuperación:
+
+"Esto no es un adiós. Es un hasta luego."
+
+Los controles anuales no son para corregir. Son para:
+
+→ Documentar cómo evoluciona el resultado con el tiempo.
+→ Detectar cualquier cambio temprano.
+→ Planear el siguiente paso si en algún momento se desea.
+→ Mantener la comunicación abierta.
+
+Una relación a largo plazo con tu cirujano es parte del protocolo de cuidado.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Algo que siempre le digo a mis pacientes al terminar su recuperación:
+
+"Esto no es un adiós. Es un hasta luego."
+
+Los controles anuales no son para corregir. Son para:
+
+→ Documentar cómo evoluciona el resultado con el tiempo.
+→ Detectar cualquier cambio temprano.
+→ Planear el siguiente paso si en algún momento se desea.
+→ Mantener la comunicación abierta.
+
+Una relación a largo plazo con tu cirujano es parte del protocolo de cuidado.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Dato</span><strong class="pub-titulo">Ejercicio y cirugía: cuándo retomarlo</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Dato del viernes:
+
+Una de las preguntas más frecuentes en el post-operatorio:
+
+"¿Cuándo puedo volver al gimnasio?"
+
+Como guía general:
+
+→ Semana 1-2: solo caminar suave.
+→ Mes 1: actividad ligera, sin impacto ni esfuerzo abdominal.
+→ Mes 2-3: retorno gradual según indicación médica.
+→ Mes 3+: actividad normal en la mayoría de los casos.
+
+Siempre con autorización del cirujano. Cada caso es diferente.
+
+El ejercicio preserva el resultado a largo plazo. Pero primero, déjate recuperar.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Dato del viernes:
+
+Una de las preguntas más frecuentes en el post-operatorio:
+
+"¿Cuándo puedo volver al gimnasio?"
+
+Como guía general:
+
+→ Semana 1-2: solo caminar suave.
+→ Mes 1: actividad ligera, sin impacto ni esfuerzo abdominal.
+→ Mes 2-3: retorno gradual según indicación médica.
+→ Mes 3+: actividad normal en la mayoría de los casos.
+
+Siempre con autorización del cirujano. Cada caso es diferente.
+
+El ejercicio preserva el resultado a largo plazo. Pero primero, déjate recuperar.
+
+Buen fin de semana 🤍
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m18" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#0E4D87dd,#0E4D8799)">
+      <span class="sem-box-n">Semana 18</span>
+      <h3>Testimonios y comunidad</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Cómo evaluar un testimonio antes de tomar una decisión</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Los testimonios ayudan — si sabes leerlos.
+
+Algunas claves para evaluar un testimonio de cirugía estética con criterio:
+
+✔ ¿Es un paciente real o es publicidad pagada?
+✔ ¿Muestra el proceso completo — incluyendo la recuperación?
+✔ ¿Las fotos tienen condiciones similares (misma luz, mismo ángulo)?
+✔ ¿El resultado se ve natural para ese cuerpo o parece "de otra persona"?
+
+Los mejores testimonios no son los más espectaculares. Son los más honestos.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Los testimonios ayudan — si sabes leerlos.
+
+Algunas claves para evaluar un testimonio de cirugía estética con criterio:
+
+✔ ¿Es un paciente real o es publicidad pagada?
+✔ ¿Muestra el proceso completo — incluyendo la recuperación?
+✔ ¿Las fotos tienen condiciones similares (misma luz, mismo ángulo)?
+✔ ¿El resultado se ve natural para ese cuerpo o parece "de otra persona"?
+
+Los mejores testimonios no son los más espectaculares. Son los más honestos.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Lo que más me llena de este trabajo</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`¿Saben qué es lo que más me llena de esta especialidad?
+
+No es el momento de la cirugía.
+
+Es el mensaje que llega meses después.
+
+El de la paciente que dice que por fin compra ropa sin pensar en esconder algo. El del paciente que dice que se siente más seguro en su trabajo. El de la persona que simplemente escribe: "me gusta lo que veo".
+
+Esos mensajes son el resultado real de lo que hacemos aquí.
+
+Gracias a todos los que han confiado en nosotros 🤍
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">¿Saben qué es lo que más me llena de esta especialidad?
+
+No es el momento de la cirugía.
+
+Es el mensaje que llega meses después.
+
+El de la paciente que dice que por fin compra ropa sin pensar en esconder algo. El del paciente que dice que se siente más seguro en su trabajo. El de la persona que simplemente escribe: "me gusta lo que veo".
+
+Esos mensajes son el resultado real de lo que hacemos aquí.
+
+Gracias a todos los que han confiado en nosotros 🤍
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">Una comunidad que se cuida</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Para el viernes:
+
+Este grupo nació para ser un espacio diferente.
+
+No un canal de ventas. No un tablero de publicidad.
+
+Un lugar donde personas que comparten el interés por el cuidado personal encuentren información de calidad, criterio médico y la tranquilidad de saber que hay un profesional al otro lado.
+
+700 personas eligieron estar aquí. Eso no se toma a la ligera.
+
+Gracias por su presencia y su confianza 🤍
+
+Feliz fin de semana.
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Para el viernes:
+
+Este grupo nació para ser un espacio diferente.
+
+No un canal de ventas. No un tablero de publicidad.
+
+Un lugar donde personas que comparten el interés por el cuidado personal encuentren información de calidad, criterio médico y la tranquilidad de saber que hay un profesional al otro lado.
+
+700 personas eligieron estar aquí. Eso no se toma a la ligera.
+
+Gracias por su presencia y su confianza 🤍
+
+Feliz fin de semana.
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m19" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#6B3FA0dd,#6B3FA099)">
+      <span class="sem-box-n">Semana 19</span>
+      <h3>Otoño / temporada de cambios</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">Por qué el otoño es buena temporada para operar</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Un dato que muchos no consideran:
+
+El otoño e invierno son temporadas ideales para muchos procedimientos estéticos.
+
+¿Por qué?
+
+☀️ Menos exposición solar — las cicatrices y la piel post-operatoria agradecen el sol reducido.
+🧥 Más fácil ocultar prendas de compresión bajo ropa de temporada.
+🏖️ Para verano, ya estarás lista. Los resultados necesitan meses para asentarse.
+
+Si tienes en mente un procedimiento para el siguiente año, ahora es buen momento para consultar y planear.
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Un dato que muchos no consideran:
+
+El otoño e invierno son temporadas ideales para muchos procedimientos estéticos.
+
+¿Por qué?
+
+☀️ Menos exposición solar — las cicatrices y la piel post-operatoria agradecen el sol reducido.
+🧥 Más fácil ocultar prendas de compresión bajo ropa de temporada.
+🏖️ Para verano, ya estarás lista. Los resultados necesitan meses para asentarse.
+
+Si tienes en mente un procedimiento para el siguiente año, ahora es buen momento para consultar y planear.
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Planear con tiempo: la diferencia</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Algo que marco siempre con mis pacientes:
+
+La cirugía no se agenda para mañana.
+
+Un proceso bien planificado incluye:
+
+→ Una o dos consultas previas para despejar dudas.
+→ Estudios de laboratorio y valoración médica.
+→ Tiempo para preparar el cuerpo (nutrición, hábitos).
+→ Agendar la cirugía con margen real para la recuperación.
+
+Eso toma semanas — o meses.
+
+La buena noticia: los que planean con tiempo llegan en mejores condiciones y salen con mejores resultados.
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Algo que marco siempre con mis pacientes:
+
+La cirugía no se agenda para mañana.
+
+Un proceso bien planificado incluye:
+
+→ Una o dos consultas previas para despejar dudas.
+→ Estudios de laboratorio y valoración médica.
+→ Tiempo para preparar el cuerpo (nutrición, hábitos).
+→ Agendar la cirugía con margen real para la recuperación.
+
+Eso toma semanas — o meses.
+
+La buena noticia: los que planean con tiempo llegan en mejores condiciones y salen con mejores resultados.
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Reflexión</span><strong class="pub-titulo">La versión de ti que quieres ver en el espejo</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Para el viernes:
+
+Cada cambio de temporada es una invitación a preguntarse:
+
+¿Cómo quiero llegar al siguiente?
+
+No desde la ansiedad. Desde la intención.
+
+Si hay algo que llevas tiempo considerando — un procedimiento, una consulta, un primer paso — quizás este sea el momento de darle forma.
+
+Aquí estamos cuando estés listo 🤍
+
+Feliz fin de semana.
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Para el viernes:
+
+Cada cambio de temporada es una invitación a preguntarse:
+
+¿Cómo quiero llegar al siguiente?
+
+No desde la ansiedad. Desde la intención.
+
+Si hay algo que llevas tiempo considerando — un procedimiento, una consulta, un primer paso — quizás este sea el momento de darle forma.
+
+Aquí estamos cuando estés listo 🤍
+
+Feliz fin de semana.
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sem-overlay" id="m20" onclick="closeSem(event)">
+  <div class="sem-box" onclick="event.stopPropagation()">
+    <button class="sem-close" onclick="closeSem()">✕</button>
+    <div class="sem-box-top" style="background:linear-gradient(135deg,#C8A04Fdd,#C8A04F99)">
+      <span class="sem-box-n">Semana 20</span>
+      <h3>Cierre: gratitud y continuidad</h3>
+      <span class="sem-box-sub">3 publicaciones · Lun · Mié · Vie</span>
+    </div>
+    <div class="sem-box-body">
+      <div class="pub-cards">
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">💡</span>
+            <div><span class="pub-dia">Lunes · Tip</span><strong class="pub-titulo">20 semanas de contenido: lo más importante</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`En estas semanas hemos hablado de mucho.
+
+Si pudiera resumirlo en cinco puntos:
+
+① Infórmate antes de decidir.
+② Elige a tu cirujano con criterio, no con precio.
+③ La preparación pre-operatoria es tan importante como la cirugía.
+④ La recuperación es parte del resultado — no la espera.
+⑤ El mejor resultado es el que se ve natural en ti.
+
+Eso es todo lo que necesitas saber para tomar una buena decisión.
+
+Gracias por acompañarnos en este recorrido 🤍
+
+— Dr. Luciano · Monte Sinaí`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">En estas semanas hemos hablado de mucho.
+
+Si pudiera resumirlo en cinco puntos:
+
+① Infórmate antes de decidir.
+② Elige a tu cirujano con criterio, no con precio.
+③ La preparación pre-operatoria es tan importante como la cirugía.
+④ La recuperación es parte del resultado — no la espera.
+⑤ El mejor resultado es el que se ve natural en ti.
+
+Eso es todo lo que necesitas saber para tomar una buena decisión.
+
+Gracias por acompañarnos en este recorrido 🤍
+
+— Dr. Luciano · Monte Sinaí</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">👨‍⚕️</span>
+            <div><span class="pub-dia">Miércoles · Dr. Luciano</span><strong class="pub-titulo">Gracias por estar aquí</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`Quiero tomarme un momento para agradecer.
+
+Agradecer a cada persona que eligió estar en este espacio. Que leyó, que preguntó, que compartió su proceso.
+
+Crear este grupo tuvo un propósito claro desde el inicio: que nadie llegue a una consulta sin información. Que nadie tome una decisión desde la desinformación.
+
+Si en algún momento este contenido les ayudó a aclarar una duda, sentir más confianza o simplemente sentir que había un profesional cercano — el objetivo se cumplió.
+
+Seguiremos aquí. Con el mismo compromiso.
+
+Gracias 🤍
+
+— Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">Quiero tomarme un momento para agradecer.
+
+Agradecer a cada persona que eligió estar en este espacio. Que leyó, que preguntó, que compartió su proceso.
+
+Crear este grupo tuvo un propósito claro desde el inicio: que nadie llegue a una consulta sin información. Que nadie tome una decisión desde la desinformación.
+
+Si en algún momento este contenido les ayudó a aclarar una duda, sentir más confianza o simplemente sentir que había un profesional cercano — el objetivo se cumplió.
+
+Seguiremos aquí. Con el mismo compromiso.
+
+Gracias 🤍
+
+— Dr. Luciano</pre>
+        </div>
+        <div class="pub-card">
+          <div class="pub-card-head">
+            <span class="pub-ico">✨</span>
+            <div><span class="pub-dia">Viernes · Cierre</span><strong class="pub-titulo">El camino sigue</strong></div>
+            <button class="pub-copy" onclick="copiar(this,`✨ Para cerrar este ciclo:
+
+"El cuidado no tiene fecha de vencimiento."
+
+Este grupo seguirá siendo un espacio activo — con nuevo contenido, nuevas preguntas respondidas y la misma filosofía de siempre: información de calidad, sin presión, con elegancia.
+
+Si tienes una consulta pendiente, una duda que no has atrevido a preguntar, o simplemente quieres saber más — aquí estamos.
+
+Gracias por 20 semanas de comunidad 🤍
+
+Hasta la próxima.
+
+— Monte Sinaí · Dr. Luciano`)" title="Copiar">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copiar
+            </button>
+          </div>
+          <pre class="pub-texto">✨ Para cerrar este ciclo:
+
+"El cuidado no tiene fecha de vencimiento."
+
+Este grupo seguirá siendo un espacio activo — con nuevo contenido, nuevas preguntas respondidas y la misma filosofía de siempre: información de calidad, sin presión, con elegancia.
+
+Si tienes una consulta pendiente, una duda que no has atrevido a preguntar, o simplemente quieres saber más — aquí estamos.
+
+Gracias por 20 semanas de comunidad 🤍
+
+Hasta la próxima.
+
+— Monte Sinaí · Dr. Luciano</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Publicación copiada</div>
+
+<!-- FOOTER -->
+<footer class="foot">
+  Plan creado para el grupo <strong style="color:rgba(255,255,255,.7)">Promociones Dr. Luciano</strong> · Monte Sinaí<br>
+  Revisión recomendada mensual · <a href="aviso-privacidad.html">Aviso de privacidad</a>
+</footer>
+
+<script>
+function openSem(id){
+  var m=document.getElementById(id);
+  if(m){m.classList.add('show');document.body.classList.add('modal-open');}
+}
+function closeSem(e){
+  if(e&&e.currentTarget&&e.target!==e.currentTarget)return;
+  document.querySelectorAll('.sem-overlay.show').forEach(function(m){m.classList.remove('show');});
+  document.body.classList.remove('modal-open');
+}
+function copiar(btn,txt){
+  navigator.clipboard.writeText(txt).then(function(){
+    btn.classList.add('copiado');
+    btn.innerHTML='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> ¡Copiado!';
+    mostrarToast();
+    setTimeout(function(){
+      btn.classList.remove('copiado');
+      btn.innerHTML='<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar';
+    },2200);
+  }).catch(function(){
+    var ta=document.createElement('textarea');
+    ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.classList.add('copiado');
+    mostrarToast();
+    setTimeout(function(){btn.classList.remove('copiado');},2200);
+  });
+}
+function mostrarToast(){
+  var t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},2000);
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSem();});
+</script>
+</body>
+</html>
