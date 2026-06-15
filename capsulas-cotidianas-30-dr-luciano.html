@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cápsulas Cotidianas · Dr. Luciano · Hábitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0D3B66;
+  --deep: #071E35;
+  --mid: #0E4D87;
+  --teal: #2A9D8F;
+  --teal-l: #3BBFB0;
+  --gold: #C8A04F;
+  --bg: #F0F7FB;
+  --base: #fff;
+  --border: #D8E8F2;
+  --text: #0A1520;
+  --mid-txt: #2E4257;
+  --soft: #5E7A8E;
+  --out: cubic-bezier(.16, 1, .3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--mid-txt);
+  background: var(--deep);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -10%;
+  right: -15%;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, rgba(42, 157, 143, .2), transparent 65%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: aura 9s ease-in-out infinite;
+}
+
+@keyframes aura {
+  0%, 100% { opacity: .7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--teal-l);
+  background: rgba(59, 191, 176, .12);
+  border: 1px solid rgba(59, 191, 176, .3);
+  padding: 8px 16px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+  animation: slideUp .6s var(--out);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal-l);
+  animation: ring 1.8s ease-out infinite;
+}
+
+@keyframes ring {
+  0% { box-shadow: 0 0 0 0 rgba(59, 191, 176, .6); }
+  100% { box-shadow: 0 0 0 9px rgba(59, 191, 176, 0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 500;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  animation: slideUp .6s var(--out) .1s both;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--teal-l);
+}
+
+.subtitle {
+  font-size: .95rem;
+  color: rgba(255, 255, 255, .7);
+  max-width: 540px;
+  margin: 0 auto;
+  animation: slideUp .6s var(--out) .2s both;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 13px;
+  margin-bottom: 40px;
+}
+
+.capsule {
+  background: var(--base);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  transition: all .3s var(--out);
+  animation: slideUp .6s var(--out) both;
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+.capsule::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.capsule:hover::before {
+  opacity: 1;
+}
+
+.capsule:nth-child(n) { animation-delay: calc(.3s + var(--index) * 0.02s); }
+
+.capsule:hover {
+  box-shadow: 0 12px 32px rgba(13, 59, 102, .15);
+  transform: translateY(-3px);
+  border-color: var(--teal);
+}
+
+.cap-number {
+  display: inline-block;
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(42, 157, 143, .1);
+  padding: 4px 9px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+
+.cap-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+  line-height: 1.3;
+  flex-grow: 1;
+}
+
+.cap-content {
+  font-size: .88rem;
+  color: var(--mid-txt);
+  line-height: 1.75;
+  white-space: pre-wrap;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.cap-validity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .74rem;
+  font-weight: 600;
+  color: var(--teal);
+  background: rgba(42, 157, 143, .08);
+  padding: 5px 8px;
+  border-radius: 8px;
+  width: fit-content;
+  margin-top: auto;
+}
+
+.validity-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+.footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 24px 20px;
+  font-size: .75rem;
+  color: rgba(255, 255, 255, .35);
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .capsule {
+    padding: 16px;
+    min-height: auto;
+  }
+  
+  .cap-title {
+    font-size: .98rem;
+  }
+  
+  .cap-content {
+    font-size: .85rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="header">
+    <div class="badge"><span class="dot"></span>30 Cápsulas Cotidianas</div>
+    <h1>Lo que haces <em>hoy</em> importa</h1>
+    <p class="subtitle">Hábitos diarios que definen tu estética. Lo que ves en el espejo es resultado de decisiones que tomas cada día.</p>
+  </header>
+
+  <div class="grid">
+    
+    <!-- 1 -->
+    <div class="capsule">
+      <span class="cap-number">01</span>
+      <h3 class="cap-title">Protector solar: no es opcional</h3>
+      <div class="cap-content">Muchas piensan que es solo para playa. El daño solar es acumulativo, diario.
+
+SPF 30 mínimo, todos los días. Reaplicar cada tres horas. Es la mejor prevención contra envejecimiento.
+
+Aquí vemos que las que lo hacen llegan a los cuarenta sin manchas.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 2 -->
+    <div class="capsule">
+      <span class="cap-number">02</span>
+      <h3 class="cap-title">Limpieza de piel: mañana y noche</h3>
+      <div class="cap-content">No es lujo. Es base. Agua micelar o limpiador suave. Quita maquillaje, polución, impurezas.
+
+Si no limpias, todo lo demás que apliques no funciona.
+
+Es frecuente que pregunten cuál usar. Cualquier limpiador suave está bien. Lo importante es constancia.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 3 -->
+    <div class="capsule">
+      <span class="cap-number">03</span>
+      <h3 class="cap-title">Posición al dormir: afecta tu rostro</h3>
+      <div class="cap-content">Dormir boca abajo o de lado presiona mejillas, mandíbula, causa arrugas.
+
+Dormir boca arriba es lo correcto. Mantiene circulación, no aplasta piel.
+
+Muchas dicen "es incómodo al principio". Pero después de una semana es natural.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 4 -->
+    <div class="capsule">
+      <span class="cap-number">04</span>
+      <h3 class="cap-title">Hidratación: dos litros diarios mínimo</h3>
+      <div class="cap-content">La piel es el reflejo de hidratación interna. Sin agua, se ve opaca, sin vida.
+
+Dos litros es el mínimo. En climas calientes, más.
+
+Es lo más simple. Y lo que más diferencia genera en semanas.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 5 -->
+    <div class="capsule">
+      <span class="cap-number">05</span>
+      <h3 class="cap-title">Fumar envejece una década</h3>
+      <div class="cap-content">Literalmente. Nicotina contrae vasos, reduce oxigenación. Piel se vuelve gris, arrugada.
+
+Una fumadora de treinta ve treinta. Una no fumadora ve treinta también.
+
+Es lo único que no puedo reparar con cirugía si no dejas primero.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 6 -->
+    <div class="capsule">
+      <span class="cap-number">06</span>
+      <h3 class="cap-title">Postura afecta mandíbula y papada</h3>
+      <div class="cap-content">Cuello hacia adelante crea papada falsa. Presiona mandíbula. Afecta todo.
+
+Mantén cabeza alineada con columna. Simétrica.
+
+Es habitual en celulares. Muchas dicen "no sabía que afectaba". Pero es directo.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 7 -->
+    <div class="capsule">
+      <span class="cap-number">07</span>
+      <h3 class="cap-title">Expresiones repetidas crean arrugas</h3>
+      <div class="cap-content">Fruncir entrecejo cada día. Guiñar. Sonreír exagerado.
+
+No significa no sonrías. Significa sé consciente. Relaja entre sonrisas.
+
+Es prevención. Las arrugas de expresión se marcan a los cuarenta. Pero empiezan a los veinticinco.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 8 -->
+    <div class="capsule">
+      <span class="cap-number">08</span>
+      <h3 class="cap-title">Estrés y cortisol destruyen piel</h3>
+      <div class="cap-content">Estrés alto produce acné, rosácea, envejecimiento acelerado.
+
+Meditación, ejercicio, dormir bien. Controla cortisol.
+
+Es frecuente que clientes después de bajar estrés ven cambios dramáticos en piel.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 9 -->
+    <div class="capsule">
+      <span class="cap-number">09</span>
+      <h3 class="cap-title">Masaje facial: cinco minutos diarios</h3>
+      <div class="cap-content">Estimula circulación. Oxigena piel. Drena toxinas. Reduce hinchazón.
+
+Con dedos, de abajo hacia arriba. Movimientos suaves.
+
+Es fácil. Y muchas dicen que lo ven en dos semanas.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 10 -->
+    <div class="capsule">
+      <span class="cap-number">10</span>
+      <h3 class="cap-title">Retinol: la vitamina más potente</h3>
+      <div class="cap-content">Aumenta renovación celular. Mejora textura, líneas, manchas.
+
+Empieza con concentración baja, dos veces por semana. Aumenta gradualmente.
+
+Es frecuente que pregunten si es fuerte. Sí. Pero si respetas protocolo, es seguro.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 11 -->
+    <div class="capsule">
+      <span class="cap-number">11</span>
+      <h3 class="cap-title">No toques tu cara constantemente</h3>
+      <div class="cap-content">Manos tienen bacterias. Cada toque traslada suciedad. Causa acné, irritación.
+
+Es hábito inconsciente. Pero es transformador detenerse.
+
+Muchas que lo hacen ven mejoría dramática en acné.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 12 -->
+    <div class="capsule">
+      <span class="cap-number">12</span>
+      <h3 class="cap-title">Funda de almohada: cambia cada tres días</h3>
+      <div class="cap-content">Acumula bacterias, sudor, suciedad. Va directo a tu cara.
+
+Funda limpia significa piel más clara, menos acné.
+
+Es simple. Y funciona. Muchas lo hacen y después no pueden dejar.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 13 -->
+    <div class="capsule">
+      <span class="cap-number">13</span>
+      <h3 class="cap-title">Ejercicio: mejora circulación y piel</h3>
+      <div class="cap-content">Treinta minutos diarios. Caminar, correr, yoga. Aumenta flujo sanguíneo.
+
+Piel se ve más radiante, tonificada. Celulitis mejora.
+
+Es frecuente que vean cambios en piel después de empezar rutina de ejercicio.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 14 -->
+    <div class="capsule">
+      <span class="cap-number">14</span>
+      <h3 class="cap-title">Alcohol deshidrata internamente</h3>
+      <div class="cap-content">Piel pierde elasticidad. Se ve apagada, envejecida.
+
+No es que no tomes. Es que entiendas el costo. Si bebes, hidrata después.
+
+Es frecuente notar diferencia en viajes donde se bebe poco.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 15 -->
+    <div class="capsule">
+      <span class="cap-number">15</span>
+      <h3 class="cap-title">Prevención anti-edad empieza a los veinte</h3>
+      <div class="cap-content">No esperes a los treinta. Empezar temprano es inversión.
+
+Protector solar, hidratante, retinol desde temprano previene daño futuro.
+
+Es frecuente que clientes de veinte digan "no necesito aún". Pero después de dos años ven diferencia con sus amigas.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 16 -->
+    <div class="capsule">
+      <span class="cap-number">16</span>
+      <h3 class="cap-title">Ojeras: son hereditarias pero controlables</h3>
+      <div class="cap-content">Dormir bien ayuda. Hidratación bajo los ojos. Microinyecciones de grasa para caso severo.
+
+Es frecuente pensar que son irremediables. No lo son.
+
+Muchas que las tenían mejoran dramáticamente con buenos hábitos.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 17 -->
+    <div class="capsule">
+      <span class="cap-number">17</span>
+      <h3 class="cap-title">Líneas de expresión: aceptarlas o tratarlas</h3>
+      <div class="cap-content">No son defectos. Son historia. Pero si te molestan, opciones hay.
+
+Botox preventivo, retinol, radiofrecuencia. Depende qué querés.
+
+Aquí vemos que decidir es lo importante. No lo que decide la sociedad.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 18 -->
+    <div class="capsule">
+      <span class="cap-number">18</span>
+      <h3 class="cap-title">Maquillaje: potencia, no tapa</h3>
+      <div class="cap-content">Maquillaje pesado tapa belleza natural. Maquillaje ligero potencia.
+
+Menos es más. Énfasis en ojos, labios. Piel respira.
+
+Es frecuente que pregunten si están cobrando factura. La verdad es que mejoran cuando usan menos.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 19 -->
+    <div class="capsule">
+      <span class="cap-number">19</span>
+      <h3 class="cap-title">Cabello cuida el rostro más de lo que crees</h3>
+      <div class="cap-content">Volumen en raíces abre rostro. Flequillo puede restar años. Color acertado ilumina.
+
+Es frecuente que hagan cambio en cabello y digan "me veo diez años más joven".
+
+La cara no cambió. Pero el marco sí.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 20 -->
+    <div class="capsule">
+      <span class="cap-number">20</span>
+      <h3 class="cap-title">Manos revelan edad: cuídalas igual que cara</h3>
+      <div class="cap-content">Arrugas, manchas, textura. Protector solar ahí también. Crema hidratante específica.
+
+Es área que muchas olvidan. Pero es la primera que la gente nota.
+
+Aquí ves que las manos cuidadas dan años más de juventud aparente.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 21 -->
+    <div class="capsule">
+      <span class="cap-number">21</span>
+      <h3 class="cap-title">Depilación: tipo correcto no daña</h3>
+      <div class="cap-content">Láser es mejor que cera constante. Cera estira piel, causa flacidez.
+
+Depilación láser es inversión. Piel se ve más firme, más lisa.
+
+Es frecuente que clientes cambien a láser y después no quieren otra cosa.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 22 -->
+    <div class="capsule">
+      <span class="cap-number">22</span>
+      <h3 class="cap-title">Color correcto realza, color equivocado envejece</h3>
+      <div class="cap-content">Ropa que contraste con tono de piel. Que complemente cabello. Que favorezca ojos.
+
+Es frecuente que pregunten sobre procedimientos cuando el cambio es ropa.
+
+Ropa correcta abre rostro. Sin dinero invertido.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 23 -->
+    <div class="capsule">
+      <span class="cap-number">23</span>
+      <h3 class="cap-title">Acné: no aprietes, nunca</h3>
+      <div class="cap-content">Comprimes, abres camino a infección, crean cicatrices.
+
+Limpio, secante, espera que madure. O ácido salicílico.
+
+Es hábito difícil. Pero es lo que diferencia cicatrices de simple acné.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 24 -->
+    <div class="capsule">
+      <span class="cap-number">24</span>
+      <h3 class="cap-title">Cicatrices pequeñas: mejoran con tiempo</h3>
+      <div class="cap-content">Primeros meses son rojas, visibles. Con tiempo aclaran, se desvanecen.
+
+Silicona, protección solar, masajes ayudan el proceso.
+
+Es frecuente que clientes piensen que son permanentes. No lo son.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 25 -->
+    <div class="capsule">
+      <span class="cap-number">25</span>
+      <h3 class="cap-title">Celulitis: prevención con ejercicio y agua</h3>
+      <div class="cap-content">Sedentarismo y deshidratación empeoran. Movimiento y agua mejoran circulación.
+
+Ejercicio de piernas, glúteos. Hidratación constante.
+
+Es frecuente pensar que es permanente. Pero muchas ven mejora dramática con cambio de hábitos.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 26 -->
+    <div class="capsule">
+      <span class="cap-number">26</span>
+      <h3 class="cap-title">Estrías: hidratación previene más de lo que crees</h3>
+      <div class="cap-content">Piel hidratada es piel elástica. Elástica se estira sin romperse.
+
+Crema diaria en muslos, glúteos, senos. Especialmente en cambios de peso.
+
+Es frecuente que piensen que son inevitables. Pero prevención funciona.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 27 -->
+    <div class="capsule">
+      <span class="cap-number">27</span>
+      <h3 class="cap-title">Busto: bra correcto previene flacidez</h3>
+      <div class="cap-content">Bra sin soporte estira ligamentos. Soporte correcto mantiene. Es preventivo.
+
+Invertir en bra de calidad es invertir en piel.
+
+Es frecuente que clientes digan "no sabía que afectaba tanto". Pero es directo.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 28 -->
+    <div class="capsule">
+      <span class="cap-number">28</span>
+      <h3 class="cap-title">Pies: cuidados generan confianza</h3>
+      <div class="cap-content">Pies cuidados dicen cuidado de sí misma. Pedicura regular, hidratación, taloneras.
+
+Es área que muchas olvidan. Pero primer impacto visual es manos y pies.
+
+Aquí ves que personas que cuidan pies se sienten más seguras.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 29 -->
+    <div class="capsule">
+      <span class="cap-number">29</span>
+      <h3 class="cap-title">Uñas: salud general se refleja ahí</h3>
+      <div class="cap-content">Uñas frágiles, pálidas, deshilachadas sugieren deficiencias. Revisa nutrición.
+
+Vitaminas, proteína, agua. Uñas mejoran cuando nutrición mejora.
+
+Es frecuente que clientes olviden este detalle. Pero es síntoma de algo más.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 30 -->
+    <div class="capsule">
+      <span class="cap-number">30</span>
+      <h3 class="cap-title">Confianza es el mejor cosmético</h3>
+      <div class="cap-content">Si te aceptas, brillas. Si te odias, no hay cirugía que te salve.
+
+El trabajo empieza internamente. Después, estética complementa.
+
+Es frecuente que clientes que cambian relación con su cuerpo ven más transformación que los que solo hacen procedimientos.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Fuerza comunitaria</span>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  30 Cápsulas Cotidianas · Dr. Luciano · Monte Sinaí · Cirugía Estética
+</footer>
+
+</body>
+</html>
