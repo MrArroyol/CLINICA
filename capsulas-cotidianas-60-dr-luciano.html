@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cápsulas Cotidianas +30 · Dr. Luciano · Nutrición y Hábitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0D3B66;
+  --deep: #071E35;
+  --mid: #0E4D87;
+  --teal: #2A9D8F;
+  --teal-l: #3BBFB0;
+  --gold: #C8A04F;
+  --bg: #F0F7FB;
+  --base: #fff;
+  --border: #D8E8F2;
+  --text: #0A1520;
+  --mid-txt: #2E4257;
+  --soft: #5E7A8E;
+  --out: cubic-bezier(.16, 1, .3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--mid-txt);
+  background: var(--deep);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -10%;
+  right: -15%;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, rgba(42, 157, 143, .2), transparent 65%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: aura 9s ease-in-out infinite;
+}
+
+@keyframes aura {
+  0%, 100% { opacity: .7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--teal-l);
+  background: rgba(59, 191, 176, .12);
+  border: 1px solid rgba(59, 191, 176, .3);
+  padding: 8px 16px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+  animation: slideUp .6s var(--out);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal-l);
+  animation: ring 1.8s ease-out infinite;
+}
+
+@keyframes ring {
+  0% { box-shadow: 0 0 0 0 rgba(59, 191, 176, .6); }
+  100% { box-shadow: 0 0 0 9px rgba(59, 191, 176, 0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 500;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  animation: slideUp .6s var(--out) .1s both;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--teal-l);
+}
+
+.subtitle {
+  font-size: .95rem;
+  color: rgba(255, 255, 255, .7);
+  max-width: 540px;
+  margin: 0 auto;
+  animation: slideUp .6s var(--out) .2s both;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 13px;
+  margin-bottom: 40px;
+}
+
+.capsule {
+  background: var(--base);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  transition: all .3s var(--out);
+  animation: slideUp .6s var(--out) both;
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+.capsule::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.capsule:hover::before {
+  opacity: 1;
+}
+
+.capsule:hover {
+  box-shadow: 0 12px 32px rgba(13, 59, 102, .15);
+  transform: translateY(-3px);
+  border-color: var(--teal);
+}
+
+.cap-number {
+  display: inline-block;
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(42, 157, 143, .1);
+  padding: 4px 9px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+
+.cap-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+  line-height: 1.3;
+  flex-grow: 1;
+}
+
+.cap-content {
+  font-size: .88rem;
+  color: var(--mid-txt);
+  line-height: 1.75;
+  white-space: pre-wrap;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.cap-validity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .74rem;
+  font-weight: 600;
+  color: var(--teal);
+  background: rgba(42, 157, 143, .08);
+  padding: 5px 8px;
+  border-radius: 8px;
+  width: fit-content;
+  margin-top: auto;
+}
+
+.validity-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+.footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 24px 20px;
+  font-size: .75rem;
+  color: rgba(255, 255, 255, .35);
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .capsule {
+    padding: 16px;
+    min-height: auto;
+  }
+  
+  .cap-title {
+    font-size: .98rem;
+  }
+  
+  .cap-content {
+    font-size: .85rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="header">
+    <div class="badge"><span class="dot"></span>30 Cápsulas Cotidianas +</div>
+    <h1>De adentro hacia <em>afuera</em></h1>
+    <p class="subtitle">Nutrición, hormonas, hábitos avanzados. Lo que no ves pero afecta todo lo que se ve.</p>
+  </header>
+
+  <div class="grid">
+    
+    <!-- 31 -->
+    <div class="capsule">
+      <span class="cap-number">31</span>
+      <h3 class="cap-title">Proteína: la base de piel firme</h3>
+      <div class="cap-content">Colágeno y elastina son proteína. Sin proteína en dieta, piel pierde firmeza.
+
+Mínimo 1.5 gramos por kilo de peso corporal diarios.
+
+Es frecuente que clientes que aumentan proteína ven cambio en textura y firmeza rápidamente.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 32 -->
+    <div class="capsule">
+      <span class="cap-number">32</span>
+      <h3 class="cap-title">Vitamina C: regenera y protege</h3>
+      <div class="cap-content">Oral o tópica. Aumenta colágeno. Protege de radiación. Aclara manchas.
+
+Suplemento o alimentos: cítricos, tomate, brócoli.
+
+Es frecuente que pregunten cuál es mejor. Ambas funcionan juntas.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 33 -->
+    <div class="capsule">
+      <span class="cap-number">33</span>
+      <h3 class="cap-title">Biotina: fortalece piel, cabello, uñas</h3>
+      <div class="cap-content">Vitamina B que repara queratina. Piel se ve más saludable.
+
+Huevos, almendras, salmón. O suplemento.
+
+Es frecuente que después de dos meses ven cabello más brillante, piel más clara.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 34 -->
+    <div class="capsule">
+      <span class="cap-number">34</span>
+      <h3 class="cap-title">Omega-3: antiinflamatorio desde adentro</h3>
+      <div class="cap-content">Peces grasos, semillas de lino, nueces. Reduce inflamación sistémica.
+
+Menos inflamación significa menos acné, rosácea, envejecimiento.
+
+Es frecuente que vean reducción en problemas de piel después de incorporar omega-3.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 35 -->
+    <div class="capsule">
+      <span class="cap-number">35</span>
+      <h3 class="cap-title">Zinc: esencial para cicatrización</h3>
+      <div class="cap-content">Deficiencia de zinc significa cicatrices peores, acné más severo.
+
+Carne roja, pollo, legumbres. O suplemento.
+
+Es frecuente que después de cirugía recomiende zinc extra para acelerar cicatrización.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 36 -->
+    <div class="capsule">
+      <span class="cap-number">36</span>
+      <h3 class="cap-title">Hierro: piel pálida significa deficiencia</h3>
+      <div class="cap-content">Anemia causa ojeras, palidez, falta de brillo.
+
+Hígado, carnes rojas, espinaca. Revisa niveles.
+
+Es frecuente que correcciones de hierro cambien color de piel dramáticamente.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 37 -->
+    <div class="capsule">
+      <span class="cap-number">37</span>
+      <h3 class="cap-title">Hormonas: afectan más de lo que crees</h3>
+      <div class="cap-content">Estrógeno mantiene hidratación y colágeno. Testosterone afecta producción de grasa. Cortisol envejece.
+
+Cambios hormonales = cambios en piel. Es físico, no psicológico.
+
+Es frecuente que ciclos menstruales afecten acné, hinchazón, brillo.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 38 -->
+    <div class="capsule">
+      <span class="cap-number">38</span>
+      <h3 class="cap-title">Menstruación: planifica procedimientos alrededor</h3>
+      <div class="cap-content">Antes de menstruación, inflamación y sensibilidad aumentan. Después, piel brilla más.
+
+Mejor cirugia es después de menstruación.
+
+Es frecuente que clientes que respetan esto ven menos hinchazón postoperatoria.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 39 -->
+    <div class="capsule">
+      <span class="cap-number">39</span>
+      <h3 class="cap-title">Menopausia: cambios reales en piel</h3>
+      <div class="cap-content">Caída de estrógeno causa pérdida de colágeno, sequedad, flacidez.
+
+Hormonas pueden ayudar. O intensificar cuidado externo.
+
+Es frecuente que edades 45-55 vean envejecimiento acelerado. Es hormonal, no natural.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 40 -->
+    <div class="capsule">
+      <span class="cap-number">40</span>
+      <h3 class="cap-title">Píldora anticonceptiva: afecta piel</h3>
+      <div class="cap-content">Algunas mejoran acné, otras lo empeoran. Depende de tipo y hormona.
+
+Si tu piel cambió después de empezar píldora, es la píldora. Prueba cambio.
+
+Es frecuente que cambiar píldora solucione acné que nada más resolvía.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 41 -->
+    <div class="capsule">
+      <span class="cap-number">41</span>
+      <h3 class="cap-title">Azúcar envejece por dentro y por fuera</h3>
+      <div class="cap-content">Glicosilación. Azúcar se adhiere a colágeno, lo endurece, lo daña.
+
+Es lo que causa envejecimiento acelerado. Más que sol a veces.
+
+Es frecuente que clientes que cortan azúcar ven cambio dramático en textura.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 42 -->
+    <div class="capsule">
+      <span class="cap-number">42</span>
+      <h3 class="cap-title">Inflamación crónica: es la raíz de todo</h3>
+      <div class="cap-content">Acné, rosácea, envejecimiento, flacidez. Todo viene de inflamación crónica.
+
+Dieta antiinflamatoria: menos procesados, más vegetales, omega-3.
+
+Es frecuente que vean cambio cuando abordan inflamación sistémica.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 43 -->
+    <div class="capsule">
+      <span class="cap-number">43</span>
+      <h3 class="cap-title">Alergias alimentarias: se ven en la piel</h3>
+      <div class="cap-content">Hinchazón, acné, enrojecimiento. Son síntomas de alergia o intolerancia.
+
+Común: lácteos, gluten, huevo. Prueba eliminar una semana.
+
+Es frecuente que encuentren alergias cuando buscan causa de acné.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 44 -->
+    <div class="capsule">
+      <span class="cap-number">44</span>
+      <h3 class="cap-title">Dormir temprano: 22hs es ideal</h3>
+      <div class="cap-content">Cortisol tiene ciclo. Sube de madrugada. Si duermes tarde, cortisol está elevado.
+
+Dormir 22 a 6 optimiza ciclos hormonales.
+
+Es frecuente que cambiar horario de sueño resuelva problemas que nada más hacía.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 45 -->
+    <div class="capsule">
+      <span class="cap-number">45</span>
+      <h3 class="cap-title">Bruxismo: aprietas dientes mientras duermes</h3>
+      <div class="cap-content">Afecta mandíbula, crea asimetría, tensiona cara. Causa líneas profundas.
+
+Guardia nocturna ayuda. Relajantes musculares si es severo.
+
+Es frecuente que clientes no sepan que tienen. Pero la mandíbula lo muestra.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 46 -->
+    <div class="capsule">
+      <span class="cap-number">46</span>
+      <h3 class="cap-title">Cuidado de labios: cuello y escote también</h3>
+      <div class="cap-content">Área delicada. Escote y cuello envejecen más que rostro.
+
+Protector solar, hidratación, retinol. Igual que cara.
+
+Es frecuente que olviden estas áreas. Pero son visibles.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 47 -->
+    <div class="capsule">
+      <span class="cap-number">47</span>
+      <h3 class="cap-title">Poros grandes: genética pero controlables</h3>
+      <div class="cap-content">No desaparecen. Pero pueden parecer más pequeños.
+
+Ácido salicílico, retinol, protección solar. Hacen diferencia.
+
+Es frecuente que clientes que trabajan poros ven cambio visible.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 48 -->
+    <div class="capsule">
+      <span class="cap-number">48</span>
+      <h3 class="cap-title">Textura de piel: es reversible</h3>
+      <div class="cap-content">Áspera, irregular, poros abiertos. Son síntomas de falta de hidratación o renovación.
+
+Peeling, retinol, ácidos. Más hidratación.
+
+Es frecuente que mejore dramáticamente con ajustes de rutina.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 49 -->
+    <div class="capsule">
+      <span class="cap-number">49</span>
+      <h3 class="cap-title">Luminosidad: depende de hidratación</h3>
+      <div class="cap-content">Piel hidratada refleja luz. Deshidratada la absorbe. Se ve opaca.
+
+Agua, cremas hidratantes, serums. Y protector solar.
+
+Es frecuente que cambio de rutina a hidratante aumente luminosidad dramáticamente.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 50 -->
+    <div class="capsule">
+      <span class="cap-number">50</span>
+      <h3 class="cap-title">Firmeza: es colágeno y elastina</h3>
+      <div class="cap-content">Ambas disminuyen con edad. Retinol, péptidos, vitamina C las estimulan.
+
+No es magia. Pero funciona.
+
+Es frecuente que clientes después de tres meses vean piel más firme.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 51 -->
+    <div class="capsule">
+      <span class="cap-number">51</span>
+      <h3 class="cap-title">Manchas solares: prevención es clave</h3>
+      <div class="cap-content">Protector solar SPF 30+ diariamente. Reaplicar cada tres horas.
+
+Las manchas que tienes ahora son daño de años atrás. Previene futuro daño.
+
+Es frecuente que vean manchas nuevas si no usan SPF.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 52 -->
+    <div class="capsule">
+      <span class="cap-number">52</span>
+      <h3 class="cap-title">Ácido hialurónico: hidrata profundo</h3>
+      <div class="cap-content">Retiene mil veces su peso en agua. Mantiene piel plena.
+
+Serums o tónicos con ácido hialurónico son esenciales.
+
+Es frecuente que sea el ingrediente que cambia todo en hidratación.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 53 -->
+    <div class="capsule">
+      <span class="cap-number">53</span>
+      <h3 class="cap-title">Niacinamida: controla grasa, mejora textura</h3>
+      <div class="cap-content">Vitamina B3 que regula sebo. Mejora poros, textura, sensibilidad.
+
+Especialmente buena para piel grasa y mixta.
+
+Es frecuente que sea el cambio que equilibra piel grasa.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 54 -->
+    <div class="capsule">
+      <span class="cap-number">54</span>
+      <h3 class="cap-title">Péptidos: estimulan colágeno sin irritar</h3>
+      <div class="cap-content">Moléculas pequeñas que comunican a célula "haz colágeno".
+
+Suave pero efectivo. Bueno para piel sensible.
+
+Es frecuente que sea alternativa a retinol para quienes no toleran.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 55 -->
+    <div class="capsule">
+      <span class="cap-number">55</span>
+      <h3 class="cap-title">Probióticos: equilibran microbioma</h3>
+      <div class="cap-content">Piel tiene flora bacteriana. Desequilibrio causa acné, sensibilidad.
+
+Alimentos fermentados, suplementos. O productos con probióticos.
+
+Es frecuente que mejore acné cuando se enfoca en microbioma.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 56 -->
+    <div class="capsule">
+      <span class="cap-number">56</span>
+      <h3 class="cap-title">Dermatitis: estrés, alergia o irritante</h3>
+      <div class="cap-content">Enrojecimiento, picazón, descamación. Puede ser contacto, alergia, o estrés.
+
+Elimina uno a uno. Revisa productos.
+
+Es frecuente que encuentren el culpable cuando sistematizan.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Realidad importante</span>
+    </div>
+
+    <!-- 57 -->
+    <div class="capsule">
+      <span class="cap-number">57</span>
+      <h3 class="cap-title">Rosácea: calor y alimentos inflamatorios empeoran</h3>
+      <div class="cap-content">Vascularidad aumentada. Rojo persistente. Worse con alcohol, cafeína, picante.
+
+Cuidado suave, protector, antiinflamatorio.
+
+Es frecuente que dieta antiinflamatoria ayude más que cremas.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Información valiosa</span>
+    </div>
+
+    <!-- 58 -->
+    <div class="capsule">
+      <span class="cap-number">58</span>
+      <h3 class="cap-title">Acné hormonal: patrón predecible</h3>
+      <div class="cap-content">Aparece antes de menstruación. Mandíbula, barbilla. Quístico.
+
+Es diferente de acné bacteriano. Necesita aproximación diferente.
+
+Es frecuente que anticonceptivos o suplementos hormonales ayuden.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Hábito transformador</span>
+    </div>
+
+    <!-- 59 -->
+    <div class="capsule">
+      <span class="cap-number">59</span>
+      <h3 class="cap-title">Brazos flácidos: ejercicio es lo que funciona</h3>
+      <div class="cap-content">Flacidez es pérdida de músculo más elastina. Exercicio de brazos, pesas.
+
+Cremas no lo resuelven. Cirugía si es severo. Pero ejercicio previene.
+
+Es frecuente que vean cambio dramático después de rutina de brazos.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Consejos que funcionan</span>
+    </div>
+
+    <!-- 60 -->
+    <div class="capsule">
+      <span class="cap-number">60</span>
+      <h3 class="cap-title">Tu cuerpo es inteligente si lo escuchas</h3>
+      <div class="cap-content">Cambios en piel, cabello, energía. Son mensajes.
+
+Acné crónico dice "algo está inflamado". Ojeras dicen "necesitas dormir". Cabello deshilachado dice "nutrición".
+
+Escucha. Ajusta. Tu cuerpo agradece.</div>
+      <span class="cap-validity"><span class="validity-dot"></span>Fuerza comunitaria</span>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  30 Cápsulas Cotidianas + · Dr. Luciano · Monte Sinaí · Cirugía Estética
+</footer>
+
+</body>
+</html>
