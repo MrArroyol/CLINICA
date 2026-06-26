@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2d5a3d">
+<title>Areli Cano Nutrióloga | Especialización en SOPQ, SII, Gastritis, Insulina</title>
+<meta name="description" content="Nutrióloga Areli Cano. Especialización en SOPQ, Síndrome de Intestino Irritable, Gastritis y Resistencia a Insulina. Hospital Monte Sinaí.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RHZJ6NCE54"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-RHZJ6NCE54');</script>
+<style>
+:root{
+  --sage-dark:#2d5a3d;--sage:#4a7c59;--sage-light:#6fa876;--terra:#c8956e;--terra-dark:#9d6e4a;--cream:#f5f1e8;--navy:#1a3a4a;--text:#1a1a1a;--text-light:#666;--border:#e0d5c7;--px:24px;--nav-h:70px;--safe-top:env(safe-area-inset-top,0px);--safe-bot:env(safe-area-inset-bottom,0px);--out:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:calc(68px + var(--safe-bot));}
+a{text-decoration:none;color:inherit;}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;padding-top:var(--safe-top);background:rgba(45,90,61,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,149,110,.2);}
+.nav__i{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--px);max-width:1600px;margin:0 auto;}
+.nav__logo{display:flex;align-items:center;gap:12px;}
+.nav__logo img{height:50px;width:auto;}
+.nav__name{color:white;font-size:.9rem;font-weight:800;letter-spacing:.05em;display:flex;flex-direction:column;line-height:1.1;}
+.nav__name em{color:var(--terra-light);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-style:normal;font-weight:600;}
+.nav__cta{height:40px;padding:0 24px;border-radius:50px;background:linear-gradient(135deg,#25D366,#20BA63);color:white;font-size:.75rem;font-weight:800;display:flex;align-items:center;cursor:pointer;transition:all .3s var(--out);letter-spacing:.05em;text-transform:uppercase;border:none;}
+.nav__cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,.25);}
+
+.hero{background:linear-gradient(135deg,rgba(45,90,61,.85) 0%,rgba(26,58,74,.85) 100%);padding:calc(var(--nav-h) + var(--safe-top) + 80px) var(--px) 100px;position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+.hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background-image:url('assets/wellness-meditacion.png');background-position:right center;background-size:50%;background-repeat:no-repeat;opacity:.15;pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:0;right:0;width:45%;height:80%;background-image:url('assets/corazon-manos.png');background-position:bottom right;background-size:contain;background-repeat:no-repeat;opacity:.12;pointer-events:none;}
+
+.hero-content{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center;}
+
+.hero-hospital-logo{display:flex;justify-content:center;margin-bottom:30px;}
+.hero-hospital-logo img{height:80px;width:auto;filter:drop-shadow(0 4px 12px rgba(0,0,0,.15));}
+
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:60px;max-width:1000px;margin-left:auto;margin-right:auto;}
+.pillar{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:16px;padding:32px 24px;backdrop-filter:blur(10px);transition:all .3s var(--out);cursor:pointer;}
+.pillar:hover{background:rgba(255,255,255,.15);border-color:rgba(200,149,110,.4);transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,.2);}
+.pillar-icon{font-size:1.5rem;margin-bottom:12px;}
+.pillar-title{color:white;font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;line-height:1.5;font-family:'Merriweather',serif;}
+
+.hero h1{color:white;font-size:clamp(2.5rem,8vw,4.2rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:20px;font-family:'Merriweather',serif;}
+.hero h1 em{color:var(--terra-light);font-style:normal;}
+.hero p{color:rgba(255,255,255,.85);font-size:1.08rem;line-height:1.9;margin-bottom:50px;max-width:700px;margin-left:auto;margin-right:auto;font-weight:300;}
+
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{height:56px;padding:0 40px;border-radius:50px;background:linear-gradient(135deg,#25D366,#20BA63);color:white;font-family:'Poppins',sans-serif;font-weight:800;font-size:.85rem;display:flex;align-items:center;gap:10px;border:none;cursor:pointer;transition:all .3s var(--out);letter-spacing:.03em;text-transform:uppercase;box-shadow:0 8px 24px rgba(37,211,102,.3);}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(37,211,102,.4);}
+.btn-secondary{background:rgba(255,255,255,.15);border:2px solid white;color:white;}
+.btn-secondary:hover{background:rgba(255,255,255,.25);}
+
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,58,74,.8);backdrop-filter:blur(8px);z-index:1000;opacity:0;visibility:hidden;transition:opacity .4s var(--out), visibility .4s var(--out);overflow-y:auto;padding:40px 20px;}
+.modal-overlay.active{opacity:1;visibility:visible;}
+
+.modal-container{display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.modal-content{background:white;position:relative;max-width:950px;width:100%;border-radius:24px;overflow:hidden;box-shadow:0 60px 120px rgba(26,58,74,.25);animation:modalSlide .5s var(--out);}
+@keyframes modalSlide{from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+.modal-header{background:linear-gradient(135deg,var(--sage-dark) 0%,var(--navy) 100%);padding:60px 50px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+.modal-header::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.modal-photo{position:relative;z-index:2;text-align:center;}
+.modal-photo img{width:100%;max-width:280px;height:auto;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.2);}
+.modal-header-content{position:relative;z-index:2;}
+.modal-header-content h2{color:white;font-size:2rem;font-weight:800;margin-bottom:8px;font-family:'Merriweather',serif;}
+.modal-header-content p{color:var(--terra-light);font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:24px;}
+.modal-specs{display:grid;gap:16px;}
+.spec{background:rgba(255,255,255,.08);border-left:3px solid var(--terra);padding:16px;border-radius:8px;backdrop-filter:blur(10px);}
+.spec-label{font-size:.75rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:4px;}
+.spec-value{font-size:1rem;color:white;font-weight:800;}
+.modal-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.3);color:white;font-size:1.4rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s var(--out);z-index:10;font-weight:300;}
+.modal-close:hover{background:rgba(255,255,255,.3);border-color:white;transform:rotate(90deg);}
+
+.modal-body{padding:50px;max-height:calc(100vh - 300px);overflow-y:auto;}
+.modal-body::-webkit-scrollbar{width:8px;}
+.modal-body::-webkit-scrollbar-track{background:var(--cream);}
+.modal-body::-webkit-scrollbar-thumb{background:var(--terra);border-radius:4px;}
+
+.about-section{margin-bottom:40px;}
+.about-section h3{font-size:1.3rem;font-weight:800;color:var(--sage-dark);margin-bottom:16px;font-family:'Merriweather',serif;display:flex;align-items:center;gap:10px;}
+.about-section h3::before{content:'';display:block;width:4px;height:24px;background:linear-gradient(180deg,var(--terra),var(--sage));border-radius:2px;}
+.about-section p{color:var(--text-light);line-height:1.95;margin-bottom:12px;}
+.specialties-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0;}
+.specialty-item{background:var(--cream);border:1px solid var(--border);border-left:3px solid var(--terra);border-radius:8px;padding:14px;font-size:.92rem;color:var(--text);}
+.specialty-item strong{color:var(--sage-dark);}
+
+.modal-cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;}
+.modal-btn{padding:14px 28px;border-radius:10px;border:none;font-weight:800;font-size:.82rem;cursor:pointer;transition:all .3s var(--out);text-transform:uppercase;letter-spacing:.05em;}
+.modal-btn-primary{background:linear-gradient(135deg,#25D366,#20BA63);color:white;box-shadow:0 6px 18px rgba(37,211,102,.25);}
+.modal-btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,.4);}
+.modal-btn-secondary{background:var(--cream);color:var(--sage-dark);border:2px solid var(--sage);}
+.modal-btn-secondary:hover{background:var(--sage-light);color:white;}
+
+.main{max-width:1400px;margin:0 auto;padding:80px var(--px);}
+
+.section{margin-bottom:100px;position:relative;}
+.section-intro{text-align:center;margin-bottom:70px;}
+.section-intro h2{font-size:2.4rem;font-weight:800;color:var(--sage-dark);margin-bottom:16px;font-family:'Merriweather',serif;}
+.section-intro h2 em{color:var(--terra);}
+.section-intro p{color:var(--text-light);font-size:1.05rem;line-height:1.8;max-width:700px;margin:20px auto;}
+.section-intro::after{content:'';display:block;width:80px;height:4px;background:linear-gradient(90deg,var(--terra),var(--sage));margin:20px auto 0;border-radius:2px;}
+
+.blogs-grid{display:grid;gap:28px;}
+@media(min-width:768px){.blogs-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1200px){.blogs-grid{grid-template-columns:1fr 1fr 1fr;}}
+
+.blog-card{background:white;border:1px solid var(--border);border-radius:16px;padding:36px 28px;transition:all .3s var(--out);cursor:pointer;position:relative;overflow:hidden;border-top:4px solid var(--terra);}
+.blog-card::before{content:'';position:absolute;top:0;right:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(111,168,118,.04) 0%,transparent 100%);opacity:0;transition:opacity .3s var(--out);}
+.blog-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(45,90,61,.15);border-top-color:var(--sage);}
+.blog-card:hover::before{opacity:1;}
+
+.blog-category{display:inline-flex;align-items:center;gap:6px;font-size:.65rem;background:linear-gradient(135deg,rgba(111,168,118,.1),rgba(200,149,110,.08));color:var(--sage);padding:8px 16px;border-radius:20px;margin-bottom:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;position:relative;z-index:2;}
+.blog-category::before{content:'◆';color:var(--terra);font-size:.7rem;}
+
+.blog-title{font-size:1.2rem;font-weight:800;color:var(--sage-dark);line-height:1.5;margin-bottom:12px;font-family:'Merriweather',serif;position:relative;z-index:2;}
+.blog-desc{font-size:.92rem;color:var(--text-light);line-height:1.85;font-weight:300;position:relative;z-index:2;}
+.blog-cta{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--terra);font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;position:relative;z-index:2;}
+.blog-cta::after{content:'→';transition:transform .3s var(--out);}
+.blog-card:hover .blog-cta::after{transform:translateX(4px);}
+
+.cta-section{background:linear-gradient(135deg,var(--sage-dark) 0%,var(--navy) 100%);border-radius:20px;padding:60px 40px;text-align:center;margin:80px 0;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(200,149,110,.1) 0%,transparent 70%);border-radius:50%;}
+.cta-section h2{color:white;font-size:2rem;font-weight:800;margin-bottom:16px;position:relative;z-index:2;font-family:'Merriweather',serif;}
+.cta-section p{color:rgba(255,255,255,.8);font-size:.98rem;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;position:relative;z-index:2;line-height:1.85;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;}
+.cta-btn{height:48px;padding:0 32px;border-radius:50px;background:linear-gradient(135deg,#25D366,#20BA63);color:white;font-weight:800;font-size:.8rem;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all .3s var(--out);text-transform:uppercase;letter-spacing:.04em;border:none;box-shadow:0 6px 20px rgba(37,211,102,.25);}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(37,211,102,.35);}
+
+.consultation-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,58,74,.8);backdrop-filter:blur(8px);z-index:1050;opacity:0;visibility:hidden;transition:opacity .3s var(--out), visibility .3s var(--out);overflow-y:auto;padding:30px 20px;}
+.consultation-modal-overlay.active{opacity:1;visibility:visible;}
+
+.consultation-modal-content{background:white;position:relative;max-width:520px;width:100%;border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(26,58,74,.2);animation:slideUp .4s var(--out);margin:40px auto;}
+
+.consultation-header{background:linear-gradient(135deg,var(--sage-dark) 0%,var(--navy) 100%);padding:40px;color:white;position:relative;}
+.consultation-header h2{font-size:1.6rem;font-weight:800;margin-bottom:8px;font-family:'Merriweather',serif;}
+.consultation-header p{color:rgba(255,255,255,.8);font-size:.95rem;font-weight:300;}
+.consultation-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.3);color:white;font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s var(--out);}
+.consultation-close:hover{background:rgba(255,255,255,.3);border-color:white;transform:rotate(90deg);}
+
+.consultation-form{padding:40px;}
+
+.form-group{margin-bottom:24px;}
+.form-group label{display:block;font-size:.9rem;font-weight:800;color:var(--sage-dark);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;}
+
+.form-group input,
+.form-group textarea{width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-family:'Poppins',sans-serif;font-size:.95rem;color:var(--text);transition:all .2s var(--out);}
+
+.form-group input:focus,
+.form-group textarea:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(200,149,110,.1);}
+
+.form-group textarea{resize:vertical;font-size:.92rem;}
+
+.autocomplete-container{position:relative;}
+.autocomplete-list{position:absolute;top:100%;left:0;right:0;background:white;border:2px solid var(--border);border-top:none;border-radius:0 0 10px 10px;max-height:200px;overflow-y:auto;z-index:10;display:none;}
+.autocomplete-list.active{display:block;}
+.autocomplete-item{padding:12px 14px;cursor:pointer;transition:all .2s var(--out);border-bottom:1px solid var(--border);}
+.autocomplete-item:hover{background:var(--cream);color:var(--terra);font-weight:600;}
+.autocomplete-item:last-child{border-bottom:none;}
+
+.form-info{background:var(--cream);border-left:4px solid var(--terra);padding:16px;border-radius:8px;display:flex;align-items:flex-start;gap:12px;margin:24px 0;font-size:.9rem;color:var(--text-light);}
+.form-icon{width:20px;height:20px;stroke:var(--terra);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px;}
+
+.form-submit{width:100%;height:56px;border-radius:12px;background:linear-gradient(135deg,#25D366,#20BA63);color:white;font-family:'Poppins',sans-serif;font-weight:800;font-size:.95rem;border:none;cursor:pointer;transition:all .3s var(--out);text-transform:uppercase;letter-spacing:.05em;box-shadow:0 6px 20px rgba(37,211,102,.25);}
+.form-submit:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,211,102,.35);}
+
+.article-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,58,74,.8);backdrop-filter:blur(8px);z-index:1100;opacity:0;visibility:hidden;transition:opacity .3s var(--out), visibility .3s var(--out);overflow-y:auto;padding:30px 20px;}
+.article-modal-overlay.active{opacity:1;visibility:visible;}
+
+.article-modal-content{background:white;position:relative;max-width:820px;width:100%;border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(26,58,74,.2);animation:slideUp .4s var(--out);}
+
+.article-header{background:linear-gradient(135deg,var(--sage-dark) 0%,var(--navy) 100%);padding:40px;color:white;position:relative;}
+.article-header h2{font-size:1.7rem;font-weight:800;margin-bottom:8px;font-family:'Merriweather',serif;}
+.article-header p{color:var(--terra-light);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+
+.article-body{padding:40px;max-height:calc(100vh - 300px);overflow-y:auto;font-size:.98rem;line-height:1.95;color:var(--text-light);}
+.article-body::-webkit-scrollbar{width:8px;}
+.article-body::-webkit-scrollbar-thumb{background:var(--terra);}
+
+.article-intro{background:var(--cream);border-left:4px solid var(--terra);padding:20px;border-radius:8px;margin-bottom:28px;color:var(--text);font-weight:500;font-family:'Merriweather',serif;}
+
+.article-section{margin-bottom:32px;}
+.article-section h3{font-size:1.15rem;font-weight:800;color:var(--sage-dark);margin-bottom:14px;font-family:'Merriweather',serif;}
+.article-section ul{list-style:none;padding:0;}
+.article-section li{margin-bottom:12px;padding-left:24px;position:relative;}
+.article-section li::before{content:'→';position:absolute;left:0;color:var(--terra);font-weight:800;}
+
+.article-nav{display:flex;gap:12px;padding:20px 40px;border-top:1px solid var(--border);justify-content:space-between;}
+.article-btn{height:44px;flex:1;border-radius:10px;border:none;font-weight:800;font-size:.8rem;cursor:pointer;transition:all .3s var(--out);text-transform:uppercase;}
+.article-btn-prev{background:var(--cream);color:var(--sage-dark);border:2px solid var(--border);}
+.article-btn-next{background:var(--terra);color:white;box-shadow:0 4px 12px rgba(200,149,110,.2);}
+.article-btn:hover{transform:translateY(-2px);}
+
+[data-r]{opacity:0;transform:translateY(20px);transition:opacity .6s var(--out),transform .6s var(--out);}
+[data-r].vis{opacity:1;transform:translateY(0);}
+
+.bnav{position:fixed;bottom:0;left:0;right:0;z-index:800;padding-bottom:var(--safe-bot);background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border-top:2px solid var(--border);}
+.bnav-i{display:flex;height:68px;}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--text-light);font-size:.54rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:all .2s var(--out);}
+.bn:hover{color:var(--terra);transform:scale(1.08);}
+.bn-ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;}
+.bn-cta{background:linear-gradient(135deg,#25D366,#20BA63);color:white!important;border-radius:12px;margin:8px 6px;flex:1.4;box-shadow:0 6px 16px rgba(37,211,102,.2);}
+@media(min-width:768px){.bnav{display:none;}body{padding-bottom:0;}}
+
+@media(max-width:768px){
+  .hero{padding:calc(var(--nav-h) + var(--safe-top) + 40px) var(--px) 60px;min-height:auto;}
+  .hero h1{font-size:2.2rem;}
+  .pillars{grid-template-columns:1fr;}
+  .modal-header{grid-template-columns:1fr;gap:30px;padding:40px 30px;}
+  .blog-title{font-size:1rem;}
+  .hero-hospital-logo img{height:60px;}
+  .blog-card{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__i">
+    <div class="nav__logo">
+      <img src="assets/logo-hospital.jpg" alt="Hospital Monte Sinaí" style="height:50px;width:auto;">
+      <div class="nav__name">
+        ARELI CANO
+        <em>Nutrición Especializada</em>
+      </div>
+    </div>
+    <button class="nav__cta" onclick="openAreli()">Perfil</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-hospital-logo">
+      <img src="assets/logo-hospital.jpg" alt="Hospital Monte Sinaí - Especialidades">
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">💊</div>
+        <div class="pillar-title">Síndrome de Ovario Poliquístico</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔬</div>
+        <div class="pillar-title">Síndrome Intestino Irritable</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">⚕️</div>
+        <div class="pillar-title">Gastritis & Inflamación</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🎯</div>
+        <div class="pillar-title">Resistencia a Insulina</div>
+      </div>
+    </div>
+
+    <h1>Nutrición <em>Especializada Personalizada</em></h1>
+    <p>Abordaje integral basado en evidencia científica verificada. Transformamos tu salud metabolólica mediante nutrición estratégica y seguimiento profesional continuo.</p>
+    
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="openAreli()">👤 Conoce a Areli</button>
+      <button class="btn-primary btn-secondary" onclick="openConsultation()">💬 Consulta Rápida</button>
+      <button class="btn-primary btn-secondary" onclick="document.getElementById('articlesSection').scrollIntoView({behavior:'smooth'})">📚 Artículos</button>
+    </div>
+  </div>
+</header>
+
+<!-- MODAL ARELI -->
+<div class="modal-overlay" id="areliModal" onclick="closeAreli(event)">
+  <div class="modal-container">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-photo">
+          <img src="assets/areli-poses.png" alt="Areli Cano Nutrióloga Especializada">
+        </div>
+        <div class="modal-header-content">
+          <h2>Areli Charoline Cano Correa</h2>
+          <p>Nutrióloga Especializada</p>
+          <div class="modal-specs">
+            <div class="spec">
+              <div class="spec-label">📞 Teléfono</div>
+              <div class="spec-value">55 9680-8859</div>
+            </div>
+            <div class="spec">
+              <div class="spec-label">⏰ Horarios</div>
+              <div class="spec-value">4:00 PM - 8:00 PM</div>
+            </div>
+            <div class="spec">
+              <div class="spec-label">📱 Modalidad</div>
+              <div class="spec-value">Presencial + Virtual</div>
+            </div>
+            <div class="spec">
+              <div class="spec-label">🏥 Centro</div>
+              <div class="spec-value">Hospital Monte Sinaí</div>
+            </div>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeAreli()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="about-section">
+          <h3>Acerca de Areli</h3>
+          <p>Nutrióloga clínica especializada en patologías metabólicas y digestivas con formación en abordaje integral. Mi objetivo es acompañarte en tu viaje hacia la salud, identificando la raíz de tus síntomas y construyendo un plan de nutrición sostenible basado en evidencia científica.</p>
+        </div>
+
+        <div class="about-section">
+          <h3>Áreas de Especialización</h3>
+          <div class="specialties-grid">
+            <div class="specialty-item"><strong>SOPQ</strong> - Manejo nutricional integral</div>
+            <div class="specialty-item"><strong>SII</strong> - Síndrome de intestino irritable</div>
+            <div class="specialty-item"><strong>Gastritis</strong> - Cicatrización y prevención</div>
+            <div class="specialty-item"><strong>Insulina</strong> - Reversión de resistencia</div>
+            <div class="specialty-item"><strong>Diabetes Tipo 2</strong> - Prevención y control</div>
+            <div class="specialty-item"><strong>Síndrome Metabólico</strong> - Abordaje integral</div>
+            <div class="specialty-item"><strong>Hemodiálisis</strong> - Nutrición renal especializada</div>
+            <div class="specialty-item"><strong>Cirugía Estética</strong> - Pre y postoperatorio</div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <h3>Mi Enfoque</h3>
+          <p>La nutrición no es restricción, es conexión. Conexión con tu cuerpo, tus alimentos y tu salud. Cada consulta es oportunidad para educarte, empoderarte y transformar tu relación con la comida. Utilizamos análisis profundos de tu situación, ajustamos según tu cuerpo real, y evitamos modas sin evidencia.</p>
+        </div>
+
+        <div class="modal-cta">
+          <a href="tel:5596808859" class="modal-btn modal-btn-primary">☎️ Llamar Ahora</a>
+          <a href="https://wa.me/5215645192997" target="_blank" class="modal-btn modal-btn-primary">💬 WhatsApp</a>
+          <button class="modal-btn modal-btn-secondary" onclick="openConsultation()">❓ Consulta Rápida</button>
+          <button class="modal-btn modal-btn-secondary" onclick="closeAreli()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CONSULTA RÁPIDA -->
+<div class="consultation-modal-overlay" id="consultationModal" onclick="closeConsultation(event)">
+  <div class="consultation-modal-content">
+    <div class="consultation-header">
+      <h2>Consulta Rápida con Areli</h2>
+      <p>Envía tu pregunta directamente a WhatsApp</p>
+      <button class="consultation-close" onclick="closeConsultation()">✕</button>
+    </div>
+
+    <form class="consultation-form" id="consultationForm" onsubmit="submitConsultation(event)">
+      <div class="form-group">
+        <label for="consultName">Tu Nombre</label>
+        <input type="text" id="consultName" placeholder="Ej: María García" required>
+      </div>
+
+      <div class="form-group">
+        <label for="consultTopic">¿Sobre qué tema tienes duda?</label>
+        <div class="autocomplete-container">
+          <input type="text" id="consultTopic" placeholder="Escribe: SOPQ, gastritis, insulina..." autocomplete="off" required>
+          <div class="autocomplete-list" id="autocompleteList"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="consultMessage">Tu Pregunta o Comentario</label>
+        <textarea id="consultMessage" placeholder="Cuéntame más sobre tu situación..." rows="4" required></textarea>
+      </div>
+
+      <div class="form-info">
+        <svg class="form-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Tu mensaje se abrirá en WhatsApp para enviar a Areli de forma segura y confidencial</span>
+      </div>
+
+      <button type="submit" class="form-submit">💬 Enviar por WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<main class="main">
+  <section class="section" id="articlesSection">
+    <div class="section-intro" data-r>
+      <h2>Información Verificada <em>& Educativa</em></h2>
+      <p>Artículos basados en evidencia científica actualizada. Aprende cómo la nutrición transforma cada una de estas condiciones desde la raíz.</p>
+    </div>
+    <div class="blogs-grid" id="blogGrid">
+      <!-- Generado con JS -->
+    </div>
+  </section>
+
+  <section class="cta-section" data-r>
+    <h2>Tienes una Pregunta Específica?</h2>
+    <p>No esperes. Envía tu consulta directamente y recibe orientación personalizada. Areli estará disponible para brindarte la información que necesitas.</p>
+    <div class="cta-btns">
+      <button onclick="openConsultation()" class="cta-btn">💬 Enviar Consulta por WhatsApp</button>
+      <a href="tel:5596808859" class="cta-btn" style="background:linear-gradient(135deg,#0066ff,#0052cc);">📞 Llamar Directamente</a>
+    </div>
+  </section>
+
+  <section class="section" data-r>
+    <div class="section-intro">
+      <h2>¿Necesitas un Diagnóstico Personalizado?</h2>
+      <p>Cada cuerpo es único. Tu primer paso es una evaluación completa donde analizamos tu situación específica.</p>
+    </div>
+    <div class="cta-btns" style="justify-content:center;gap:14px;flex-wrap:wrap;">
+      <button onclick="openConsultation()" class="cta-btn">🎯 Agendar Primera Consulta</button>
+      <a href="https://wa.me/5215645192997?text=Hola%20Areli%2C%20me%20gustaría%20agendar%20una%20consulta" target="_blank" class="cta-btn">💬 Reservar por WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<!-- MODAL ARTÍCULOS -->
+<div class="article-modal-overlay" id="articleModal" onclick="closeArticle(event)">
+  <div style="display:flex;justify-content:center;align-items:center;min-height:100vh;">
+    <div class="article-modal-content">
+      <div class="article-header">
+        <h2 id="articleTitle">Título</h2>
+        <p id="articleCategory">Categoría</p>
+      </div>
+      <div class="article-body" id="articleBody"></div>
+      <div class="article-nav">
+        <button class="article-btn article-btn-prev" id="prevArticleBtn" onclick="prevArticle()">← Anterior</button>
+        <span style="align-self:center;color:var(--text-light);font-weight:700;"><span id="articleCount">1</span> / 10</span>
+        <button class="article-btn article-btn-next" id="nextArticleBtn" onclick="nextArticle()">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="bnav">
+  <div class="bnav-i">
+    <a href="/" class="bn"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio</a>
+    <a href="javascript:void(0)" onclick="openAreli()" class="bn"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Areli</a>
+    <div class="bn bn-cta" onclick="openConsultation()"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Consulta</div>
+    <a href="javascript:void(0)" onclick="document.getElementById('articlesSection').scrollIntoView({behavior:'smooth'})" class="bn"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M4 19h16v-7H4m0-2h16V4H4m0 9h7v7H4z"/></svg>Blog</a>
+    <a href="tel:5596808859" class="bn"><svg class="bn-ic" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.46 12.85A19.79 19.79 0 01.38 4.26 2 2 0 012.36 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.73a16 16 0 006.36 6.36l1.09-1.7a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Llamar</a>
+  </div>
+</nav>
+
+<script>
+const articulos = [
+  {
+    id: "sopq",
+    titulo: "SOPQ: Manejo Nutricional Integral Basado en Evidencia",
+    categoria: "SOPQ",
+    contenido: `
+      <div class="article-intro">El Síndrome de Ovario Poliquístico es una condición endocrina prevalente que afecta 8-13% de mujeres en edad reproductiva. Requiere abordaje multidisciplinario donde nutrición es pilar fundamental para mejorar síntomas y fertilidad.</div>
+      
+      <div class="article-section">
+        <h3>Fisiopatología Metabolólica del SOPQ</h3>
+        <p>70-80% de mujeres con SOPQ presentan resistencia a insulina. La hiperinsulinemia estimula ovarios a producir más andrógenos, perpetuando el ciclo. Esto explica por qué cambios en glucosa tienen impacto inmediato en síntomas SOPQ (ciclos irregulares, acné, crecimiento vello).</p>
+      </div>
+
+      <div class="article-section">
+        <h3>Intervenciones Nutricionales Basadas en Evidencia</h3>
+        <ul>
+          <li>Proteína 25-30g por comida: reduce picos glucosa, prolonga saciedad, mejora equilibrio hormonal</li>
+          <li>Índice Glucémico: carbohidratos complejos con fibra ralentizan absorción, disminuyendo demanda insulina</li>
+          <li>Inositol: mio-inositol y d-chiro-inositol (proporción 40:1) mejoran sensibilidad insulina y reducen andrógenos</li>
+          <li>Ácidos grasos omega-3: reducen inflamación sistémica asociada a SOPQ</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>Resultados Esperados</h3>
+        <p>Estudios demuestran que pérdida de 5-10% peso corporal mejora significativamente ciclos menstruales, ovulación y fertilidad. Cambios metabolólicos se observan en 8-12 semanas con adherencia consistente.</p>
+      </div>
+    `
+  },
+  {
+    id: "intestino-irritable",
+    titulo: "SII: Identificación de Triggers y Manejo Nutricional Individualizado",
+    categoria: "Digestión",
+    contenido: `
+      <div class="article-intro">Síndrome de Intestino Irritable afecta 10-15% población mundial. A diferencia de EII (Enfermedad Inflamatoria Intestinal), SII no presenta daño tisular visible pero síntomas son reales e impactantes.</div>
+      
+      <div class="article-section">
+        <h3>Tres Subtipos Requieren Enfoques Diferentes</h3>
+        <ul>
+          <li><strong>SII-D (Diarreico):</strong> Diarrea >3x/semana. Requiere fibra soluble, probióticos, alimentos astringentes</li>
+          <li><strong>SII-C (Estreñido):</strong> Constipación >3 meses. Necesita fibra insoluble, hidratación, movimiento</li>
+          <li><strong>SII-M (Mixto):</strong> Alternancia impredecible. Enfoque flexible y triggers específicos</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>Rol de Estrés y Eje Gut-Brain</h3>
+        <p>Intestino tiene 500 millones neuronas (más que médula espinal). Estrés empeora síntomas dramáticamente. Hipersensibilidad visceral es característica: usuarios perciben movimiento intestinal normal como dolor. Gestión estrés es tan importante como nutrición.</p>
+      </div>
+
+      <div class="article-section">
+        <h3>Identificación Sistemática de Triggers</h3>
+        <p>No hay lista universal. Documenta: qué comiste, cuándo, síntomas post-comida. Tras 2-3 semanas emergen patrones personales. FODMAP es herramienta, no restricción permanente.</p>
+      </div>
+    `
+  },
+  {
+    id: "gastritis",
+    titulo: "Gastritis: De la Inflamación Aguda a Cicatrización Completa",
+    categoria: "Digestión",
+    contenido: `
+      <div class="article-intro">Gastritis es inflamación mucosa gástrica. Causas: H. pylori (70%), AINE, estrés crónico, alcohol. Nutrición acelera cicatrización y previene recurrencias.</div>
+      
+      <div class="article-section">
+        <h3>Fases de Recuperación Nutricional</h3>
+        <ul>
+          <li><strong>Fase Aguda (1-2 sem):</strong> Comidas pequeñas cada 2-3h. Caldo de hueso, purés, arroz blanco, plátano. Evita: ácidos, picantes, grasas</li>
+          <li><strong>Fase Intermedia (2-4 sem):</strong> Introduce vegetales cocidos, proteínas magras. Aún evita irritantes</li>
+          <li><strong>Fase Recuperación (4-8 sem):</strong> Alimentos integrales gradualmente. Monitorea tolerancia personal</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>Nutrientes Críticos para Cicatrización</h3>
+        <p><strong>Zinc</strong> (legumbres, carnes): esencial para reparación tisular. <strong>Glutamina</strong> (caldo, huevos): alimenta células epiteliales. <strong>Vitamina A</strong> (zanahoria, calabaza): regenera mucosas. <strong>Probióticos</strong> (yogur natural, kéfir): protegen barrera gástrica.</p>
+      </div>
+
+      <div class="article-section">
+        <h3>Error Crítico a Evitar</h3>
+        <p>Muchos regresan a café, alcohol, picante cuando desaparecen síntomas iniciales. Esto causa recaída. Tu estómago tardó semanas dañarse; necesita semanas para curarse completamente.</p>
+      </div>
+    `
+  },
+  {
+    id: "resistencia-insulina",
+    titulo: "Resistencia a Insulina: Reversión Metabólica Completa",
+    categoria: "Metabolismo",
+    contenido: `
+      <div class="article-intro">Resistencia a insulina es epidémica silenciosa: 1 de cada 3 adultos la padece sin saberlo. No causa síntomas iniciales pero incrementa riesgo diabetes 5x, enfermedades cardíacas 3x, cáncer 2x.</div>
+      
+      <div class="article-section">
+        <h3>Mecanismo: Cómo Desarrollamos Resistencia</h3>
+        <p>Picos glucosa repetidos (carbohidratos refinados, azúcares) fatigan receptores celulares. Células "ignoran" insulina. Páncreas produce más insulina (hiperinsulinemia). Este exceso causa ganancia grasa abdominal, inflamación, empeora SOPQ, acelera envejecimiento.</p>
+      </div>
+
+      <div class="article-section">
+        <h3>Señales de Alerta</h3>
+        <ul>
+          <li>Cansancio post-comidas (especialmente carbohidratos)</li>
+          <li>Hambre constante, antojos de azúcar</li>
+          <li>Ganancia grasa abdominal especialmente</li>
+          <li>Dificultad perder peso pese a déficit calórico</li>
+          <li>Acné, vello excesivo, caída cabello</li>
+          <li>Oscurecimiento piel cuello/axilas (acanthosis nigricans)</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>Reversión: Protocolo Nutricional</h3>
+        <p>Proteína 25-30g cada comida. Carbohidratos complejos con fibra. Grasas saludables omega-3. Movimiento regular (especialmente post-comidas). Dormir 7-9h. Estrés reducido. Resultados: reversión en 3-6 meses.</p>
+      </div>
+    `
+  },
+  {
+    id: "sopq-insulina",
+    titulo: "SOPQ + Resistencia Insulina: Ciclo Vicioso y Cómo Romperlo",
+    categoria: "SOPQ",
+    contenido: `
+      <div class="article-intro">70-80% mujeres SOPQ tienen insulinorresistencia. No es coincidencia: una amplifica la otra. Romper el ciclo es posible con nutrición estratégica.</div>
+      
+      <div class="article-section">
+        <h3>El Ciclo Que Se Auto-Perpetúa</h3>
+        <p>Mujer come carbohidratos refinados → pico glucosa → páncreas produce insulina → hiperinsulinemia → ovarios estimulados a producir más andrógenos → síntomas SOPQ (ciclos irregulares, acné) → empeora resistencia insulina → ciclo intensifica.</p>
+      </div>
+
+      <div class="article-section">
+        <h3>Cómo Nutrición Interrumpe el Ciclo</h3>
+        <ul>
+          <li>Estabilizar glucosa → reduce demanda insulina</li>
+          <li>Menos insulina → menos estimulación ovárica</li>
+          <li>Menos andrógenos → equilibrio hormonal</li>
+          <li>Reducción inflamación → mejora sensibilidad insulina</li>
+          <li>Pérdida grasa abdominal → recuperación metabólica</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>El Efecto Dominó Positivo</h3>
+        <p>Un cambio mejora todo lo demás. Estabilizar glucosa hoy afecta ciclos menstruales en 4-6 semanas, energía en días, síntomas digestivos inmediatamente. Tu cuerpo quiere sanar; solo necesita las herramientas correctas.</p>
+      </div>
+    `
+  },
+  {
+    id: "microbioma",
+    titulo: "Microbioma Intestinal: Las Bacterias que Controlan tu Metabolismo",
+    categoria: "SOPQ",
+    contenido: `
+      <div class="article-intro">Billones bacterias viven en tu intestino. Controlan: metabolismo, inflamación, producción hormona, incluso estado mental. En SOPQ, microbioma típicamente desequilibrado (disbiosis).</div>
+      
+      <div class="article-section">
+        <h3>El "Estroboloma": Cómo Bacterias Metabolizan Estrógeno</h3>
+        <p>Bacterias producen enzimas que reciclan estrógeno. Microbioma deficiente = estrógeno no se metaboliza → acumulación → peores síntomas SOPQ. Restaurar flora es componente crítico del tratamiento.</p>
+      </div>
+
+      <div class="article-section">
+        <h3>Alimentos que Restauran Flora Beneficiosa</h3>
+        <ul>
+          <li><strong>Prebióticos:</strong> Ajo, cebolla, puerro, avena, legumbres, plátano verde. Alimentan Bifidobacteria y Lactobacillus</li>
+          <li><strong>Probióticos:</strong> Yogur natural, kéfir, chucrut, kimchi, miso, tempeh. Bacterias vivas</li>
+          <li><strong>Simbióticos:</strong> Prebiótico + probiótico juntos amplifican beneficio</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>Evidencia Reciente</h3>
+        <p>Estudios 2023-2024 demuestran inositol + probióticos mejoran SOPQ más que inositol solo. La combinación de nutrición + flora restaurada = transformación metabólica.</p>
+      </div>
+    `
+  },
+  {
+    id: "antiinflamatorios",
+    titulo: "Alimentos Antiinflamatorios: Nutrición Como Medicina",
+    categoria: "Nutrición",
+    contenido: `
+      <div class="article-intro">SOPQ, SII y gastritis comparten denominador: inflamación crónica. Alimentos no son solo calorías; son señales químicas que activan o desactivan inflamación.</div>
+      
+      <div class="article-section">
+        <h3>Campeones Antiinflamatorios Verificados</h3>
+        <ul>
+          <li><strong>Pescado graso:</strong> Salmón, sardinas, anchoas. Omega-3 es antiinflamatorio potente. 2-3x por semana. Reduce inflamación 30-40% en 8 semanas</li>
+          <li><strong>Berries:</strong> Arándanos, moras. Antocianinas son polifenoles más potentes. Frescas o congeladas (igual eficacia)</li>
+          <li><strong>Hojas verdes oscuras:</strong> Espinaca, kale, acelga. Vitamina K, sulfrafano, polifenoles</li>
+          <li><strong>Cúrcuma + pimienta negra:</strong> Curcumina (bioavailabilidad aumenta 2000% con pimienta). Tan potente como ibuprofeno en estudios</li>
+          <li><strong>Jengibre fresco:</strong> Gingeroles reducen prostaglandinas inflamatorias</li>
+          <li><strong>Aceite oliva extra virgen:</strong> Oleocantal tiene mecanismo anti-inflamatorio similar a AINE</li>
+          <li><strong>Té verde:</strong> EGCG. 2-3 tazas diarias = impacto medible en inflamación</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>La Regla del Arcoíris</h3>
+        <p>Si tu plato tiene 5+ colores (rojo, naranja, amarillo, verde, azul, púrpura), probablemente es antiinflamatorio. Diferentes colores = diferentes fitoquímicos = cobertura amplia de sistemas. Objetivo: 5+ colores por día.</p>
+      </div>
+    `
+  },
+  {
+    id: "sindrome-metabolico",
+    titulo: "Síndrome Metabólico: Cuando Todo Converge",
+    categoria: "Metabolismo",
+    contenido: `
+      <div class="article-intro">Síndrome metabólico no es enfermedad única sino cluster de 5 condiciones convergentes: cintura abdominal, presión elevada, glucosa elevada, triglicéridos, HDL bajo. 35% población tiene síndrome metabólico; más alto en SOPQ.</div>
+      
+      <div class="article-section">
+        <h3>Los Cinco Componentes Interconectados</h3>
+        <ul>
+          <li>Circunferencia abdominal >88cm (mujer)</li>
+          <li>Presión arterial ≥130/85 mmHg</li>
+          <li>Glucosa en ayuno ≥100 mg/dL</li>
+          <li>Triglicéridos ≥150 mg/dL</li>
+          <li>HDL <50 mg/dL (mujer)</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>El Efecto Cascada Positivo</h3>
+        <p>Mejorar UN componente mejora todos. Perder 5-10% peso → presión cae → glucosa cae → triglicéridos normalizan → HDL sube. No es mágico; están todos conectados por insulina.</p>
+      </div>
+
+      <div class="article-section">
+        <h3>Reversión es Posible</h3>
+        <p>Síndrome metabólico es reversible con nutrición. No requiere medicamentos complejos si actúas temprano. Tu cuerpo está diseñado para sanar cuando le das herramientas correctas.</p>
+      </div>
+    `
+  },
+  {
+    id: "post-gastritis",
+    titulo: "Post-Gastritis: Transición Segura a Nutrición Normal",
+    categoria: "Digestión",
+    contenido: `
+      <div class="article-intro">Después que gastritis desaparece, muchos regresan a viejos patrones inmediatamente. Transición gradual de 4-8 semanas previene recaídas y construye hábitos sostenibles.</div>
+      
+      <div class="article-section">
+        <h3>Las Cuatro Fases (Síntoma-Dependientes)</h3>
+        <ul>
+          <li><strong>Fase 1:</strong> Comidas <100g volumen, muy suaves (caldo, puré, arroz). 6-8 comidas/día</li>
+          <li><strong>Fase 2:</strong> Introduce vegetales cocidos blandos, proteínas magras (pollo, pavo), frutas suaves</li>
+          <li><strong>Fase 3:</strong> Alimentos integrales gradualmente, crudos según tolerancia</li>
+          <li><strong>Fase 4:</strong> Mantenimiento: dieta variada evitando triggers personales identificados</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>Construcción de Nuevos Hábitos</h3>
+        <p>Usa la recuperación como oportunidad. Tu estómago te obligó a ralentizar, escuchar, atender. Identifica qué causó gastritis (estrés? alcohol? café?) y construye alternativas reales. No es "no comer", es "comer diferente".</p>
+      </div>
+
+      <div class="article-section">
+        <h3>Señales de Alerta para Recaída</h3>
+        <p>Indigestión, reflujo nocturno, dolor epigástrico sugieren regresión. Retrocede a fase anterior, reestabiliza, luego avanza nuevamente. La curación no es lineal.</p>
+      </div>
+    `
+  },
+  {
+    id: "estres-gut-brain",
+    titulo: "Eje Gut-Brain: Por Qué el Estrés Sabotea tu Nutrición",
+    categoria: "Bienestar",
+    contenido: `
+      <div class="article-intro">Tu intestino tiene 500 millones neuronas. Está conectado a cerebro por vago (nervio más largo del cuerpo). Estrés empeora SOPQ, SII y gastritis simultáneamente, incluso con nutrición perfecta.</div>
+      
+      <div class="article-section">
+        <h3>Cómo Estrés Sabotea Cada Condición</h3>
+        <ul>
+          <li><strong>SOPQ:</strong> Cortisol elevado empeora resistencia insulina, estimula producción andrógenos, promueve ganancia grasa abdominal</li>
+          <li><strong>SII:</strong> Estrés dispara hipersensibilidad visceral, acelera/ralentiza tránsito, desencadena inflamación</li>
+          <li><strong>Gastritis:</strong> Estrés aumenta ácido gástrico 10-15%, ralentiza cicatrización completamente</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>Herramientas Verificadas para Reducir Estrés</h3>
+        <ul>
+          <li><strong>Respiración diafragmática:</strong> 5-10 minutos diarios activa sistema parasimpático (descanso y digestión)</li>
+          <li><strong>Movimiento regular:</strong> Caminar, yoga, baile. No necesita ser intenso. 30min diarios</li>
+          <li><strong>Sueño 7-9h:</strong> Fundamental. Dormir menos = cortisol elevado = todas condiciones empeoran</li>
+          <li><strong>Conexiones sociales:</strong> Tiempo con amigos, familia. No es lujo; es medicina</li>
+          <li><strong>Naturaleza:</strong> 20 minutos naturaleza = reducción estrés medible</li>
+        </ul>
+      </div>
+
+      <div class="article-section">
+        <h3>La Verdad Incómoda</h3>
+        <p>Puedes comer perfectamente pero si vives en estrés crónico, tu cuerpo no sanará. Nutrición excelente + estrés crónico = resultados limitados. Abordar humano completo, no solo comida.</p>
+      </div>
+    `
+  }
+];
+
+let currentArticleIndex = 0;
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderBlogCards();
+  window.addEventListener('hashchange', handleHashChange);
+  if(window.location.hash) handleHashChange();
+  const ro = new IntersectionObserver(es => {
+    es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); ro.unobserve(e.target); }});
+  }, {threshold: .1});
+  document.querySelectorAll('[data-r]').forEach(el => ro.observe(el));
+});
+
+function renderBlogCards() {
+  const grid = document.getElementById('blogGrid');
+  grid.innerHTML = articulos.map((art) => `
+    <div class="blog-card" data-r onclick="openArticleByHash('${art.id}')">
+      <div class="blog-category">${art.categoria}</div>
+      <div class="blog-title">${art.titulo}</div>
+      <div class="blog-cta">Leer Artículo</div>
+    </div>
+  `).join('');
+}
+
+function openArticleByHash(articleId) {
+  window.location.hash = articleId;
+}
+
+function handleHashChange() {
+  const hash = window.location.hash.slice(1);
+  if(hash) {
+    const articleIndex = articulos.findIndex(a => a.id === hash);
+    if(articleIndex !== -1) {
+      currentArticleIndex = articleIndex;
+      displayArticle();
+      document.getElementById('articleModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  } else {
+    closeArticle();
+  }
+}
+
+function displayArticle() {
+  const art = articulos[currentArticleIndex];
+  document.getElementById('articleTitle').textContent = art.titulo;
+  document.getElementById('articleCategory').textContent = art.categoria;
+  document.getElementById('articleBody').innerHTML = art.contenido;
+  document.getElementById('articleCount').textContent = currentArticleIndex + 1;
+  document.getElementById('prevArticleBtn').disabled = currentArticleIndex === 0;
+  document.getElementById('nextArticleBtn').disabled = currentArticleIndex === articulos.length - 1;
+  document.querySelector('.article-body').scrollTop = 0;
+}
+
+function closeArticle(event) {
+  if(!event || event.target.id === 'articleModal') {
+    document.getElementById('articleModal').classList.remove('active');
+    document.body.style.overflow = '';
+    window.location.hash = '';
+  }
+}
+
+function prevArticle() {
+  if(currentArticleIndex > 0) {
+    currentArticleIndex--;
+    window.location.hash = articulos[currentArticleIndex].id;
+  }
+}
+
+function nextArticle() {
+  if(currentArticleIndex < articulos.length - 1) {
+    currentArticleIndex++;
+    window.location.hash = articulos[currentArticleIndex].id;
+  }
+}
+
+function openAreli() {
+  document.getElementById('areliModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAreli(event) {
+  if(!event || event.target.id === 'areliModal') {
+    document.getElementById('areliModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+function openConsultation() {
+  document.getElementById('consultationModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  setupAutocomplete();
+}
+
+function closeConsultation(event) {
+  if(!event || event.target.id === 'consultationModal') {
+    document.getElementById('consultationModal').classList.remove('active');
+    document.body.style.overflow = '';
+    document.getElementById('consultationForm').reset();
+  }
+}
+
+function setupAutocomplete() {
+  const topicos = articulos.map(a => a.titulo);
+  const input = document.getElementById('consultTopic');
+  const list = document.getElementById('autocompleteList');
+  
+  input.addEventListener('input', (e) => {
+    const value = e.target.value.toLowerCase();
+    list.innerHTML = '';
+    
+    if(value.length > 0) {
+      const filtered = topicos.filter(t => t.toLowerCase().includes(value));
+      if(filtered.length > 0) {
+        filtered.slice(0, 5).forEach(topic => {
+          const item = document.createElement('div');
+          item.className = 'autocomplete-item';
+          item.textContent = topic;
+          item.onclick = () => {
+            input.value = topic;
+            list.classList.remove('active');
+            list.innerHTML = '';
+          };
+          list.appendChild(item);
+        });
+        list.classList.add('active');
+      }
+    } else {
+      list.classList.remove('active');
+    }
+  });
+  
+  document.addEventListener('click', (e) => {
+    if(e.target !== input && !list.contains(e.target)) {
+      list.classList.remove('active');
+    }
+  });
+}
+
+function submitConsultation(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById('consultName').value;
+  const topic = document.getElementById('consultTopic').value;
+  const message = document.getElementById('consultMessage').value;
+  
+  const whatsappMessage = `*Consulta desde el Blog de Areli* 📋
+
+*Nombre:* ${name}
+*Tema:* ${topic}
+
+*Pregunta/Comentario:*
+${message}
+
+---
+Enviado desde: Hospital Monte Sinaí
+Plataforma: Blog Areli`;
+  
+  const encoded = encodeURIComponent(whatsappMessage);
+  const whatsappLink = `https://wa.me/5215645192997?text=${encoded}`;
+  
+  window.open(whatsappLink, '_blank');
+  closeConsultation();
+}
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') {
+    closeAreli();
+    closeArticle();
+    closeConsultation();
+  }
+});
+</script>
+
+</body>
+</html>
